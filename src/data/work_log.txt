@@ -1,0 +1,247 @@
+search_queries: ['("RNA-seq" OR "RNA sequencing") AND ("liposarcoma" AND "differentiation") AND ("metabolism" OR "metabolic characteristics")', '("liposarcoma" AND "highly differentiated" AND "dedifferentiated") AND ("gene expression" OR "transcriptomics") AND ("RNA sequencing")', '("single-cell RNA sequencing" OR "scRNA-seq") AND ("liposarcoma" AND "differentiation") AND ("metabolic pathways")', '("liposarcoma" AND "metabolism") AND ("frozen samples" OR "paraffin sections") AND ("RNA-seq" OR "single-cell sequencing")', '("publicly available datasets" AND "liposarcoma") AND ("differentiation" AND "metabolism") AND ("RNA sequencing" OR "transcriptome analysis")', '("RNA-seq" OR "RNA sequencing") AND ("liposarcoma" OR "sarcoma") AND ("metabolic characteristics" OR "metabolism") AND ("differentiated" OR "dedifferentiated")', '("single-cell sequencing" AND "liposarcoma") OR ("single-cell RNA-seq" AND "sarcoma") AND ("metabolic pathways" OR "metabolic differences")', '("highly differentiated liposarcoma" OR "dedifferentiated liposarcoma") AND ("RNA sequencing" OR "transcriptome analysis") AND ("metabolism" OR "metabolic processes")', '("liposarcoma" AND "RNA sequencing") AND ("frozen samples" OR "paraffin sections" OR "cell lines") AND ("metabolic profiling" OR "metabolic analysis")', '("metabolic characteristics" OR "metabolic differences") AND ("liposarcoma" OR "sarcoma") AND ("bulk RNA-seq" OR "single-cell RNA-seq") AND ("public datasets" OR "publicly available data")', '("RNA-seq" OR "RNA sequencing") AND "liposarcoma" AND ("metabolic characteristics" OR "metabolism")', '("highly differentiated" AND "liposarcoma") AND ("RNA sequencing" OR "transcriptome analysis") AND ("dedifferentiated" AND "liposarcoma")', '("single-cell sequencing" AND "liposarcoma") AND ("metabolic pathways" OR "metabolic profiling") AND ("tumor differentiation")', '("liposarcoma" AND "metabolism") AND ("RNA-seq" OR "RNA sequencing") AND ("differentiation status" OR "tumor heterogeneity")', '("liposarcoma" AND "metabolic characteristics") AND ("frozen samples" OR "cell lines" OR "paraffin sections") AND ("RNA-seq data" OR "single-cell RNA sequencing")', '("RNA-seq" OR "RNA sequencing") AND "liposarcoma" AND ("differentiated" OR "dedifferentiated") AND "metabolic characteristics"', '("single-cell RNA sequencing" OR "scRNA-seq") AND "liposarcoma" AND ("differentiation" OR "dedifferentiation")', '("liposarcoma" AND "metabolism") AND ("RNA-seq" OR "RNA sequencing") AND ("frozen samples" OR "paraffin sections" OR "cell lines")', '("liposarcoma" AND "metabolic pathways") AND ("RNA sequencing" OR "scRNA-seq") AND ("differentiated" OR "dedifferentiated")', '("RNA-seq" AND "liposarcoma") AND ("public datasets" OR "publicly available data") AND ("metabolic analysis" OR "metabolic characteristics")', ' "liposarcoma" AND "RNA-seq" AND "metabolic characteristics" ', ' ("highly differentiated" OR "dedifferentiated") AND "liposarcoma" AND "single-cell sequencing" ', ' "liposarcoma" AND "RNA sequencing" AND "metabolism" AND "public datasets" ', ' "liposarcoma" AND "differentiation" AND "metabolic profiling" AND "frozen samples" ', ' "liposarcoma" AND "cell lines" AND "RNA-seq" AND "metabolic differences" ']
+search_time: 814.0533277988434
+search_datasets_queries: {'GEO': ['liposarcoma AND RNA-seq', 'liposarcoma AND differentiation', 'liposarcoma AND metabolism', 'differentiated AND liposarcoma', 'dedifferentiated AND liposarcoma']}
+search_time: 986.2749333381653
+search_time: 1.3828277587890625e-05
+search_time: 3.361701965332031e-05
+search_time: 1.2159347534179688e-05
+search_time: 2.2172927856445312e-05
+search_time: 1.0967254638671875e-05
+search_time: 2.5033950805664062e-05
+search_time: 1.0967254638671875e-05
+search_time: 2.002716064453125e-05
+search_time: 1.0967254638671875e-05
+search_time: 2.384185791015625e-05
+search_time: 1.1444091796875e-05
+search_time: 2.09808349609375e-05
+search_time: 1.1444091796875e-05
+search_time: 2.0742416381835938e-05
+report_time: 3175.0695378780365
+search_time: 1.0013580322265625e-05
+search_time: 2.47955322265625e-05
+search_time: 1.1444091796875e-05
+search_time: 2.09808349609375e-05
+report_time: 2014.6228296756744
+analysis_time: 401.41298365592957
+report_time: 1357.3745765686035
+analysis_time: 207.38047337532043
+report_time: 4515.054124832153
+analysis_time: 1032.0279605388641
+report_time: 5264.2088534832
+analysis_time: 294.17579531669617
+report_time: 3245.3683953285217
+analysis_time: 227.58887910842896
+search_time: 1.0728836059570312e-05
+search_time: 1.9788742065429688e-05
+report_time: 1.0036485195159912
+analysis_time: 7.724761962890625e-05
+report_time: 1.012044906616211
+analysis_time: 7.414817810058594e-05
+report_time: 1.069148302078247
+analysis_time: 9.441375732421875e-05
+report_time: 0.9878594875335693
+analysis_time: 8.535385131835938e-05
+report_time: 1.0252091884613037
+analysis_time: 8.392333984375e-05
+search_time: 1.1444091796875e-05
+search_time: 2.0265579223632812e-05
+report_time: 1.0091536045074463
+analysis_time: 7.939338684082031e-05
+report_time: 0.9992587566375732
+analysis_time: 7.963180541992188e-05
+report_time: 1.0484604835510254
+analysis_time: 0.00011658668518066406
+report_time: 0.972775936126709
+analysis_time: 7.963180541992188e-05
+report_time: 1.005237102508545
+analysis_time: 7.677078247070312e-05
+search_time: 1.0728836059570312e-05
+search_time: 2.2411346435546875e-05
+report_time: 0.9876701831817627
+analysis_time: 8.535385131835938e-05
+report_time: 0.9904603958129883
+analysis_time: 7.653236389160156e-05
+report_time: 1.0288770198822021
+analysis_time: 8.702278137207031e-05
+report_time: 0.9663915634155273
+analysis_time: 8.368492126464844e-05
+report_time: 0.9992959499359131
+analysis_time: 8.130073547363281e-05
+id match: 1: 1-s2.0-S104366182200408X-main
+2: nihms-2028845
+3: ijms-24-14732
+4: 41467_2024_Article_52067
+5: cancers-15-03360
+
+
+design_time: 1080.557700395584
+
+design_translation_time: 203.32188868522644
+search_time: 1.049041748046875e-05
+search_time: 2.2649765014648438e-05
+report_time: 1.0171246528625488
+analysis_time: 0.00041985511779785156
+report_time: 1.016341209411621
+analysis_time: 0.00016045570373535156
+report_time: 1.0602242946624756
+analysis_time: 0.0003464221954345703
+report_time: 0.9863052368164062
+analysis_time: 0.00036025047302246094
+report_time: 1.0269982814788818
+analysis_time: 0.0002982616424560547
+id match: 1: 1-s2.0-S104366182200408X-main
+2: nihms-2028845
+3: ijms-24-14732
+4: 41467_2024_Article_52067
+5: cancers-15-03360
+
+
+design_time: 0.001260995864868164
+
+design_translation_time: 3.814697265625e-06
+search_time: 1.0728836059570312e-05
+search_time: 1.9788742065429688e-05
+report_time: 1.0045807361602783
+analysis_time: 7.414817810058594e-05
+report_time: 0.9998235702514648
+analysis_time: 7.033348083496094e-05
+report_time: 1.049973726272583
+analysis_time: 0.00010752677917480469
+report_time: 0.9746158123016357
+analysis_time: 8.0108642578125e-05
+report_time: 1.0071799755096436
+analysis_time: 7.605552673339844e-05
+id match: 1: 1-s2.0-S104366182200408X-main
+2: nihms-2028845
+3: ijms-24-14732
+4: 41467_2024_Article_52067
+5: cancers-15-03360
+
+
+design_time: 0.0005285739898681641
+
+design_translation_time: 4.0531158447265625e-06
+search_time: 1.0967254638671875e-05
+search_time: 2.002716064453125e-05
+report_time: 1.0060160160064697
+analysis_time: 7.867813110351562e-05
+report_time: 1.0019762516021729
+analysis_time: 6.961822509765625e-05
+report_time: 1.0825772285461426
+analysis_time: 0.00010824203491210938
+report_time: 0.9829287528991699
+analysis_time: 8.082389831542969e-05
+report_time: 1.0190415382385254
+analysis_time: 7.653236389160156e-05
+id match: 1: 1-s2.0-S104366182200408X-main
+2: nihms-2028845
+3: ijms-24-14732
+4: 41467_2024_Article_52067
+5: cancers-15-03360
+
+
+design_time: 0.0005154609680175781
+
+design_translation_time: 4.291534423828125e-06
+search_time: 0.0
+search_time: 0.0
+report_time: 1.566807746887207
+analysis_time: 0.0
+report_time: 1.5710976123809814
+analysis_time: 0.0010025501251220703
+report_time: 1.6394739151000977
+analysis_time: 0.0
+report_time: 1.5858755111694336
+analysis_time: 0.001001596450805664
+report_time: 1.598543643951416
+analysis_time: 0.0
+id match: 1: 1-s2.0-S104366182200408X-main
+2: nihms-2028845
+3: ijms-24-14732
+4: 41467_2024_Article_52067
+5: cancers-15-03360
+
+
+design_time: 0.0019996166229248047
+
+design_translation_time: 0.0
+dry_experiment_extract_time: 440.83200883865356
+dry_translation_time: 80.05536556243896
+design_time: 754.5416519641876
+
+design_translation_time: 112.7986786365509
+dry_experiment_extract_time: 291.6885576248169
+dry_translation_time: 128.68911719322205
+design_time: 368.8882176876068
+
+design_translation_time: 47.470048666000366
+dry_experiment_extract_time: 203.45647406578064
+dry_translation_time: 73.94157671928406
+search_time: 0.0
+search_time: 0.0
+report_time: 1.686844825744629
+analysis_time: 0.007577419281005859
+report_time: 1.6218512058258057
+analysis_time: 0.007071256637573242
+report_time: 1.710547685623169
+analysis_time: 0.007051706314086914
+report_time: 1.63671875
+analysis_time: 0.008515357971191406
+report_time: 1.6705749034881592
+analysis_time: 0.006510496139526367
+id match: 1: 1-s2.0-S104366182200408X-main
+2: nihms-2028845
+3: ijms-24-14732
+4: 41467_2024_Article_52067
+5: cancers-15-03360
+
+
+design_time: 0.042413949966430664
+
+design_translation_time: 0.0
+dry_experiment_extract_time: 0.010303258895874023
+dry_translation_time: 0.0
+design_time: 0.012016773223876953
+
+design_translation_time: 0.001020669937133789
+dry_experiment_extract_time: 0.008840322494506836
+dry_translation_time: 0.0009999275207519531
+design_time: 0.01030111312866211
+
+design_translation_time: 0.0010035037994384766
+dry_experiment_extract_time: 0.009572505950927734
+dry_translation_time: 0.0
+search_time: 0.0
+search_time: 0.0
+report_time: 1.6224541664123535
+analysis_time: 0.013063907623291016
+report_time: 1.6090528964996338
+analysis_time: 0.0
+report_time: 1.6814601421356201
+analysis_time: 0.008522748947143555
+report_time: 1.5725812911987305
+analysis_time: 0.011004209518432617
+report_time: 1.6234450340270996
+analysis_time: 0.008252382278442383
+id match: 1: 1-s2.0-S104366182200408X-main
+2: nihms-2028845
+3: ijms-24-14732
+4: 41467_2024_Article_52067
+5: cancers-15-03360
+
+
+design_time: 0.0455777645111084
+
+design_translation_time: 0.0009992122650146484
+dry_experiment_extract_time: 0.012594938278198242
+dry_translation_time: 0.000978231430053711
+design_time: 0.00810861587524414
+
+design_translation_time: 0.0
+dry_experiment_extract_time: 0.016610383987426758
+dry_translation_time: 0.0
+design_time: 0.014826536178588867
+
+design_translation_time: 0.0
+dry_experiment_extract_time: 0.006000041961669922
+dry_translation_time: 0.0
