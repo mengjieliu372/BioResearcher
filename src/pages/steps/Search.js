@@ -34,7 +34,7 @@ export default function SwitchButton() {
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
-        width: '5vw',
+        width: '5vw'
       }}>
         <ToggleButtonGroup
           orientation="vertical"

@@ -9,12 +9,15 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TestData from '../utils/PapersetProcess';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
+    <Box
       role="tabpanel"
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
@@ -26,7 +29,7 @@ function TabPanel(props) {
           <Typography>{children}</Typography>
         </Box>
       )}
-    </div>
+    </Box>
   );
 }
 
@@ -46,22 +49,37 @@ function a11yProps(index) {
 export default function VerticalTabs() {
   const queriesData = TestData;
 
-
   const showPapers = (papers) => {
     return (
-      papers.map((paper) => (
-        <Accordion key={paper.id}>
+      papers.map((paper, index) => (
+        <Accordion 
+          key={index}
+          sx={{ 
+            width: '100%',
+          }}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls={`panel${paper.id}-content`}
             id={`panel${paper.id}-header`}
           >
             {paper.title}
+            {paper.isDownload !== undefined && (
+              <Box sx={{ ml: 'auto' }}>
+                <Chip
+                  label={paper.isDownload ? '下载成功' : '需手动下载'}
+                  color={paper.isDownload ? 'success' : 'error'}
+                  size="small"
+                />
+              </Box>
+            )}
           </AccordionSummary>
           <AccordionDetails>
             <Typography>Abstract:{paper.abstract}</Typography>
             <Typography>DOI:{paper.doi}</Typography>
-            <Typography>Score:{paper.score}</Typography>
+            <Tooltip title="理由" arrow>
+              <Button>Score:{paper.score}</Button>
+            </Tooltip>
           </AccordionDetails>
         </Accordion>
       ))
@@ -78,8 +96,8 @@ export default function VerticalTabs() {
     <Box
       sx={{
         display: 'flex',
+        flexDirection: 'row',
         height: '78vh',
-        backgroundColor: '#ffffff',
         borderRadius: '8px',
       }}
     >
@@ -87,7 +105,7 @@ export default function VerticalTabs() {
       {/* 左侧标签栏 */}
       <Box
         sx={{
-          height: '78vh'
+          height: '78vh',
         }}>
         <Tabs
           orientation="vertical"
@@ -95,10 +113,11 @@ export default function VerticalTabs() {
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs"
-          sx={{ borderRight: 1, 
-                borderColor: 'divider',
-                width: '8vw'
-              }}
+          sx={{
+            borderRight: 1,
+            borderColor: 'divider',
+            width: '8vw'
+          }}
         >
           {queriesData.map((query, index) => (
             <Tab label={query.query} {...a11yProps(index)} key={index} />
@@ -110,7 +129,8 @@ export default function VerticalTabs() {
       <Box
         sx={{
           height: '78vh',
-          backgroundColor: '#f0f0f0',
+          width: '77vw',
+          backgroundColor: '#e3fdff',
         }}
       >
         {queriesData.map((query, index) => (

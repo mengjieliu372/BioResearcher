@@ -94,8 +94,9 @@ export default function HorizontalLinearAlternativeLabelStepper() {
                 borderRadius: '8px',
                 margin: 'auto',
                 mt: '2vh',
-                mr: '4vw',
-                ml: '4vw',
+                mr: '5vw',
+                ml: '5vw',
+                backgroundColor: '#fff',
             }}>
                <Outlet/> 
             </Box>

@@ -1,12 +1,27 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Container, Box, TextField, Typography, FormGroup, FormControlLabel, Checkbox, Radio, RadioGroup, FormControl, Button } from '@mui/material';
+import { Container, Box, TextField, Typography, FormGroup, FormControlLabel, Checkbox, Radio, RadioGroup, FormControl, Button, List, ListItem, ListItemText, IconButton } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import Divider from '@mui/material/Divider';
+import { styled } from '@mui/material/styles';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
 
 export default function NewProject() {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const handleInput1 = (event) => {
     const newValue = event.target.value.replace(/[^0-9]/g, '');
@@ -16,6 +31,15 @@ export default function NewProject() {
   const handleInput2 = (event) => {
     const newValue = event.target.value.replace(/[^0-9]/g, '');
     setValue2(newValue);
+  };
+
+  const handleFileChange = (event) => {
+    const files = Array.from(event.target.files);
+    setUploadedFiles(prevFiles => [...prevFiles, ...files]);
+  };
+
+  const handleFileDelete = (fileName) => {
+    setUploadedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
   };
 
   return (
@@ -88,7 +112,7 @@ export default function NewProject() {
         <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', mt: 4 }}>
           选择要检索的数据库
         </Typography>
-        
+
         <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
           文献库：
         </Typography>
@@ -100,11 +124,49 @@ export default function NewProject() {
         <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
           数据集库：
         </Typography>
-        <FormGroup row sx={{ mb: 4 }}>
+        <FormGroup row sx={{ mb: 2 }}>
           <FormControlLabel control={<Checkbox defaultChecked />} label="GEO" />
           <FormControlLabel control={<Checkbox />} label="NCBI" />
           <FormControlLabel control={<Checkbox />} label="cBioPortal" />
         </FormGroup>
+
+        <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
+          本地文献：
+        </Typography>
+        <Button
+          component="label"
+          role={undefined}
+          variant="contained"
+          tabIndex={-1}
+          startIcon={<CloudUploadIcon />}
+          sx={{ mb: 2 }}
+        >
+          Upload files
+          <VisuallyHiddenInput
+            type="file"
+            accept=".pdf"
+            onChange={handleFileChange}
+            multiple
+          />
+        </Button>
+
+        {uploadedFiles.length > 0 && (
+          <Box sx={{ mb: 4 }}>
+            <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
+              已上传的文件：
+            </Typography>
+            <List>
+              {uploadedFiles.map((file) => (
+                <ListItem key={file.name} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <ListItemText primary={file.name} />
+                  <IconButton onClick={() => handleFileDelete(file.name)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        )}
 
         <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', mb: 2 }}>
           LLM模型选择
@@ -127,7 +189,7 @@ export default function NewProject() {
         <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', mb: 2 }}>
           其他可选参数
         </Typography>
-        
+
         <Grid container spacing={2}>
           <Grid item size={6}>
             <TextField
@@ -148,7 +210,7 @@ export default function NewProject() {
             />
           </Grid>
         </Grid>
-        
+
         <Button
           variant="contained"
           color="primary"

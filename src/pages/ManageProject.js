@@ -44,6 +44,9 @@ export default function BasicTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+  // State for the edited experiment details
+  const [editedName, setEditedName] = React.useState('');
+
   const handleOpen = (id) => {
     navigate(`/${id}/steps`);
   };
@@ -53,7 +56,8 @@ export default function BasicTable() {
   };
 
   const handleEdit = (name) => {
-    setOpen(true);
+    setEditedName(name); // Set the name of the experiment to be edited
+    setOpen(true); // Open the dialog
   };
 
   const handleDelete = (name) => {
@@ -69,12 +73,15 @@ export default function BasicTable() {
     setPage(0); // 重置回第一页
   };
 
-  // 计算当前页要显示的 rows
+  const handleSave = () => {
+    // Handle the save action, like sending the updated info to the server
+    console.log('Updated experiment name:', editedName);
+    setOpen(false); // Close the dialog after saving
+  };
+
   const currentRows = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
-  // 计算空行数量
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
     <Container
@@ -121,7 +128,7 @@ export default function BasicTable() {
                     variant="outlined"
                     color="primary"
                     onClick={() => handleOpen(row.id)}
-                    sx={{ marginRight: 1, textTransform: 'none',}}
+                    sx={{ marginRight: 1, textTransform: 'none' }}
                   >
                     Open
                   </Button>
@@ -129,7 +136,7 @@ export default function BasicTable() {
                     variant="outlined"
                     color="secondary"
                     onClick={() => handleEdit(row.name)}
-                    sx={{ marginRight: 1, textTransform: 'none',}}
+                    sx={{ marginRight: 1, textTransform: 'none' }}
                   >
                     Edit
                   </Button>
@@ -137,14 +144,13 @@ export default function BasicTable() {
                     variant="outlined"
                     color="error"
                     onClick={() => handleDelete(row.name)}
-                    sx={{ textTransform: 'none'}}
+                    sx={{ textTransform: 'none' }}
                   >
                     Delete
                   </Button>
                 </TableCell>
               </TableRow>
             ))}
-            {/* 如果有空行则填充空行以保证高度一致 */}
             {emptyRows > 0 && (
               <TableRow style={{ height: `${7 * emptyRows}vh` }}>
                 <TableCell colSpan={3} />
@@ -168,42 +174,27 @@ export default function BasicTable() {
         </Table>
       </TableContainer>
 
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          component: 'form',
-          onSubmit: (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries(formData.entries());
-            const email = formJson.email;
-            console.log(email);
-            handleClose();
-          },
-        }}
-      >
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Edit the Project</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+            Modify the experiment details here:
           </DialogContentText>
           <TextField
             autoFocus
             required
             margin="dense"
-            id="name"
-            name="email"
-            label="Email Address"
-            type="email"
+            id="experiment-name"
+            label="实验名称"
+            value={editedName}
+            onChange={(e) => setEditedName(e.target.value)}
             fullWidth
             variant="standard"
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Save</Button>
+          <Button onClick={handleSave}>Save</Button>
         </DialogActions>
       </Dialog>
     </Container>

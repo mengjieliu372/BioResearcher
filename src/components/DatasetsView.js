@@ -1,9 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import TestData from '../utils/DatasetsProcess';
+import Chip from '@mui/material/Chip';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,6 +45,45 @@ function a11yProps(index) {
 }
 
 export default function VerticalTabs() {
+  const queriesData = TestData;
+
+  const showDatasets = (datasets) => {
+    return (
+      Object.entries(datasets).map(([key, value]) => (
+        <Accordion 
+          key={key}
+          sx={{
+            width: '100%',
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls={`panel${key}-content`}
+            id={`panel${key}-header`}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+              <Typography sx={{ flexGrow: 1 }}>{value.Title}</Typography>
+              {value.isDownload !== undefined && (
+                <Chip
+                  label={value.isDownload ? '筛选成功' : '未筛选上'}
+                  color={value.isDownload ? 'success' : 'error'}
+                  size="small"
+                  sx={{ ml: 2 }}
+                />
+              )}
+            </Box>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>Identifier : {key}</Typography>
+            <Typography>Status: {value.Status}</Typography>
+            <Typography>Summary: {value.Summary}</Typography>
+          </AccordionDetails>
+        </Accordion>
+      ))
+    );
+  };
+  
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -48,49 +93,59 @@ export default function VerticalTabs() {
   return (
     <Box
       sx={{
-        flexGrow: 1,
-        bgcolor: 'background.paper',
         display: 'flex',
+        flexDirection: 'row',
         height: '78vh',
+        borderRadius: '8px',
       }}
     >
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+
+      {/* 左侧标签栏 */}
+      <Box
+        sx={{
+          height: '78vh'
+        }}>
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          value={value}
+          onChange={handleChange}
+          aria-label="Vertical tabs"
+          sx={{
+            borderRight: 1,
+            borderColor: 'divider',
+            width: '8vw'
+          }}
+        >
+          {queriesData.map((query, index) => (
+            <Tab label={query.query} {...a11yProps(index)} key={index} />
+          ))}
+        </Tabs>
+      </Box>
+
+      {/* 右侧内容 */}
+      <Box
+        sx={{
+          height: '78vh',
+          width: '77vw',
+          backgroundColor: '#e3fdff',
+        }}
       >
-        <Tab label="Item One" {...a11yProps(0)} />
-        <Tab label="Item Two" {...a11yProps(1)} />
-        <Tab label="Item Three" {...a11yProps(2)} />
-        <Tab label="Item Four" {...a11yProps(3)} />
-        <Tab label="Item Five" {...a11yProps(4)} />
-        <Tab label="Item Six" {...a11yProps(5)} />
-        <Tab label="Item Seven" {...a11yProps(6)} />
-      </Tabs>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
+        {queriesData.map((query, index) => (
+          <TabPanel value={value} index={index} key={index}>
+            <Box
+              sx={{
+                ml: 'auto',
+                mr: 'auto',
+                overflowY: 'auto',
+                maxHeight: '72vh',
+              }}
+            >
+              {showDatasets(query.datasets)}
+            </Box>
+          </TabPanel>
+        ))}
+      </Box>
     </Box>
   );
 }

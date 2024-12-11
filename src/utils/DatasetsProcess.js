@@ -1,5 +1,5 @@
-import RetrievedDatasets from '../data/datasets/retrieved_datasets_info.json';
-
+import RetrievedDatasets from '../data/dataset/retrieved_datasets_info.json';
+import RelatedDatasets from '../data/dataset/related_datasets_info.json';
 
 export function classifyDatasetsByQuery(retrievedDatasets) {
     const queries = ['query1', 'query2', 'query3', 'query4', 'query5'];
@@ -8,14 +8,23 @@ export function classifyDatasetsByQuery(retrievedDatasets) {
     queries.forEach(query => {
         classifiedData.push({
             query,
-            datasets: []
+            datasets: {}
         });
     });
 
-    RetrievedDatasets["GEO"].forEach((dataset, index) => {
-        const queryIndex = index % queries.length;
-        classifiedData[queryIndex].datasets.push(dataset);
+    const downloadedDataset = Object.keys(RelatedDatasets);
+    
+    Object.entries(retrievedDatasets).map(([category, datasets]) => {
+        let innerIndex = 0; 
+        Object.entries(datasets).map(([dataset, info]) => {
+            const queryIndex = innerIndex % queries.length;
+            innerIndex++;
+            const isDownload = downloadedDataset.includes(dataset);
+            const cleanedDataset = { ...info, isDownload };
+            classifiedData[queryIndex].datasets[dataset] = cleanedDataset;
+        });
     });
+
     return classifiedData;
 }
 
