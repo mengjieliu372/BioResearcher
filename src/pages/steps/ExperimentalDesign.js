@@ -1,5 +1,4 @@
 import * as React from 'react';
-import ReportSection from "../../components/ReportSection";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -9,29 +8,6 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
-/*
-export function Report1() {
-  return (
-    <div style={{ padding: '20px' }}>
-      {Object.entries(data).map(([partKey, partValue]) => {
-        const steps = Object.entries(partValue)
-          .filter(([key]) => key.startsWith('step')) // 过滤出步骤数据
-          .map(([key, value]) => ({
-            title: `Step ${key.split(' ')[1]}`,  // Step 1, Step 2
-            details: value['implementation details'],
-            references: value['Reference Source'],
-          }));
-
-        return (
-          <ReportSection key={partKey} part={partValue['Part 1']} steps={steps} />
-        );
-      })}
-    </div>
-  );
-}
-*/
-
 
 
 function CustomTabPanel(props) {
