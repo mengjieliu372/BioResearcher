@@ -56,45 +56,51 @@ function RenderContent(data) {
           <AccordionDetails>
             {Object.entries(steps)
               .slice(1)
-              .map(([step, details]) => (
-                <Accordion key={step}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    {step}
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Box>
-                      <strong>Implementation Details:</strong>
-                      {details["implementation details"]
-                        .split('\n')
-                        .map((line, index) => (
-                          <Box key={index}>{line}</Box>
-                        ))}
-                    </Box>
-                    <Box mt={2}>
-                      <strong>Reference Source:</strong>
-                      {Object.entries(details["Reference Source"]).map(
-                        ([source, parts]) => (
-                          <Box key={source}>
-                            {Object.entries(parts).map(([part, steps]) => (
-                              <Box key={part}>
-                                {steps.map(stepKey => (
-                                  <Box key={stepKey}>
-                                    {`${source}: ${part} ${stepKey}`}
-                                  </Box>
-                                ))}
-                              </Box>
-                            ))}
-                          </Box>
-                        )
-                      )}
-                    </Box>
-                  </AccordionDetails>
-                </Accordion>
-              ))}
+              .map(([step, details]) => {
+                const lines = details["implementation details"]
+                  .split('\n')
+                  .map(line => line.trim());
+
+                const title = lines.shift(); 
+                const description = lines.join('\n');
+
+                return (
+                  <Accordion key={step}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                      {title}
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      {description.split('\n').map((line, index) => (
+                        <Box key={index} sx={{ textIndent: '2ch' }}>
+                          {line}
+                        </Box>
+                      ))}
+                      <Box mt={2}>
+                        <strong>Reference Source:</strong>
+                        {Object.entries(details["Reference Source"]).map(
+                          ([source, parts]) => (
+                            <Box key={source}>
+                              {Object.entries(parts).map(([part, steps]) => (
+                                <Box key={part}>
+                                  {steps.map(stepKey => (
+                                    <Box key={stepKey}>
+                                      {`${source}: ${part} ${stepKey}`}
+                                    </Box>
+                                  ))}
+                                </Box>
+                              ))}
+                            </Box>
+                          )
+                        )}
+                      </Box>
+                    </AccordionDetails>
+                  </Accordion>
+                );
+              })}
           </AccordionDetails>
         </Accordion>
       ))}
