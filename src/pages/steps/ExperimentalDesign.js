@@ -43,55 +43,62 @@ function a11yProps(index) {
 
 function RenderContent(data) {
   return (
-      <Container>
-          {Object.entries(data).map(([part, steps]) => (
-              <Accordion key={part}>
+    <Container>
+      {Object.entries(data).map(([part, steps]) => (
+        <Accordion key={part}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            {part + ": " + steps[part]}
+          </AccordionSummary>
+          <AccordionDetails>
+            {Object.entries(steps)
+              .slice(1)
+              .map(([step, details]) => (
+                <Accordion key={step}>
                   <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
                   >
-
-                      {part + ": " +steps[part]}
+                    {step}
                   </AccordionSummary>
                   <AccordionDetails>
-                      {Object.entries(steps)
-                        .slice(1)
-                        .map(([step, details]) => (
-                          <Accordion key={step}>
-                              <AccordionSummary
-                                  expandIcon={<ExpandMoreIcon />}
-                                  aria-controls="panel1a-content"
-                                  id="panel1a-header"
-                              >
-                                  {step}
-                              </AccordionSummary>
-                              <AccordionDetails>
-                                {"Implementation Details: " + details["implementation details"]}
-
-                                <Box>
-                                  Reference Source:
-                                  {Object.entries(details["Reference Source"]).map(([source, parts]) => (
-                                    <Box key={source}>
-                                      {Object.entries(parts).map(([part, steps]) => (
-                                        <Box key={part}>
-                                          {Object.entries(steps).map(([stepKey, stepValue]) => (
-                                            <Box key={stepKey}>
-                                              {source + ": " + part + stepValue}
-                                            </Box>
-                                          ))}
-                                        </Box>
-                                      ))}
-                                    </Box>
-                                  ))}
-                                </Box> 
-                              </AccordionDetails>
-                          </Accordion>
-                      ))}
+                    <Box>
+                      <strong>Implementation Details:</strong>
+                      {details["implementation details"]
+                        .split('\n')
+                        .map((line, index) => (
+                          <Box key={index}>{line}</Box>
+                        ))}
+                    </Box>
+                    <Box mt={2}>
+                      <strong>Reference Source:</strong>
+                      {Object.entries(details["Reference Source"]).map(
+                        ([source, parts]) => (
+                          <Box key={source}>
+                            {Object.entries(parts).map(([part, steps]) => (
+                              <Box key={part}>
+                                {steps.map(stepKey => (
+                                  <Box key={stepKey}>
+                                    {`${source}: ${part} ${stepKey}`}
+                                  </Box>
+                                ))}
+                              </Box>
+                            ))}
+                          </Box>
+                        )
+                      )}
+                    </Box>
                   </AccordionDetails>
-              </Accordion>
-          ))}
-      </Container>
+                </Accordion>
+              ))}
+          </AccordionDetails>
+        </Accordion>
+      ))}
+    </Container>
   );
 }
 
