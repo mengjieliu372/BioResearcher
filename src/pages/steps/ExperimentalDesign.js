@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import ExpDesignContent from '../../components/ExpDesignContent';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -41,84 +36,17 @@ function a11yProps(index) {
 
 
 
-function RenderContent(data) {
-  return (
-    <Container>
-      {Object.entries(data).map(([part, steps]) => (
-        <Accordion key={part}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            {part + ": " + steps[part]}
-          </AccordionSummary>
-          <AccordionDetails>
-            {Object.entries(steps)
-              .slice(1)
-              .map(([step, details]) => {
-                const lines = details["implementation details"]
-                  .split('\n')
-                  .map(line => line.trim());
-
-                const title = lines.shift(); 
-                const description = lines.join('\n');
-
-                return (
-                  <Accordion key={step}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                    >
-                      {title}
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      {description.split('\n').map((line, index) => (
-                        <Box key={index} sx={{ textIndent: '2ch' }}>
-                          {line}
-                        </Box>
-                      ))}
-                      <Box mt={2}>
-                        <strong>Reference Source:</strong>
-                        {Object.entries(details["Reference Source"]).map(
-                          ([source, parts]) => (
-                            <Box key={source}>
-                              {Object.entries(parts).map(([part, steps]) => (
-                                <Box key={part}>
-                                  {steps.map(stepKey => (
-                                    <Box key={stepKey}>
-                                      {`${source}: ${part} ${stepKey}`}
-                                    </Box>
-                                  ))}
-                                </Box>
-                              ))}
-                            </Box>
-                          )
-                        )}
-                      </Box>
-                    </AccordionDetails>
-                  </Accordion>
-                );
-              })}
-          </AccordionDetails>
-        </Accordion>
-      ))}
-    </Container>
-  );
-}
-
 
 export default function ExperimentalDesign() {
   const [value, setValue] = React.useState(0);
   const [content, setContent] = React.useState(null);
 
+
   React.useEffect(() => {
     const prog = "experiment_program" + (value + 1);
-    console.log(prog);
     import(`../../data/${prog}.json`)
       .then(data => {
-        setContent(RenderContent(data.default));
+        setContent(<ExpDesignContent data={data.default} />);
       })
       .catch(err => console.error(err));
   }, [value]); // 仅当 value 变化时触发

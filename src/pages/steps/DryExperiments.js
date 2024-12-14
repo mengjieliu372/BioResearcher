@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import DryExpContent from '../../components/DryExpContent';
 
 // TabPanel组件用于显示选中的Tab内容
 function CustomTabPanel(props) {
@@ -41,42 +36,6 @@ function a11yProps(index) {
     };
 }
 
-// RenderContent 渲染JSON内容
-function RenderContent(data) {
-    return (
-        <Container>
-            {Object.entries(data).map(([part, tasks]) => (
-                <Accordion key={part}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        {part}
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        {tasks.map((task, index) => (
-                            <Accordion key={index}>
-                                <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                >
-                                    {task.task_id}
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <Typography variant="body1">Description:{task.task_description}</Typography>
-                                    <Typography variant="body1">Input:{task.input}</Typography>
-                                    <Typography variant="body1">Output:{task.output}</Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                        ))}
-                    </AccordionDetails>
-                </Accordion>
-            ))}
-        </Container>
-    );
-}
 
 export default function BasicTabs() {
     const [value, setValue] = React.useState(0);
@@ -90,7 +49,7 @@ export default function BasicTabs() {
         const dryexp = "dry_experiment" + (value + 1);
         import(`../../data/${dryexp}.json`)
             .then(data => {
-                setContent(RenderContent(data.default));
+                setContent(<DryExpContent data={data.default} />);
             })
             .catch(err => console.error(err));
     }, [value]); // 仅当 value 变化时触发
@@ -118,7 +77,7 @@ export default function BasicTabs() {
 
             <Box
                 sx={{
-                    height: '70vh',
+                    height: '72vh',
                     maxHeight: '70vh',
                     overflowY: 'auto',
                     backgroundColor: '#f5f5f5',

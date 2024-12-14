@@ -64,14 +64,27 @@ export default function VerticalTabs() {
             id={`panel${paper.id}-header`}
           >
             {paper.title}
-            {paper.isDownload !== undefined && (
+            {paper.flag !== undefined && (
               <Box sx={{ ml: 'auto' }}>
-                <Chip
-                  label={paper.isDownload ? '下载成功' : '需手动下载'}
-                  color={paper.isDownload ? 'success' : 'error'}
-                  size="small"
-                />
-              </Box>
+              <Chip
+                label={
+                  paper.flag === 3
+                    ? 'Downloaded'
+                    : paper.flag === 2
+                    ? 'Failed to Download'
+                    : 'Irrelevant'
+                }
+                color={
+                  paper.flag === 3
+                    ? 'success'      // flag === 3 显示绿色（成功）
+                    : paper.flag === 2
+                    ? 'warning'      // flag === 2 显示黄色（警告）
+                    : 'error'        // flag === 1 显示红色（错误）
+                }
+                size="small"
+              />
+            </Box>
+            
             )}
           </AccordionSummary>
           <AccordionDetails>

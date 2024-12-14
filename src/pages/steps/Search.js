@@ -44,10 +44,10 @@ export default function SwitchButton() {
           color='primary'
         >
           <ToggleButton value="papers" aria-label="papers">
-            文献库
+            Papers
           </ToggleButton>
           <ToggleButton value="datasets" aria-label="datasets">
-            数据集
+            Datasets
           </ToggleButton>
         </ToggleButtonGroup>
       </Box>
