@@ -27,9 +27,13 @@ function InnerComponent({ steps }) {
 
     return (
         <Box>
-            <Button onClick={handleExpandedAll} variant='outlined'>
-                {expandedAll ? 'Collapse All' : 'Expand All'}
-            </Button>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button onClick={handleExpandedAll} variant='contained'
+                    sx={{ mr: 6,mb: 1,textTransform: 'none' }}
+                >
+                    {expandedAll ? 'Collapse All Parts' : 'Expand All Steps'}
+                </Button>
+            </Box>
             {Object.entries(steps).slice(1).map(([step, details], index) => {
                 const lines = details["implementation details"]
                     .split('\n')
@@ -101,9 +105,13 @@ export default function RenderContent({ data }) {
 
     return (
         <Container>
-            <Button onClick={handleExpandedAll} variant='outlined'>
-                {expandedAll ? 'Collapse All' : 'Expand All'}
-            </Button>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button onClick={handleExpandedAll} variant='contained'
+                    sx={{ mr: 6,mb: 1,textTransform: 'none' }}
+                >
+                    {expandedAll ? 'Collapse All Parts' : 'Expand All Parts'}
+                </Button>
+            </Box>
             {Object.entries(data).map(([part, steps], index) => (
                 <Accordion key={part} expanded={expandedArray[index]}>
                     <AccordionSummary

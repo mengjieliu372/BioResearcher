@@ -1,7 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -28,9 +27,6 @@ function InnerComponent({part, steps, analysis}) {
     
     return (
         <Box>
-            <Button onClick={handleExpandedAll} variant='outlined'>
-                {expandedAll ? 'Collapse All' : 'Expand All'}
-            </Button>
             <Box>
                 <Typography variant='h5' >Reference Reason:</Typography>
                 {analysis[part]["Reason"]}
@@ -38,6 +34,13 @@ function InnerComponent({part, steps, analysis}) {
             <Box>
                 <Typography variant='h5' >Suggestions:</Typography>
                 {analysis[part]["Suggestions"]}
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button onClick={handleExpandedAll} variant='contained'
+                    sx={{ mr: 6,mb: 1,textTransform: 'none' }}
+                >
+                    {expandedAll ? 'Collapse All Parts' : 'Expand All Steps'}
+                </Button>
             </Box>
             {Object.entries(steps)
                 .slice(1)
@@ -92,10 +95,14 @@ export default function RenderContent({ report, analysis }) {
     };
 
     return (
-        <Container>
-            <Button onClick={handleExpandedAll} variant='outlined'>
-                {expandedAll ? 'Collapse All' : 'Expand All'}
-            </Button>
+        <Box>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button onClick={handleExpandedAll} variant='contained'
+                    sx={{ mr: 6,mb: 1,textTransform: 'none' }}
+                >
+                    {expandedAll ? 'Collapse All Parts' : 'Expand All Parts'}
+                </Button>
+            </Box>
             {Object.entries(report).map(([part, steps], index) => (
                 <Accordion key={part} expanded={expandedArray[index]}>
                     <AccordionSummary
@@ -124,6 +131,6 @@ export default function RenderContent({ report, analysis }) {
                     </AccordionDetails>
                 </Accordion>
             ))}
-        </Container>
+        </Box>
     );
 }
