@@ -42,8 +42,13 @@ function InnerComponent({ tasks }) {
                         {task.task_id}
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography variant="body1">Description:{task.task_description}</Typography>
-                        <Typography variant="body1">Input:{task.input}</Typography>
+                        <Typography variant="h6" sx={{fontWeight: 'bold'}}>Description:</Typography>
+                        <Typography variant="body1">{task.task_description}</Typography>
+
+                        <Typography variant="h6" sx={{fontWeight: 'bold'}}>Input:</Typography>
+                        <Typography variant="body1">{task.input}</Typography>
+                        
+                        <Typography variant="h6" sx={{fontWeight: 'bold'}}>Output:</Typography>
                         <Typography variant="body1">Output:{task.output}</Typography>
                     </AccordionDetails>
                 </Accordion>

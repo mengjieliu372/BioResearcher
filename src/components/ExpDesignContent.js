@@ -47,7 +47,7 @@ function InnerComponent({ steps }) {
                                 id="panel1a-header"
                                 onClick={() => { handleExpandArray(index) }}
                             >
-                                {title}
+                                <strong>{title}</strong>
                             </AccordionSummary>
                             <AccordionDetails>
                                 {description.split('\n').map((line, index) => (
@@ -112,7 +112,7 @@ export default function RenderContent({ data }) {
                         id="panel1a-header"
                         onClick={() => handleExpandArray(index)}
                     >
-                        {part + ": " + steps[part]}
+                        <strong>{part + ": " + steps[part]}</strong>
                     </AccordionSummary>
                     <AccordionDetails>
                         <InnerComponent steps={steps} />
