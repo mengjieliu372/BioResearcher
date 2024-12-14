@@ -19,18 +19,42 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 export default function NewProject() {
-  const [value1, setValue1] = useState('');
-  const [value2, setValue2] = useState('');
+  // State for input values
+  // 实验名称 实验目的 实验条件 实验要求
+  const [expName, setExpName] = useState('');
+  const [expPurpose, setExpPurpose] = useState('');
+  const [expCondition, setExpCondition] = useState('');
+  const [expRequirement, setExpRequirement] = useState('');
+  const [paper, setPaper] = useState({ PMC: true, PubMed: false});
+  const [dataset, setDataset] = useState({ GEO: true, NCBI: false, cBioPortal: false});
+
+  const [llmModel, setLLMModel] = useState('GPT4o');
+  const [refNum, setRefNum] = useState();
+  const [reviewerRound, setReviewerRound] = useState();
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
-  const handleInput1 = (event) => {
+  const handleInputRefNum = (event) => {
     const newValue = event.target.value.replace(/[^0-9]/g, '');
-    setValue1(newValue);
+    setRefNum(newValue);
   };
 
-  const handleInput2 = (event) => {
+  const handleInputReviewerRound = (event) => {
     const newValue = event.target.value.replace(/[^0-9]/g, '');
-    setValue2(newValue);
+    setReviewerRound(newValue);
+  };
+
+  const handlePaperChange = (event) => {
+    setPaper(prev => ({
+      ...prev,
+      [event.target.name]: event.target.checked
+    }));
+  };
+
+  const handleDatabaseChange = (event) => {
+    setDataset(prev => ({
+      ...prev,
+      [event.target.name]: event.target.checked
+    }));
   };
 
   const handleFileChange = (event) => {
@@ -41,6 +65,47 @@ export default function NewProject() {
   const handleFileDelete = (fileName) => {
     setUploadedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
   };
+
+  const handleLlmModelChange = (event) => {
+    setLLMModel(event.target.value);
+  };
+  
+  const handleSubmit = () => {
+    // 数据验证
+    if (!expName || !expPurpose || !expCondition || !expRequirement) {
+      alert('请填写实验相关信息！');
+      return;
+    }
+    
+    // 检查paper和dataset是否全为false
+    if (!Object.values(paper).some(Boolean)) {
+      alert('请选择要检索的文献库！');
+      return;
+    }
+    if (!Object.values(dataset).some(Boolean)) {
+      alert('请选择要检索的数据集库！');
+      return;
+    }
+    
+    const formData = {
+      expName,
+      expPurpose,
+      expCondition,
+      expRequirement,
+      paper,
+      dataset,
+      llmModel,
+      refNum,
+      reviewerRound,
+      uploadedFiles: uploadedFiles.map(file => file.name), // 上传文件名称数组
+    };
+  
+    console.log('提交的数据:', formData);
+  
+  
+    alert('表单已提交！'); // 显示成功提交的提示
+  };
+  
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -64,27 +129,31 @@ export default function NewProject() {
         </Typography>
 
         <Grid container spacing={2}>
-          <Grid item size={12}>
+          <Grid item="true" size={12}>
             <TextField
               label="实验名称"
               variant="outlined"
               required
               fullWidth
               sx={{ mb: 2 }}
+              value={expName}
+              onChange={(e) => setExpName(e.target.value)}
             />
           </Grid>
 
-          <Grid item size={12}>
+          <Grid item="true" size={12}>
             <TextField
               label="实验目的"
               variant="outlined"
               required
               fullWidth
               sx={{ mb: 2 }}
+              value={expPurpose}
+              onChange={(e) => setExpPurpose(e.target.value)}
             />
           </Grid>
 
-          <Grid item size={12}>
+          <Grid item="true" size={12}>
             <TextField
               label="实验条件"
               variant="outlined"
@@ -93,10 +162,12 @@ export default function NewProject() {
               fullWidth
               rows={3}
               sx={{ mb: 2 }}
+              value={expCondition}
+              onChange={(e) => setExpCondition(e.target.value)}
             />
           </Grid>
 
-          <Grid item size={12}>
+          <Grid item="true" size={12}>
             <TextField
               label="实验要求"
               variant="outlined"
@@ -105,29 +176,41 @@ export default function NewProject() {
               fullWidth
               rows={3}
               sx={{ mb: 2 }}
+              value={expRequirement}
+              onChange={(e) => setExpRequirement(e.target.value)}
             />
           </Grid>
         </Grid>
 
+
+
         <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', mt: 4 }}>
           选择要检索的数据库
         </Typography>
-
         <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
           文献库：
         </Typography>
         <FormGroup row sx={{ mb: 2 }}>
-          <FormControlLabel control={<Checkbox defaultChecked />} label="PMC" />
-          <FormControlLabel control={<Checkbox />} label="PubMed" />
+          <FormControlLabel 
+            control={<Checkbox checked={paper.PMC} onChange={handlePaperChange} name='PMC'/>} 
+            label="PMC" />
+          <FormControlLabel 
+            control={<Checkbox checked={paper.PubMed} onChange={handlePaperChange} name='PubMed'/>} 
+            label="PubMed" />
         </FormGroup>
-
         <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
           数据集库：
         </Typography>
         <FormGroup row sx={{ mb: 2 }}>
-          <FormControlLabel control={<Checkbox defaultChecked />} label="GEO" />
-          <FormControlLabel control={<Checkbox />} label="NCBI" />
-          <FormControlLabel control={<Checkbox />} label="cBioPortal" />
+          <FormControlLabel
+            control={<Checkbox checked={dataset.GEO} onChange={handleDatabaseChange} name='GEO'/>} 
+            label="GEO" />
+          <FormControlLabel 
+            control={<Checkbox  checked={dataset.NCBI} onChange={handleDatabaseChange} name='NCBI'/>}
+            label="NCBI" />
+          <FormControlLabel
+            control={<Checkbox checked={dataset.cBioPortal} onChange={handleDatabaseChange} name='cBioPortal'/>} 
+            label="cBioPortal" />
         </FormGroup>
 
         <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
@@ -177,6 +260,7 @@ export default function NewProject() {
             row
             defaultValue="GPT4o"
             aria-labelledby="llm"
+            onChange={handleLlmModelChange}
             name="row-radio-buttons-group"
             sx={{ mb: 4 }}
           >
@@ -191,21 +275,21 @@ export default function NewProject() {
         </Typography>
 
         <Grid container spacing={2}>
-          <Grid item size={6}>
+          <Grid item="true" size={6}>
             <TextField
               label="参考文献的数量"
               variant="outlined"
-              value={value1}
-              onInput={handleInput1}
+              value={refNum}
+              onInput={handleInputRefNum}
               fullWidth
             />
           </Grid>
-          <Grid item size={6}>
+          <Grid item="true" size={6}>
             <TextField
               label="Reviewer最大轮次"
               variant="outlined"
-              value={value2}
-              onInput={handleInput2}
+              value={reviewerRound}
+              onInput={handleInputReviewerRound}
               fullWidth
             />
           </Grid>
@@ -216,6 +300,7 @@ export default function NewProject() {
           color="primary"
           size="large"
           sx={{ mt: 4 }}
+          onClick={handleSubmit}
         >
           提交
         </Button>

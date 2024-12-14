@@ -13,7 +13,6 @@ import Chip from '@mui/material/Chip';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -63,10 +62,10 @@ export default function VerticalTabs() {
           >
             <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
               <Typography sx={{ flexGrow: 1 }}>{value.Title}</Typography>
-              {value.isDownload !== undefined && (
+              {value.isRelated !== undefined && (
                 <Chip
-                  label={value.isDownload ? '筛选成功' : '未筛选上'}
-                  color={value.isDownload ? 'success' : 'error'}
+                  label={value.isRelated ? 'Relevant' : 'Irrelevant'}
+                  color={value.isRelated ? 'success' : 'error'}
                   size="small"
                   sx={{ ml: 2 }}
                 />

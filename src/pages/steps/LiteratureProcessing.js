@@ -4,14 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { GetReport } from "../../utils/ReportProcess";
 import { GetAnalysis } from '../../utils/ReportProcess';
 import { GetPaperInfo } from '../../utils/ReportProcess';
+import LieratureProcessingContent from '../../components/LiteratureProcessingContent';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,88 +42,6 @@ function a11yProps(index) {
 }
 
 
-function RenderContent(data,data2) {
-    
-
-  return (
-      <Container>
-          {Object.entries(data).map(([part, steps]) => (
-              <Accordion key={part}>
-                  <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                  >
-                      
-                      {part + ": " +steps[part]}
-
-                      {<Box sx={{ backgroundColor: 'green', padding: 1 }}>
-                      <Typography variant="body1" color="white">
-                       <div>Referability:</div>
-                       {data2[part]["Referability"]}
-                      </Typography>
-                      </Box>}
-
-                       <Accordion >
-                          <AccordionSummary 
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1a-content"
-                          id="panel1a-header">
-                          {<h5>Reason</h5>}
-                          </AccordionSummary>
-                          <AccordionDetails>
-                          {data2[part]["Reason"]}
-                          </AccordionDetails>
-
-                      </Accordion>
-
-                      <Accordion >
-                          <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1a-content"
-                          id="panel1a-header">
-                          {<h5>Suggestions</h5>}
-                          </AccordionSummary>
-                          <AccordionDetails>
-                          {data2[part]["Suggestions"]}
-                          </AccordionDetails>
-                          
-                      </Accordion>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                      {Object.entries(steps)
-                        .slice(1)
-                        .map(([step, details]) => (
-                          <Accordion key={step}>
-                              <AccordionSummary
-                                  expandIcon={<ExpandMoreIcon />}
-                                  aria-controls="panel1a-content"
-                                  id="panel1a-header"
-                              >
-                                  {step}
-                              </AccordionSummary>
-                              <AccordionDetails>
-                                <div>{<h2>Implementation Details: </h2>} </div>
-                                {details["implementation details"]}
-                                <div>
-                                {<h2>"Original text:"</h2>}{details["original text"]}
-                                </div>
-                                <div>
-                                {<h2>"Results:"</h2>}{details["results"]}
-                                </div>
-                                <div>
-                                {<h2>"Results original text:"</h2>}{details["results original text"]}
-                                </div>
-                                </AccordionDetails>
-                          </Accordion>
-                      ))}
-                  </AccordionDetails>
-              </Accordion>
-          ))}
-      </Container>
-  );
-}
-
 
 export default function VerticalTabs() {
   const paper_info = GetPaperInfo();
@@ -135,14 +49,13 @@ export default function VerticalTabs() {
   const [value, setValue] = React.useState(0);
 
   const [content, setContent] = React.useState(null);
-  
   React.useEffect(() => {
     // 根据 value 从 report 中选择数据
     let report = GetReport(value);
     let analysis = GetAnalysis(value);
-    setContent(RenderContent(report, analysis));
+    setContent(<LieratureProcessingContent report={report} analysis={analysis} />);
   }, [value]);
-  
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -161,9 +74,10 @@ export default function VerticalTabs() {
       >
         {paper_info.map((paper, index) => {
           return <Tab
-            label={paper.title} 
-            {...a11yProps(index)} 
-            sx={{ 
+            key={index}
+            label={paper.title}
+            {...a11yProps(index)}
+            sx={{
               textTransform: 'none',
               height: '12vh',
             }} />
@@ -171,7 +85,7 @@ export default function VerticalTabs() {
       </Tabs>
 
       <Box
-         sx={{
+        sx={{
           height: '78vh',
           width: '77vw',
           backgroundColor: '#e3fdff',
@@ -180,6 +94,7 @@ export default function VerticalTabs() {
         {paper_info.map((paper, index) => {
           return (
             <Box
+              key={index}
               sx={{
                 ml: 'auto',
                 mr: 'auto',
@@ -187,9 +102,9 @@ export default function VerticalTabs() {
                 maxHeight: '72vh',
               }}
             >
-            <TabPanel value={value} index={index}>
-              {content}
-            </TabPanel>
+              <TabPanel value={value} index={index}>
+                {content}
+              </TabPanel>
             </Box>
           )
         })}

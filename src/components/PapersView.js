@@ -12,6 +12,7 @@ import TestData from '../utils/PapersetProcess';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
+import ErrorIcon from '@mui/icons-material/Error';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,12 +50,13 @@ function a11yProps(index) {
 export default function VerticalTabs() {
   const queriesData = TestData;
 
+
   const showPapers = (papers) => {
     return (
       papers.map((paper, index) => (
-        <Accordion 
+        <Accordion
           key={index}
-          sx={{ 
+          sx={{
             width: '100%',
           }}
         >
@@ -63,36 +65,49 @@ export default function VerticalTabs() {
             aria-controls={`panel${paper.id}-content`}
             id={`panel${paper.id}-header`}
           >
-            {paper.title}
+            <Typography sx={{ fontWeight: 'bold' }}> {paper.title}</Typography>
+
             {paper.flag !== undefined && (
               <Box sx={{ ml: 'auto' }}>
-              <Chip
-                label={
-                  paper.flag === 3
-                    ? 'Downloaded'
-                    : paper.flag === 2
-                    ? 'Failed to Download'
-                    : 'Irrelevant'
-                }
-                color={
-                  paper.flag === 3
-                    ? 'success'      // flag === 3 显示绿色（成功）
-                    : paper.flag === 2
-                    ? 'warning'      // flag === 2 显示黄色（警告）
-                    : 'error'        // flag === 1 显示红色（错误）
-                }
-                size="small"
-              />
-            </Box>
-            
+                <Chip
+                  label={
+                    paper.flag === 3
+                      ? 'Downloaded'
+                      : paper.flag === 2
+                        ? 'Failed to Download'
+                        : 'Irrelevant'
+                  }
+                  color={
+                    paper.flag === 3
+                      ? 'success'      // flag === 3 显示绿色（成功）
+                      : paper.flag === 2
+                        ? 'warning'      // flag === 2 显示黄色（警告）
+                        : 'error'        // flag === 1 显示红色（错误）
+                  }
+                  size="small"
+                />
+              </Box>
             )}
           </AccordionSummary>
+
           <AccordionDetails>
-            <Typography>Abstract:{paper.abstract}</Typography>
-            <Typography>DOI:{paper.doi}</Typography>
-            <Tooltip title="理由" arrow>
-              <Button>Score:{paper.score}</Button>
-            </Tooltip>
+            <Typography>
+              <Typography sx={{ fontWeight: 'bold' }}>Abstract:</Typography>
+              {paper.abstract}
+            </Typography>
+            <Typography>
+              <Typography sx={{ fontWeight: 'bold' }}>DOI:</Typography>
+              {paper.doi}
+            </Typography>
+            <Box sx={{display:'flex', alignItems: 'center'}}>
+              <Typography sx={{ fontWeight: 'bold' }}>Score:</Typography>
+                <Tooltip title="理由" arrow>
+                  <Button variant='string' endIcon={<ErrorIcon/>}>
+                    {paper.score}
+                  </Button>
+                </Tooltip>
+                
+            </Box>
           </AccordionDetails>
         </Accordion>
       ))

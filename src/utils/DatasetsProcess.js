@@ -19,12 +19,24 @@ export function classifyDatasetsByQuery(retrievedDatasets) {
         Object.entries(datasets).map(([dataset, info]) => {
             const queryIndex = innerIndex % queries.length;
             innerIndex++;
-            const isDownload = downloadedDataset.includes(dataset);
-            const cleanedDataset = { ...info, isDownload };
+            const isRelated = downloadedDataset.includes(dataset);
+            const cleanedDataset = { ...info, isRelated };
             classifiedData[queryIndex].datasets[dataset] = cleanedDataset;
         });
     });
 
+    // 按照isRelated排序，true在前
+    classifiedData.forEach(query => {
+        query.datasets = Object.fromEntries(Object.entries(query.datasets).sort((a, b) => {
+            if (a[1].isRelated === b[1].isRelated) {
+                return 0;
+            } else if (a[1].isRelated) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }));
+    });
     return classifiedData;
 }
 

@@ -37,8 +37,6 @@ export function GetReport(index){
     jsonString = jsonString.replace(/\\"/g, '"').replace(/\\n/g, "").replace(/\\\u/g, " ");
     jsonString = jsonString.replace(/\\/g, "").replace(/\"{/g, "{").replace(/\}"/g, "}");                  
     let Reportjson2= JSON.parse(jsonString);
-    console.log(index);
-    console.log(Reportjson2);
     return Reportjson2;
 }
 
