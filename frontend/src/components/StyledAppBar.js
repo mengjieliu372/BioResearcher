@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -61,7 +62,7 @@ export default function StyledAppBar() {
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
 
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <img src='/logo.png' alt="Logo" style={{ height: 30, width: 'auto' }} />
+                <img src={logo} alt="Logo" style={{ height: 30, width: 'auto' }} />
 
                 <Button 
                   variant="text"
