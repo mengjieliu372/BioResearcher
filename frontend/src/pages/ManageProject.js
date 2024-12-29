@@ -17,36 +17,36 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TablePagination from '@mui/material/TablePagination';
 import TableFooter from '@mui/material/TableFooter';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getProjects } from '../services/api';
 
 function createData(id, name) {
   return { id, name };
 }
-
-const rows = [
-  createData(1, '实验A'),
-  createData(2, '实验B'),
-  createData(3, '实验C'),
-  createData(4, '实验D'),
-  createData(5, '实验E'),
-  createData(6, '实验F'),
-  createData(7, '实验G'),
-  createData(8, '实验H'),
-  createData(9, '实验I'),
-  createData(10, '实验J'),
-  createData(11, '实验K'),
-  createData(12, '实验L'),
-  createData(13, '实验M')
-];
 
 export default function BasicTable() {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  // State for the edited experiment details
   const [editedName, setEditedName] = React.useState('');
+  const [projects, setProjects] = React.useState([]);
 
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await getProjects();
+        setProjects(response.data);
+      }
+      catch (error) {
+        console.log('Failed to fetch projects:', error);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  const rows = projects.map((project) => createData(project.id, project.expName));
+  
   const handleOpen = (id) => {
     navigate(`/${id}/steps`);
   };
@@ -56,8 +56,8 @@ export default function BasicTable() {
   };
 
   const handleEdit = (name) => {
-    setEditedName(name); // Set the name of the experiment to be edited
-    setOpen(true); // Open the dialog
+    setEditedName(name);
+    setOpen(true);
   };
 
   const handleDelete = (name) => {
@@ -74,14 +74,12 @@ export default function BasicTable() {
   };
 
   const handleSave = () => {
-    // Handle the save action, like sending the updated info to the server
     console.log('Updated experiment name:', editedName);
-    setOpen(false); // Close the dialog after saving
+    setOpen(false);
   };
 
   const currentRows = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
-
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  const emptyRows = page >= 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
     <Container
@@ -107,9 +105,9 @@ export default function BasicTable() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell align="center">实验名称</TableCell>
-              <TableCell align="center">操作</TableCell>
+              <TableCell align="center">ID</TableCell>
+              <TableCell align="center">Experiment Name</TableCell>
+              <TableCell align="center">Operations</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -121,7 +119,7 @@ export default function BasicTable() {
                   height: '7vh',
                 }}
               >
-                <TableCell component="th" scope="row">{row.id}</TableCell>
+                <TableCell component="th" scope="row" align="center">{row.id}</TableCell>
                 <TableCell align="center">{row.name}</TableCell>
                 <TableCell align="center">
                   <Button

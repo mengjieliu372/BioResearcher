@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
+from app.routers import experiments
 
 # from fastapi.staticfiles import StaticFiles
 # from starlette.responses import FileResponse
@@ -12,6 +13,4 @@ app = FastAPI()
 async def index():
     return {"message": "Hello World"}
 
-
-if __name__ == "__main__":
-    uvicorn.run(app="main:app", host="127.0.0.1", port=8000, reload=True)
+app.include_router(experiments.router)

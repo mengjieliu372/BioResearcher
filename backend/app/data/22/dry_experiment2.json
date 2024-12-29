@@ -1,0 +1,368 @@
+{
+    "Part 1": [
+        {
+            "task_id": "Part 1-dry-experiment-1",
+            "task_description": "Download raw gene counts for tumor and normal tissue samples from the Recount3 R package (version 1.0) as specified in the protocol section I.1.",
+            "input": "Recount3 R package (version 1.0), internet connection, R environment. Commands and code snippets from Recount3 documentation.",
+            "output": "Raw gene counts data for tumor and normal tissue samples stored in R data structures such as data frames."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-2",
+            "task_description": "Process raw reads from multiple sources using the STAR and Megadepth pipeline for alignment and quantification to the UCSC hg38 assembly, as outlined in protocol section I.2.",
+            "input": "Raw reads data files, STAR (version 2.7.3a), Megadepth (version 1.0.1), UCSC hg38 genome assembly, computational environment for running the pipeline.",
+            "output": "Aligned and quantified reads data mapped to the UCSC hg38 assembly, typically in BAM or count matrix formats."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-3",
+            "task_description": "Use specific commands or code snippets to access and download raw gene counts from the Recount3 package, focusing on projects like TCGA-SARC and GTEx as specified in protocol section I.3.",
+            "input": "Recount3 documentation, R environment, internet connection, project identifiers (e.g., 'TCGA-SARC', 'GTEx').",
+            "output": "Downloaded raw gene counts data for specified projects in R data structures such as SummarizedExperiment objects."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-4",
+            "task_description": "Download relevant GEO datasets such as GSE213300, GSE201056, GSE179720, GSE221493, and GSE221492 from the GEO website as mentioned in protocol section I.4.",
+            "input": "Access to the GEO website, internet connection, dataset identifiers (e.g., 'GSE213300').",
+            "output": "Downloaded raw and processed GEO dataset files, typically in formats such as TXT or CSV."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-5",
+            "task_description": "Verify the integrity of downloaded data files using checksums or other verification methods to handle potential errors during the download process, as described in protocol section I.5.",
+            "input": "Downloaded data files, checksum tools or verification software, original checksum values for comparison.",
+            "output": "Confirmation of data file integrity, ensuring no corruption or errors, typically reported as a log or verification report."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-6",
+            "task_description": "Filter out low-quality and non-primary tumor samples from the sarcoma project based on read alignment statistics and visual inspection, as specified in protocol section II.A.3.",
+            "input": "Read alignment statistics, tools like FastQC for visual inspection, raw reads data, criteria for filtering (e.g., percentage of aligned reads > 70%).",
+            "output": "Filtered dataset containing only high-quality primary tumor samples, typically in a revised count matrix or data frame format."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-7",
+            "task_description": "Modify the subtype classification of liposarcoma samples according to expert pathology reviews or use automated classification algorithms based on gene expression profiles, as mentioned in protocol section II.A.4.",
+            "input": "Gene expression profiles, expert pathology reviews or automated classification algorithms, computational tools for classification.",
+            "output": "Updated subtype classification for tumor samples, typically in a metadata file or annotation table."
+        }
+    ],
+    "Part 2": [
+        {
+            "task_id": "Part 2-dry-experiment-1",
+            "task_description": "Perform quality control checks on the raw RNA-sequencing data using FastQC, evaluating specific metrics.",
+            "input": "Raw RNA-sequencing data files in paired-end FASTQ format.",
+            "output": "FastQC reports for each sample, including metrics such as per base sequence quality scores, GC content distribution, and sequence duplication levels."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-2",
+            "task_description": "Evaluate FastQC metrics to ensure high data quality, focusing on specific thresholds.",
+            "input": "FastQC reports generated from the raw RNA-sequencing data.",
+            "output": "Evaluation summary indicating whether the data meets acceptable quality thresholds: per base sequence quality >20, GC content within 40-60%, and sequence duplication levels <10%."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-3",
+            "task_description": "Remove low-quality reads and adapter sequences using Trimmomatic with specified parameters.",
+            "input": "Raw RNA-sequencing data files in paired-end FASTQ format.",
+            "output": "Filtered RNA-sequencing data files in paired-end FASTQ format, retaining only high-quality reads. Parameters used: LEADING:3, TRAILING:3, SLIDINGWINDOW:4:15, MINLEN:36."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-4",
+            "task_description": "Normalize expression levels using RSEM, aligning reads to the reference genome.",
+            "input": "Filtered RNA-sequencing data files in paired-end FASTQ format and reference genome.",
+            "output": "Normalized expression levels in TPM, RPKM, and FPKM for each gene. Command used: 'rsem-calculate-expression --bowtie2 --paired-end sample_1.fastq sample_2.fastq reference_name output_name'."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-5",
+            "task_description": "Align reads to the reference genome using Bowtie2 within the RSEM framework.",
+            "input": "Filtered RNA-sequencing data files in paired-end FASTQ format and reference genome.",
+            "output": "Aligned reads and estimated gene and isoform expression levels. Command used: 'rsem-calculate-expression --bowtie2 --paired-end sample_1.fastq sample_2.fastq reference_name output_name'."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-6",
+            "task_description": "Calculate Transcripts Per Million (TPM), Reads Per Kilobase of transcript per Million mapped reads (RPKM), and Fragments Per Kilobase of transcript per Million mapped reads (FPKM) for each gene.",
+            "input": "Aligned reads and estimated gene and isoform expression levels.",
+            "output": "Expression levels in TPM, RPKM, and FPKM for each gene."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-7",
+            "task_description": "Perform log2 transformation and z-score normalization for downstream analysis.",
+            "input": "Expression levels in TPM for each gene.",
+            "output": "Log2 transformed and z-score normalized expression levels for downstream analysis."
+        }
+    ],
+    "Part 3": [
+        {
+            "task_id": "Part 3-dry-experiment-1",
+            "task_description": "Collect raw RNA-seq data from specified datasets for quality control checks.",
+            "input": "Dataset identifiers for RNA-seq data: GSE213300, GSE201056, GSE179720, GSE221493, and GSE221492 (string identifiers).",
+            "output": "Raw RNA-seq data files for each dataset (file type: FASTQ)."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-2",
+            "task_description": "Perform quality control checks on raw RNA-seq data using FastQC.",
+            "input": "Raw RNA-seq data files (file type: FASTQ).",
+            "output": "Quality control reports for each dataset, documenting metrics such as per base sequence quality, GC content, and sequence duplication levels (file type: HTML or text reports)."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-3",
+            "task_description": "Trim and filter RNA-seq reads using Trimmomatic to remove low-quality reads and adapter sequences.",
+            "input": "Raw RNA-seq data files (file type: FASTQ). Include parameters: LEADING=3, TRAILING=3, SLIDINGWINDOW=4:15, MINLEN=36.",
+            "output": "Trimmed and filtered RNA-seq data files with high-quality reads (file type: FASTQ)."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-4",
+            "task_description": "Normalize gene counts using the TMM method implemented in edgeR.",
+            "input": "Gene count data from RNA-seq datasets (file type: count matrix in text or CSV format).",
+            "output": "TMM normalized gene count data (file type: matrix in text or CSV format)."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-5",
+            "task_description": "Transform normalized counts to log2 CPM using the voom function in limma.",
+            "input": "TMM normalized gene count data (file type: matrix in text or CSV format).",
+            "output": "Log2 CPM transformed gene count data (file type: matrix in text or CSV format)."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-6",
+            "task_description": "Integrate RNA-seq data from multiple datasets and internal samples using the Celligner tool.",
+            "input": "Log2 CPM transformed RNA-seq data from datasets: GSE213300, GSE201056, GSE179720, GSE221493, GSE221492, and internal samples (file type: matrix in text or CSV format).",
+            "output": "Integrated RNA-seq data matrix aligned across multiple sources (file type: matrix in text or CSV format)."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-7",
+            "task_description": "Perform UMAP clustering on integrated RNA-seq data to identify clusters based on cancer types and metabolic characteristics.",
+            "input": "Integrated RNA-seq data matrix (file type: matrix in text or CSV format). Include UMAP parameters: n_neighbors=50, min_dist=0.5, metric='pearson'.",
+            "output": "UMAP clustering results identifying clusters (file type: visualization plots in PNG or PDF and cluster data in text or CSV format)."
+        }
+    ],
+    "Part 4": [
+        {
+            "task_id": "Part 4-dry-experiment-1",
+            "task_description": "Import the normalized expression data from RNA-seq datasets and ensure samples are correctly labeled as WDLPS or DDLPS.",
+            "input": "Normalized expression data from RNA-seq datasets GSE213300, GSE201056, GSE179720, GSE221493, and GSE221492 in CSV or TSV format, with sample labels indicating WDLPS or DDLPS. Type: Dataset",
+            "output": "Prepared expression data with samples correctly labeled as WDLPS or DDLPS. Type: DataFrame"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-2",
+            "task_description": "Create a design matrix to specify the experimental setup for differential expression analysis.",
+            "input": "Prepared expression data with sample labels. Type: DataFrame",
+            "output": "Design matrix specifying which samples belong to WDLPS and which to DDLPS, typically in matrix format with rows representing samples and columns representing conditions. Type: Matrix"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-3",
+            "task_description": "Fit a linear model to the expression data using the design matrix with the lmFit function from the limma package.",
+            "input": "Expression data and design matrix. Type: DataFrame and Matrix",
+            "output": "Fitted linear model object, containing coefficients and other statistics. Type: Model"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-4",
+            "task_description": "Define contrasts to compare WDLPS against DDLPS using the makeContrasts function from the limma package.",
+            "input": "Design matrix. Type: Matrix",
+            "output": "Contrast matrix for comparing WDLPS against DDLPS, typically in matrix format. Type: Matrix"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-5",
+            "task_description": "Apply empirical Bayes moderation to the fitted model using the eBayes function and extract differentially expressed genes based on an adjusted p-value threshold of < 0.05 using the topTable function.",
+            "input": "Fitted linear model and contrast matrix. Type: Model and Matrix",
+            "output": "List of differentially expressed genes with associated statistics, including log fold change and adjusted p-values. Type: DataFrame"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-6",
+            "task_description": "Perform Gene Ontology (GO) enrichment analysis on the identified DEGs using Toppfun.",
+            "input": "List of significant differentially expressed genes. Type: List",
+            "output": "GO enrichment analysis results, including enriched biological processes, molecular functions, and cellular components, typically in tabular format with columns for GO terms, p-values, and other statistics. Type: DataFrame"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-7",
+            "task_description": "Generate a volcano plot to display the DEGs, highlighting those with significant p-values and fold changes using tools like GraphPad Prism or the R package ggplot2.",
+            "input": "List of differentially expressed genes with statistics, including log fold change and p-values. Type: DataFrame",
+            "output": "Volcano plot visualizing DEGs, typically in image format (e.g., PNG, JPEG). Type: Plot"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-8",
+            "task_description": "Create a heatmap of the top DEGs to visualize expression patterns across samples using tools like the R package pheatmap or ComplexHeatmap.",
+            "input": "List of top differentially expressed genes with expression data. Type: DataFrame",
+            "output": "Heatmap visualizing expression patterns of top DEGs, typically in image format (e.g., PNG, JPEG). Type: Plot"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-9",
+            "task_description": "Generate pathway diagrams illustrating the enriched metabolic pathways using software tools like Cytoscape or PathVisio.",
+            "input": "GO enrichment analysis results and pathway information from databases like KEGG and Reactome. Type: DataFrame and Database",
+            "output": "Pathway diagrams showing enriched metabolic pathways, typically in image or diagram format (e.g., PNG, JPEG, SVG). Type: Diagram"
+        }
+    ],
+    "Part 5": [
+        {
+            "task_id": "Part 5-dry-experiment-1",
+            "task_description": "Collect RNA-seq data from specified datasets.",
+            "input": "Datasets GSE213300, GSE201056, GSE179720, GSE221493, and GSE221492, including both bulk and single-cell RNA-seq data from liposarcoma samples. (data files)",
+            "output": "Collected RNA-seq data files from the specified datasets. (data files)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-2",
+            "task_description": "Normalize the gene expression data using the TMM method as implemented in the edgeR package.",
+            "input": "Collected RNA-seq data files. (data files), TMM normalization method from edgeR package.",
+            "output": "Normalized gene expression data ensuring comparability across samples. (data files)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-3",
+            "task_description": "Calculate pathway activity scores using the GSVA package.",
+            "input": "Normalized gene expression data, KEGG pathway gene sets from the MSigDB database (version 7.4). (data files, gene sets)",
+            "output": "Pathway activity scores for each sample. (data files)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-4",
+            "task_description": "Aggregate pathway activity scores across different cancer types and perform statistical analysis using ANOVA and post-hoc tests like Tukey's HSD.",
+            "input": "Pathway activity scores, cancer type information (WDLPS and DDLPS liposarcoma samples). (data files, metadata)",
+            "output": "Statistical comparison results of pathway activity scores between groups, including ANOVA and post-hoc test results using Tukey's HSD. (statistical data)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-5",
+            "task_description": "Validate pathway activity scores by comparing with known pathway activity patterns in the literature using correlation analysis or other statistical validation methods.",
+            "input": "Pathway activity scores, known pathway activity patterns from literature, criteria for validation. (data files, literature references, validation criteria)",
+            "output": "Validation results of pathway activity scores, including correlation analysis or other statistical validation methods. (validation data)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-6",
+            "task_description": "Perform pathway enrichment analysis using the clusterProfiler package.",
+            "input": "DEGs identified in Part 4 from specified datasets. (data files)",
+            "output": "Significantly enriched KEGG pathways in DEGs with adjusted p-value < 0.05. (data files)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-7",
+            "task_description": "Validate the enriched pathways by cross-referencing with known pathways in the KEGG database and related literature.",
+            "input": "Significantly enriched KEGG pathways, known pathways from KEGG database and related literature. (data files, literature references)",
+            "output": "Validation results of enriched pathways, detailed comparison with known metabolic pathways in liposarcoma differentiation. (validation data)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-8",
+            "task_description": "Annotate DEGs using the org.Hs.eg.db package to map gene symbols to Entrez IDs.",
+            "input": "DEGs identified in Part 4. (data files)",
+            "output": "Mapped DEGs with Entrez IDs. (data files)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-9",
+            "task_description": "Perform Gene Ontology (GO) enrichment analysis using the enrichR package.",
+            "input": "Mapped DEGs with Entrez IDs. (data files)",
+            "output": "GO enrichment analysis results focusing on biological processes related to metabolism. (data files)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-10",
+            "task_description": "Identify key metabolic pathways that are overrepresented in DEGs.",
+            "input": "GO enrichment analysis results. (data files)",
+            "output": "List of key metabolic pathways overrepresented in DEGs, highlighting those involved in lipid metabolism, gluconeogenesis, and energy production. (data files)"
+        },
+        {
+            "task_id": "Part 5-dry-experiment-11",
+            "task_description": "Validate the functional annotation results by comparing with known metabolic processes and pathways from literature and relevant databases.",
+            "input": "Key metabolic pathways identified in DEGs, known metabolic processes and pathways from literature and databases. (data files, literature references)",
+            "output": "Validation results of functional annotation, including specific hypotheses about the role of these pathways in liposarcoma differentiation and potential therapeutic targets. (validation data)"
+        }
+    ],
+    "Part 6": [
+        {
+            "task_id": "Part 6-dry-experiment-1",
+            "task_description": "Load the single-cell RNA-seq data from the GSE221493 dataset, which contains single-cell RNA sequencing data from liposarcoma samples.",
+            "input": "GSE221493 dataset file in a suitable format (e.g., .txt, .csv).",
+            "output": "Loaded single-cell RNA-seq data as a Seurat object."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-2",
+            "task_description": "Normalize the data using the SCTransform function in Seurat to adjust for sequencing depth and other technical variations, thereby reducing technical noise and improving biological signal detection.",
+            "input": "Seurat object containing single-cell RNA-seq data.",
+            "output": "Normalized Seurat object with reduced technical noise."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-3",
+            "task_description": "Perform principal component analysis (PCA) on the 3000 most variable genes to reduce dimensionality.",
+            "input": "Normalized Seurat object with variable features identified.",
+            "output": "Seurat object with PCA results stored."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-4",
+            "task_description": "Use the Harmony package to integrate datasets from multiple samples, correcting for batch effects. Parameters: theta=2, lambda=1, nclust=50. These parameters are chosen to balance the trade-off between batch correction and biological variation.",
+            "input": "Seurat object with PCA results and batch information.",
+            "output": "Batch-corrected Seurat object integrated using Harmony."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-5",
+            "task_description": "Calculate UMAP dimensions on the first 50 PCA components for visualization.",
+            "input": "Batch-corrected Seurat object with PCA results.",
+            "output": "Seurat object with UMAP dimensions calculated."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-6",
+            "task_description": "Cluster the integrated data using Seurat’s FindNeighbors and FindClusters functions to identify distinct cell populations within the dataset.",
+            "input": "Seurat object with UMAP dimensions.",
+            "output": "Clustered Seurat object with identified clusters."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-7",
+            "task_description": "Use gene expression profiles and canonical markers to identify major cellular subfamilies in the dataset.",
+            "input": "Clustered Seurat object and list of marker genes.",
+            "output": "Seurat object annotated with cellular subfamilies."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-8",
+            "task_description": "Group identified clusters into main cellular subfamilies using marker gene expression.",
+            "input": "Seurat object annotated with cellular subfamilies.",
+            "output": "Subsetted Seurat object with grouped clusters."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-9",
+            "task_description": "Identify tumor cell clusters using overexpression of MDM2 and CDK4, and chromosome 12q amplification as markers.",
+            "input": "Subsetted Seurat object with grouped clusters.",
+            "output": "Seurat object with identified tumor cell clusters."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-10",
+            "task_description": "Analyze the relative proportions of each cell cluster in the tumor microenvironment (TME) using single-cell RNA-seq data.",
+            "input": "Seurat object with identified cell clusters.",
+            "output": "Table of relative proportions of each cell cluster in the TME, formatted as a data frame or matrix."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-11",
+            "task_description": "Compare proportions of tumor and stromal populations between WDLPS and DDLPS samples.",
+            "input": "Table of cell cluster proportions and sample type information.",
+            "output": "Table comparing proportions of tumor and stromal populations between WDLPS and DDLPS samples."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-12",
+            "task_description": "Validate findings using bulk RNA-seq data from GSE221492 to infer TME composition with MCP counter.",
+            "input": "Bulk RNA-seq data from GSE221492.",
+            "output": "Estimated TME composition using MCP counter."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-13",
+            "task_description": "Load bulk RNA-seq data from GSE221492 for validation of single-cell findings.",
+            "input": "GSE221492 dataset file in a suitable format (e.g., .txt, .csv).",
+            "output": "Loaded bulk RNA-seq data."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-14",
+            "task_description": "Perform hierarchical clustering using the 800 most variant genes to ensure consistency with single-cell clusters.",
+            "input": "Loaded bulk RNA-seq data.",
+            "output": "Heatmap data for hierarchical clustering."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-15",
+            "task_description": "Confirm overexpression of genes related to adipocytic differentiation and stemness in WDLPS, and invasion and angiogenesis in DDLPS.",
+            "input": "Heatmap data for hierarchical clustering.",
+            "output": "Heatmap showing gene expression profiles."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-16",
+            "task_description": "Align single-cell RNA-seq data with bulk RNA-seq data using the Celligner tool to address batch effects and integrate datasets.",
+            "input": "Single-cell RNA-seq data and bulk RNA-seq data.",
+            "output": "Integrated dataset aligned using Celligner."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-17",
+            "task_description": "Identify differentially expressed genes (DEGs) between WDLPS and DDLPS using the integrated dataset.",
+            "input": "Integrated dataset.",
+            "output": "List of differentially expressed genes (DEGs)."
+        },
+        {
+            "task_id": "Part 6-dry-experiment-18",
+            "task_description": "Perform pathway enrichment analysis on DEGs using the clusterProfiler package to identify significant metabolic pathways.",
+            "input": "List of differentially expressed genes (DEGs).",
+            "output": "List of enriched pathways with associated DEGs."
+        }
+    ]
+}

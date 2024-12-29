@@ -1,183 +1,106 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { GetReport } from "../utils/ReportProcess";
-import { GetAnalysis } from '../utils/ReportProcess';
-import { GetPaperInfo } from '../utils/ReportProcess';
+import {Box, Typography,Button, List, ListItem, ListItemText, IconButton } from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { styled } from '@mui/material/styles';
+import { useState } from 'react';
+import axios from 'axios';
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
+
+export default function Test() {
+  const [files, setFiles] = useState([]);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+
+  // 文件上传
+  const handleFileChange = (event) => {
+    const selectedFiles = event.target.files;
+    const newFiles = Array.from(selectedFiles);
+    setFiles(newFiles);
+    console.log(files);
+    files.forEach(file => {
+      console.log(file);
+      const formData = new FormData();
+      formData.append('file', file);
+      axios.post('api/uploadfile', formData)
+       .then((res) => {
+        setUploadedFiles(prevFiles => [...prevFiles, file]);
+        console.log(res);
+      }).catch((err) => {
+        console.error(err);
+      });
+    });
+    setFiles([]);
+    //console.log(files);
+  };
+
+  const handleFileUpload = () => {
+    console.log(123);
+    files.forEach(file => {
+      console.log(123);
+      const formData = new FormData();
+      formData.append('file', file);
+      axios.post('api/uploadfile', formData)
+       .then((res) => {
+        setUploadedFiles(prevFiles => [...prevFiles, file]);
+        console.log(res);
+      }).catch((err) => {
+        console.error(err);
+      });
+    });
+    setFiles([]);
+  }
+
+  const handleFileDelete = (fileName) => {
+    setUploadedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
+  };
+
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+    <div>
+      <Button
+          component="label"
+          role={undefined}
+          variant="contained"
+          tabIndex={-1}
+          startIcon={<CloudUploadIcon />}
+          sx={{ mb: 2 }}
+        >
+          Upload files
+          <VisuallyHiddenInput
+            type="file"
+            accept=".pdf"
+            onChange={handleFileChange}
+            multiple
+          />
+        </Button>
+
+        {uploadedFiles.length > 0 && (
+          <Box sx={{ mb: 4 }}>
+            <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
+              已上传的文件：
+            </Typography>
+            <List>
+              {uploadedFiles.map((file) => (
+                <ListItem key={file.name} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <ListItemText primary={file.name} />
+                  <IconButton onClick={() => handleFileDelete(file.name)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        )}
     </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
-
-
-function RenderContent(data,data2) {
-    
-
-  return (
-      <Container>
-          {Object.entries(data).map(([part, steps]) => (
-              <Accordion key={part}>
-                  <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                  >
-
-                      {part + ": " +steps[part]}
-
-                      {<Box sx={{ backgroundColor: 'green', padding: 1 }}>
-                      <Typography variant="body1" color="white">
-                       <div>Referability:</div>
-                       {data2[part]["Referability"]}
-                      </Typography>
-                      </Box>}
-
-                       <Accordion >
-                          <AccordionSummary 
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1a-content"
-                          id="panel1a-header">
-                          {<h5>Reason</h5>}
-                          </AccordionSummary>
-                          <AccordionDetails>
-                          {data2[part]["Reason"]}
-                          </AccordionDetails>
-
-                      </Accordion>
-
-                      <Accordion >
-                          <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1a-content"
-                          id="panel1a-header">
-                          {<h5>Suggestions</h5>}
-                          </AccordionSummary>
-                          <AccordionDetails>
-                          {data2[part]["Suggestions"]}
-                          </AccordionDetails>
-                          
-                      </Accordion>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                      {Object.entries(steps)
-                        .slice(1)
-                        .map(([step, details]) => (
-                          <Accordion key={step}>
-                              <AccordionSummary
-                                  expandIcon={<ExpandMoreIcon />}
-                                  aria-controls="panel1a-content"
-                                  id="panel1a-header"
-                              >
-                                  {step}
-                              </AccordionSummary>
-                              <AccordionDetails>
-                                <div>{<h2>Implementation Details: </h2>} </div>
-                                {details["implementation details"]}
-                                <div>
-                                {<h2>"Original text:"</h2>}{details["original text"]}
-                                </div>
-                                <div>
-                                {<h2>"Results:"</h2>}{details["results"]}
-                                </div>
-                                <div>
-                                {<h2>"Results original text:"</h2>}{details["results original text"]}
-                                </div>
-                                </AccordionDetails>
-                          </Accordion>
-                      ))}
-                  </AccordionDetails>
-              </Accordion>
-          ))}
-      </Container>
-  );
-}
-
-
-export default function VerticalTabs() {
-  const paper_info = GetPaperInfo();
-
-  const [value, setValue] = React.useState(0);
-
-  const [content, setContent] = React.useState(null);
-  
-  React.useEffect(() => {
-    // 根据 value 从 report 中选择数据
-    let report = GetReport(value);
-    let analysis = GetAnalysis(value);
-    setContent(RenderContent(report, analysis));
-  }, [value]);
-  
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  return (
-    <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: '78vh' }}
-    >
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
-      >
-        {paper_info.map((paper, index) => {
-          return <Tab
-            label={paper.title} 
-            {...a11yProps(index)} 
-            sx={{ 
-              textTransform: 'none',
-              height: '10vh',
-            }} />
-        })}
-      </Tabs>
-      <Box>
-        {paper_info.map((paper, index) => {
-          return (
-            <TabPanel value={value} index={index}>
-              {content}
-            </TabPanel>
-          )
-        })}
-      </Box>
-    </Box>
   );
 }

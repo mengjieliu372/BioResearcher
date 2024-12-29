@@ -5,6 +5,8 @@ import Grid from '@mui/material/Grid2';
 import { styled } from '@mui/material/styles';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { addProject } from '../services/api';
+import axios from 'axios';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -25,12 +27,13 @@ export default function NewProject() {
   const [expPurpose, setExpPurpose] = useState('');
   const [expCondition, setExpCondition] = useState('');
   const [expRequirement, setExpRequirement] = useState('');
-  const [paper, setPaper] = useState({ PMC: true, PubMed: false});
+  const [paperset, setPaperset] = useState({ PMC: true, PubMed: false});
   const [dataset, setDataset] = useState({ GEO: true, NCBI: false, cBioPortal: false});
 
   const [llmModel, setLLMModel] = useState('GPT4o');
-  const [refNum, setRefNum] = useState();
-  const [reviewerRound, setReviewerRound] = useState();
+  const [refNum, setRefNum] = useState('');
+  const [reviewerRound, setReviewerRound] = useState('');
+  const [files, setFiles] = useState([]);
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const handleInputRefNum = (event) => {
@@ -44,7 +47,7 @@ export default function NewProject() {
   };
 
   const handlePaperChange = (event) => {
-    setPaper(prev => ({
+    setPaperset(prev => ({
       ...prev,
       [event.target.name]: event.target.checked
     }));
@@ -57,10 +60,29 @@ export default function NewProject() {
     }));
   };
 
+  // 文件上传
   const handleFileChange = (event) => {
-    const files = Array.from(event.target.files);
-    setUploadedFiles(prevFiles => [...prevFiles, ...files]);
+    const files = event.target.files;
+    const newFiles = Array.from(files);
+    setFiles(prevFiles => [...prevFiles, ...newFiles]);
+    handleFileUpload();
   };
+
+  const handleFileUpload = () => {
+    files.forEach(file => {
+      console.log(123);
+      const formData = new FormData();
+      formData.append('file', file);
+      axios.post('api/uploadfile', formData)
+       .then((res) => {
+        setUploadedFiles(prevFiles => [...prevFiles, file]);
+        console.log(res);
+      }).catch((err) => {
+        console.error(err);
+      });
+    });
+    setFiles([]);
+  }
 
   const handleFileDelete = (fileName) => {
     setUploadedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
@@ -77,8 +99,8 @@ export default function NewProject() {
       return;
     }
     
-    // 检查paper和dataset是否全为false
-    if (!Object.values(paper).some(Boolean)) {
+    // 检查paperset和dataset是否全为false
+    if (!Object.values(paperset).some(Boolean)) {
       alert('请选择要检索的文献库！');
       return;
     }
@@ -87,25 +109,34 @@ export default function NewProject() {
       return;
     }
     
+    const refNumInt = parseInt(refNum);
+    const reviewerRoundInt = parseInt(reviewerRound);
+
     const formData = {
       expName,
       expPurpose,
       expCondition,
       expRequirement,
-      paper,
+      paperset,
       dataset,
       llmModel,
-      refNum,
-      reviewerRound,
-      uploadedFiles: uploadedFiles.map(file => file.name), // 上传文件名称数组
+      refNum: refNumInt,
+      reviewerRound: reviewerRoundInt,
+      // uploadedFiles: uploadedFiles.map(file => file.name), // 上传文件名称数组
     };
-  
-    console.log('提交的数据:', formData);
-  
-  
-    alert('表单已提交！'); // 显示成功提交的提示
+    
+    // 调用后端接口，处理返回结果
+    addProject(formData).then((res) => {
+      console.log(res);
+      if (res.status === 200) {
+        alert('表单已提交！');
+      }
+      else {
+        alert('提交失败，请重试！');
+      }
+    });
   };
-  
+  //"[Errno 2] No such file or directory: 'D:\\MyProject\\biyesheji\\forGithub\\BioResearcher\\backend\\app\\routers\\data\\experiments.json'"
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -131,7 +162,7 @@ export default function NewProject() {
         <Grid container spacing={2}>
           <Grid item="true" size={12}>
             <TextField
-              label="实验名称"
+              label="Experiment Name"
               variant="outlined"
               required
               fullWidth
@@ -143,7 +174,7 @@ export default function NewProject() {
 
           <Grid item="true" size={12}>
             <TextField
-              label="实验目的"
+              label="Experiment Purpose"
               variant="outlined"
               required
               fullWidth
@@ -155,7 +186,7 @@ export default function NewProject() {
 
           <Grid item="true" size={12}>
             <TextField
-              label="实验条件"
+              label="Experiment Condition"
               variant="outlined"
               required
               multiline
@@ -169,7 +200,7 @@ export default function NewProject() {
 
           <Grid item="true" size={12}>
             <TextField
-              label="实验要求"
+              label="Experiment Requirement"
               variant="outlined"
               required
               multiline
@@ -192,10 +223,10 @@ export default function NewProject() {
         </Typography>
         <FormGroup row sx={{ mb: 2 }}>
           <FormControlLabel 
-            control={<Checkbox checked={paper.PMC} onChange={handlePaperChange} name='PMC'/>} 
+            control={<Checkbox checked={paperset.PMC} onChange={handlePaperChange} name='PMC'/>} 
             label="PMC" />
           <FormControlLabel 
-            control={<Checkbox checked={paper.PubMed} onChange={handlePaperChange} name='PubMed'/>} 
+            control={<Checkbox checked={paperset.PubMed} onChange={handlePaperChange} name='PubMed'/>} 
             label="PubMed" />
         </FormGroup>
         <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>

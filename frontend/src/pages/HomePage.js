@@ -4,6 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function HomePage() {
   const navigate = useNavigate();
   const handleCreateProject = () => {
@@ -12,6 +13,7 @@ export default function HomePage() {
   const handleEditProject = () => {
     navigate('/manage-project'); // 跳转到 "/edit-project" 页面
   };
+
 
   return (
     <Container
@@ -40,7 +42,7 @@ export default function HomePage() {
           startIcon={<AddIcon />}
           onClick={handleCreateProject}
         >
-          创建一个新项目
+          Create a new project
         </Button>
 
         <Button 
@@ -50,7 +52,7 @@ export default function HomePage() {
           startIcon={<EditIcon />}
           onClick={handleEditProject}
         >
-          打开或编辑现有项目
+          Open or Edit Existing Projects
         </Button>
       </Box>
     </Container>

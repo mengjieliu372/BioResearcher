@@ -1,0 +1,21 @@
+[
+    {
+        "expName": "\u5b9e\u9a8cA",
+        "expPurpose": "\u6d4b\u8bd5A\u7684\u6d53\u5ea6",
+        "expCondition": "123",
+        "expRequirement": "4444",
+        "paperset": {
+            "PMC": true,
+            "PubMed": false
+        },
+        "dataset": {
+            "GEO": true,
+            "NCBI": false,
+            "cBioPortal": true
+        },
+        "llmModel": "GPT4o",
+        "refNum": 123,
+        "reviewerRound": 445,
+        "id": 90460
+    }
+]
