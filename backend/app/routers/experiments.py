@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 from pathlib import Path
 import json
 import random
@@ -23,6 +23,7 @@ class Dataset(BaseModel):
     cBioPortal: bool
 
 class Experiment(BaseModel):
+    id: int
     expName: str
     expPurpose: str
     expCondition: str
@@ -32,7 +33,7 @@ class Experiment(BaseModel):
     llmModel: str
     refNum: Optional[int] = None
     reviewerRound: Optional[int] = None
-
+    fileNames: List[str]
 
 
 @router.post("/addExperiment")
@@ -55,6 +56,34 @@ async def get_experiments():
     except Exception as e:
         return {"error": str(e)}
 
+# 更新某个实验信息
+@router.put("/updateExperiment")
+async def update_experiment(experiment: Experiment):
+    try:
+        experiments = read_experiments()
+        for i in range(len(experiments)):
+            if experiments[i]["id"] == experiment.id:
+                experiments[i] = experiment.model_dump()
+                write_experiments(experiments)
+                return {"message": "Experiment updated successfully"}
+        return {"error": "Experiment not found"}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+# 删除某个实验
+@router.delete("/deleteExperiment")
+async def delete_experiment(id: int):
+    try:
+        experiments = read_experiments()
+        for i in range(len(experiments)):
+            if experiments[i]["id"] == id:
+                experiments.pop(i)
+                write_experiments(experiments)
+                return {"message": "Experiment deleted successfully"}
+        return {"error": "Experiment not found"}
+    except Exception as e:
+        return {"error": str(e)}
 
 def read_experiments():
     with open(Experiments_File, "r") as f:
@@ -76,7 +105,3 @@ def generate_id():
         if new_id not in existing_ids:
             existing_ids.add(new_id)
             return new_id
-
-@router.post("/uploadfile")
-async def upload_file():
-    return {"message": "Upload file here"}

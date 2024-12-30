@@ -1,10 +1,7 @@
-import * as React from 'react';
-import {Box, Typography,Button, List, ListItem, ListItemText, IconButton } from '@mui/material';
+import React, { useState } from 'react';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { styled } from '@mui/material/styles';
-import { useState } from 'react';
-import axios from 'axios';
+import { styled } from '@mui/system';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -18,89 +15,94 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-export default function Test() {
-  const [files, setFiles] = useState([]);
-  const [uploadedFiles, setUploadedFiles] = useState([]);
+const FileUpload = () => {
+  const [loading, setLoading] = useState(false); // 总的加载状态
+  const [files, setFiles] = useState([]); // 存储已选择的文件以及它们的状态
 
-  // 文件上传
-  const handleFileChange = (event) => {
+  // 处理文件变化并上传
+  const handleFileChange = async (event) => {
     const selectedFiles = event.target.files;
-    const newFiles = Array.from(selectedFiles);
-    setFiles(newFiles);
-    console.log(files);
-    files.forEach(file => {
-      console.log(file);
-      const formData = new FormData();
-      formData.append('file', file);
-      axios.post('api/uploadfile', formData)
-       .then((res) => {
-        setUploadedFiles(prevFiles => [...prevFiles, file]);
-        console.log(res);
-      }).catch((err) => {
-        console.error(err);
-      });
-    });
-    setFiles([]);
-    //console.log(files);
-  };
+    
+    if (selectedFiles.length > 0) {
+      // 更新文件列表及其状态
+      const newFiles = Array.from(selectedFiles).map(file => ({
+        name: file.name,
+        status: '正在上传', // 初始状态为“正在上传”
+        file,
+      }));
+      
+      setFiles(prevFiles => [...prevFiles, ...newFiles]); // 将新文件加入到当前文件列表中
+      setLoading(true); // 设置总的加载状态为 true，禁用上传按钮
 
-  const handleFileUpload = () => {
-    console.log(123);
-    files.forEach(file => {
-      console.log(123);
-      const formData = new FormData();
-      formData.append('file', file);
-      axios.post('api/uploadfile', formData)
-       .then((res) => {
-        setUploadedFiles(prevFiles => [...prevFiles, file]);
-        console.log(res);
-      }).catch((err) => {
-        console.error(err);
-      });
-    });
-    setFiles([]);
-  }
+      try {
+        // 遍历文件并上传
+        await Promise.all(
+          newFiles.map(async (fileObj, index) => {
+            const formData = new FormData();
+            formData.append('file', fileObj.file);
 
-  const handleFileDelete = (fileName) => {
-    setUploadedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
+            try {
+              const response = await fetch('your-upload-endpoint', {
+                method: 'POST',
+                body: formData,
+              });
+
+              // 如果上传成功，更新状态
+              if (response.ok) {
+                const updatedFiles = [...files];
+                updatedFiles[index].status = '上传完成'; // 更新对应文件的状态为“上传完成”
+                setFiles(updatedFiles);
+              } else {
+                throw new Error(`文件 ${fileObj.name} 上传失败`);
+              }
+            } catch (error) {
+              const updatedFiles = [...files];
+              updatedFiles[index].status = `上传失败: ${error.message}`;
+              setFiles(updatedFiles);
+            }
+          })
+        );
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false); // 上传完成，停止总的加载状态
+      }
+    }
   };
 
   return (
     <div>
       <Button
-          component="label"
-          role={undefined}
-          variant="contained"
-          tabIndex={-1}
-          startIcon={<CloudUploadIcon />}
-          sx={{ mb: 2 }}
-        >
-          Upload files
-          <VisuallyHiddenInput
-            type="file"
-            accept=".pdf"
-            onChange={handleFileChange}
-            multiple
-          />
-        </Button>
+        component="label"
+        role={undefined}
+        variant="contained"
+        tabIndex={-1}
+        startIcon={<CloudUploadIcon />}
+        sx={{ mb: 2 }}
+        disabled={loading} // 禁用按钮如果正在加载
+      >
+        {loading ? '上传中...' : '上传文件'}
+        <VisuallyHiddenInput
+          type="file"
+          accept=".pdf"
+          onChange={handleFileChange}
+          multiple
+        />
+      </Button>
 
-        {uploadedFiles.length > 0 && (
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
-              已上传的文件：
+      {/* 显示文件列表及其状态 */}
+      <div>
+        {files.map((fileObj, index) => (
+          <div key={index} style={{ marginBottom: 8 }}>
+            <Typography variant="body2">
+              {fileObj.name} - {fileObj.status}
             </Typography>
-            <List>
-              {uploadedFiles.map((file) => (
-                <ListItem key={file.name} sx={{ display: 'flex', alignItems: 'center' }}>
-                  <ListItemText primary={file.name} />
-                  <IconButton onClick={() => handleFileDelete(file.name)}>
-                    <DeleteIcon />
-                  </IconButton>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        )}
+            {fileObj.status === '正在上传' && <CircularProgress size={20} />}
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
+
+export default FileUpload;

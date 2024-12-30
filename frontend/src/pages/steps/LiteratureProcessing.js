@@ -4,10 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { GetReport } from "../../utils/ReportProcess";
-import { GetAnalysis } from '../../utils/ReportProcess';
-import { GetPaperInfo } from '../../utils/ReportProcess';
 import LieratureProcessingContent from '../../components/LiteratureProcessingContent';
+import { getPaperInfo } from '../../services/api';
+import { getReportAnalysis } from '../../services/api';
+import { useParams } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,16 +44,31 @@ function a11yProps(index) {
 
 
 export default function VerticalTabs() {
-  const paper_info = GetPaperInfo();
-
+  const { id } = useParams();
   const [value, setValue] = React.useState(0);
-
   const [content, setContent] = React.useState(null);
+  const [paperInfo, setPaperInfo] = React.useState([]);
+  
+  React.useEffect(() => {
+    getPaperInfo(id)
+      .then((res) => {
+        setPaperInfo(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [id]);
+
   React.useEffect(() => {
     // 根据 value 从 report 中选择数据
-    let report = GetReport(value);
-    let analysis = GetAnalysis(value);
-    setContent(<LieratureProcessingContent report={report} analysis={analysis} />);
+    getReportAnalysis(id, value)
+      .then((res) => {
+        const { report, analysis } = res.data;
+        setContent(<LieratureProcessingContent report={report} analysis={analysis} />);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [value]);
 
   const handleChange = (event, newValue) => {
@@ -72,7 +87,7 @@ export default function VerticalTabs() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        {paper_info.map((paper, index) => {
+        {paperInfo.map((paper, index) => {
           return <Tab
             key={index}
             label={paper.title}
@@ -91,7 +106,7 @@ export default function VerticalTabs() {
           backgroundColor: '#e3fdff',
         }}
       >
-        {paper_info.map((paper, index) => {
+        {paperInfo.map((paper, index) => {
           return (
             <Box
               key={index}

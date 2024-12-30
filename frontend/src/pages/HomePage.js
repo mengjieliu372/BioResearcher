@@ -41,6 +41,7 @@ export default function HomePage() {
           size="large"
           startIcon={<AddIcon />}
           onClick={handleCreateProject}
+          sx={{ textTransform: 'none' }}
         >
           Create a new project
         </Button>
@@ -51,6 +52,7 @@ export default function HomePage() {
           size="large"
           startIcon={<EditIcon />}
           onClick={handleEditProject}
+          sx={{ textTransform: 'none' }}
         >
           Open or Edit Existing Projects
         </Button>

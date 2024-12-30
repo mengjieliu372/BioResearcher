@@ -4,6 +4,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import DryExpContent from '../../components/DryExpContent';
+import { useParams } from 'react-router-dom';
+import { getDryExp } from '../../services/api';
 
 // TabPanel组件用于显示选中的Tab内容
 function CustomTabPanel(props) {
@@ -40,18 +42,20 @@ function a11yProps(index) {
 export default function BasicTabs() {
     const [value, setValue] = React.useState(0);
     const [content, setContent] = React.useState(null);
+    const { id } = useParams();
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
     React.useEffect(() => {
-        const dryexp = "dry_experiment" + (value + 1);
-        import(`../../data/${dryexp}.json`)
-            .then(data => {
-                setContent(<DryExpContent data={data.default} />);
+        getDryExp(id, value)
+            .then((res) => {
+                setContent(<DryExpContent data={res.data} />);
             })
-            .catch(err => console.error(err));
+            .catch((err) => {
+                console.error(err);
+            });
     }, [value]); // 仅当 value 变化时触发
 
     return (

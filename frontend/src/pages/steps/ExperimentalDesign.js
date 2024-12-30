@@ -4,6 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import ExpDesignContent from '../../components/ExpDesignContent';
+import { useParams } from 'react-router-dom';
+import { getExpDesign } from '../../services/api';
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -40,21 +43,23 @@ function a11yProps(index) {
 export default function ExperimentalDesign() {
   const [value, setValue] = React.useState(0);
   const [content, setContent] = React.useState(null);
-
+  const { id } = useParams();
 
   React.useEffect(() => {
-    const prog = "experiment_program" + (value + 1);
-    import(`../../data/${prog}.json`)
-      .then(data => {
-        setContent(<ExpDesignContent data={data.default} />);
+    getExpDesign(id, value)
+      .then((res) => {
+        setContent(<ExpDesignContent data={res.data} />);
       })
-      .catch(err => console.error(err));
-  }, [value]); // 仅当 value 变化时触发
-  
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [value]);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

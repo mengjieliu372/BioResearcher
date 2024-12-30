@@ -6,7 +6,8 @@ import { styled } from '@mui/material/styles';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { addProject } from '../services/api';
-import axios from 'axios';
+import { uploadFile, deleteFile } from '../services/api';
+import { useEffect } from 'react';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -21,20 +22,16 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 export default function NewProject() {
-  // State for input values
-  // 实验名称 实验目的 实验条件 实验要求
   const [expName, setExpName] = useState('');
   const [expPurpose, setExpPurpose] = useState('');
   const [expCondition, setExpCondition] = useState('');
   const [expRequirement, setExpRequirement] = useState('');
-  const [paperset, setPaperset] = useState({ PMC: true, PubMed: false});
-  const [dataset, setDataset] = useState({ GEO: true, NCBI: false, cBioPortal: false});
-
+  const [paperset, setPaperset] = useState({ PMC: true, PubMed: false });
+  const [dataset, setDataset] = useState({ GEO: true, NCBI: false, cBioPortal: false });
   const [llmModel, setLLMModel] = useState('GPT4o');
   const [refNum, setRefNum] = useState('');
   const [reviewerRound, setReviewerRound] = useState('');
   const [files, setFiles] = useState([]);
-  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const handleInputRefNum = (event) => {
     const newValue = event.target.value.replace(/[^0-9]/g, '');
@@ -62,43 +59,62 @@ export default function NewProject() {
 
   // 文件上传
   const handleFileChange = (event) => {
-    const files = event.target.files;
-    const newFiles = Array.from(files);
-    setFiles(prevFiles => [...prevFiles, ...newFiles]);
-    handleFileUpload();
+    const selectedFiles = event.target.files;
+    if (selectedFiles.length > 0) {
+      const newFiles = Array.from(selectedFiles).map(file => ({
+        name: file.name,
+        status: 'Uploading',
+        file,
+      }));
+      setFiles(prevFiles => [...prevFiles, ...newFiles]);
+    };
   };
 
-  const handleFileUpload = () => {
-    files.forEach(file => {
-      console.log(123);
-      const formData = new FormData();
-      formData.append('file', file);
-      axios.post('api/uploadfile', formData)
-       .then((res) => {
-        setUploadedFiles(prevFiles => [...prevFiles, file]);
-        console.log(res);
-      }).catch((err) => {
-        console.error(err);
+  useEffect(() => {
+    const uploadingFiles = files.filter(file => file.status === 'Uploading');
+    if (uploadingFiles.length > 0) {
+      uploadingFiles.forEach((fileObj, index) => {
+        if (fileObj.status === 'Uploaded' || fileObj.status === 'Failed')
+          return;
+        const formData = new FormData();
+        formData.append('file', fileObj.file);
+
+        uploadFile(formData).then((res) => {
+          setFiles(prevFiles =>
+            prevFiles.map((file, i) => {
+              if (file.name === fileObj.name) {
+                return {
+                  ...file,
+                  status: res.status === 200 ? 'Uploaded' : 'Failed',
+                };
+              }
+              return file;
+            })
+          );
+        });
       });
-    });
-    setFiles([]);
-  }
+    }
+  }, [files.length]);
+
+
 
   const handleFileDelete = (fileName) => {
-    setUploadedFiles(prevFiles => prevFiles.filter(file => file.name !== fileName));
+    deleteFile(fileName);
+    const newFiles = files.filter(file => file.name !== fileName);
+    setFiles(newFiles);
   };
 
   const handleLlmModelChange = (event) => {
     setLLMModel(event.target.value);
   };
-  
+
   const handleSubmit = () => {
     // 数据验证
     if (!expName || !expPurpose || !expCondition || !expRequirement) {
       alert('请填写实验相关信息！');
       return;
     }
-    
+
     // 检查paperset和dataset是否全为false
     if (!Object.values(paperset).some(Boolean)) {
       alert('请选择要检索的文献库！');
@@ -108,11 +124,17 @@ export default function NewProject() {
       alert('请选择要检索的数据集库！');
       return;
     }
-    
+
+    // 检查文件是否上传完成
+    if (files.some(file => file.status !== 'Uploaded')) {
+      alert('文件上传中，请稍后提交！');
+      return;
+    }
     const refNumInt = parseInt(refNum);
     const reviewerRoundInt = parseInt(reviewerRound);
-
+    const id = 0;
     const formData = {
+      id,
       expName,
       expPurpose,
       expCondition,
@@ -122,21 +144,19 @@ export default function NewProject() {
       llmModel,
       refNum: refNumInt,
       reviewerRound: reviewerRoundInt,
-      // uploadedFiles: uploadedFiles.map(file => file.name), // 上传文件名称数组
+      fileNames: files.map(file => file.name)
     };
-    
-    // 调用后端接口，处理返回结果
+
+    // 上传项目信息
     addProject(formData).then((res) => {
-      console.log(res);
       if (res.status === 200) {
-        alert('表单已提交！');
+        alert('项目创建成功！');
       }
       else {
-        alert('提交失败，请重试！');
+        alert('创建失败，请重试！');
       }
     });
   };
-  //"[Errno 2] No such file or directory: 'D:\\MyProject\\biyesheji\\forGithub\\BioResearcher\\backend\\app\\routers\\data\\experiments.json'"
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -222,11 +242,11 @@ export default function NewProject() {
           文献库：
         </Typography>
         <FormGroup row sx={{ mb: 2 }}>
-          <FormControlLabel 
-            control={<Checkbox checked={paperset.PMC} onChange={handlePaperChange} name='PMC'/>} 
+          <FormControlLabel
+            control={<Checkbox checked={paperset.PMC} onChange={handlePaperChange} name='PMC' />}
             label="PMC" />
-          <FormControlLabel 
-            control={<Checkbox checked={paperset.PubMed} onChange={handlePaperChange} name='PubMed'/>} 
+          <FormControlLabel
+            control={<Checkbox checked={paperset.PubMed} onChange={handlePaperChange} name='PubMed' />}
             label="PubMed" />
         </FormGroup>
         <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
@@ -234,18 +254,18 @@ export default function NewProject() {
         </Typography>
         <FormGroup row sx={{ mb: 2 }}>
           <FormControlLabel
-            control={<Checkbox checked={dataset.GEO} onChange={handleDatabaseChange} name='GEO'/>} 
+            control={<Checkbox checked={dataset.GEO} onChange={handleDatabaseChange} name='GEO' />}
             label="GEO" />
-          <FormControlLabel 
-            control={<Checkbox  checked={dataset.NCBI} onChange={handleDatabaseChange} name='NCBI'/>}
+          <FormControlLabel
+            control={<Checkbox checked={dataset.NCBI} onChange={handleDatabaseChange} name='NCBI' />}
             label="NCBI" />
           <FormControlLabel
-            control={<Checkbox checked={dataset.cBioPortal} onChange={handleDatabaseChange} name='cBioPortal'/>} 
+            control={<Checkbox checked={dataset.cBioPortal} onChange={handleDatabaseChange} name='cBioPortal' />}
             label="cBioPortal" />
         </FormGroup>
 
-        <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
-          本地文献：
+        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333' }}>
+          本地文献上传
         </Typography>
         <Button
           component="label"
@@ -253,7 +273,7 @@ export default function NewProject() {
           variant="contained"
           tabIndex={-1}
           startIcon={<CloudUploadIcon />}
-          sx={{ mb: 2 }}
+          sx={{ m: 2 }}
         >
           Upload files
           <VisuallyHiddenInput
@@ -264,16 +284,32 @@ export default function NewProject() {
           />
         </Button>
 
-        {uploadedFiles.length > 0 && (
+        {files.length > 0 && (
           <Box sx={{ mb: 4 }}>
-            <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
-              已上传的文件：
+            <Typography variant="h6" sx={{ color: '#555', mb: 0.5 }}>
+              已选择的文件：
             </Typography>
             <List>
-              {uploadedFiles.map((file) => (
-                <ListItem key={file.name} sx={{ display: 'flex', alignItems: 'center' }}>
-                  <ListItemText primary={file.name} />
-                  <IconButton onClick={() => handleFileDelete(file.name)}>
+              {files.map((file, index) => (
+                <ListItem sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, bgcolor: 'background.default', mb: 1 }}>
+                  {/* 文件名称 */}
+                  <ListItemText
+                    primary={file.name}
+                    primaryTypographyProps={{
+                      variant: 'body1',
+                      sx: { color: 'text.primary' },
+                    }}
+                  />
+
+                  <Typography
+                    sx={{
+                      ml: 2,
+                      mr: 2,
+                    }}
+                  >
+                    {file.status}
+                  </Typography>
+                  <IconButton onClick={() => handleFileDelete(file.name)} sx={{ color: 'error.main' }}>
                     <DeleteIcon />
                   </IconButton>
                 </ListItem>

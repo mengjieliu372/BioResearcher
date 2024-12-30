@@ -8,8 +8,10 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import TestData from '../utils/DatasetsProcess';
 import Chip from '@mui/material/Chip';
+import { getDatasets } from '../services/api';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,7 +46,21 @@ function a11yProps(index) {
 }
 
 export default function VerticalTabs() {
-  const queriesData = TestData;
+  const [queriesData, setQueriesData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+
+  useEffect(() => {
+    getDatasets(id)
+      .then((res) => {
+        setQueriesData(res.data); // 更新数据
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, [id]);
 
   const showDatasets = (datasets) => {
     return (

@@ -1,21 +1,24 @@
 [
     {
-        "expName": "\u5b9e\u9a8cA",
-        "expPurpose": "\u6d4b\u8bd5A\u7684\u6d53\u5ea6",
-        "expCondition": "123",
-        "expRequirement": "4444",
+        "id": 72841,
+        "expName": "experiment name 1",
+        "expPurpose": "experiment purpose a",
+        "expCondition": "experiment conditions",
+        "expRequirement": "requirements",
         "paperset": {
             "PMC": true,
-            "PubMed": false
+            "PubMed": true
         },
         "dataset": {
             "GEO": true,
             "NCBI": false,
             "cBioPortal": true
         },
-        "llmModel": "GPT4o",
-        "refNum": 123,
-        "reviewerRound": 445,
-        "id": 90460
+        "llmModel": "gemini",
+        "refNum": 23,
+        "reviewerRound": 52,
+        "fileNames": [
+            "1.pdf"
+        ]
     }
 ]
