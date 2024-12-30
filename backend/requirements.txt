@@ -13,3 +13,9 @@ starlette==0.41.3
 typing_extensions==4.12.2
 uvicorn==0.34.0
 wheel==0.45.1
+beautifulsoup4==4.12.3
+eventlet==0.38.2
+fitz==0.0.1.dev2
+openai==1.58.1
+pyautogen==0.2.34
+Requests==2.32.3
