@@ -1,0 +1,39 @@
+{
+    "Part 1": {
+        "Title": "Sample Collection and Preparation",
+        "Referability": "High",
+        "Reason": "The steps outlined in this part are directly applicable to the collection and preparation of RNA-seq data from sarcoma samples, which aligns with the objectives of our research.",
+        "Suggestions": "We can use the same datasets (TCGA and GTEx) and follow similar steps for data download and preprocessing. However, we should ensure that the specific sarcoma subtypes relevant to our study (highly differentiated and dedifferentiated liposarcoma) are prioritized. Additionally, we might need to adjust the sample selection criteria to focus on these subtypes. Allocate part of the funding to ensure high-quality sample preparation and sequencing. Clearly document the sample selection criteria and preprocessing steps to ensure reproducibility."
+    },
+    "Part 2": {
+        "Title": "Estimation of Signal Transduction Circuit Activity",
+        "Referability": "Medium",
+        "Reason": "While the mechanistic modeling of signal transduction using HiPathia is relevant, our primary focus is on metabolic characteristics. However, understanding signaling pathways could provide insights into metabolic regulation.",
+        "Suggestions": "We can adopt the HiPathia tool for signal transduction analysis to complement our metabolic study. This might involve additional steps to integrate signaling and metabolic pathways. We should also consider using tools specifically designed for metabolic pathway analysis. Ensure the integration of signaling and metabolic pathway data is well-documented and justified. Provide a rationale for the selection of HiPathia and explain how it complements our focus on metabolic characteristics."
+    },
+    "Part 3": {
+        "Title": "Survival Analysis of Sarcoma Patients",
+        "Referability": "Low",
+        "Reason": "Survival analysis is not directly related to our primary objective of comparing metabolic characteristics. However, it could provide additional context if we decide to explore prognostic factors.",
+        "Suggestions": "If we choose to incorporate survival analysis, we can follow the steps outlined here. We should focus on the survival impact of metabolic gene expression and pathway activity. This would require integrating clinical data with our RNA-seq and single-cell sequencing data. Allocate resources to obtain and preprocess clinical data. Clearly document the steps for integrating clinical data with gene expression data."
+    },
+    "Part 4": {
+        "Title": "Analysis of Transcription Factor Activation",
+        "Referability": "Medium",
+        "Reason": "Transcription factor activation analysis can provide insights into the regulatory mechanisms driving metabolic differences. This could be relevant to understanding the underlying biology of liposarcoma differentiation.",
+        "Suggestions": "We can use the TFTEA tool to analyze transcription factor activity related to metabolic pathways. This would involve identifying key transcription factors that regulate metabolic genes and pathways in highly differentiated vs. dedifferentiated liposarcoma. Ensure that the focus remains on transcription factors relevant to metabolic regulation. Provide a detailed rationale for the selection of TFTEA and explain how it contributes to understanding metabolic regulation."
+    },
+    "Part 5": {
+        "Title": "Differential Signaling Analysis",
+        "Referability": "High",
+        "Reason": "Differential signaling analysis is highly relevant as it can help identify key pathways and circuits that differ between highly differentiated and dedifferentiated liposarcoma.",
+        "Suggestions": "We should adapt the differential signaling analysis to focus on metabolic pathways. This involves using the limma package for differential expression analysis and performing functional annotation specific to metabolic processes. Ensure that the analysis is well-documented and justifies the selection of metabolic pathways. Provide a detailed explanation of the limma package and its relevance to our study."
+    },
+    "Part 6": {
+        "Title": "Association with Hallmarks of Cancer",
+        "Referability": "Medium",
+        "Reason": "Associating differentially activated circuits with cancer hallmarks can provide a broader understanding of the biological significance of our findings. This can be useful for contextualizing metabolic differences within the framework of cancer biology.",
+        "Suggestions": "We should use the CHAT tool to annotate our findings with cancer hallmarks, emphasizing those related to metabolism. This will help in understanding how metabolic characteristics contribute to cancer progression and differentiation in liposarcoma. Ensure that the focus remains on hallmarks relevant to metabolic processes. Provide a detailed explanation of the CHAT tool and its relevance to our study."
+    },
+    "Referability": 0.3333333333333333
+}

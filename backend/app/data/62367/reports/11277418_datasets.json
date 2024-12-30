@@ -1,0 +1,346 @@
+{
+    "useful": {
+        "GEO": {
+            "GSE159659": {
+                "Status": "Public on Mar 10, 2021",
+                "Title": "Genomic characterization of well differentiated/dedifferentiated retroperitoneal liposarcoma",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by array",
+                "Summary": "An integrated profiling approach was performed to define molecular alterations associated to the aggressive behavior of retroperitoneal dedifferentiated liposarcoma. In particular, matched well and dedifferentiated components as well as normal adipose tissues, obtained from the same tumor sites, were comparatively investigated to higlight differences in gene expression.",
+                "Overall design": "Gene expression of dedifferentiated, well differentiated and normal adipose tissue was generated using clarioms array",
+                "Platforms": "Platforms (1), GPL23159, [Clariom_S_Human] Affymetrix Clariom S Assay, Human (Includes Pico Assay)",
+                "Samples": {
+                    "GSM4837048": {
+                        "link": "/geo/query/acc.cgi?acc=GSM4837048",
+                        "name": "dedifferentiated liposarcoma, patient 5",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM4837048_JX65.CEL.gz",
+                                "file_size": "1.1 Mb",
+                                "file_type": "CEL",
+                                "download_link": "/geo/download/?acc=GSM4837048&format=file&file=GSM4837048%5FJX65%2ECEL%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Mar 10, 2021",
+                        "Title": "dedifferentiated liposarcoma, patient 5",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "tissue: dedifferentiated liposarcoma",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "RNA was extracted from snap-frozen tissues using Qiagen RNeasy kit purification performed according to the manufacturer's instructions.",
+                        "Description": "gene expression data from retroperitoneal liposarcoma patient",
+                        "Data processing": "Arrays were RMA normalized (Irizarry et al. 2003) and differential expression determined using the following R packages from the Bioconductor project: oligo (Carvalho et al. 2010), limma (Smyth 2004).",
+                        "Platform ID": "GPL23159"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE159659_RAW.tar",
+                        "file_size": "47.7 Mb",
+                        "file_type": "TAR (of CEL)",
+                        "download_link": "/geo/download/?acc=GSE159659&format=file"
+                    }
+                ]
+            },
+            "GSE159848": {
+                "Status": "Public on Dec 31, 2022",
+                "Title": "Expression data from 50 mixoid liposarcomas",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by array",
+                "Summary": "Based on the transcriptome analysis of 555 sarcomas, we identified a group of tightly clustered leiomyosarcomas (LMS) due to their gene expression homogeneity. We named them “hLMS” and the other LMS “oLMS”. We derived a transcriptional signature able to identify each group and used it to classify patients from two independent cohorts. In all cohorts, hLMS were preferentially carried by women, located in the internal trunk, highly differentiated, and similarly altered at the genomic level. Based on integrative bioinformatic analysis, we show that hLMS originate from vascular smooth muscle cells presenting both contractile and synthetic characteristics, while oLMS could derive from fibroblasts. We found strong MYOCD expression to be an hLMS-specific driver and show that the MYOCD/SRF axis is essential only for hLMS survival. Identification of hLMS could become standard clinical practice, leading to the development of specific effective treatments with MYOCD/SRF inhibitors.",
+                "Overall design": "50 mixoid liposarcomas hybridized to Agilent-014850 Whole Human Genome Microarray 4x44K G4112F",
+                "Platforms": "Platforms (1), GPL6480, Agilent-014850 Whole Human Genome Microarray 4x44K G4112F (Probe Name version)",
+                "Samples": {
+                    "GSM4848353": {
+                        "link": "/geo/query/acc.cgi?acc=GSM4848353",
+                        "name": "mLPS1",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM4848353_053135_DY769_1_2.txt.gz",
+                                "file_size": "1.9 Mb",
+                                "file_type": "TXT",
+                                "download_link": "/geo/download/?acc=GSM4848353&format=file&file=GSM4848353%5F053135%5FDY769%5F1%5F2%2Etxt%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Dec 31, 2022",
+                        "Title": "mLPS1",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "Sex: Mage: 44subject status/id: mixoid liposarcoma patient 1metastasis: 0time_mfs: 9.78630136986301os: 0time_os: 9.78630136986301location: Extremitiesgrade: 1differentiation: 2",
+                        "Treatment protocol": "Frozen tissue",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "Total RNA were extracted from frozen tumor samples using the miRNeasy® Mini Kit (Qiagen) and purified using the RNeasy® Min Elute TM Cleanup Kit (Qiagen) according to the manufacturer’s procedures. RNA quality was checked on an Agilent 2100 bioanalyzer (Agilent Technologies, Santa Clara, CA, USA).",
+                        "Description": "DY769",
+                        "Data processing": "For each series all microarrays were simultaneously normalized using the Quantile algorithm.",
+                        "Platform ID": "GPL6480"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE159848_RAW.tar",
+                        "file_size": "96.6 Mb",
+                        "file_type": "TAR (of TXT)",
+                        "download_link": "/geo/download/?acc=GSE159848&format=file"
+                    }
+                ]
+            },
+            "GSE30929": {
+                "Status": "Public on Sep 02, 2011",
+                "Title": "Whole-transcript expression data for liposarcoma",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by array",
+                "Summary": "Liposarcoma is the most common soft tissue sarcoma, accounting for about 20% of cases. Liposarcoma is classified into 5 histologic subtypes that fall into 3 biological groups characterized by specific genetic alterations. To identify genes that contribute to liposarcomagenesis and to better predict outcome for patients with the disease, we undertook expression profiling of liposarcoma. U133A expression profiling was performed on 140 primary liposarcoma samples, which were randomly split into training set (n=95) and test set (n=45). A multi-gene predictor for distant recurrence-free survival (DRFS) was developed using the supervised principal component method. Expression levels of the 588 genes in the predictor were used to calculate a risk score for each patient. In validation of the predictor in the test set, patients with low risk score had a 3-year DRFS of 83% vs. 45% for high risk score patients (P=0.001). The hazard ratio for high vs. low score, adjusted for histologic subtype, was 4.42 (95% confidence interval 1.26-15.55; P=0.021). The concordance probability for risk score was 0.732.  Genes related to adipogenesis, DNA replication, mitosis, and spindle assembly checkpoint control were all highly represented in the multi-gene predictor. Three genes from the predictor, TOP2A, PTK7, and CHEK1, were found to be overexpressed in liposarcoma samples of all five subtypes and in liposarcoma cell lines. Knockdown of these genes in liposarcoma cell lines reduced proliferation and invasiveness and increased apoptosis. Thus, genes identified from this predictor appear to have roles in liposarcomagenesis and have promise as therapeutic targets. In addition, the multi-gene predictor will improve risk stratification for individual patients with liposarcoma.",
+                "Overall design": "140 human liposarcoma specimens were profiled on Affymetrix U133A arrays per manufacturer's instructions.",
+                "Platforms": "Platforms (1), GPL96, [HG-U133A] Affymetrix Human Genome U133A Array",
+                "Samples": {
+                    "GSM766533": {
+                        "link": "/geo/query/acc.cgi?acc=GSM766533",
+                        "name": "Sarcoma tumor DD0728",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM766533.CEL.gz",
+                                "file_size": "3.4 Mb",
+                                "file_type": "CEL",
+                                "download_link": "/geo/download/?acc=GSM766533&format=file&file=GSM766533%2ECEL%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Sep 02, 2011",
+                        "Title": "Sarcoma tumor DD0728",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "tissue: primary liposarcomasubtype: dedifferentiatedsample id: DD0728trainingtest: Trainingdrfs: FALSEtt.drfs: 32.95",
+                        "Treatment protocol": "None.",
+                        "Growth protocol": "None.",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "Total RNA was extracted from macro-dissected cryomolds and homogenized in QIAzol lysis reagent.",
+                        "Description": "Soft-tissue sarcomaRe-analysis of GSM528276",
+                        "Data processing": "Signal intensity was generated with Affymetrix Microarray Suite v5 software, and expression was estimated with robust multi-array average (RMA).",
+                        "Platform ID": "GPL96"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE30929_RAW.tar",
+                        "file_size": "477.0 Mb",
+                        "file_type": "TAR (of CEL)",
+                        "download_link": "/geo/download/?acc=GSE30929&format=file"
+                    }
+                ]
+            },
+            "GSE21122": {
+                "Status": "Public on Jul 06, 2010",
+                "Title": "Whole-transcript expression data for soft-tissue sarcoma tumors and control normal fat specimens",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by array",
+                "Summary": "Soft tissue sarcomas are aggressive mesenchymal cancers that affect more than 10,600 new patients per year in the US, about 40% of whom will die of their disease. Soft tissue sarcomas exhibit remarkable histologic diversity, with more than 50 recognized subtypes, but our knowledge of their genomic alterations is limited. Here we describe the results of an integrative analysis of DNA sequence, copy number, and mRNA expression in 207 samples encompassing seven major subtypes. Genes mutated in more than 5% of samples within a subtype were KIT (in gastrointestinal stromal cell tumors, or GISTs), TP53 (pleomorphic liposarcomas), PIK3CA (myxoid/round-cell liposarcoma), and NF1 (both myxofibrosarcoma and pleomorphic liposarcoma). We show evidence that PIK3CA mutations, found in 18% of myxoid/round-cell liposarcomas, activate AKT in vivo and are associated with poor outcomes. Point mutations in the tumor suppressor gene NF1 were discovered in both myxofibrosarcomas and pleomorphic liposarcomas, while genomic deletions were observed in all subtypes at varying frequencies. Finally, we found that short hairpin RNA-based knockdown of a subset of genes that are amplified in dedifferentiated liposarcoma, including CDK4 and YEATS4, decreased cell proliferation. Our study yields the most detailed map of molecular alterations across diverse sarcoma subtypes to date and provides potential subtype-specific targets for therapy.",
+                "Overall design": "Human soft-tissue sarcoma specimens were profiled on Affymetrix U133A arrays per manufacturer's instructions.",
+                "Platforms": "Platforms (1), GPL96, [HG-U133A] Affymetrix Human Genome U133A Array",
+                "Samples": {
+                    "GSM528276": {
+                        "link": "/geo/query/acc.cgi?acc=GSM528276",
+                        "name": "Sarcoma tumor PT1DD",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM528276.CEL.gz",
+                                "file_size": "3.4 Mb",
+                                "file_type": "CEL",
+                                "download_link": "/geo/download/?acc=GSM528276&format=file&file=GSM528276%2ECEL%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Jul 06, 2010",
+                        "Title": "Sarcoma tumor PT1DD",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "tissue: Soft-tissue sarcomadisease status: Liposarcoma:Dedifferentiatedsample id: PT1DD",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "Total RNA was extracted from macro-dissected cryomolds and homogenized in QIAzol lysis reagent",
+                        "Description": "Gene expression data from soft-tissue sarcoma tumor",
+                        "Data processing": "Signal intensity data was generated with Affymetrix Microarray Suite version 5.0 software with default parameters. Expression values were estimated with robust multi-array average (RMA) using standard background correction. RMA-normalized expression data is provided in log base 2 scale.",
+                        "Platform ID": "GPL96"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE21122_RAW.tar",
+                        "file_size": "545.1 Mb",
+                        "file_type": "TAR (of CEL)",
+                        "download_link": "/geo/download/?acc=GSE21122&format=file"
+                    }
+                ]
+            }
+        },
+        "TCGA": {}
+    },
+    "all": {
+        "GEO": {
+            "GSE159659": {
+                "Status": "Public on Mar 10, 2021",
+                "Title": "Genomic characterization of well differentiated/dedifferentiated retroperitoneal liposarcoma",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by array",
+                "Summary": "An integrated profiling approach was performed to define molecular alterations associated to the aggressive behavior of retroperitoneal dedifferentiated liposarcoma. In particular, matched well and dedifferentiated components as well as normal adipose tissues, obtained from the same tumor sites, were comparatively investigated to higlight differences in gene expression.",
+                "Overall design": "Gene expression of dedifferentiated, well differentiated and normal adipose tissue was generated using clarioms array",
+                "Platforms": "Platforms (1), GPL23159, [Clariom_S_Human] Affymetrix Clariom S Assay, Human (Includes Pico Assay)",
+                "Samples": {
+                    "GSM4837048": {
+                        "link": "/geo/query/acc.cgi?acc=GSM4837048",
+                        "name": "dedifferentiated liposarcoma, patient 5",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM4837048_JX65.CEL.gz",
+                                "file_size": "1.1 Mb",
+                                "file_type": "CEL",
+                                "download_link": "/geo/download/?acc=GSM4837048&format=file&file=GSM4837048%5FJX65%2ECEL%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Mar 10, 2021",
+                        "Title": "dedifferentiated liposarcoma, patient 5",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "tissue: dedifferentiated liposarcoma",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "RNA was extracted from snap-frozen tissues using Qiagen RNeasy kit purification performed according to the manufacturer's instructions.",
+                        "Description": "gene expression data from retroperitoneal liposarcoma patient",
+                        "Data processing": "Arrays were RMA normalized (Irizarry et al. 2003) and differential expression determined using the following R packages from the Bioconductor project: oligo (Carvalho et al. 2010), limma (Smyth 2004).",
+                        "Platform ID": "GPL23159"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE159659_RAW.tar",
+                        "file_size": "47.7 Mb",
+                        "file_type": "TAR (of CEL)",
+                        "download_link": "/geo/download/?acc=GSE159659&format=file"
+                    }
+                ]
+            },
+            "GSE159848": {
+                "Status": "Public on Dec 31, 2022",
+                "Title": "Expression data from 50 mixoid liposarcomas",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by array",
+                "Summary": "Based on the transcriptome analysis of 555 sarcomas, we identified a group of tightly clustered leiomyosarcomas (LMS) due to their gene expression homogeneity. We named them “hLMS” and the other LMS “oLMS”. We derived a transcriptional signature able to identify each group and used it to classify patients from two independent cohorts. In all cohorts, hLMS were preferentially carried by women, located in the internal trunk, highly differentiated, and similarly altered at the genomic level. Based on integrative bioinformatic analysis, we show that hLMS originate from vascular smooth muscle cells presenting both contractile and synthetic characteristics, while oLMS could derive from fibroblasts. We found strong MYOCD expression to be an hLMS-specific driver and show that the MYOCD/SRF axis is essential only for hLMS survival. Identification of hLMS could become standard clinical practice, leading to the development of specific effective treatments with MYOCD/SRF inhibitors.",
+                "Overall design": "50 mixoid liposarcomas hybridized to Agilent-014850 Whole Human Genome Microarray 4x44K G4112F",
+                "Platforms": "Platforms (1), GPL6480, Agilent-014850 Whole Human Genome Microarray 4x44K G4112F (Probe Name version)",
+                "Samples": {
+                    "GSM4848353": {
+                        "link": "/geo/query/acc.cgi?acc=GSM4848353",
+                        "name": "mLPS1",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM4848353_053135_DY769_1_2.txt.gz",
+                                "file_size": "1.9 Mb",
+                                "file_type": "TXT",
+                                "download_link": "/geo/download/?acc=GSM4848353&format=file&file=GSM4848353%5F053135%5FDY769%5F1%5F2%2Etxt%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Dec 31, 2022",
+                        "Title": "mLPS1",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "Sex: Mage: 44subject status/id: mixoid liposarcoma patient 1metastasis: 0time_mfs: 9.78630136986301os: 0time_os: 9.78630136986301location: Extremitiesgrade: 1differentiation: 2",
+                        "Treatment protocol": "Frozen tissue",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "Total RNA were extracted from frozen tumor samples using the miRNeasy® Mini Kit (Qiagen) and purified using the RNeasy® Min Elute TM Cleanup Kit (Qiagen) according to the manufacturer’s procedures. RNA quality was checked on an Agilent 2100 bioanalyzer (Agilent Technologies, Santa Clara, CA, USA).",
+                        "Description": "DY769",
+                        "Data processing": "For each series all microarrays were simultaneously normalized using the Quantile algorithm.",
+                        "Platform ID": "GPL6480"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE159848_RAW.tar",
+                        "file_size": "96.6 Mb",
+                        "file_type": "TAR (of TXT)",
+                        "download_link": "/geo/download/?acc=GSE159848&format=file"
+                    }
+                ]
+            },
+            "GSE30929": {
+                "Status": "Public on Sep 02, 2011",
+                "Title": "Whole-transcript expression data for liposarcoma",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by array",
+                "Summary": "Liposarcoma is the most common soft tissue sarcoma, accounting for about 20% of cases. Liposarcoma is classified into 5 histologic subtypes that fall into 3 biological groups characterized by specific genetic alterations. To identify genes that contribute to liposarcomagenesis and to better predict outcome for patients with the disease, we undertook expression profiling of liposarcoma. U133A expression profiling was performed on 140 primary liposarcoma samples, which were randomly split into training set (n=95) and test set (n=45). A multi-gene predictor for distant recurrence-free survival (DRFS) was developed using the supervised principal component method. Expression levels of the 588 genes in the predictor were used to calculate a risk score for each patient. In validation of the predictor in the test set, patients with low risk score had a 3-year DRFS of 83% vs. 45% for high risk score patients (P=0.001). The hazard ratio for high vs. low score, adjusted for histologic subtype, was 4.42 (95% confidence interval 1.26-15.55; P=0.021). The concordance probability for risk score was 0.732.  Genes related to adipogenesis, DNA replication, mitosis, and spindle assembly checkpoint control were all highly represented in the multi-gene predictor. Three genes from the predictor, TOP2A, PTK7, and CHEK1, were found to be overexpressed in liposarcoma samples of all five subtypes and in liposarcoma cell lines. Knockdown of these genes in liposarcoma cell lines reduced proliferation and invasiveness and increased apoptosis. Thus, genes identified from this predictor appear to have roles in liposarcomagenesis and have promise as therapeutic targets. In addition, the multi-gene predictor will improve risk stratification for individual patients with liposarcoma.",
+                "Overall design": "140 human liposarcoma specimens were profiled on Affymetrix U133A arrays per manufacturer's instructions.",
+                "Platforms": "Platforms (1), GPL96, [HG-U133A] Affymetrix Human Genome U133A Array",
+                "Samples": {
+                    "GSM766533": {
+                        "link": "/geo/query/acc.cgi?acc=GSM766533",
+                        "name": "Sarcoma tumor DD0728",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM766533.CEL.gz",
+                                "file_size": "3.4 Mb",
+                                "file_type": "CEL",
+                                "download_link": "/geo/download/?acc=GSM766533&format=file&file=GSM766533%2ECEL%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Sep 02, 2011",
+                        "Title": "Sarcoma tumor DD0728",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "tissue: primary liposarcomasubtype: dedifferentiatedsample id: DD0728trainingtest: Trainingdrfs: FALSEtt.drfs: 32.95",
+                        "Treatment protocol": "None.",
+                        "Growth protocol": "None.",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "Total RNA was extracted from macro-dissected cryomolds and homogenized in QIAzol lysis reagent.",
+                        "Description": "Soft-tissue sarcomaRe-analysis of GSM528276",
+                        "Data processing": "Signal intensity was generated with Affymetrix Microarray Suite v5 software, and expression was estimated with robust multi-array average (RMA).",
+                        "Platform ID": "GPL96"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE30929_RAW.tar",
+                        "file_size": "477.0 Mb",
+                        "file_type": "TAR (of CEL)",
+                        "download_link": "/geo/download/?acc=GSE30929&format=file"
+                    }
+                ]
+            },
+            "GSE21122": {
+                "Status": "Public on Jul 06, 2010",
+                "Title": "Whole-transcript expression data for soft-tissue sarcoma tumors and control normal fat specimens",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by array",
+                "Summary": "Soft tissue sarcomas are aggressive mesenchymal cancers that affect more than 10,600 new patients per year in the US, about 40% of whom will die of their disease. Soft tissue sarcomas exhibit remarkable histologic diversity, with more than 50 recognized subtypes, but our knowledge of their genomic alterations is limited. Here we describe the results of an integrative analysis of DNA sequence, copy number, and mRNA expression in 207 samples encompassing seven major subtypes. Genes mutated in more than 5% of samples within a subtype were KIT (in gastrointestinal stromal cell tumors, or GISTs), TP53 (pleomorphic liposarcomas), PIK3CA (myxoid/round-cell liposarcoma), and NF1 (both myxofibrosarcoma and pleomorphic liposarcoma). We show evidence that PIK3CA mutations, found in 18% of myxoid/round-cell liposarcomas, activate AKT in vivo and are associated with poor outcomes. Point mutations in the tumor suppressor gene NF1 were discovered in both myxofibrosarcomas and pleomorphic liposarcomas, while genomic deletions were observed in all subtypes at varying frequencies. Finally, we found that short hairpin RNA-based knockdown of a subset of genes that are amplified in dedifferentiated liposarcoma, including CDK4 and YEATS4, decreased cell proliferation. Our study yields the most detailed map of molecular alterations across diverse sarcoma subtypes to date and provides potential subtype-specific targets for therapy.",
+                "Overall design": "Human soft-tissue sarcoma specimens were profiled on Affymetrix U133A arrays per manufacturer's instructions.",
+                "Platforms": "Platforms (1), GPL96, [HG-U133A] Affymetrix Human Genome U133A Array",
+                "Samples": {
+                    "GSM528276": {
+                        "link": "/geo/query/acc.cgi?acc=GSM528276",
+                        "name": "Sarcoma tumor PT1DD",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM528276.CEL.gz",
+                                "file_size": "3.4 Mb",
+                                "file_type": "CEL",
+                                "download_link": "/geo/download/?acc=GSM528276&format=file&file=GSM528276%2ECEL%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Jul 06, 2010",
+                        "Title": "Sarcoma tumor PT1DD",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "tissue: Soft-tissue sarcomadisease status: Liposarcoma:Dedifferentiatedsample id: PT1DD",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "Total RNA was extracted from macro-dissected cryomolds and homogenized in QIAzol lysis reagent",
+                        "Description": "Gene expression data from soft-tissue sarcoma tumor",
+                        "Data processing": "Signal intensity data was generated with Affymetrix Microarray Suite version 5.0 software with default parameters. Expression values were estimated with robust multi-array average (RMA) using standard background correction. RMA-normalized expression data is provided in log base 2 scale.",
+                        "Platform ID": "GPL96"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE21122_RAW.tar",
+                        "file_size": "545.1 Mb",
+                        "file_type": "TAR (of CEL)",
+                        "download_link": "/geo/download/?acc=GSE21122&format=file"
+                    }
+                ]
+            }
+        },
+        "TCGA": {}
+    }
+}

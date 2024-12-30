@@ -31,7 +31,7 @@ function InnerComponent({ steps }) {
                 <Button onClick={handleExpandedAll} variant='contained'
                     sx={{ mr: 6,mb: 1,textTransform: 'none' }}
                 >
-                    {expandedAll ? 'Collapse All Parts' : 'Expand All Steps'}
+                    {expandedAll ? 'Collapse All Steps' : 'Expand All Steps'}
                 </Button>
             </Box>
             {Object.entries(steps).slice(1).map(([step, details], index) => {

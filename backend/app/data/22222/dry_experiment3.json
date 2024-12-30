@@ -1,0 +1,198 @@
+{
+    "Part 1": [
+        {
+            "task_id": "Part 1-dry-experiment-1",
+            "task_description": "Download raw gene counts for tumor and normal tissue samples from the Recount3 R package using the provided R commands.",
+            "input": "Recount3 R package (version 1.0), internet connection, R commands for data download.",
+            "output": "Raw gene count data files in RSE format for TCGA-SARC and GTEx projects, stored locally."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-2",
+            "task_description": "Process raw reads using STAR and Megadepth pipeline, align and quantify reads to UCSC hg38 assembly.",
+            "input": "Raw reads, STAR software (version 2.7.3a) with specific parameters, Megadepth software (version 1.0.1), UCSC hg38 genome assembly.",
+            "output": "Aligned and quantified read data files in BAM and BigWig formats."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-3",
+            "task_description": "Verify data integrity by checking file sizes and using checksums.",
+            "input": "Downloaded data files, file size information, checksum tools.",
+            "output": "Verified data files with confirmed integrity, documented verification process."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-4",
+            "task_description": "Filter and select high-quality tumor and normal samples based on quality metrics using tools like FastQC.",
+            "input": "Aligned and quantified read data files, quality metrics (e.g., percentage of aligned reads > 70%), FastQC software.",
+            "output": "Filtered and selected sample data files, documented filtering process."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-5",
+            "task_description": "Preprocess raw gene counts by mapping genomic features to an Entrez ID using the org.Hs.eg.db Bioconductor package.",
+            "input": "Raw gene count data files, org.Hs.eg.db Bioconductor package (version 3.12.0).",
+            "output": "Gene count data files with genomic features mapped to Entrez IDs."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-6",
+            "task_description": "Normalize the downloaded raw counts for all samples using the Trimmed Mean of M-values (TMM) method with the edgeR package.",
+            "input": "Gene count data files with Entrez IDs, edgeR package (version 3.32.1).",
+            "output": "Normalized gene count data files."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-7",
+            "task_description": "Obtain normalized counts in the log scale using the voom function from the limma package.",
+            "input": "Normalized gene count data files, limma package (version 3.46.0).",
+            "output": "Log-scale normalized gene count data files."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-8",
+            "task_description": "Perform quality control checks including data distribution visualization and outlier detection using specific tools.",
+            "input": "Log-scale normalized gene count data files, visualization tools (e.g., ggplot2), outlier detection methods.",
+            "output": "Quality control reports in PDF format, visualizations in PNG format, documented handling of issues."
+        }
+    ],
+    "Part 2": [
+        {
+            "task_id": "Part 2-dry-experiment-1",
+            "task_description": "Perform quality control checks on the raw sequencing data using FastQC to assess overall data quality.",
+            "input": "Raw sequencing data files in FASTQ format.",
+            "output": "Quality control reports in HTML format detailing metrics such as read quality, GC content, and sequence duplication levels."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-2",
+            "task_description": "Trim low-quality bases and remove adapter sequences from the raw reads using Trimmomatic to improve data quality.",
+            "input": "Raw sequencing data files in FASTQ format.",
+            "output": "Trimmed sequencing data files in FASTQ format with enhanced read quality and removed adapter sequences."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-3",
+            "task_description": "Align the trimmed reads to the reference genome using STAR aligner to prepare for expression quantification.",
+            "input": "Trimmed sequencing data files in FASTQ format and reference genome (GRCh38) in FASTA format.",
+            "output": "Aligned sequencing data files in BAM format, ready for downstream expression analysis."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-4",
+            "task_description": "Calculate expression levels of transcripts in Transcripts Per Million (TPM) using RSEM for quantification.",
+            "input": "Aligned sequencing data files in BAM format and reference genome annotations.",
+            "output": "Expression data files in text format detailing expression levels in TPM, facilitating comparison across samples."
+        }
+    ],
+    "Part 3": [
+        {
+            "task_id": "Part 3-dry-experiment-1",
+            "task_description": "Collect and normalize RNA-seq and single-cell sequencing data for analysis.",
+            "input": "Datasets GSE221492 and GSE221493, containing RNA-seq data from 80 cases and single-cell sequencing data from 10 cases, aligned to the GRCh38 reference genome. Data should be in FASTQ format.",
+            "output": "Normalized RNA-seq and single-cell sequencing data using TPM values, in CSV or TSV format, suitable for downstream analysis."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-2",
+            "task_description": "Preprocess data by filtering out low-quality reads and samples using specific tools and parameters.",
+            "input": "Normalized RNA-seq and single-cell sequencing data files, with quality metrics including mapping rates and mitochondrial read percentages. Use tools like FastQC for quality assessment and Trimmomatic for trimming with parameters set for a minimum quality score of 20 and a minimum read length of 50.",
+            "output": "High-quality RNA-seq and single-cell sequencing data files, excluding samples with more than 20% mitochondrial reads, in a clean CSV or TSV format."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-3",
+            "task_description": "Conduct differential expression analysis using DESeq2 and edgeR with specific parameters.",
+            "input": "Filtered RNA-seq and single-cell sequencing data, with metadata on sample conditions (highly differentiated vs dedifferentiated liposarcoma). DESeq2 and edgeR analysis scripts with specified parameters, including a significance threshold of adjusted p-value < 0.05.",
+            "output": "List of differentially expressed genes (DEGs) with adjusted p-values < 0.05, corrected for multiple testing using the Benjamini-Hochberg method, in a detailed table format."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-4",
+            "task_description": "Correct for batch effects in the differential expression analysis using statistical models.",
+            "input": "Differential expression analysis setup including batch effect variables such as sequencing batch or sample source. Use statistical models like ComBat from the sva package or limma with parameters specified for batch correction.",
+            "output": "Adjusted list of DEGs that account for potential confounding factors due to batch effects, in a refined table format."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-5",
+            "task_description": "Perform Gene Ontology (GO) enrichment analysis on DEGs and validate results.",
+            "input": "List of DEGs identified from differential expression analysis. Use the enrichR package and relevant GO databases for analysis.",
+            "output": "Enriched GO terms related to biological processes with adjusted p-values < 0.05, validated against known biological processes using criteria such as literature support and database cross-references, in a summarized report format."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-6",
+            "task_description": "Conduct KEGG pathway analysis to identify enriched metabolic pathways and validate against literature.",
+            "input": "List of DEGs from differential expression analysis. Use the KEGG database and clusterProfiler package for analysis.",
+            "output": "Significantly enriched KEGG pathways with adjusted p-values < 0.05, validated against existing literature using criteria such as pathway relevance and biological significance, in a comprehensive report format."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-7",
+            "task_description": "Perform Gene Set Enrichment Analysis (GSEA) for metabolic pathways and validate results.",
+            "input": "Normalized expression data and the Molecular Signatures Database (MSigDB) gene sets. Use GSEA software with specified parameters, including an FDR significance threshold < 0.05.",
+            "output": "Enriched metabolic pathways and processes with FDR < 0.05, validated for biological relevance using criteria such as pathway involvement in disease states and literature support, in an organized report format."
+        }
+    ],
+    "Part 4": [
+        {
+            "task_id": "Part 4-dry-experiment-1",
+            "task_description": "Processing raw sequencing data using Cell Ranger (v6.0.0) to generate a gene-cell matrix.",
+            "input": "Raw sequencing data files from Illumina NovaSeq 6000 platform; Type: FASTQ files, GRCh38 reference genome",
+            "output": "Gene-cell matrix with aligned reads to the GRCh38 reference genome; Type: Matrix file (HDF5 or CSV)"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-2",
+            "task_description": "Integration and clustering of scRNA-seq data using Seurat (v4.1.0), including SCTransform, FindNeighbors, and FindClusters functions.",
+            "input": "Gene-cell matrix from Cell Ranger; Type: Matrix file (HDF5 or CSV)",
+            "output": "Clustered single-cell data with UMAP plots and identified cell clusters; Type: Seurat object (RDS) and visualization plots (PNG or PDF)"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-3",
+            "task_description": "Differential gene expression analysis to identify tumor cell clusters using Seurat, employing a Wilcoxon rank sum test with Bonferroni correction.",
+            "input": "Clustered single-cell data from Seurat; Type: Seurat object (RDS)",
+            "output": "List of differentially expressed genes with statistical significance (log2-fold change ≥0.4, adjusted p-value ≤0.05); Type: Dataframe (CSV or TSV)"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-4",
+            "task_description": "Pathway analysis using Toppfun to identify enriched metabolic pathways with a p-value cutoff of 0.05.",
+            "input": "List of differentially expressed genes; Type: Dataframe (CSV or TSV)",
+            "output": "List of enriched metabolic pathways with statistical significance (p-value ≤0.05); Type: Dataframe (CSV or TSV)"
+        },
+        {
+            "task_id": "Part 4-dry-experiment-5",
+            "task_description": "Validation of bulk RNA-seq findings with single-cell RNA-seq data, using DESeq2 for differential expression analysis and statistical tests for consistency assessment.",
+            "input": "Bulk RNA-seq data from GSE221492 and single-cell RNA-seq data from GSE221493; Type: Sequence data files (FASTQ), GRCh38 reference genome",
+            "output": "Comparison results showing consistency in expression patterns and pathway enrichment; Type: Statistical analysis report (PDF or DOCX)"
+        }
+    ],
+    "Part 5": [
+        {
+            "task_id": "Part 5-dry-experiment-1",
+            "task_description": "Identify and download independent RNA-seq datasets for liposarcoma from GEO, focusing on datasets that include both WDLPS and DDLPS samples.",
+            "input": "GEO database identifiers (GSE201056 and GSE213300) for RNA-seq datasets containing WDLPS and DDLPS samples in FASTQ format.",
+            "output": "Raw gene expression data files (FASTQ) downloaded from GEO."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-2",
+            "task_description": "Process raw RNA-seq data by aligning reads to the GRCh38 reference genome using STAR version 2.7.9a and normalizing expression data using TPM values.",
+            "input": "Raw RNA-seq data files (FASTQ) and GRCh38 reference genome.",
+            "output": "Normalized gene expression data in TPM values and alignment results in BAM format."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-3",
+            "task_description": "Perform quality control checks on RNA-seq data to ensure data integrity using FastQC version 0.11.9.",
+            "input": "Processed RNA-seq data files (FASTQ).",
+            "output": "Quality control reports generated by FastQC in HTML format."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-4",
+            "task_description": "Re-evaluate differential expression using DESeq2 version 1.30.1 to confirm consistency in independent datasets.",
+            "input": "Normalized gene expression data (TPM values) and list of DEGs from Part 3 and Part 4.",
+            "output": "List of validated DEGs with adjusted p-values < 0.05 in CSV format."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-5",
+            "task_description": "Perform pathway enrichment analysis using validated DEGs to identify key metabolic pathways with the clusterProfiler package version 3.18.1.",
+            "input": "List of validated DEGs and KEGG database version corresponding to GRCh38.",
+            "output": "Enrichment analysis results including significant metabolic pathways and their enrichment scores in a tabular format."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-6",
+            "task_description": "Visualize enriched pathways using dot plots and pathway maps generated with ggplot2 version 3.3.3.",
+            "input": "Enrichment analysis results with significant pathways.",
+            "output": "Visual representations of enriched pathways (dot plots and pathway maps) in image format (e.g., PNG, PDF)."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-7",
+            "task_description": "Cross-validate pathway enrichment results with additional publicly available datasets using the same parameters and criteria as the initial pathway enrichment analysis.",
+            "input": "Publicly available datasets (GSE179720 and GSE221492) containing liposarcoma samples and expression data in FASTQ format.",
+            "output": "Cross-validation results showing common and novel metabolic pathways across datasets in a summary report format (e.g., PDF, DOCX)."
+        }
+    ]
+}

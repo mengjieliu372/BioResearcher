@@ -9,7 +9,7 @@ import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 
-function InnerComponent({part, steps, analysis}) {
+function InnerComponent({ part, steps, analysis }) {
     const [expandedAll, setExpandedAll] = useState(false);
     const [expandedArray, setExpandedArray] = useState(Array(Object.keys(steps).length).fill(false));
     const handleExpandedAll = () => {
@@ -24,22 +24,27 @@ function InnerComponent({part, steps, analysis}) {
         newArray[index] = !newArray[index];
         setExpandedArray(newArray);
     };
-    
+
     return (
         <Box>
-            <Box>
-                <Typography variant='h5' >Reference Reason:</Typography>
-                {analysis[part]["Reason"]}
-            </Box>
-            <Box>
-                <Typography variant='h5' >Suggestions:</Typography>
-                {analysis[part]["Suggestions"]}
-            </Box>
+            {analysis[part] && (
+                <>
+                    <Box>
+                        <Typography variant="h5">Reference Reason:</Typography>
+                        {analysis[part]["Reason"]}
+                    </Box>
+                    <Box>
+                        <Typography variant="h5">Suggestions:</Typography>
+                        {analysis[part]["Suggestions"]}
+                    </Box>
+                </>
+            )}
+
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button onClick={handleExpandedAll} variant='contained'
-                    sx={{ mr: 6,mb: 1,textTransform: 'none' }}
+                    sx={{ mr: 6, mb: 1, textTransform: 'none' }}
                 >
-                    {expandedAll ? 'Collapse All Parts' : 'Expand All Steps'}
+                    {expandedAll ? 'Collapse All Steps' : 'Expand All Steps'}
                 </Button>
             </Box>
             {Object.entries(steps)
@@ -98,7 +103,7 @@ export default function RenderContent({ report, analysis }) {
         <Box>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button onClick={handleExpandedAll} variant='contained'
-                    sx={{ mr: 6,mb: 1,textTransform: 'none' }}
+                    sx={{ mr: 6, mb: 1, textTransform: 'none' }}
                 >
                     {expandedAll ? 'Collapse All Parts' : 'Expand All Parts'}
                 </Button>
@@ -113,17 +118,19 @@ export default function RenderContent({ report, analysis }) {
                     >
                         {part + ": " + steps[part]}
                         <Box sx={{ ml: 'auto' }}>
-                            <Chip
-                                label={`Referability: ${analysis[part]["Referability"]}`}
-                                color={
-                                    analysis[part]["Referability"] === 'High'
-                                        ? 'success'
-                                        : analysis[part]["Referability"] === 'Medium'
-                                            ? 'warning'
-                                            : 'error'
-                                }
-                                size="small"
-                            />
+                            {analysis[part] && analysis[part]["Referability"] && (
+                                <Chip
+                                    label={`Referability: ${analysis[part]["Referability"]}`}
+                                    color={
+                                        analysis[part]["Referability"] === 'High'
+                                            ? 'success'
+                                            : analysis[part]["Referability"] === 'Medium'
+                                                ? 'warning'
+                                                : 'error'
+                                    }
+                                    size="small"
+                                />
+                            )}
                         </Box>
                     </AccordionSummary>
                     <AccordionDetails>

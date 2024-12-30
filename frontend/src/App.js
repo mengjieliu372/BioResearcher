@@ -22,7 +22,7 @@ function App() {
         <Route path="/new-project" element={<NewProject />} />
         <Route path="/manage-project" element={<ManageProject />} />
         <Route path=":id/steps" element={<Steps />}>
-          <Route index element={<Navigate to="search" />} />
+          <Route index element={<Navigate to="search"/>} />
           <Route path="search" element={<Search />} />
           <Route path="literature-processing" element={<LiteratureProcessing />} />
           <Route path="experimental-design" element={<ExperimentalDesign />} />

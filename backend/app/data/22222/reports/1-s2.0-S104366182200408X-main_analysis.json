@@ -1,0 +1,51 @@
+{
+    "Part 1": {
+        "Title": "Transcriptomic analysis of liposarcoma cells",
+        "Referability": "High",
+        "Reason": "The protocol provides detailed steps for RNA sequencing and transcriptomic analysis of liposarcoma cells, which aligns well with the objective of analyzing differences in metabolic characteristics between highly differentiated and dedifferentiated liposarcoma.",
+        "Suggestions": "You can use the RNA sequencing methods and datasets mentioned, including the cell lines and control samples, to compare the metabolic characteristics. Ensure to include the same RNA extraction and sequencing protocols for consistency. Additionally, explicitly mention the focus on metabolic genes during the analysis steps. For example, highlight how the RNA-seq data will be analyzed to identify metabolic pathways and genes. Cite studies that have successfully used similar RNA-seq methods to study metabolic characteristics in cancer."
+    },
+    "Part 2": {
+        "Title": "Characterization of novel lncRNA TODL",
+        "Referability": "Medium",
+        "Reason": "While the focus is on the characterization of a specific lncRNA (TODL), the methods for RNA preparation, qPCR validation, and subcellular localization can be adapted for analyzing metabolic gene expression in liposarcoma.",
+        "Suggestions": "Adapt the RNA preparation and qPCR validation methods for your target metabolic genes. Use the subcellular localization techniques to study the localization of metabolic-related RNAs. Provide specific steps for processing available frozen samples and paraffin sections for RNA extraction and sequencing. For instance, describe the protocols for RNA extraction from frozen tissue and paraffin sections, ensuring RNA integrity for downstream applications. Reference protocols that have been used for RNA extraction from similar sample types."
+    },
+    "Part 3": {
+        "Title": "TODL lncRNA promotes liposarcoma cellular progression",
+        "Referability": "Medium",
+        "Reason": "The silencing and overexpression experiments provide useful insights into the functional analysis of genes, which can be applied to study metabolic genes in liposarcoma.",
+        "Suggestions": "Apply the siRNA and shRNA silencing techniques to your target metabolic genes. Use the proliferation and viability assays to assess the impact of metabolic gene silencing on liposarcoma cell lines. Include specific examples of metabolic genes that will be studied and explain how the experimental protocols will be tailored to analyze these genes. For example, identify key metabolic genes implicated in liposarcoma and describe how their silencing or overexpression will be validated and analyzed. Reference studies that have used similar gene silencing techniques to study metabolic pathways."
+    },
+    "Part 4": {
+        "Title": "TODL lncRNA affects in vivo tumorigenicity of liposarcoma in mice",
+        "Referability": "Medium",
+        "Reason": "The in vivo tumorigenicity assays are relevant for studying the effects of metabolic genes on liposarcoma progression in animal models.",
+        "Suggestions": "Use the xenograft model protocols to study the impact of metabolic gene knockdown or overexpression on tumor growth. Monitor tumor development and perform histological analysis to assess metabolic changes. Provide more specific details on how to utilize the available frozen samples and paraffin sections in the context of the experimental protocols. For example, describe how to prepare these samples for injection into mice and subsequent analysis. Reference studies that have used similar xenograft models to study metabolic gene function in cancer."
+    },
+    "Part 5": {
+        "Title": "TODL lncRNA controls cell cycle progression of liposarcoma cells",
+        "Referability": "Medium",
+        "Reason": "The cell cycle synchronization and flow cytometry analysis methods can be adapted to study the effects of metabolic gene alterations on cell cycle progression in liposarcoma.",
+        "Suggestions": "Synchronize liposarcoma cells and analyze the expression of metabolic genes at different cell cycle phases. Use flow cytometry to assess the impact of metabolic gene knockdown on cell cycle and apoptosis. Include more references to specific studies or datasets that support the chosen methods. For instance, cite studies that have used similar synchronization and flow cytometry techniques to study metabolic genes."
+    },
+    "Part 6": {
+        "Title": "Inhibition of TODL induces morphological changes in dedifferentiated liposarcoma cells",
+        "Referability": "Medium",
+        "Reason": "The morphological analysis and EMT-associated transcription factor analysis can be adapted to study the effects of metabolic gene alterations on cell morphology and differentiation.",
+        "Suggestions": "Observe morphological changes and analyze EMT-associated transcription factors in metabolic gene-silenced cells. Induce adipogenesis and perform oil-red staining to assess differentiation changes. Provide detailed explanations for the suggested modifications to fit the research conditions. For example, describe how to induce and assess adipogenesis in liposarcoma cells with metabolic gene alterations. Reference studies that have examined morphological changes and EMT factors in cancer cells with altered metabolic gene expression."
+    },
+    "Part 7": {
+        "Title": "FOXM1 in liposarcoma contributes to the disease pathogenesis",
+        "Referability": "Medium",
+        "Reason": "The analysis of FOXM1 expression and its downstream effects provides a framework for studying the role of metabolic genes in liposarcoma pathogenesis.",
+        "Suggestions": "Analyze the expression of metabolic genes in liposarcoma using TCGA data. Perform functional assays to assess the impact of metabolic gene knockdown on cell proliferation and apoptosis. Include specific examples of metabolic genes and how the experimental protocols will be tailored to analyze these genes. For example, identify metabolic pathways that are dysregulated in liposarcoma and describe how these pathways will be investigated. Reference studies that have used TCGA data to study gene expression and function in cancer."
+    },
+    "Part 8": {
+        "Title": "TODL regulates oncogenic transcription factor FOXM1 in dedifferentiated liposarcoma",
+        "Referability": "Medium",
+        "Reason": "The RNA pull-down and protein interaction assays can be adapted to study the interactions between metabolic genes and transcription factors in liposarcoma.",
+        "Suggestions": "Perform RNA pull-down assays to identify proteins interacting with metabolic RNAs. Validate interactions using western blotting and analyze downstream effects on cell cycle and proliferation. Include more references to specific studies or datasets that support the chosen methods. For example, cite studies that have used RNA pull-down assays to identify protein interactions with metabolic RNAs."
+    },
+    "Referability": 0.125
+}

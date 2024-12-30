@@ -1,0 +1,162 @@
+{
+    "Part 1": [
+        {
+            "task_id": "Part 1-dry-experiment-1",
+            "task_description": "Identify Differentially Expressed Genes (DEGs) in Liposarcoma using GEO2R.",
+            "input": "Datasets GSE21122, GSE159659, GSE30929, and GSE159848. Each dataset includes expression data for soft-tissue sarcoma samples categorized by disease status and subtypes of liposarcoma. The input data should be in the form of raw or normalized expression values, typically in a tabular format with gene identifiers.",
+            "output": "A list of DEGs that meet the criteria of p-value < 0.05 and fold-change > 2, along with their associated p-values and fold changes. The output is expected in a tabular format (e.g., CSV or Excel) with columns for gene name, p-value, and fold change."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-2",
+            "task_description": "Conduct functional annotation of identified DEGs using the DAVID tool.",
+            "input": "List of DEGs identified from GEO2R analysis, formatted for input into DAVID. The list should include gene identifiers such as gene symbols or Entrez IDs, typically in a plain text or tab-separated format.",
+            "output": "Top 10 enriched terms for biological process, cellular component, and molecular function categories, along with their corresponding p-values. Outputs are presented in tabular format, detailing the terms and their significance levels."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-3",
+            "task_description": "Perform pathway enrichment analysis using the KEGG database.",
+            "input": "List of DEGs from the previous analysis, consisting of gene identifiers formatted for KEGG pathway analysis, which should include symbols or IDs compatible with KEGG's database.",
+            "output": "Top 10 significantly enriched pathways, including their respective p-values and the number of DEGs involved in each pathway. The output should be in tabular format, specifying pathway names, p-values, and DEG counts."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-4",
+            "task_description": "Correlate DEGs with immune response mechanisms through literature research.",
+            "input": "List of DEGs from previous analyses, focusing on immune-related genes among them, supplemented with existing literature references that link these genes to immune responses in liposarcoma. This may include articles, reviews, and clinical studies.",
+            "output": "A summary of key immune-related genes from the DEG list, including their roles based on existing studies, along with implications for therapeutic strategies targeting the immune microenvironment in liposarcoma. The output should be in written format, detailing findings and citations."
+        }
+    ],
+    "Part 2": [
+        {
+            "task_id": "Part 2-dry-experiment-1",
+            "task_description": "Analyze immune checkpoint and membrane marker expression across liposarcoma samples using RNA sequencing data.",
+            "input": "RNA sequencing data from GSE202361 and GSE243904, focusing on immune checkpoint genes like PD-1, PD-L1, CTLA-4, and others. Data type: RNA sequencing count data.",
+            "output": "Quantified expression levels of immune checkpoint markers, statistical analysis results including p-values and FDR adjustments, and a heatmap visualizing expression patterns. Output types: numerical expression data, statistical analysis results, and graphical heatmap in PNG format."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-2",
+            "task_description": "Estimate immune cell proportions using CIBERSORTx.",
+            "input": "Bulk RNA sequencing data from GSE202361 and GSE243904 uploaded to the CIBERSORTx web portal, using leukocyte signature matrix version 2.0. Data type: bulk RNA sequencing count data, which should be preprocessed to remove any low-quality reads and normalized if necessary.",
+            "output": "Proportions of various immune cell types within each tumor sample, exported for further analysis. Output type: numerical data representing immune cell proportions in CSV format."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-3",
+            "task_description": "Correlate immune cell distributions with differentially expressed genes (DEGs).",
+            "input": "Immune cell proportions obtained from CIBERSORTx and expression levels of DEGs identified in Part 1. Data types: numerical immune cell proportion data and numerical DEG expression data.",
+            "output": "Results of correlation analysis using Pearson or Spearman correlation coefficients, assessing the relationship between immune cell types and DEGs, along with visualizations of correlation plots. Output type: statistical correlation results and graphical representations."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-4",
+            "task_description": "Conduct Kaplan-Meier survival analysis correlating patient outcomes with immune cell distributions and DEGs.",
+            "input": "Survival data of patients along with immune cell distributions and DEGs data for correlation analysis. Data types: survival data (numerical and categorical) and numerical immune cell proportion and DEG data.",
+            "output": "Kaplan-Meier survival plots and statistical results assessing prognostic value, including hazard ratios and log-rank test p-values. Output types: graphical survival plots in PDF format and statistical analysis results."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-5",
+            "task_description": "Characterize immune cell populations and their functional implications in the tumor microenvironment.",
+            "input": "Data on immune cell subpopulations identified in step 2 and findings from the DEG analysis. Data types: numerical immune cell population data and numerical DEG expression data.",
+            "output": "Insights into functional roles of immune cell populations and their relationship to tumor progression and response to therapies, documented in a detailed analytical report. Output type: comprehensive report (PDF) with functional characterization and references to existing literature."
+        }
+    ],
+    "Part 3": [
+        {
+            "task_id": "Part 3-dry-experiment-1",
+            "task_description": "Perform quality control on RNA sequencing data using FastQC to assess the quality of the raw sequencing reads.",
+            "input": "Raw RNA sequencing reads from datasets GSE21122, GSE159659, GSE30929, and GSE159848 in FASTQ format, typically containing sequencing data for multiple samples.",
+            "output": "Quality assessment reports generated by FastQC, including metrics such as Phred quality scores (with a cutoff of 20), GC content, and adapter sequence presence, stored in a designated directory as HTML and text files."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-2",
+            "task_description": "Compile the results from FastQC using MultiQC for easier assessment of quality across all samples.",
+            "input": "FastQC output reports (HTML and text files) for each sample from the previous quality control step.",
+            "output": "A consolidated MultiQC report summarizing the quality metrics of all RNA sequencing samples, stored in a designated directory as an HTML file."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-3",
+            "task_description": "Remove low-quality reads and trim adapter sequences using Trimmomatic.",
+            "input": "Raw RNA sequencing reads in FASTQ format along with specified parameters for trimming: LEADING:20, TRAILING:20, SLIDINGWINDOW:4:20, MINLEN:50.",
+            "output": "Cleaned RNA sequencing reads in FASTQ format, with low-quality reads and adapter sequences removed, stored in a designated directory for further analysis."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-4",
+            "task_description": "Conduct differential gene expression analysis using DESeq2 on the cleaned RNA sequencing data.",
+            "input": "Cleaned RNA sequencing count matrix derived from the cleaned reads, structured as a matrix or data frame with genes as rows and samples as columns, along with metadata indicating experimental conditions (e.g., liposarcoma vs. normal tissue).",
+            "output": "Results of the differential expression analysis, including a CSV file containing significantly differentially expressed genes (DEGs) with columns for gene identifiers, log2 fold changes, p-values, and adjusted p-values."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-5",
+            "task_description": "Perform gene set enrichment analysis (GSEA) to identify relevant pathways and biological processes associated with the identified DEGs.",
+            "input": "List of DEGs ranked by log2 fold change and p-values, along with the KEGG and GO databases for pathway analysis, using a pre-ranked list format.",
+            "output": "Enrichment analysis results detailing enriched pathways and their significance, including visualizations such as dot plots and enrichment plots, saved in a designated directory as PDF files."
+        }
+    ],
+    "Part 4": [
+        {
+            "task_id": "Part 4-dry-experiment-1",
+            "task_description": "Prepare the RNA sequencing data from liposarcoma samples. This step involves normalizing the raw transcriptomic data to ensure comparability across samples.",
+            "input": "RNA sequencing datasets GSE202361, GSE205492, and GSE243904 in .txt or .csv format, containing transcriptomic information relevant to liposarcoma. The datasets should have rows representing genes and columns representing samples.",
+            "output": "Normalized gene expression matrix in TPM (Transcripts Per Million) format, focusing on immune-related genes. The matrix will have gene symbols as rows and samples as columns, with specified dimensions indicating the number of genes and samples."
+        },
+        {
+            "task_id": "Part 4-dry-experiment-2",
+            "task_description": "Run CIBERSORT using the prepared immune-related gene expression matrix. This step estimates the proportions of immune cell types present in each liposarcoma sample.",
+            "input": "The immune-related gene expression matrix prepared from the previous step and the LM22 gene signature file provided by CIBERSORT, which is in .txt format and contains 547 immune cell-specific gene expression profiles.",
+            "output": "CIBERSORT output file saved as a CSV, containing estimated immune cell types and their respective proportions within each liposarcoma sample. The file will include columns for different immune cell types and their estimated proportions."
+        },
+        {
+            "task_id": "Part 4-dry-experiment-3",
+            "task_description": "Analyze the CIBERSORT output to correlate immune cell type distributions with clinical parameters, assessing their impact on patient survival.",
+            "input": "The CIBERSORT output file (CSV) containing immune cell type distributions, along with clinical parameters data, including patient prognosis and treatment outcomes.",
+            "output": "Statistical analysis results, including Kaplan-Meier survival analysis and log-rank test results, reporting on the relationship between specific immune cell populations and patient survival rates. Metrics will include p-values and confidence intervals."
+        },
+        {
+            "task_id": "Part 4-dry-experiment-4",
+            "task_description": "Integrate findings with previously identified differentially expressed genes (DEGs) from Part 1 of the experiment to enhance understanding of immune landscape in liposarcoma.",
+            "input": "Previously identified differentially expressed genes (DEGs) from Part 1 and the results from the CIBERSORT analysis correlating immune cell infiltration with clinical parameters.",
+            "output": "Refined insights into the immune landscape in liposarcoma, detailing how immune cell infiltration impacts gene expression profiles related to immune response mechanisms. The findings will guide potential therapeutic strategies."
+        }
+    ],
+    "Part 5": [
+        {
+            "task_id": "Part 5-dry-experiment-1",
+            "task_description": "Download single-cell sequencing data from the GEO database.",
+            "input": "GSE205492 dataset identifier, which includes raw RNA sequencing data of NK cells, T cells, and tumor samples from matched soft tissue sarcoma and peripheral blood, typically in .txt or .csv format.",
+            "output": "Downloaded raw single-cell RNA sequencing data in a gene expression matrix format, containing counts for individual cells and associated metadata, such as cell identifiers."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-2",
+            "task_description": "Preprocess the single-cell RNA sequencing data to remove low-quality cells and unwanted sources of variation.",
+            "input": "Raw single-cell RNA sequencing data (gene expression matrix) along with quality metrics, including total counts per cell, percentage of mitochondrial genes, and detected genes per cell.",
+            "output": "Processed single-cell RNA sequencing data with low-quality cells filtered out, resulting in a cleaned gene expression matrix ready for further analysis, typically saved as a Seurat object."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-3",
+            "task_description": "Perform quality control checks on the single-cell sequencing data.",
+            "input": "Filtered single-cell RNA sequencing data (gene expression matrix) and predefined quality control thresholds (minimum of 200 detected genes per cell and a maximum of 5% mitochondrial gene expression).",
+            "output": "Quality control report detailing the assessment metrics (e.g., cell viability, RNA integrity, sequencing depth) and a final gene expression matrix of high-quality cells, formatted as a Seurat object."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-4",
+            "task_description": "Normalize the single-cell RNA sequencing data using the Seurat package.",
+            "input": "Filtered single-cell RNA sequencing data (Seurat object) to be normalized with the 'LogNormalize' method, using a scale factor of 10,000.",
+            "output": "Normalized single-cell RNA sequencing data with gene expression values adjusted, output as a Seurat object with normalized counts for downstream analyses."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-5",
+            "task_description": "Identify specific cell types within the immune microenvironment using clustering analysis.",
+            "input": "Normalized single-cell RNA sequencing data (Seurat object) and parameters for clustering (Louvain algorithm with resolution parameter set to 0.5, utilizing the first 20 principal components).",
+            "output": "Clustering results indicating the identified immune cell types, along with a UMAP plot visualizing the distribution of these cell types, saved as image files (e.g., PNG or PDF)."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-6",
+            "task_description": "Correlate single-cell sequencing data with bulk RNA sequencing findings from multiple datasets.",
+            "input": "Normalized single-cell RNA sequencing data (Seurat object) and bulk RNA sequencing datasets (GSE21122, GSE159659, GSE30929) with identified marker genes for immune cells.",
+            "output": "Correlation analysis results, including overlapping gene expression patterns, correlation coefficients, and a statistical report detailing the concordance between single-cell and bulk RNA sequencing data, typically formatted as a summary table."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-7",
+            "task_description": "Perform differential expression analysis to address discrepancies between single-cell and bulk RNA sequencing data.",
+            "input": "Single-cell RNA sequencing data (Seurat object) and bulk RNA sequencing data with expression levels of key immune markers, including lists of differentially expressed genes.",
+            "output": "Differential expression analysis results, detailing similarities and differences in immune cell representation, including lists of differentially expressed genes, visualization plots (e.g., volcano plots), and a summary report."
+        }
+    ]
+}
