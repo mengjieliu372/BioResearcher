@@ -1,6 +1,9 @@
 import RetrievedPapers from '../data/papers/retrieved_papers_info.json';
 import RelatedPapers from '../data/papers/related_papers_info.json';
 
+// import { getSearchModule_paper } from '../services/api';
+
+
 export function classifyPapersByQuery(retrievedPapers) {
   const queries = ['query1', 'query2', 'query3', 'query4', 'query5'];
   const classifiedData = [];
@@ -42,4 +45,18 @@ export function classifyPapersByQuery(retrievedPapers) {
 }
 
 const classifiedPapers = classifyPapersByQuery(RetrievedPapers);
+// // 获取 search 页面信息   仍有bug
+// const projectid = {
+//   id: "22"
+// };
+// const fetchsearch_RetrievedPapers = async () => {
+//   try {
+//     const response = await getSearchModule_paper(projectid);
+//     const classifiedPapers = classifyPapersByQuery(response.data);
+//   }
+//   catch (error) {
+//     console.log('Failed to fetch projects:', error);
+//   }
+// };
+
 export default classifiedPapers;

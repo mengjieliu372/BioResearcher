@@ -1,0 +1,519 @@
+start generating protocol...
+start search paper...
+generating search query token_count:  0 0
+Data searching token_count:  0 0
+
+
+
+Processing paper from search phase.
+paper title: <ArticleTitle>Specific immune landscapes and immune checkpoint expressions in histotypes and molecular subtypes of sarcoma.</ArticleTitle>
+paper path: D:\2024-医学助手-Demo\react_nextjs\project5\BioResearcher\backend\app\data\62367\papers/7458655.pdf
+
+Start to convert...
+Finished. Converting PDF to text costs 1.5117731094360352s.
+extracting D:\2024-医学助手-Demo\react_nextjs\project5\BioResearcher\backend\app\data\62367\papers/7458655.pdf
+Start to convert...
+Finished. Converting PDF to text costs 0.03336000442504883s.
+
+
+
+Processing paper from search phase.
+paper title: <ArticleTitle>Comprehensive Analysis of a Six-Gene Signature Predicting Survival and Immune Infiltration of Liposarcoma Patients and Deciphering Its Therapeutic Significance.</ArticleTitle>
+paper path: D:\2024-医学助手-Demo\react_nextjs\project5\BioResearcher\backend\app\data\62367\papers/11277418.pdf
+
+Start to convert...
+Finished. Converting PDF to text costs 1.492633581161499s.
+extracting D:\2024-医学助手-Demo\react_nextjs\project5\BioResearcher\backend\app\data\62367\papers/11277418.pdf
+Start to convert...
+Finished. Converting PDF to text costs 0.0688319206237793s.
+
+analysis starts ...
+
+
+analysis initialized...
+
+
+analysis ends ...
+
+
+searching for report datasets...
+Details and download links of GSE159659 have got.
+Details and download links of GSE159848 have got.
+Details and download links of GSE30929 have got.
+Details and download links of GSE21122 have got.
+Extract 4 dataset from report, after search got 4 datasets
+
+
+dataset "GSE159659" in GEO is useful to research!
+dataset "GSE159848" in GEO is useful to research!
+dataset "GSE30929" in GEO is useful to research!
+dataset "GSE21122" in GEO is useful to research!
+Got 4 useful dataset
+
+
+保存中间结果（analysis 及之前）...
+
+
+
+Processing paper from search phase.
+paper title: <ArticleTitle>Deciphering the correlation between metabolic activity through 18F-FDG-PET/CT and immune landscape in soft-tissue sarcomas: an insight from the NEOSARCOMICS study.</ArticleTitle>
+paper path: D:\2024-医学助手-Demo\react_nextjs\project5\BioResearcher\backend\app\data\62367\papers/10773028.pdf
+
+Start to convert...
+Finished. Converting PDF to text costs 2.734428882598877s.
+extracting D:\2024-医学助手-Demo\react_nextjs\project5\BioResearcher\backend\app\data\62367\papers/10773028.pdf
+Start to convert...
+Finished. Converting PDF to text costs 0.09426283836364746s.
+
+
+
+first level heading extraction starts ...
+
+
+
+step1:
+ {
+    "Part 1": "Correlation of Metabolic Activity and Immune Landscape in STS",
+    "Part 2": "Metabolic Profiles According to 18F-FDG-PET/CT Correlate with the Immune Landscape of STS",
+    "Part 3": "Transcriptomic Characteristics of the Metabolic Groups",
+    "Part 4": "Validation of Immune Pathway Expression at the Protein Level"
+} 
+
+
+
+
+call times: 4
+
+
+
+first level heading extraction ends ...
+
+
+
+保存中间结果（step1 及之前）...
+
+
+
+Outlines extraction starts ...
+
+
+
+step2:
+```json
+{
+  "Part 1": {
+    "Title": "Correlation of Metabolic Activity and Immune Landscape in STS: A Study Using 18F-FDG-PET/CT and Transcriptomics",
+    "Outline": "I. Introduction to the relevance of 18F-FDG-PET/CT in STS metabolism and immune landscape correlations II. Objective of the study to investigate the relationship between metabolic activity and immune responses"
+  },
+  "Part 2": {
+    "Title": "Metabolic Profiles According to 18F-FDG-PET/CT Correlate with the Immune Landscape of STS",
+    "Outline": "I. Patient recruitment and characteristics II. Extraction of 18F-FDG-PET/CT metrics (SUVs, MTV, TLG) III. Classification of metabolic groups using cross-validated principal component analysis and statistical analysis in R"
+  },
+  "Part 3": {
+    "Title": "Transcriptomic Characteristics of the Metabolic Groups",
+    "Outline": "I. Analysis of RNA sequencing data for metabolic groups II. Differential gene expression analysis between metabolic-low and metabolic-high samples using DESeq2 III. Gene set enrichment analysis to identify relevant pathways"
+  },
+  "Part 4": {
+    "Title": "Validation of Immune Pathway Expression at the Protein Level Using Immunohistochemistry",
+    "Outline": "I. Immunohistochemistry panels for immune cell types (CD8, CD14, etc.) II. Correlation analysis between immune cell densities and metabolic activity as indicated by 18F-FDG-PET/CT"
+  },
+  "Part 5": {
+    "Title": "Conclusion and Future Directions",
+    "Outline": "I. Summary of findings regarding metabolic activity and immune landscape in STS II. Discussion of implications for patient stratification and treatment strategies III. Suggestions for future research to explore the combined potential of TLS status and PET/CT imaging as predictors of STS patient responsiveness to ICIs"
+  }
+}
+```
+
+
+
+call times: 9
+
+
+
+Outline extraction ends ...
+
+
+
+保存中间结果（step2 及之前）...
+
+
+
+step3 starts ...
+
+
+
+step3 multi Part 4 error:  invalid syntax (<string>, line 1)
+step3 multi Part 2 调用次数： 4
+step3 multi Part 3 调用次数： 4
+step3 multi Part 5 调用次数： 5
+step3 multi Part 4 调用次数： 5
+step3 multi Part 1 调用次数： 5
+
+
+当前调用总次数32
+
+
+
+step3 ends ...
+
+
+
+保存中间结果（step3 及之前）...
+
+
+
+step4 starts ...
+
+
+
+step4 multi Part 3 调用次数： 4
+step4 multi Part 5 调用次数： 4
+step4 multi Part 2 调用次数： 4
+step4 multi Part 1 调用次数： 4
+step4 multi Part 4 调用次数： 5
+
+
+当前调用总次数53
+
+
+
+step4 ends ...
+
+
+
+保存中间结果（step4 及之前）...
+
+
+
+step5 starts ...
+
+
+
+step5 multi Part 2 调用次数： 4
+step5 multi Part 3 调用次数： 4
+step5 multi Part 1 调用次数： 4
+step5 multi Part 5 调用次数： 5
+step5 multi Part 4 调用次数： 5
+
+
+当前调用总次数75
+
+
+
+step5 ends ...
+
+
+
+保存中间结果（step5 及之前）...
+
+
+ 总输入 tokens 数目： 1633604 
+
+
+ 总输出 tokens 数目： 47456 
+
+
+extractor 调用总次数： 75 
+
+
+
+analysis starts ...
+
+
+analysis initialized...
+
+
+analysis ends ...
+
+
+searching for report datasets...
+No dataset extract.
+
+
+保存中间结果（analysis 及之前）...
+
+first_level_heading starts ...
+
+到 first_level_heading 总调用次数： 2
+
+first_level_heading ends ...
+
+保存中间结果（first_level_heading 及之前）...
+
+brief_steps starts ...
+
+到 brief_steps 总调用次数： 7
+
+brief_steps ends ...
+
+保存中间结果（brief_steps 及之前）...
+'report_id1'
+'report_id1'
+'report_id1'
+'report_id1'
+'report_id1'
+
+The Part 1 of detailed_steps starts ...
+
+
+The Part 2 of detailed_steps starts ...
+
+
+The Part 3 of detailed_steps starts ...
+
+
+The Part 4 of detailed_steps starts ...
+
+
+The Part 5 of detailed_steps starts ...
+
+detailed_steps Part 1 initialization success.
+detailed_steps Part 3 initialization success.
+detailed_steps Part 5 initialization success.
+detailed_steps Part 2 initialization success.
+detailed_steps Part 4 initialization success.
+detailed_steps Part 3 reflexion success，called 3 times
+
+detailed_steps Part 5 reflexion success，called 3 times
+
+detailed_steps Part 4 reflexion success，called 3 times
+
+detailed_steps Part 1 reflexion success，called 4 times
+
+detailed_steps Part 2 reflexion success，called 4 times
+
+until detailed_steps finished, total call times： 29
+
+detailed_steps ends ...
+
+total call times:  29
+total input tokens:  338337
+total output tokens:  18323
+
+Finished！
+
+token_count:  338337 18323
+translation start...
+translating Part 1...
+translating Part 2...
+translating Part 3...
+translating Part 4...
+translating Part 5...
+translation ended.
+dry experiment extractor starts ...
+
+Dry experiment extraction Part 1 start
+Dry experiment extraction Part 1 complete.
+Dry experiment extraction Part 2 start
+Dry experiment extraction Part 2 complete.
+Dry experiment extraction Part 3 start
+Dry experiment extraction Part 3 complete.
+Dry experiment extraction Part 4 start
+Dry experiment extraction Part 4 complete.
+Dry experiment extraction Part 5 start
+Dry experiment extraction Part 5 complete.
+
+
+执行完毕，总调用次数 20
+总 input tokens 数：35470
+总 output tokens 数：10469
+保存结果...
+
+
+translation start...
+translating Part 1...
+translating Part 2...
+translating Part 3...
+translating Part 4...
+translating Part 5...
+translation ended.
+
+first_level_heading starts ...
+
+到 first_level_heading 总调用次数： 2
+
+first_level_heading ends ...
+
+保存中间结果（first_level_heading 及之前）...
+
+brief_steps starts ...
+
+到 brief_steps 总调用次数： 7
+
+brief_steps ends ...
+
+保存中间结果（brief_steps 及之前）...
+'report_id1'
+'report_id1'
+'report_id1'
+'report_id1'
+
+The Part 1 of detailed_steps starts ...
+
+
+The Part 2 of detailed_steps starts ...
+
+
+The Part 3 of detailed_steps starts ...
+
+
+The Part 4 of detailed_steps starts ...
+
+
+The Part 5 of detailed_steps starts ...
+
+detailed_steps Part 1 initialization success.
+detailed_steps Part 2 initialization success.
+detailed_steps Part 3 initialization success.
+detailed_steps Part 4 initialization success.
+detailed_steps Part 5 initialization success.
+detailed_steps Part 1 reflexion success，called 3 times
+
+detailed_steps Part 3 reflexion success，called 3 times
+
+detailed_steps Part 4 reflexion success，called 3 times
+
+detailed_steps Part 5 reflexion success，called 3 times
+
+detailed_steps Part 2 reflexion success，called 4 times
+
+until detailed_steps finished, total call times： 28
+
+detailed_steps ends ...
+
+total call times:  28
+total input tokens:  322896
+total output tokens:  17534
+
+Finished！
+
+token_count:  322896 17534
+translation start...
+translating Part 1...
+translating Part 2...
+translating Part 3...
+translating Part 4...
+translating Part 5...
+translation ended.
+dry experiment extractor starts ...
+
+Dry experiment extraction Part 1 start
+Dry experiment extraction Part 1 complete.
+Dry experiment extraction Part 2 start
+Dry experiment extraction Part 2 complete.
+Dry experiment extraction Part 3 start
+Dry experiment extraction Part 3 complete.
+Dry experiment extraction Part 4 start
+Dry experiment extraction Part 4 complete.
+Dry experiment extraction Part 5 start
+Dry experiment extraction Part 5 complete.
+
+
+执行完毕，总调用次数 18
+总 input tokens 数：33508
+总 output tokens 数：10359
+保存结果...
+
+
+translation start...
+translating Part 1...
+translating Part 2...
+translating Part 3...
+translating Part 4...
+translating Part 5...
+translation ended.
+
+first_level_heading starts ...
+
+到 first_level_heading 总调用次数： 2
+
+first_level_heading ends ...
+
+保存中间结果（first_level_heading 及之前）...
+
+brief_steps starts ...
+
+到 brief_steps 总调用次数： 7
+
+brief_steps ends ...
+
+保存中间结果（brief_steps 及之前）...
+'report_id1'
+'report_id1'
+'report_id1'
+'report_id1'
+
+The Part 1 of detailed_steps starts ...
+
+
+The Part 2 of detailed_steps starts ...
+
+
+The Part 3 of detailed_steps starts ...
+
+
+The Part 4 of detailed_steps starts ...
+
+
+The Part 5 of detailed_steps starts ...
+
+detailed_steps Part 1 initialization success.
+detailed_steps Part 2 initialization success.
+detailed_steps Part 4 initialization success.
+detailed_steps Part 3 initialization success.
+detailed_steps Part 5 initialization success.
+detailed_steps Part 1 reflexion success，called 3 times
+
+detailed_steps Part 2 reflexion success，called 3 times
+
+detailed_steps Part 4 reflexion success，called 4 times
+
+detailed_steps Part 3 reflexion success，called 4 times
+
+detailed_steps Part 5 reflexion success，called 4 times
+
+until detailed_steps finished, total call times： 30
+
+detailed_steps ends ...
+
+total call times:  30
+total input tokens:  354563
+total output tokens:  19650
+
+Finished！
+
+token_count:  354563 19650
+translation start...
+translating Part 1...
+translating Part 2...
+translating Part 3...
+translating Part 4...
+translating Part 5...
+translation ended.
+dry experiment extractor starts ...
+
+Dry experiment extraction Part 1 start
+Dry experiment extraction Part 1 complete.
+Dry experiment extraction Part 2 start
+Dry experiment extraction Part 2 complete.
+Dry experiment extraction Part 3 start
+Dry experiment extraction Part 3 complete.
+Dry experiment extraction Part 4 start
+Dry experiment extraction Part 4 complete.
+Dry experiment extraction Part 5 start
+Dry experiment extraction Part 5 complete.
+
+
+执行完毕，总调用次数 20
+总 input tokens 数：37937
+总 output tokens 数：11062
+保存结果...
+
+
+translation start...
+translating Part 1...
+translating Part 2...
+translating Part 3...
+translating Part 4...
+translating Part 5...
+translation ended.

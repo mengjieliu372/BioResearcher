@@ -23,3 +23,13 @@ export const getProjects = async () => {
         method: 'get'
     });
 }
+
+// 获取 search 页面信息
+export const getSearchModule_paper = async (data) => {
+    return request({
+        url: '/api/getSearchModule_paper_back',
+        method: 'get',
+        data
+    });
+}
+
