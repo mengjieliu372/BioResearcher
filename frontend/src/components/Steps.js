@@ -96,6 +96,7 @@ export default function HorizontalLinearAlternativeLabelStepper() {
                 mt: '2vh',
                 mr: '5vw',
                 ml: '5vw',
+                width: '90vw',
                 backgroundColor: '#fff',
             }}>
                <Outlet/> 

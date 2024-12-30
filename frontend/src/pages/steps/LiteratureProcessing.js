@@ -48,7 +48,7 @@ export default function VerticalTabs() {
   const [value, setValue] = React.useState(0);
   const [content, setContent] = React.useState(null);
   const [paperInfo, setPaperInfo] = React.useState([]);
-  
+
   React.useEffect(() => {
     getPaperInfo(id)
       .then((res) => {
@@ -60,11 +60,10 @@ export default function VerticalTabs() {
   }, [id]);
 
   React.useEffect(() => {
-    // 根据 value 从 report 中选择数据
     getReportAnalysis(id, value)
       .then((res) => {
-        const { report, analysis } = res.data;
-        setContent(<LieratureProcessingContent report={report} analysis={analysis} />);
+        const { title, report, analysis } = res.data;
+        setContent(<LieratureProcessingContent report={report} analysis={analysis} paper_title={title}/>);
       })
       .catch((err) => {
         console.log(err);
@@ -90,11 +89,11 @@ export default function VerticalTabs() {
         {paperInfo.map((paper, index) => {
           return <Tab
             key={index}
-            label={paper.title}
+            label={`Related Paper ${index + 1}`}
             {...a11yProps(index)}
             sx={{
               textTransform: 'none',
-              height: '12vh',
+              width: '9.5vw',
             }} />
         })}
       </Tabs>
@@ -102,8 +101,7 @@ export default function VerticalTabs() {
       <Box
         sx={{
           height: '78vh',
-          width: '77vw',
-          backgroundColor: '#e3fdff',
+          width: '80vw',
         }}
       >
         {paperInfo.map((paper, index) => {

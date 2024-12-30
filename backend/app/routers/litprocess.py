@@ -17,7 +17,9 @@ async def get_paper_report_analysis(id: int, index: int):
     file_name = paper_info[index]['file_name']
     report = get_report(id, file_name)
     analysis = get_analysis(id, file_name)
+    title = paper_info[index]['title']
     return {
+        'title': title,
         'report': report,
         'analysis': analysis
     }

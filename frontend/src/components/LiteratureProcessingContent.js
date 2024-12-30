@@ -8,6 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import { getPaperInfo } from '../services/api';
 
 function InnerComponent({ part, steps, analysis }) {
     const [expandedAll, setExpandedAll] = useState(false);
@@ -83,9 +84,10 @@ function InnerComponent({ part, steps, analysis }) {
     );
 }
 
-export default function RenderContent({ report, analysis }) {
+export default function RenderContent({ report, analysis, paper_title}) {
     const [expandedAll, setExpandedAll] = useState(false);
     const [expandedArray, setExpandedArray] = useState(Array(Object.keys(report).length).fill(false));
+
     const handleExpandedAll = () => {
         setExpandedAll(prev => {
             const newExpandedAll = !prev;
@@ -93,6 +95,7 @@ export default function RenderContent({ report, analysis }) {
             return newExpandedAll;
         });
     };
+
     const handleExpandArray = (index) => {
         const newArray = [...expandedArray];
         newArray[index] = !newArray[index];
@@ -101,6 +104,9 @@ export default function RenderContent({ report, analysis }) {
 
     return (
         <Box>
+            <Typography variant='h6'>
+                {paper_title}
+            </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button onClick={handleExpandedAll} variant='contained'
                     sx={{ mr: 6, mb: 1, textTransform: 'none' }}
