@@ -34,7 +34,7 @@ export default function SwitchButton() {
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
-        width: '5vw'
+        width: '8vw'
       }}>
         <ToggleButtonGroup
           orientation="vertical"
@@ -43,10 +43,10 @@ export default function SwitchButton() {
           onChange={handleChange}
           color='primary'
         >
-          <ToggleButton value="papers" aria-label="papers">
-            Papers
+          <ToggleButton value="papers" aria-label="papers" sx={{ textTransform: 'none' }}>
+            Papersets
           </ToggleButton>
-          <ToggleButton value="datasets" aria-label="datasets">
+          <ToggleButton value="datasets" aria-label="datasets" sx={{ textTransform: 'none' }}>
             Datasets
           </ToggleButton>
         </ToggleButtonGroup>
@@ -54,7 +54,7 @@ export default function SwitchButton() {
 
       <Box
         sx={{
-          width: '85vw',
+          width: '82vw',
         }}
       >
         {renderContent()}

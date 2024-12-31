@@ -1,7 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Accordion from '@mui/material/Accordion';
@@ -12,48 +9,17 @@ import Chip from '@mui/material/Chip';
 import { getDatasets } from '../services/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function VerticalTabs() {
-  const [queriesData, setQueriesData] = useState([]);
+  const [datasets, setDatasets] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
     getDatasets(id)
       .then((res) => {
-        setQueriesData(res.data); // 更新数据
+        setDatasets(res.data); // 更新数据
         setLoading(false);
       })
       .catch((err) => {
@@ -65,7 +31,7 @@ export default function VerticalTabs() {
   const showDatasets = (datasets) => {
     return (
       Object.entries(datasets).map(([key, value]) => (
-        <Accordion 
+        <Accordion
           key={key}
           sx={{
             width: '100%',
@@ -89,78 +55,63 @@ export default function VerticalTabs() {
             </Box>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>Identifier : {key}</Typography>
-            <Typography>Status: {value.Status}</Typography>
-            <Typography>Summary: {value.Summary}</Typography>
+            <Box>
+              <Typography sx={{ fontWeight: 'bold' }}>Search Query : </Typography>
+              {value.search_query}
+            </Box>
+            <Box>
+              <Typography sx={{ fontWeight: 'bold' }}>Identifier:</Typography>
+              {key}
+            </Box>
+            <Box>
+              <Typography sx={{ fontWeight: 'bold' }}>Status:</Typography>
+              {value.Status}
+            </Box>
+            <Box>
+              <Typography sx={{ fontWeight: 'bold' }}>Summary:</Typography>
+              {value.Summary}
+            </Box>
           </AccordionDetails>
         </Accordion>
       ))
     );
   };
-  
 
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        height: '78vh',
-        borderRadius: '8px',
-      }}
-    >
-
-      {/* 左侧标签栏 */}
-      <Box
-        sx={{
-          height: '78vh'
-        }}>
-        <Tabs
-          orientation="vertical"
-          variant="scrollable"
-          value={value}
-          onChange={handleChange}
-          aria-label="Vertical tabs"
+    <Box sx={{
+      height: '72vh',
+      width: '76vw',
+      m: 'auto',
+      mt: '3vh',
+      borderRadius: '8px',
+      boxShadow: 3,
+    }}>
+      {
+        loading ? (
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100%',
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        ) : (
+          <Box
           sx={{
-            borderRight: 1,
-            borderColor: 'divider',
-            width: '8vw'
+            ml: 'auto',
+            mr: 'auto',
+            overflowY: 'auto',
+            maxHeight: '72vh',
           }}
         >
-          {queriesData.map((query, index) => (
-            <Tab label={query.query} {...a11yProps(index)} key={index} />
-          ))}
-        </Tabs>
-      </Box>
-
-      {/* 右侧内容 */}
-      <Box
-        sx={{
-          height: '78vh',
-          width: '77vw',
-          backgroundColor: '#e3fdff',
-        }}
-      >
-        {queriesData.map((query, index) => (
-          <TabPanel value={value} index={index} key={index}>
-            <Box
-              sx={{
-                ml: 'auto',
-                mr: 'auto',
-                overflowY: 'auto',
-                maxHeight: '72vh',
-              }}
-            >
-              {showDatasets(query.datasets)}
-            </Box>
-          </TabPanel>
-        ))}
-      </Box>
+          {showDatasets(datasets)}
+        </Box>
+        )
+      }
     </Box>
   );
 }

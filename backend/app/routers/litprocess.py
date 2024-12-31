@@ -17,11 +17,11 @@ async def get_paper_report_analysis(id: int, index: int):
     file_name = paper_info[index]['file_name']
     report = get_report(id, file_name)
     analysis = get_analysis(id, file_name)
+    response = merge_report_analysis(report, analysis)
     title = paper_info[index]['title']
     return {
         'title': title,
-        'report': report,
-        'analysis': analysis
+        'data': response
     }
 
 def get_existed_files(id: int):
@@ -51,10 +51,22 @@ def get_related_papers_info(id: int):
 
 
 def get_report(id, file_name):
-    # report_path = os.path.join('../data/reports', f"{file_name}_report.json")
     report_path = Path(__file__).parent.parent / "data" / str(id) / "reports" / f"{file_name}_report.json"
-    with open(report_path, 'r', encoding='utf-8') as f:
-        report = f.read()
+    report = clean_json_file(report_path)
+    return report
+
+
+def get_analysis(id, file_name):
+    analysis_path = Path(__file__).parent.parent / "data" / str(id) / "reports" / f"{file_name}_analysis.json"
+    with open(analysis_path, 'r', encoding='utf-8') as f:
+        analysis_json = json.load(f)
+    return analysis_json
+
+
+def clean_json_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        json_string = f.read()
+    """
     report = re.sub(r'\\\\n', '', report)
     report = re.sub(r'\\\\\\"', "'", report)
     report = re.sub(r'\\n', '', report)
@@ -62,16 +74,21 @@ def get_report(id, file_name):
     report = re.sub(r'"{', '{', report)
     report = re.sub(r'}"', '}', report)
     report = json.loads(report)
-    # json_string = json_string.replace('\\"', '"').replace('\\n', '').replace('\\u', ' ').replace('\\', '')
-    # json_string = json_string.replace('"{', '{').replace('}"', '}')
-    #report_json2 = json.loads(json_string)
+    """
+    json_string = re.sub(r'\\\\n', '', json_string)
+    json_string = re.sub(r'\\\\\\"', "'", json_string)
+    json_string = re.sub(r'\\n', '', json_string)
+    json_string = re.sub(r'\\"', '"', json_string)
+    json_string = re.sub(r'"{', '{', json_string)
+    json_string = re.sub(r'}"', '}', json_string)
+    json_string = json.loads(json_string)
+    return json_string
+
+def merge_report_analysis(report, analysis):
+    fields_to_insert = ["Reason", "Suggestions", "Referability"]
+    for part, part_data in report.items():
+        if part in analysis:
+            for field in fields_to_insert:
+                if field in analysis[part]:
+                    part_data[field] = analysis[part][field]
     return report
-
-
-def get_analysis(id, file_name):
-    # analysis_path = os.path.join('../data/reports', f"{file_name}_analysis.json")
-    analysis_path = Path(__file__).parent.parent / "data" / str(id) / "reports" / f"{file_name}_analysis.json"
-    with open(analysis_path, 'r', encoding='utf-8') as f:
-        analysis_json = json.load(f)
-    
-    return analysis_json

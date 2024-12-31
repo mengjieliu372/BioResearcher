@@ -8,6 +8,7 @@ import LieratureProcessingContent from '../../components/LiteratureProcessingCon
 import { getPaperInfo } from '../../services/api';
 import { getReportAnalysis } from '../../services/api';
 import { useParams } from 'react-router-dom';
+import ErrorPage from '../../components/ErrorPage';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,15 +56,15 @@ export default function VerticalTabs() {
         setPaperInfo(res.data);
       })
       .catch((err) => {
-        console.error(err);
+        // setContent(<ErrorPage code={err.status} message={err.response.data.message} />);
       });
   }, [id]);
 
   React.useEffect(() => {
     getReportAnalysis(id, value)
       .then((res) => {
-        const { title, report, analysis } = res.data;
-        setContent(<LieratureProcessingContent report={report} analysis={analysis} paper_title={title}/>);
+        const { title, data } = res.data;
+        setContent(<LieratureProcessingContent data={data} paper_title={title}/>);
       })
       .catch((err) => {
         console.log(err);

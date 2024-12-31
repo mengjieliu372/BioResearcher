@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import DryExpContent from '../../components/DryExpContent';
 import { useParams } from 'react-router-dom';
 import { getDryExp } from '../../services/api';
+import ErrorPage from '../../components/ErrorPage';
+
 
 // TabPanel组件用于显示选中的Tab内容
 function CustomTabPanel(props) {
@@ -54,7 +56,7 @@ export default function BasicTabs() {
                 setContent(<DryExpContent data={res.data} />);
             })
             .catch((err) => {
-                console.error(err);
+                setContent(<ErrorPage code={err.status} message={err.response.data.detail} />);
             });
     }, [value]); // 仅当 value 变化时触发
 
@@ -81,10 +83,15 @@ export default function BasicTabs() {
 
             <Box
                 sx={{
-                    height: '72vh',
+                    height: '68vh',
                     maxHeight: '70vh',
                     overflowY: 'auto',
-                    backgroundColor: '#f5f5f5',
+                    width: '70vw',
+                    ml: 'auto',
+                    mr: 'auto',
+                    mt: '2vh',
+                    borderRadius: '8px',
+                    boxShadow: 3,
                 }}
             >
                 <CustomTabPanel value={value} index={0}>

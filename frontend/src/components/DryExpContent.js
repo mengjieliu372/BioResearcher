@@ -53,7 +53,7 @@ function InnerComponent({ tasks }) {
                         <Typography variant="body1">{task.input}</Typography>
                         
                         <Typography variant="h6" sx={{fontWeight: 'bold'}}>Output:</Typography>
-                        <Typography variant="body1">Output:{task.output}</Typography>
+                        <Typography variant="body1">{task.output}</Typography>
                     </AccordionDetails>
                 </Accordion>
             ))}

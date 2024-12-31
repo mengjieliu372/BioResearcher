@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import ExpDesignContent from '../../components/ExpDesignContent';
 import { useParams } from 'react-router-dom';
 import { getExpDesign } from '../../services/api';
-
+import ErrorPage from '../../components/ErrorPage';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,7 +51,7 @@ export default function ExperimentalDesign() {
         setContent(<ExpDesignContent data={res.data} />);
       })
       .catch((err) => {
-        console.error(err);
+        setContent(<ErrorPage code={err.status} message={err.response.data.detail} />);
       });
   }, [value]);
 
@@ -72,10 +72,15 @@ export default function ExperimentalDesign() {
 
       <Box
         sx={{
-          height: '72vh',
+          height: '68vh',
           maxHeight: '70vh',
           overflowY: 'auto',
-          backgroundColor: '#f5f5f5',
+          width: '70vw',
+          ml: 'auto',
+          mr: 'auto',
+          mt: '2vh',
+          borderRadius: '8px',
+          boxShadow: 3,
         }}
       >
 

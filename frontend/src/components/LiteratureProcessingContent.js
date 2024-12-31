@@ -8,15 +8,15 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
-import { getPaperInfo } from '../services/api';
+import Divider from '@mui/material/Divider';
 
-function InnerComponent({ part, steps, analysis }) {
+function InnerComponent({ setpData }) {
     const [expandedAll, setExpandedAll] = useState(false);
-    const [expandedArray, setExpandedArray] = useState(Array(Object.keys(steps).length).fill(false));
+    const [expandedArray, setExpandedArray] = useState(Array(Object.keys(setpData).length).fill(false));
     const handleExpandedAll = () => {
         setExpandedAll(prev => {
             const newExpandedAll = !prev;
-            setExpandedArray(Array(Object.keys(steps).length).fill(newExpandedAll));
+            setExpandedArray(Array(Object.keys(setpData).length).fill(newExpandedAll));
             return newExpandedAll;
         });
     };
@@ -28,19 +28,6 @@ function InnerComponent({ part, steps, analysis }) {
 
     return (
         <Box>
-            {analysis[part] && (
-                <>
-                    <Box>
-                        <Typography variant="h5">Reference Reason:</Typography>
-                        {analysis[part]["Reason"]}
-                    </Box>
-                    <Box>
-                        <Typography variant="h5">Suggestions:</Typography>
-                        {analysis[part]["Suggestions"]}
-                    </Box>
-                </>
-            )}
-
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button onClick={handleExpandedAll} variant='contained'
                     sx={{ mr: 6, mb: 1, textTransform: 'none' }}
@@ -48,50 +35,71 @@ function InnerComponent({ part, steps, analysis }) {
                     {expandedAll ? 'Collapse All Steps' : 'Expand All Steps'}
                 </Button>
             </Box>
-            {Object.entries(steps)
+
+            {Object.entries(setpData)
+                .filter(([stepKey, stepValue]) => stepKey !== "Referability")
                 .slice(1)
-                .map(([step, details], index) => (
-                    <Accordion key={step} expanded={expandedArray[index]}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                            id="panel1a-header"
-                            onClick={() => handleExpandArray(index)}
-                        >
-                            {step}
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Box>
-                                <Typography variant='h6'>Implementation Details:</Typography>
-                                {details["implementation details"]}
-                            </Box>
-                            <div>
-                                <Typography variant='h6'>Original text:</Typography>
-                                {details["original text"]}
-                            </div>
-                            <div>
-                                <Typography variant='h6'>Results:</Typography>
-                                {details["results"]}
-                            </div>
-                            <div>
-                                <Typography variant='h6'>Results original text:</Typography>
-                                {details["results original text"]}
-                            </div>
-                        </AccordionDetails>
-                    </Accordion>
-                ))}
+                .map(([stepKey, stepValue], index) => (
+                <Accordion key={stepKey} expanded={expandedArray[index]}>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        onClick={() => handleExpandArray(index)}
+                    >
+                        {stepKey}
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        {
+                            !(typeof stepValue === 'object') ? (
+                                <Box>
+                                    <Typography variant='body1'>{stepValue}</Typography>
+                                </Box>
+                            ) : (
+                                <Box>
+                                    <Box>
+                                        <Typography variant='h6'>Implementation Details:</Typography>
+                                        <Typography variant='body1'>
+                                            {stepValue["implementation details"] || "No data available"}
+                                        </Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography variant='h6'>Original Text:</Typography>
+                                        <Typography variant='body1'>
+                                            {stepValue["original text"] || "No data available"}
+                                        </Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography variant='h6'>Results:</Typography>
+                                        <Typography variant='body1'>
+                                            {stepValue["results"] || "No data available"}
+                                        </Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography variant='h6'>Results Original Text:</Typography>
+                                        <Typography variant='body1'>
+                                            {stepValue["results original text"] || "No data available"}
+                                        </Typography>
+                                    </Box>
+                                </Box>
+
+                            )
+                        }
+                    </AccordionDetails>
+                </Accordion>
+            ))}
         </Box>
     );
 }
 
-export default function RenderContent({ report, analysis, paper_title}) {
+export default function RenderContent({ data, paper_title }) {
     const [expandedAll, setExpandedAll] = useState(false);
-    const [expandedArray, setExpandedArray] = useState(Array(Object.keys(report).length).fill(false));
+    const [expandedArray, setExpandedArray] = useState(Array(Object.keys(data).length).fill(false));
 
     const handleExpandedAll = () => {
         setExpandedAll(prev => {
             const newExpandedAll = !prev;
-            setExpandedArray(Array(Object.keys(report).length).fill(newExpandedAll));
+            setExpandedArray(Array(Object.keys(data).length).fill(newExpandedAll));
             return newExpandedAll;
         });
     };
@@ -104,33 +112,37 @@ export default function RenderContent({ report, analysis, paper_title}) {
 
     return (
         <Box>
-            <Typography variant='h6'>
-                {paper_title}
-            </Typography>
+            {/* 顶部的标题 */}
+            <Box>
+                <Typography variant='h6'>
+                    {paper_title}
+                </Typography>
+            </Box>
+            <Divider />
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button onClick={handleExpandedAll} variant='contained'
-                    sx={{ mr: 6, mb: 1, textTransform: 'none' }}
+                    sx={{ mr: 6, mt: 2, mb: 2, textTransform: 'none' }}
                 >
                     {expandedAll ? 'Collapse All Parts' : 'Expand All Parts'}
                 </Button>
             </Box>
-            {Object.entries(report).map(([part, steps], index) => (
-                <Accordion key={part} expanded={expandedArray[index]}>
+            {Object.entries(data).map(([partKey, partValue], index) => (
+                <Accordion key={partKey} expanded={expandedArray[index]}>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                         onClick={() => handleExpandArray(index)}
                     >
-                        {part + ": " + steps[part]}
+                        {partKey + ": " + partValue[partKey]}
                         <Box sx={{ ml: 'auto' }}>
-                            {analysis[part] && analysis[part]["Referability"] && (
+                            {partValue["Referability"] && (
                                 <Chip
-                                    label={`Referability: ${analysis[part]["Referability"]}`}
+                                    label={`Referability: ${partValue["Referability"]}`}
                                     color={
-                                        analysis[part]["Referability"] === 'High'
+                                        partValue["Referability"] === 'High'
                                             ? 'success'
-                                            : analysis[part]["Referability"] === 'Medium'
+                                            : partValue["Referability"] === 'Medium'
                                                 ? 'warning'
                                                 : 'error'
                                     }
@@ -140,7 +152,7 @@ export default function RenderContent({ report, analysis, paper_title}) {
                         </Box>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <InnerComponent part={part} steps={steps} analysis={analysis} />
+                        <InnerComponent setpData={partValue} />
                     </AccordionDetails>
                 </Accordion>
             ))}
