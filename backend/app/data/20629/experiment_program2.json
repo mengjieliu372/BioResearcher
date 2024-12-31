@@ -1,0 +1,157 @@
+{
+    "Part 1": {
+        "Part 1": "Patients and Samples Collection",
+        "step 1": {
+            "implementation details": "Establish inclusion criteria to select patients diagnosed with well-differentiated and dedifferentiated liposarcoma. Criteria include: a) Pathologically confirmed diagnosis of well-differentiated or dedifferentiated liposarcoma. b) Age ≥ 18 years. c) No prior treatment for sarcoma before sample collection. d) Patients who provide informed consent. Exclusion criteria include: a) Previous malignancies within the last 5 years. b) Patients with other concurrent severe health conditions that may affect the study outcomes. c) Patients who refuse to participate or withdraw consent at any stage.",
+            "Reference Source": {
+                "id1": {
+                    "11626829": [
+                        1,
+                        2
+                    ],
+                    "11657886": [
+                        1,
+                        2
+                    ]
+                },
+                "id2": {}
+            }
+        },
+        "step 2": {
+            "implementation details": "Collect tumor and adjacent normal tissue samples from each patient during surgical intervention. Ensure that samples are collected by a qualified surgeon. Tumor samples should be taken from the center of the tumor to ensure adequate representation, with a volume of approximately 1 cm³. Adjacent normal tissue samples should be collected at least 2 cm away from tumor margins, with a similar volume of 1 cm³. Use sterile technique and appropriate tools (e.g., surgical scissors, forceps) to minimize contamination. Each sample should be placed in sterile cryovials, labeled with the patient ID (format: [PatientID]_SampleType_Date), sample type (tumor or normal), and date of collection. Store samples at -80°C until further processing.",
+            "Reference Source": "Standard operating procedures for surgical protocols and tissue collection methods."
+        },
+        "step 3": {
+            "implementation details": "Gather clinical information from patient medical records and through structured interviews. Collect data on patient demographics (age, sex, ethnicity), clinical history (previous treatments, comorbidities), and outcomes (tumor staging, response to treatment, and follow-up results). Use a standardized data collection form that includes fields for each data point to ensure consistency. Ensure all data is anonymized to protect patient confidentiality. Data should be recorded in a secure database with restricted access to authorized personnel only.",
+            "Reference Source": "Guidelines for clinical data collection and management."
+        },
+        "step 4": {
+            "implementation details": "Ensure that ethical guidelines are adhered to by obtaining informed consent from all patients prior to sample collection. Provide patients with detailed information about the study, its purpose, procedures, risks, and benefits. Consent forms must be signed by the patient and stored securely. Institutional Review Board (IRB) approval should be obtained prior to the initiation of the study. Continuous monitoring of ethical compliance throughout the study should be ensured.",
+            "Reference Source": "Ethical guidelines and procedures for obtaining informed consent."
+        },
+        "summary": {
+            "implementation details": "This protocol for patient and sample collection aims to ensure a standardized and ethical approach to obtaining samples for evaluating prognostic and gene expression differences in liposarcoma. The structured methodology and adherence to ethical guidelines are crucial for the validity and reliability of the research outcomes."
+        }
+    },
+    "Part 2": {
+        "Part 2": "RNA Extraction and Library Preparation",
+        "step 1": {
+            "implementation details": "RNA extraction will be performed using the Qiagen RNeasy Plus Mini Kit according to the manufacturer's protocol. Tumor samples will be homogenized in 600 µL of RLT buffer supplemented with 1% β-mercaptoethanol. After homogenization, samples will be centrifuged at 10,000 x g for 3 minutes at room temperature. The supernatant will be transferred to a new tube, and an equal volume of 70% ethanol will be added. The mixture will be thoroughly mixed by pipetting. RNA will then be purified using the spin columns provided in the kit via centrifugation at 8,000 x g for 15 seconds. Finally, RNA will be eluted in 30 µL of RNase-free water. Expected RNA yield should be around 20-50 µg per 100 mg of tissue. If the RNA yield is low, consider using a higher starting amount of tissue or adjusting the amount of RLT buffer accordingly.",
+            "Reference Source": {
+                "id1": {
+                    "8493074": [
+                        "RNA extraction using Qiagen RNeasy Plus Mini Kit"
+                    ],
+                    "11626829": [
+                        "RNA extraction protocols and techniques"
+                    ]
+                },
+                "id2": {}
+            }
+        },
+        "step 2": {
+            "implementation details": "The RNA quality will be assessed using a Nanodrop spectrophotometer (model ND-1000) to measure the A260/A280 ratio, which should ideally be between 1.8 and 2.1, indicating pure RNA. Additionally, RNA integrity will be evaluated using an Agilent Bioanalyzer to obtain an RNA Integrity Number (RIN), where a RIN value of 7 or higher is considered acceptable for sequencing. If the RNA quality is below the acceptable threshold, consider re-extracting RNA or using a different extraction protocol.",
+            "Reference Source": "Reference source for RNA quality assessment techniques"
+        },
+        "step 3": {
+            "implementation details": "RNA libraries will be prepared for sequencing using the Illumina TruSeq RNA Library Prep Kit. Starting with 1 µg of total RNA, the RNA will first be poly-A selected and fragmented. The fragmented RNA will be reverse transcribed into cDNA using random primers, followed by second-strand synthesis. The cDNA will then be end-repaired, A-tailed, and ligated with indexed adapters. The library will be amplified by PCR for 10 cycles. The final library will be purified using AMPure XP beads to remove excess adapters and unincorporated fragments. Ensure to follow the kit's specific protocol for optimal results, and consider validating the library preparation with a small-scale test first.",
+            "Reference Source": "Reference source for RNA library preparation methods"
+        },
+        "step 4": {
+            "implementation details": "The quality and quantity of the prepared RNA libraries will be validated using an Agilent Bioanalyzer, where the size distribution should align with the expected range for cDNA libraries (approximately 300-600 bp). Additionally, the library concentration will be quantified using the Qubit dsDNA HS Assay Kit, aiming for a final concentration of 10 nM for sequencing. Libraries will be stored at -20°C until ready for sequencing. If the library concentration is below the desired threshold, consider performing a secondary amplification step to increase yield.",
+            "Reference Source": "Reference source for library quality validation techniques"
+        }
+    },
+    "Part 3": {
+        "Part 3": "RNA Sequencing Analysis",
+        "step 1": {
+            "implementation details": "Perform paired-end RNA sequencing using an Illumina NovaSeq 6000 platform. Load the prepared RNA libraries into the sequencer, ensuring that the library concentration is optimized between 1-2 nM for maximum yield. Set the sequencing parameters to generate 150 bp paired-end reads with a target depth of at least 30 million reads per sample. Use the Illumina TruSeq RNA Library Prep Kit for library preparation. Run the sequencing process until completion, ensuring that all samples are processed in a single run to minimize batch effects. Validate library quality using a Bioanalyzer to confirm fragment size distribution prior to sequencing.",
+            "Reference Source": {
+                "id1": {
+                    "8493074": [
+                        "Illumina NovaSeq 6000 sequencing protocol"
+                    ],
+                    "11657886": [
+                        "RNA sequencing best practices"
+                    ]
+                },
+                "id2": {
+                    "11626829": [
+                        "Illumina sequencing guidelines"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Conduct quality control on the raw sequencing data using FastQC to assess read quality. Evaluate metrics such as per base sequence quality, per sequence quality scores, and GC content. Set thresholds for RNA quality: discard samples with Q20 scores below 20%, and check for adapter contamination. Generate reports for each sample and document findings for reproducibility. If any sample shows poor quality metrics, consider repeat sequencing or additional library preparation adjustments to improve quality.",
+            "Reference Source": "FastQC User Manual"
+        },
+        "step 3": {
+            "implementation details": "Process the RNA-seq data using the Tophat-Cufflinks pipeline. First, align the raw reads to the human genome reference (hg38) using Tophat with the following parameters: -p 8 (for 8 threads), --library-type fr-unstranded, and -G for gene annotations. After alignment, quantify gene expression using Cufflinks with default settings and ensure to generate FPKM (Fragments Per Kilobase of transcript per Million mapped reads) values for each gene. If using different RNA sources (e.g., FFPE versus fresh-frozen), adjust parameters accordingly based on input quality. Document the specific adjustments made for different sample types.",
+            "Reference Source": "Cufflinks User Guide"
+        },
+        "step 4": {
+            "implementation details": "Submit the processed raw sequencing data (FASTQ files) along with the analyzed expression data (FPKM values) to the Gene Expression Omnibus (GEO) database. Ensure that all data is appropriately anonymized and complies with the ethical guidelines for data sharing. Include metadata such as sample descriptions, experimental conditions, and analysis methods to facilitate data reuse.",
+            "Reference Source": "GEO Submission Guidelines"
+        }
+    },
+    "Part 4": {
+        "Part 4": "Differential Expression Analysis and Functional Enrichment",
+        "step 1": {
+            "implementation details": "Identify differentially expressed genes (DEGs) between well-differentiated liposarcoma (WDL) and dedifferentiated liposarcoma (DDL) using statistical methods. Utilize the RNA sequencing data obtained from the 'GSE247026' dataset and the 'GSE243759' dataset, which contain gene expression profiles from DDL and WDL samples. Input the raw sequencing data into DESeq2 (version 1.28), ensuring to preprocess the data to obtain normalized counts. Apply a statistical threshold for significance with a false discovery rate (FDR) of <0.05 and a log2 fold change (log2FC) of >1 or < -1. Prepare the experimental design matrix to delineate WDL and DDL groups, ensuring it accurately reflects the experimental conditions. The required format for the input data should be a count matrix with genes in rows and samples in columns.",
+            "Reference Source": {
+                "id1": {
+                    "GSE247026": [
+                        1
+                    ],
+                    "GSE243759": [
+                        1
+                    ]
+                },
+                "id2": {}
+            }
+        },
+        "step 2": {
+            "implementation details": "Conduct Gene Ontology (GO) and Kyoto Encyclopedia of Genes and Genomes (KEGG) enrichment analyses on the identified DEGs. Use the DEGs identified in Step 1 as input for the enrichment analysis. Utilize the clusterProfiler (version 3.18.1) R package to perform the GO and KEGG analyses. Input the DEGs in a data frame format, ensuring to include gene identifiers. Set the parameters to include multiple testing correction using the Benjamini-Hochberg method. The significance threshold for enrichment will be set at p.adjust < 0.05. This analysis will illuminate the biological processes and pathways that are significantly associated with the DEGs, providing insights into their functional relevance in liposarcoma.",
+            "Reference Source": "ClusterProfiler documentation and relevant literature (id1: 11657886)"
+        },
+        "step 3": {
+            "implementation details": "Perform Gene Set Enrichment Analysis (GSEA) to explore gene expression patterns in context with lipidomic data. Use the GSE202361 dataset, which provides lipidomic context. Prepare the ranked list of gene expression based on the log2 fold changes from Step 1. Ensure that the ranked list is formatted as a single column with gene names and their corresponding expression values. Input this ranked list into the GSEA software (version 4.1.0), setting the minimum gene set size to 15 and the maximum to 500. Set the number of permutations to 1000 to ensure robust statistical analysis. The results will provide insights into gene expression patterns connected to lipid metabolism in liposarcoma, guiding further biological interpretations.",
+            "Reference Source": {
+                "id1": {
+                    "GSE202361": [
+                        1
+                    ]
+                },
+                "id2": {}
+            }
+        }
+    },
+    "Part 5": {
+        "Part 5": "Statistical Analysis",
+        "step 1": {
+            "implementation details": "Perform unpaired t-tests to compare gene expression levels between well-differentiated liposarcoma (WDL) and dedifferentiated liposarcoma (DDL) samples. Use the dataset GSE184199, which contains RNA-seq data from matched samples of WDL and DDL. Calculate the mean and standard deviation for each group. Handle missing data using multiple imputation techniques to ensure robustness. Identify outliers based on Z-scores exceeding 3 or using the interquartile range (IQR) method (1.5 times IQR above the third quartile or below the first quartile). Set the significance level (alpha) at 0.05. Use the two-tailed test for the hypothesis that there is no difference in means. Data analyses will be conducted using R version 4.0 or later, utilizing the 't.test' function in the base package.",
+            "Reference Source": {
+                "id1": {
+                    "11626829": [
+                        1
+                    ],
+                    "11657886": []
+                },
+                "id2": {
+                    "8493074": [
+                        1
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Implement Cox regression models to assess the impact of gene expression levels on survival outcomes in patients with liposarcoma. Use the dataset GSE221494, which provides survival information along with gene expression data. Include covariates such as age, gender, and treatment history in the model. The model should be fit using the Cox proportional hazards assumptions with the survival package in R. Check proportional hazards assumptions using Schoenfeld residuals. Interpret the p-values and hazard ratios with a 95% confidence interval, summarizing results in a table for clarity.",
+            "Reference Source": "Reference source for Step 2: GSE221494 for survival data and gene expression."
+        },
+        "step 3": {
+            "implementation details": "Apply the Benjamini-Hochberg procedure to correct for multiple comparisons resulting from the unpaired t-tests conducted in Step 1. This will control the false discovery rate (FDR). Set the significance threshold for adjusted p-values at 0.05 to identify differentially expressed genes (DEGs). For the Cox regression analysis from Step 2, report the confidence intervals for hazard ratios and assess the significance of covariates in the model. Ensure all statistical results are summarized in a table format for clarity, including both raw and adjusted p-values.",
+            "Reference Source": "Reference source for Step 3: General statistical methodology literature."
+        }
+    }
+}

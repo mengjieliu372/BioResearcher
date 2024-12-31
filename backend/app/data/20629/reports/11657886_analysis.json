@@ -1,0 +1,57 @@
+{
+    "Part 1": {
+        "Title": "Patients and Samples",
+        "Referability": "High",
+        "Reason": "The patient and sample collection process is crucial for ensuring the integrity of the dataset. The similarity in the research focus on well-differentiated and dedifferentiated liposarcoma allows the methods and criteria for patient selection to be directly applicable.",
+        "Suggestions": "You can refer to the patient selection criteria and sample collection methods as a framework for your own research. Consider modifying the sample size according to your available resources and ensure adherence to ethical guidelines for patient consent. Explicitly link each sample collection detail to the research objective, detailing how each type of sample contributes to understanding gene expression differences."
+    },
+    "Part 2": {
+        "Title": "Lipid Extraction",
+        "Referability": "Medium",
+        "Reason": "While lipid extraction methods may not be directly applicable if your focus is primarily on RNA sequencing data, understanding the lipid extraction process could provide insights into metabolic differences between the liposarcoma subtypes.",
+        "Suggestions": "You may learn about sample homogenization techniques and lipid extraction protocols. However, you would need to modify the lipid analysis aspect to focus more on RNA extraction and sequencing, which is central to your research objectives. Consider condensing this section to maintain focus on gene expression analysis and removing unnecessary details about lipid extraction unless they directly support the research objective."
+    },
+    "Part 3": {
+        "Title": "UHPLC-MS/MS Analysis",
+        "Referability": "Low",
+        "Reason": "This section primarily focuses on lipidomic analysis, which may not directly relate to your RNA sequencing and gene expression focus. The methodologies here are specific to lipid profiling rather than gene expression.",
+        "Suggestions": "The analysis techniques could be beneficial if you decide to integrate metabolic profiling later. For your research, ensure that the focus remains on RNA sequencing methods and gene expression analysis instead. Condense or remove this section to maintain clarity and relevance to the main research objectives."
+    },
+    "Part 4": {
+        "Title": "Differentially Abundant Metabolite Analysis",
+        "Referability": "Low",
+        "Reason": "Similar to the previous sections, this part is centered around metabolite analysis rather than gene expression analysis, making it less relevant to your focus on RNA-seq.",
+        "Suggestions": "While it may not be directly applicable, information on PCA could be useful if you decide to analyze transcriptomic data in a similar manner. Focus on adapting PCA for your RNA sequencing data, ensuring that the analysis is clearly tied to gene expression outcomes."
+    },
+    "Part 5": {
+        "Title": "RNA Sequencing Analysis",
+        "Referability": "High",
+        "Reason": "This section directly aligns with your research objectives, as it outlines RNA extraction, quality control, and sequencing processes relevant to your study of gene expression differences.",
+        "Suggestions": "You can adopt the RNA extraction and quality control methods detailed here for your own experiments. Make sure to modify the sample sizes and sequencing platforms according to your available resources. Consider including specific software tools and statistical methods for data analysis, such as DESeq2 or edgeR, to enhance clarity and reproducibility."
+    },
+    "Part 6": {
+        "Title": "Differential Expression Analysis and Functional Enrichment",
+        "Referability": "High",
+        "Reason": "The methods for identifying differentially expressed genes (DEGs) and performing functional enrichment analyses are critical for your research objectives and can be directly utilized.",
+        "Suggestions": "You can use the DESeq2 package for your analysis and modify the parameters according to your dataset. Ensure you document any modifications in methodology to maintain reproducibility. Provide a detailed framework for the statistical analysis, including specific criteria for significance and methods for correcting multiple comparisons."
+    },
+    "Part 7": {
+        "Title": "Validation of Protein Levels",
+        "Referability": "Medium",
+        "Reason": "While this section focuses on protein validation, which may not be your primary research goal, it could provide insights into potential biomarkers for your study.",
+        "Suggestions": "Consider using the techniques described for validating RNA-seq results at the protein level, particularly if you identify significant DEGs that warrant further validation. Clearly state how protein validation could correlate with RNA-seq data to strengthen your findings and enhance the translational relevance of your research."
+    },
+    "Part 8": {
+        "Title": "Serum Levels of ECM1 and GPNMB",
+        "Referability": "Medium",
+        "Reason": "This section focuses on serum biomarkers, which can be relevant if your research extends to identifying prognostic markers based on gene expression profiles.",
+        "Suggestions": "You may consider incorporating serum biomarker analysis as an additional layer of validation for your findings if resources allow. Modify the ELISA and statistical analysis methods for your specific biomarkers of interest, ensuring a clear connection to the gene expression data and discussing how this may impact patient outcomes."
+    },
+    "Part 9": {
+        "Title": "Correlation of Serum Levels with Survival",
+        "Referability": "Medium",
+        "Reason": "Understanding the correlation between serum levels and clinical outcomes can provide a context for the clinical relevance of the gene expression differences you plan to study.",
+        "Suggestions": "You can utilize the statistical methods for correlating gene expression levels with clinical outcomes, adapting the approach to your dataset and potential biomarkers identified in your research. Ensure that all statistical methods are documented for reproducibility and consider discussing the clinical implications of your findings."
+    },
+    "Referability": 0.3333333333333333
+}

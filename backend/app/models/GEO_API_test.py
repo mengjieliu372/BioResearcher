@@ -187,6 +187,7 @@ def search_details(queries):
                 accessions = generate_geo_accession(found_results)  # [accession, ...]
                 for accession in accessions:
                     details[accession] = get_details_and_download_links(accession)
+                    details[accession]["search_query"] = keyword    # 存入检索用的 query
         except Exception as e:
             print(f"Exception out: {e}")
         time.sleep(1)

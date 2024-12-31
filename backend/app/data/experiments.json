@@ -40,5 +40,25 @@
         "refNum": null,
         "reviewerRound": null,
         "fileNames": []
+    },
+    {
+        "id": 20629,
+        "expName": "Experiment24",
+        "expPurpose": "Prognostic and Gene Expression Differences between Well-Differentiated and Dedifferentiated Liposarcoma",
+        "expCondition": "Available Resources: Frozen samples, sarcoma cell lines, and paraffin sections. Data Sources: RNA sequencing data from 80 cases and single-cell sequencing data from 10 cases, along with any publicly available datasets. Animal Experiments: All necessary materials are available if required. Funding: The total funding for the experiment is 200,000 RMB. Computing Resources: Sufficient computing resources are accessible for data analysis",
+        "expRequirement": "null",
+        "paperset": {
+            "PMC": true,
+            "PubMed": true
+        },
+        "dataset": {
+            "GEO": true,
+            "NCBI": false,
+            "cBioPortal": false
+        },
+        "llmModel": "GPT4o",
+        "refNum": null,
+        "reviewerRound": null,
+        "fileNames": []
     }
 ]

@@ -103,7 +103,7 @@ def generate_query(target, conditions, requirements, model):
     print(terms)'''
     return terms, input_tok, output_tok, response
 
-def parse_pubmed(root):
+def parse_pubmed(root, search_query):
     pubmed_papers = []
     print("get {} papers".format(len(root.findall('PubmedArticle'))), flush=True)
     for pubmed_article in root.findall('PubmedArticle'):#'article' when pmc
@@ -119,13 +119,13 @@ def parse_pubmed(root):
             doi = pubmed_article.find('MedlineCitation/Article/ELocationID[@EIdType="doi"]').text
         except:
             doi = None
-        pubmed_papers.append({"title":title, "abstract": abstract, "doi":doi, "pmid":pmid, "pmcid":pmcid})
+        pubmed_papers.append({"title":title, "abstract": abstract, "doi":doi, "pmid":pmid, "pmcid":pmcid, "search_query":search_query})
         #get_pdf_link(doi)
     return pubmed_papers
     #download_pdf(data["doi"])
 
 
-def parse_pmc(root):
+def parse_pmc(root, search_query):
     print("get {} papers".format(len(root.findall('.//article'))), flush=True)
     pmc_papers = []
     for pmc_article in root.findall('.//article'):#'article' when pmc
@@ -147,7 +147,7 @@ def parse_pmc(root):
             elif i.get("pub-id-type") == "pmc":
                 pmcid = i.text
 
-        pmc_papers.append({"title":title, "abstract": abstract, "doi":doi, "pmid":pmid, "pmcid":pmcid})
+        pmc_papers.append({"title":title, "abstract": abstract, "doi":doi, "pmid":pmid, "pmcid":pmcid, "search_query":search_query})
         '''def get_paragraph_text(p_elem):
             text = ''
             for elem in p_elem.iter():
@@ -257,9 +257,9 @@ def search_in_database(queries: Annotated[list, "Boolean queries for PubMed or P
             root = ET.fromstring(response.content)
             time.sleep(1)
             if db == "pubmed":
-                data.extend(parse_pubmed(root))
+                data.extend(parse_pubmed(root, term))
             elif db == "pmc":
-                data.extend(parse_pmc(root))
+                data.extend(parse_pmc(root, term))
     data = deduplication(data)
     #print(data)
     return data
@@ -303,7 +303,7 @@ def download_paper(papers: Annotated[list, "A list of papers to be downloaded."]
 
 
 
-def search_download(objective, conditions, requirements, model, retmax, savedir, retrieved_paper_info_path, related_paper_info_path):
+def search_download(objective, conditions, requirements, model, retmax, savedir, retrieved_paper_info_path, related_paper_info_path, max_search_times=5):   # 可用户定义
     input_tokens = 0
     output_tokens = 0
     search_times = 0
@@ -311,7 +311,7 @@ def search_download(objective, conditions, requirements, model, retmax, savedir,
     total_papers = []
     total_queries = []
     full_res_record = {}
-    while search_times < 5:
+    while search_times < max_search_times:
         queries = generate_query(objective, conditions, requirements, model)
         input_tokens += queries[1]
         output_tokens += queries[2]

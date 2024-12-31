@@ -25,10 +25,10 @@ def process_papersets(id: int):
     
 
     # 要改 search 那里，保留下 query 检索到的 papers
-    with open(DataFile / "papers" / "related_paper_search_queries_llm_res.json", 'r', encoding='utf-8') as f:
-        search_queries_of_related_papers = json.load(f)
-    queries = search_queries_of_related_papers["0"]["search"]["search_queries"]
-    # queries = ['query1', 'query2', 'query3', 'query4', 'query5']
+    # with open(DataFile / "papers" / "related_paper_search_queries_llm_res.json", 'r', encoding='utf-8') as f:
+    #     search_queries_of_related_papers = json.load(f)
+    # queries = search_queries_of_related_papers["0"]["search"]["search_queries"]
+    queries = ['query1', 'query2', 'query3', 'query4', 'query5']
 
     classified_data = []
 

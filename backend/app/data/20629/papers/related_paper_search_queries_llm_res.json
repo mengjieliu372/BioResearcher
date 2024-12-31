@@ -1,0 +1,67 @@
+{
+    "0": {
+        "search": {
+            "full_llm_res": "Here are five diverse retrieval statements using Boolean query operations for your literature review on the prognostic and gene expression differences between well-differentiated and dedifferentiated liposarcoma:\n\n1. [(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"RNA sequencing\") AND (\"prognosis\" OR \"outcome\")]\n\n2. [(\"liposarcoma\" AND \"dedifferentiation\") AND (\"molecular markers\" OR \"gene profiling\") AND (\"tumor behavior\" OR \"clinical outcomes\")]\n\n3. [(\"liposarcoma\" AND \"prognostic factors\") AND (\"well-differentiated\" OR \"dedifferentiated\") AND (\"single-cell sequencing\" OR \"scRNA-seq\")]\n\n4. [(\"liposarcoma\" AND \"differentiation\") AND (\"gene expression patterns\" OR \"transcriptomics\") AND (\"biological differences\" OR \"pathological features\")]\n\n5. [(\"dedifferentiated liposarcoma\" AND \"clinical significance\") AND (\"frozen samples\" OR \"paraffin sections\") AND (\"experimental models\" OR \"animal studies\")]",
+            "search_queries": [
+                "(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"RNA sequencing\") AND (\"prognosis\" OR \"outcome\")",
+                "(\"liposarcoma\" AND \"dedifferentiation\") AND (\"molecular markers\" OR \"gene profiling\") AND (\"tumor behavior\" OR \"clinical outcomes\")",
+                "(\"liposarcoma\" AND \"prognostic factors\") AND (\"well-differentiated\" OR \"dedifferentiated\") AND (\"single-cell sequencing\" OR \"scRNA-seq\")",
+                "(\"liposarcoma\" AND \"differentiation\") AND (\"gene expression patterns\" OR \"transcriptomics\") AND (\"biological differences\" OR \"pathological features\")",
+                "(\"dedifferentiated liposarcoma\" AND \"clinical significance\") AND (\"frozen samples\" OR \"paraffin sections\") AND (\"experimental models\" OR \"animal studies\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    },
+    "1": {
+        "search": {
+            "full_llm_res": "Here are five diverse retrieval statements using Boolean query operations for your preliminary literature review:\n\n1. [(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"prognostic factors\")]\n\n2. [(\"liposarcoma\" AND \"RNA sequencing\") OR (\"liposarcoma\" AND \"single-cell sequencing\")]\n\n3. [(\"dedifferentiated liposarcoma\" AND \"tumor microenvironment\") OR (\"well-differentiated liposarcoma\" AND \"cell lines\")]\n\n4. [(\"liposarcoma\" AND \"differentiation\") AND (\"molecular markers\" OR \"genetic profiling\")]\n\n5. [(\"prognostic value\" AND \"liposarcoma\" AND \"gene expression\") OR (\"treatment response\" AND \"well-differentiated liposarcoma\")]",
+            "search_queries": [
+                "(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"prognostic factors\")",
+                "(\"liposarcoma\" AND \"RNA sequencing\") OR (\"liposarcoma\" AND \"single-cell sequencing\")",
+                "(\"dedifferentiated liposarcoma\" AND \"tumor microenvironment\") OR (\"well-differentiated liposarcoma\" AND \"cell lines\")",
+                "(\"liposarcoma\" AND \"differentiation\") AND (\"molecular markers\" OR \"genetic profiling\")",
+                "(\"prognostic value\" AND \"liposarcoma\" AND \"gene expression\") OR (\"treatment response\" AND \"well-differentiated liposarcoma\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    },
+    "2": {
+        "search": {
+            "full_llm_res": "Certainly! Here are five diverse retrieval statements using Boolean query operations for your preliminary literature review on prognostic and gene expression differences between well-differentiated and dedifferentiated liposarcoma:\n\n1. [(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"RNA sequencing\") AND (\"prognosis\" OR \"outcome\")]\n\n2. [(\"liposarcoma\" AND \"differentiation\") AND (\"molecular characteristics\" OR \"biomarkers\") AND (\"prognostic significance\" OR \"clinical outcomes\")]\n\n3. [(\"dedifferentiated liposarcoma\" AND \"gene expression profiling\") OR (\"transcriptomic analysis\" AND \"well-differentiated liposarcoma\")]\n\n4. [(\"single-cell sequencing\" AND \"liposarcoma\") OR (\"cellular heterogeneity\" AND \"dedifferentiated liposarcoma\") AND (\"gene expression differences\")]\n\n5. [(\"frozen samples\" AND \"liposarcoma\") AND (\"experimental study\" OR \"animal model\") AND (\"well-differentiated\" OR \"dedifferentiated\")]\n\nThese queries should help you retrieve relevant literature to inform your research on the differences between well-differentiated and dedifferentiated liposarcoma.",
+            "search_queries": [
+                "(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"RNA sequencing\") AND (\"prognosis\" OR \"outcome\")",
+                "(\"liposarcoma\" AND \"differentiation\") AND (\"molecular characteristics\" OR \"biomarkers\") AND (\"prognostic significance\" OR \"clinical outcomes\")",
+                "(\"dedifferentiated liposarcoma\" AND \"gene expression profiling\") OR (\"transcriptomic analysis\" AND \"well-differentiated liposarcoma\")",
+                "(\"single-cell sequencing\" AND \"liposarcoma\") OR (\"cellular heterogeneity\" AND \"dedifferentiated liposarcoma\") AND (\"gene expression differences\")",
+                "(\"frozen samples\" AND \"liposarcoma\") AND (\"experimental study\" OR \"animal model\") AND (\"well-differentiated\" OR \"dedifferentiated\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    },
+    "3": {
+        "search": {
+            "full_llm_res": "Here are five diverse retrieval statements using Boolean query operations for your preliminary literature review on the prognostic and gene expression differences between well-differentiated and dedifferentiated liposarcoma:\n\n1. [(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"transcriptomics\") AND (\"prognosis\" OR \"outcomes\")]\n\n2. [(\"liposarcoma\" AND \"differentiation\") AND (\"prognostic markers\" OR \"biomarkers\") AND (\"RNA sequencing\" OR \"single-cell sequencing\")]\n\n3. [(\"dedifferentiated liposarcoma\" AND \"cell lines\") AND (\"gene expression profiling\" OR \"expression analysis\") AND (\"tumor microenvironment\" OR \"cellular interactions\")]\n\n4. [(\"well-differentiated\" AND \"dedifferentiated\" AND \"liposarcoma\") AND (\"frozen samples\" OR \"paraffin sections\") AND (\"clinical outcomes\" OR \"survival analysis\")]\n\n5. [(\"liposarcoma\" AND \"molecular differences\") AND (\"animal models\" OR \"animal experiments\") AND (\"therapeutic implications\" OR \"treatment strategies\")]",
+            "search_queries": [
+                "(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"transcriptomics\") AND (\"prognosis\" OR \"outcomes\")",
+                "(\"liposarcoma\" AND \"differentiation\") AND (\"prognostic markers\" OR \"biomarkers\") AND (\"RNA sequencing\" OR \"single-cell sequencing\")",
+                "(\"dedifferentiated liposarcoma\" AND \"cell lines\") AND (\"gene expression profiling\" OR \"expression analysis\") AND (\"tumor microenvironment\" OR \"cellular interactions\")",
+                "(\"well-differentiated\" AND \"dedifferentiated\" AND \"liposarcoma\") AND (\"frozen samples\" OR \"paraffin sections\") AND (\"clinical outcomes\" OR \"survival analysis\")",
+                "(\"liposarcoma\" AND \"molecular differences\") AND (\"animal models\" OR \"animal experiments\") AND (\"therapeutic implications\" OR \"treatment strategies\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    },
+    "4": {
+        "search": {
+            "full_llm_res": "Certainly! Here are five diverse retrieval statements using Boolean query operations for your preliminary literature review on prognostic and gene expression differences between well-differentiated and dedifferentiated liposarcoma:\n\n1. [(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"transcriptome\") AND (\"prognosis\" OR \"outcome\")]\n\n2. [(\"liposarcoma\" AND \"dedifferentiated\") AND (\"RNA sequencing\" OR \"single-cell sequencing\") AND (\"gene expression profiling\")]\n\n3. [(\"liposarcoma\" AND \"well-differentiated\") AND (\"molecular differences\" OR \"pathogenesis\") AND (\"clinical outcomes\" OR \"survival rates\")]\n\n4. [(\"dedifferentiated liposarcoma\" OR \"well-differentiated liposarcoma\") AND (\"tumor microenvironment\" OR \"immune response\") AND (\"biomarkers\" OR \"predictive factors\")]\n\n5. [(\"liposarcoma\" AND \"gene expression\" AND \"prognostic markers\") AND (\"frozen samples\" OR \"cell lines\" OR \"paraffin sections\")] \n\nThese retrieval statements can help you gather relevant information from various databases and sources effectively.",
+            "search_queries": [
+                "(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"transcriptome\") AND (\"prognosis\" OR \"outcome\")",
+                "(\"liposarcoma\" AND \"dedifferentiated\") AND (\"RNA sequencing\" OR \"single-cell sequencing\") AND (\"gene expression profiling\")",
+                "(\"liposarcoma\" AND \"well-differentiated\") AND (\"molecular differences\" OR \"pathogenesis\") AND (\"clinical outcomes\" OR \"survival rates\")",
+                "(\"dedifferentiated liposarcoma\" OR \"well-differentiated liposarcoma\") AND (\"tumor microenvironment\" OR \"immune response\") AND (\"biomarkers\" OR \"predictive factors\")",
+                "(\"liposarcoma\" AND \"gene expression\" AND \"prognostic markers\") AND (\"frozen samples\" OR \"cell lines\" OR \"paraffin sections\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    }
+}

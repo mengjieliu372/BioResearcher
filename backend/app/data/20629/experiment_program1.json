@@ -1,0 +1,209 @@
+{
+    "Part 1": {
+        "Part 1": "Patients and Samples Collection",
+        "step 1": {
+            "implementation details": "Establish inclusion criteria to select patients diagnosed with well-differentiated and dedifferentiated liposarcoma. Inclusion criteria may include: (1) confirmed histopathological diagnosis of liposarcoma by a certified pathologist, (2) age of 18 years or older, (3) no prior treatment for liposarcoma, and (4) availability of tumor and adjacent normal tissue samples. Exclusion criteria may include: (1) patients with other concurrent malignancies, (2) patients with a history of chemotherapy or radiotherapy for liposarcoma, and (3) patients who are unable to provide informed consent. Ensure these criteria are clearly documented and reviewed by an ethics board.",
+            "Reference Source": {
+                "id1": {
+                    "11626829": [],
+                    "11657886": []
+                },
+                "id2": {
+                    "8493074": []
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Collect tumor and adjacent normal tissue samples from each eligible patient. Ensure that samples are obtained from distinct tumor locations to prevent contamination. Use sterile surgical instruments to obtain specimens and place them in appropriate containers: (1) use RNA later for RNA preservation at a 1:1 ratio of tissue to RNA later; (2) use formalin for histological analysis. Label each specimen clearly with patient identification, sample type (tumor or normal), and collection date. Transport samples to the laboratory at 4°C and within 2 hours of collection to preserve sample integrity. Follow standard operating procedures for handling biological materials.",
+            "Reference Source": "Reference source for Step 2"
+        },
+        "step 3": {
+            "implementation details": "Gather comprehensive patient demographics and clinical outcomes by administering a standardized questionnaire and reviewing medical records. Collect data on age, gender, tumor stage, grade, treatment history, and outcomes such as recurrence and survival. Ensure that all data is anonymized to protect patient confidentiality. Store this data securely in a database designed for clinical studies, ensuring compliance with data protection regulations. Additionally, specify the purpose of data collection and how it will be correlated with molecular findings.",
+            "Reference Source": "Reference source for Step 3"
+        }
+    },
+    "Part 2": {
+        "Part 2": "RNA Extraction and Sequencing",
+        "step 1": {
+            "implementation details": "RNA extraction will be performed using the RNeasy Plus Mini Kit (Qiagen). For each tumor sample, approximately 30 mg of tissue will be used. The tissue will be minced with a scalpel and added to 600 µL of RLT buffer (containing β-mercaptoethanol) to ensure complete lysis. The suspension will be homogenized using a TissueLyser II (Qiagen) at 30 Hz for 5 minutes. Following homogenization, the sample will be centrifuged at 10,000 x g for 3 minutes to pellet any debris. The supernatant will be transferred to a new tube and 200 µL of ethanol (100%) will be added to the lysate. The mixture will then be applied to an RNeasy spin column and centrifuged at 8,000 x g for 15 seconds. The flow-through will be discarded and the column will be washed with 700 µL of RWT buffer followed by 500 µL of RPE buffer. Finally, RNA will be eluted in 30 µL of RNase-free water by centrifuging at 8,000 x g for 1 minute.",
+            "Reference Source": {
+                "id1": {
+                    "8493074": [
+                        1,
+                        2
+                    ],
+                    "11626829": [
+                        1,
+                        2
+                    ]
+                },
+                "id2": {
+                    "11657886": [
+                        1,
+                        2
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Quality control of the extracted RNA will be performed using the Agilent 2100 Bioanalyzer. The RNA samples will be analyzed using the RNA 6000 Nano Chip to assess RNA integrity number (RIN) values, with acceptable samples having RIN values greater than 7.0. Additionally, the concentration of RNA will be measured using a NanoDrop spectrophotometer. Samples that do not meet RIN criteria will be re-extracted. If RNA yield is insufficient, alternative extraction methods, such as the Qiagen miRNeasy Kit, may be employed to improve RNA quality.",
+            "Reference Source": {
+                "id1": {
+                    "8493074": [
+                        3
+                    ],
+                    "11626829": [
+                        3
+                    ]
+                },
+                "id2": {
+                    "11657886": [
+                        3
+                    ]
+                }
+            }
+        },
+        "step 3": {
+            "implementation details": "RNA libraries will be prepared using the NEBNext Ultra II Directional RNA Library Prep Kit for Illumina. For each sample, 1 µg of total RNA will be used. First, the RNA will be poly(A) selected using magnetic oligo(dT) beads. The mRNA will then be fragmented and reverse-transcribed to cDNA using random primers. Following cDNA synthesis, the libraries will be amplified by PCR for 12 cycles. Quality control of the libraries will be conducted using the Agilent 2100 Bioanalyzer to ensure fragment sizes are between 200-600 bp. Once quality metrics are met, the libraries will be sequenced on an Illumina NovaSeq 6000 platform, aiming for a depth of 20 million reads per sample. If library quality is insufficient, adjustments to the PCR cycle number or the use of additional purification steps may be performed.",
+            "Reference Source": {
+                "id1": {
+                    "8493074": [
+                        4
+                    ],
+                    "11626829": [
+                        4
+                    ]
+                },
+                "id2": {
+                    "11657886": [
+                        4
+                    ]
+                }
+            }
+        }
+    },
+    "Part 3": {
+        "Part 3": "Whole-Exome Sequencing Analysis",
+        "step 1": {
+            "implementation details": "1. Extract genomic DNA from tumor samples using the Qiagen DNeasy Blood & Tissue Kit, following the manufacturer's protocol. Use 200 µL of tissue sample and ensure a minimum yield of 100 ng/µL. 2. Assess the quality and concentration of the extracted DNA using a Nanodrop spectrophotometer and agarose gel electrophoresis. Ensure the A260/A280 ratio is between 1.8 and 2.0, and fragment size is greater than 200 bp. 3. Prepare exome libraries using the Agilent SureSelect Human All Exon V6 kit. Follow the manufacturer's instructions for library preparation, including fragmentation, end repair, A-tailing, adapter ligation, and amplification. Use 100 ng of DNA input for library preparation. 4. Perform a quality control check on the prepared libraries using the Agilent Bioanalyzer to confirm size distribution (targeting 200-300 bp) and ensure library concentration is suitable for sequencing (aiming for 10 nM). If quality metrics are not met, consider alternative library preparation methods, such as using the NEBNext Ultra II DNA Library Prep Kit.",
+            "Reference Source": {
+                "id1": {
+                    "11626829": [
+                        1,
+                        2
+                    ],
+                    "8493074": [
+                        1,
+                        2
+                    ]
+                },
+                "id2": {
+                    "8493074": [
+                        1,
+                        2
+                    ],
+                    "11626829": [
+                        1,
+                        2
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "1. Perform paired-end sequencing of the exome libraries on the Illumina NovaSeq 6000 platform. Set the read length to 150 bp for both reads. 2. Use a sequencing depth of at least 100x to ensure adequate coverage for variant detection. 3. Process the raw sequencing data using Illumina's base calling software to generate FASTQ files, ensuring that quality control metrics (Q scores) are above the threshold of 30. 4. Store the sequencing data in a secure database for further analysis. After sequencing, conduct a secondary quality check using FastQC to assess read quality and alignment statistics before moving to variant analysis.",
+            "Reference Source": "Reference source for Step 2: 11626829, 8493074"
+        },
+        "step 3": {
+            "implementation details": "1. Align the FASTQ files to the reference human genome (hg38) using the Burrows-Wheeler Aligner (BWA) with default parameters. Ensure that duplicate reads are marked using Picard tools to reduce bias in variant calling. 2. Call variants using the Genome Analysis Toolkit (GATK) best practices pipeline, specifically using the HaplotypeCaller to detect somatic mutations. 3. Filter the called variants to include only high-quality single nucleotide variants (SNVs) and insertions/deletions (indels) using GATK's VariantFiltration tool, applying a quality score filter of at least 30 and a minimum depth of 20. 4. Annotate the filtered variants with tools like ANNOVAR or VEP to characterize their potential functional impact and determine allele frequencies. The results of these analyses will be integrated with clinical data to assess their relevance to liposarcoma prognosis, including stratification based on tumor grade and patient outcomes.",
+            "Reference Source": "Reference source for Step 3: 11626829, 8493074"
+        }
+    },
+    "Part 4": {
+        "Part 4": "Differential Expression Analysis and Functional Enrichment",
+        "step 1": {
+            "implementation details": "Identify differentially expressed genes (DEGs) from RNA sequencing data using the DESeq2 package. Load the RNA sequencing count data from the dataset GSE247026, which includes samples from dedifferentiated liposarcoma and well-differentiated liposarcoma. The input data should be in a tab-delimited format with columns for gene names and corresponding raw counts. Normalize the data using the DESeq2 function 'DESeq()', which employs a negative binomial distribution to model the count data. Set the parameters to include the design formula: ~ condition, where 'condition' indicates the tumor subtype (well-differentiated or dedifferentiated). Extract the results using the 'results()' function from DESeq2, specifying a significance threshold of adjusted p-value < 0.05 and a log2 fold change > 1 for up-regulated genes and < -1 for down-regulated genes. Before analysis, filter out genes with low counts (< 10 across all samples) and address any missing data or outliers using appropriate imputation methods. The output should include a table of DEGs with their associated p-values, log2 fold changes, and adjusted p-values.",
+            "Reference Source": {
+                "id1": {
+                    "11657886": [
+                        1,
+                        2
+                    ]
+                },
+                "id2": {
+                    "11452671": [
+                        1,
+                        2
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Perform Gene Ontology (GO) and Kyoto Encyclopedia of Genes and Genomes (KEGG) enrichment analyses using the clusterProfiler R package. Input the list of significant DEGs identified in Step 1. For GO analysis, use the 'enrichGO()' function with parameters set to 'OrgDb = org.Hs.eg.db' for human annotations and 'pvalueCutoff = 0.05' for significance. For KEGG analysis, use the 'enrichKEGG()' function, setting the parameter 'keyType' to 'kegg' and 'pvalueCutoff = 0.05'. Visualize the results using the 'dotplot()' and 'barplot()' functions to represent the top enriched GO terms and KEGG pathways. Ensure that the results are interpreted in the context of liposarcoma biology, discussing potential implications for treatment strategies.",
+            "Reference Source": "Reference source for Step 2"
+        },
+        "step 3": {
+            "implementation details": "Conduct Gene Set Enrichment Analysis (GSEA) to integrate findings with lipidomic data from dataset GSE221494. Prepare the ranked list of DEGs based on their log2 fold change values from Step 1. Input the gene sets related to lipid metabolism into the GSEA software along with the ranked list. Set the number of permutations to 1000 for statistical significance testing. Examine the enrichment score (ES) and normalized enrichment score (NES) for each gene set, focusing on those with a false discovery rate (FDR) < 0.25. Discuss the relevance of these findings in the context of clinical outcomes related to liposarcoma, particularly their implications for therapeutic strategies and potential future research directions.",
+            "Reference Source": "Reference source for Step 3"
+        }
+    },
+    "Part 5": {
+        "Part 5": "Statistical Analysis",
+        "step 1": {
+            "implementation details": "I. Employ unpaired t-tests to compare gene expression levels between well-differentiated liposarcoma (WDL) and dedifferentiated liposarcoma (DDL) samples. Use the mean and standard deviation for each group to ensure proper calculation of t-statistics. The null hypothesis will state that there is no difference in expression levels between the two groups. Apply a significance level of 0.05 for the tests. Ensure that the data meets the assumptions of normality and equal variance; if not, consider using a non-parametric alternative like the Mann-Whitney U test. Use R software with the 't.test' function from the base package for analysis. Before conducting the tests, check for missing data and apply appropriate imputation methods if necessary. Access the RNA sequencing data from GSE247026 and GSE243759 for this analysis, ensuring that the datasets are formatted correctly with appropriate column names (e.g., 'gene_expression', 'group').",
+            "Reference Source": {
+                "id1": {
+                    "11626829": [
+                        "step 1",
+                        "step 2"
+                    ],
+                    "8493074": [
+                        "step 1",
+                        "step 3"
+                    ]
+                },
+                "id2": {
+                    "8493074": [
+                        "step 1",
+                        "step 2"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "II. Conduct Cox regression analysis to assess the relationship between gene expression levels (as continuous variables) and clinical outcomes (e.g., overall survival, progression-free survival). Define the survival time and event status (censored or not) for each patient. Include covariates such as age, sex, and tumor stage in the model to control for potential confounders. Report hazard ratios and their 95% confidence intervals. Use R software with the 'survival' package for analysis, specifically the 'coxph' function. Ensure that clinical data from the patient cohort is well-documented and includes relevant variables (e.g., 'time_to_event', 'event_status', 'age', 'sex', 'tumor_stage'). Discuss how the findings will inform clinical relevance and future research directions.",
+            "Reference Source": {
+                "id1": {
+                    "11626829": [
+                        "step 3"
+                    ],
+                    "8493074": [
+                        "step 2"
+                    ]
+                },
+                "id2": {
+                    "8493074": [
+                        "step 2"
+                    ]
+                }
+            }
+        },
+        "step 3": {
+            "implementation details": "III. Apply the Benjamini-Hochberg method for correcting for multiple comparisons to control the false discovery rate (FDR) when performing differential expression analyses. Set the threshold for significance at an adjusted p-value of <0.05. Additionally, provide confidence intervals for the estimated effects in both t-tests and Cox regression analyses to convey the precision of the estimates. Ensure that all datasets used in the analyses, including RNA sequencing data from 80 cases (GSE247026, GSE243759, GSE241225, etc.) and clinical data from GSE221494, are well documented and referenced. Discuss the implications of the findings in the context of clinical outcomes and potential pathways for future research.",
+            "Reference Source": {
+                "id1": {
+                    "11626829": [
+                        "step 4"
+                    ],
+                    "8493074": [
+                        "step 3"
+                    ]
+                },
+                "id2": {
+                    "8493074": [
+                        "step 3"
+                    ]
+                }
+            }
+        }
+    }
+}
