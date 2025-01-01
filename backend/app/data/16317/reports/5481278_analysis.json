@@ -1,0 +1,27 @@
+{
+    "Part 1": {
+        "Title": "Microarray Data",
+        "Referability": "Medium",
+        "Reason": "While the methodology for collecting and analyzing microarray data is relevant, your research focuses on transcriptomics and RNA sequencing rather than microarray technology. Therefore, while some methods may provide insights, they may not be directly applicable.",
+        "Suggestions": "You can learn from the quality control measures and sample integrity assessments detailed in this section. However, you should adapt these methods for RNA sequencing, such as using FastQC for quality control. Consider utilizing publicly available datasets similar to GSE21124 for comparative analysis. Additionally, clarify how the identified DEGs may translate into therapeutic implications for DDLPS, emphasizing potential targets for treatment."
+    },
+    "Part 2": {
+        "Title": "Data Preprocessing and Identification of Differentially Expressed Genes (DEGs)",
+        "Referability": "High",
+        "Reason": "The steps for data preprocessing and identifying DEGs can be directly applicable to your transcriptomic analysis. The normalization methods and DEG identification process using R packages are relevant for RNA sequencing data.",
+        "Suggestions": "Adopt the normalization techniques suggested, such as using the R package DESeq2 for RNA sequencing data. Additionally, consider utilizing the Limma package for identifying DEGs, ensuring to set appropriate thresholds for your specific dataset. Incorporate how the frozen samples and cell lines will be utilized for validation of DEGs in the experimental design, detailing any planned experiments or assays."
+    },
+    "Part 3": {
+        "Title": "Functional Enrichment Analysis of DEGs",
+        "Referability": "High",
+        "Reason": "Functional enrichment analysis is crucial for understanding the biological significance of DEGs in your study. The use of GO and KEGG analyses is applicable to both microarray and RNA sequencing data, making this section highly relevant.",
+        "Suggestions": "Utilize the DAVID tool for GO and KEGG analyses as outlined, ensuring to format your input data correctly with the gene symbols from your RNA sequencing dataset. Additionally, update the literature references to include recent studies on DDLPS that relate to the identified DEGs and their biological significance. Discuss potential therapeutic targets identified through the functional enrichment analysis and how they could influence treatment strategies in DDLPS."
+    },
+    "Part 4": {
+        "Title": "PPI Network Construction and Hub Gene Selection",
+        "Referability": "Medium",
+        "Reason": "The construction of PPI networks and identification of hub genes are relevant processes; however, the specific methods may need adaptation for RNA sequencing data rather than microarray data.",
+        "Suggestions": "Use the STRING database for constructing PPI networks as described, ensuring that your input DEGs are derived from your RNA sequencing analysis. Expand on how the identified hub genes will be further validated using the available frozen samples and sarcoma cell lines, and discuss their potential roles in therapy based on existing literature to highlight their significance in DDLPS."
+    },
+    "Referability": 0.5
+}

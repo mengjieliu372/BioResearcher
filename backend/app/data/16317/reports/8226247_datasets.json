@@ -1,0 +1,154 @@
+{
+    "useful": {
+        "GEO": {
+            "GSE91061": {
+                "Status": "Public on Jan 23, 2018",
+                "Title": "Molecular portraits of tumor mutational and micro-environmental sculpting by immune checkpoint blockade therapy",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by high throughput sequencing",
+                "Summary": "Immune checkpoint blockade (ICB) has demonstrated significant promise for the treatment of advanced malignancies. Anti-CTLA4 and ant-PD1 therapy can activate the immune system and result in durable control in diseases such as melanoma and non-small cell lung cancer.",
+                "Overall design": "109 RNASeq samples (58 On-treatment and 51 Pre-treatment) from 65 patients",
+                "Platforms": "Platforms (1), GPL9052, Illumina Genome Analyzer (Homo sapiens)",
+                "Samples": {
+                    "GSM2420259": {
+                        "link": "/geo/query/acc.cgi?acc=GSM2420259",
+                        "name": "Pt1_Pre_AD101148-6",
+                        "Status": "Public on Jan 23, 2018",
+                        "Title": "Pt1_Pre_AD101148-6",
+                        "Sample type": "SRA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "visit (pre or on treatment): Preresponse: PDtissue: melanoma",
+                        "Extracted molecule": "cDNA",
+                        "Extraction protocol": "RNA LaterRNASeq",
+                        "Library strategy": "RNA-Seq",
+                        "Library source": "transcriptomic",
+                        "Instrument model": "Illumina Genome Analyzer",
+                        "Data processing": "Raw reads in the fastq format were aligned to Human Genome HG19 using the RNAseq STAR aligner version 2.4.0d.Mapped reads for each sample were counted for each gene in annotation files TxDb.Hsapiens.UCSC.hg19.knownGene using the  GenomicFeatures read summarization programRaw reads were normalized with regularized-logarithm transformation (rlog function with robust estimation)Normalized FPKM (fragments per kilobase per million mapped reads) were obtained using the robust fpkm estimate function of DeSeq2 v1.12.4.To refine subsets of immune cells that were present in each sample, cibersort was used to conduct immune de-convolution on the FPKM values of each patientGenome_build: HG19Gene IDs in the processed data files are NCBI Entrez Gene IDs.Supplementary_files_format_and_content: Row and normalized feature count matricesSupplementary_files_format_and_content: BMS038_118Sample.hg19KnownGene.raw.csv.gz: Raw feature counts matrixSupplementary_files_format_and_content: BMS038_118Sample.hg19KnownGene.rld.csv.gz: Rlog-transformed values feature counts matrixSupplementary_files_format_and_content: BMS038_118Sample.hg19KnownGene.fpkm.csv.gz: Normalized FPKM feature counts matrix",
+                        "Platform ID": "GPL9052"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE91061_BMS038109Sample.hg19KnownGene.fpkm.csv.gz",
+                        "file_size": "15.6 Mb",
+                        "file_type": "CSV",
+                        "download_link": "/geo/download/?acc=GSE91061&format=file&file=GSE91061%5FBMS038109Sample%2Ehg19KnownGene%2Efpkm%2Ecsv%2Egz"
+                    },
+                    {
+                        "file_name": "GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz",
+                        "file_size": "3.4 Mb",
+                        "file_type": "CSV",
+                        "download_link": "/geo/download/?acc=GSE91061&format=file&file=GSE91061%5FBMS038109Sample%2Ehg19KnownGene%2Eraw%2Ecsv%2Egz"
+                    },
+                    {
+                        "file_name": "GSE91061_BMS038109Sample.hg19KnownGene.rld.csv.gz",
+                        "file_size": "18.4 Mb",
+                        "file_type": "CSV",
+                        "download_link": "/geo/download/?acc=GSE91061&format=file&file=GSE91061%5FBMS038109Sample%2Ehg19KnownGene%2Erld%2Ecsv%2Egz"
+                    },
+                    {
+                        "file_name": "GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz",
+                        "file_size": "1.8 Kb",
+                        "file_type": "TXT",
+                        "download_link": "/geo/download/?acc=GSE91061&format=file&file=GSE91061%5FBMS038109Sample%5FCytolytic%5FScore%5F20161026%2Etxt%2Egz"
+                    }
+                ]
+            }
+        },
+        "TCGA": {}
+    },
+    "all": {
+        "GEO": {
+            "GSE91061": {
+                "Status": "Public on Jan 23, 2018",
+                "Title": "Molecular portraits of tumor mutational and micro-environmental sculpting by immune checkpoint blockade therapy",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by high throughput sequencing",
+                "Summary": "Immune checkpoint blockade (ICB) has demonstrated significant promise for the treatment of advanced malignancies. Anti-CTLA4 and ant-PD1 therapy can activate the immune system and result in durable control in diseases such as melanoma and non-small cell lung cancer.",
+                "Overall design": "109 RNASeq samples (58 On-treatment and 51 Pre-treatment) from 65 patients",
+                "Platforms": "Platforms (1), GPL9052, Illumina Genome Analyzer (Homo sapiens)",
+                "Samples": {
+                    "GSM2420259": {
+                        "link": "/geo/query/acc.cgi?acc=GSM2420259",
+                        "name": "Pt1_Pre_AD101148-6",
+                        "Status": "Public on Jan 23, 2018",
+                        "Title": "Pt1_Pre_AD101148-6",
+                        "Sample type": "SRA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "visit (pre or on treatment): Preresponse: PDtissue: melanoma",
+                        "Extracted molecule": "cDNA",
+                        "Extraction protocol": "RNA LaterRNASeq",
+                        "Library strategy": "RNA-Seq",
+                        "Library source": "transcriptomic",
+                        "Instrument model": "Illumina Genome Analyzer",
+                        "Data processing": "Raw reads in the fastq format were aligned to Human Genome HG19 using the RNAseq STAR aligner version 2.4.0d.Mapped reads for each sample were counted for each gene in annotation files TxDb.Hsapiens.UCSC.hg19.knownGene using the  GenomicFeatures read summarization programRaw reads were normalized with regularized-logarithm transformation (rlog function with robust estimation)Normalized FPKM (fragments per kilobase per million mapped reads) were obtained using the robust fpkm estimate function of DeSeq2 v1.12.4.To refine subsets of immune cells that were present in each sample, cibersort was used to conduct immune de-convolution on the FPKM values of each patientGenome_build: HG19Gene IDs in the processed data files are NCBI Entrez Gene IDs.Supplementary_files_format_and_content: Row and normalized feature count matricesSupplementary_files_format_and_content: BMS038_118Sample.hg19KnownGene.raw.csv.gz: Raw feature counts matrixSupplementary_files_format_and_content: BMS038_118Sample.hg19KnownGene.rld.csv.gz: Rlog-transformed values feature counts matrixSupplementary_files_format_and_content: BMS038_118Sample.hg19KnownGene.fpkm.csv.gz: Normalized FPKM feature counts matrix",
+                        "Platform ID": "GPL9052"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE91061_BMS038109Sample.hg19KnownGene.fpkm.csv.gz",
+                        "file_size": "15.6 Mb",
+                        "file_type": "CSV",
+                        "download_link": "/geo/download/?acc=GSE91061&format=file&file=GSE91061%5FBMS038109Sample%2Ehg19KnownGene%2Efpkm%2Ecsv%2Egz"
+                    },
+                    {
+                        "file_name": "GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz",
+                        "file_size": "3.4 Mb",
+                        "file_type": "CSV",
+                        "download_link": "/geo/download/?acc=GSE91061&format=file&file=GSE91061%5FBMS038109Sample%2Ehg19KnownGene%2Eraw%2Ecsv%2Egz"
+                    },
+                    {
+                        "file_name": "GSE91061_BMS038109Sample.hg19KnownGene.rld.csv.gz",
+                        "file_size": "18.4 Mb",
+                        "file_type": "CSV",
+                        "download_link": "/geo/download/?acc=GSE91061&format=file&file=GSE91061%5FBMS038109Sample%2Ehg19KnownGene%2Erld%2Ecsv%2Egz"
+                    },
+                    {
+                        "file_name": "GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz",
+                        "file_size": "1.8 Kb",
+                        "file_type": "TXT",
+                        "download_link": "/geo/download/?acc=GSE91061&format=file&file=GSE91061%5FBMS038109Sample%5FCytolytic%5FScore%5F20161026%2Etxt%2Egz"
+                    }
+                ]
+            },
+            "GSE78220": {
+                "Status": "Public on Mar 18, 2016",
+                "Title": "mRNA expressions in pre-treatment melanomas undergoing anti-PD-1 checkpoint inhibition therapy",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by high throughput sequencing",
+                "Summary": "PD-1 immune checkpoint blockade provides significant clinical benefits for cancer patients. However, factors influencing innate sensitivity remain incompletely catalogued. We analyzed the somatic mutanomes and transcriptomes of pretreatment melanoma biopsies. Mutations in cell adhesion genes and the DNA repair gene BRCA2 were enriched in responding tumors, and a high mutational load associated with improved survival. Innately resistant tumors displayed frequent transcriptomic up-expression of genes that enriched for mesenchymal transition, cell adhesion, ECM organization, wound-healing and angiogenesis. The transcriptomes of innate resistance also enriched for signatures indicating up-regulation of these processes. Notably, MAPK-targeted therapy (MAPKi) induced similar signatures in melanoma, suggesting that a form of MAPKi resistance mediates cross-resistance to anti-PD-1 therapy. Co-enrichment of IPRIM (Innate anti-PD-1 Resistance Induced by MAPKi) signatures defined a transcriptomic subset across advanced cancers, suggesting that attenuating processes underlying these signatures may augment anti-PD1 responses. Thus, multi-factorial determinants influence anti-PD-1 patterns in melanoma.",
+                "Overall design": "Melanoma biopsies pre-anti-PD-1 therapy were sent for transcriptomic analysis by paired-end RNAseq analysis to find the correlates of response vs. non-response to the therapy",
+                "Platforms": "Platforms (1), GPL11154, Illumina HiSeq 2000 (Homo sapiens)",
+                "Samples": {
+                    "GSM2069823": {
+                        "link": "/geo/query/acc.cgi?acc=GSM2069823",
+                        "name": "Pt1",
+                        "Status": "Public on Mar 18, 2016",
+                        "Title": "Pt1",
+                        "Sample type": "SRA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "patient id: Pt1anti-pd-1 response: Progressive Diseasestudy site: UCLAgender: Fage (yrs): 66disease status: M1boverall survival (days): 607vital status: Deadprevious mapki: Nanatomical location: L post. Thigh, inf., SCnras: Q61Ltreatment: Pembrolizumabbiopsy time: pre-treatmenttissue: Melanoma biopsiesstranded/unstranded rnaseq: unstranded",
+                        "Extracted molecule": "cDNA",
+                        "Extraction protocol": "mirVana RNA extraction kitTruSeq RNA Sample Preparation Kit v2 (unstranded) and KAPA stranded RNA kit (stranded)Poly A transcript enrichment, paired end RNAseq",
+                        "Library strategy": "RNA-Seq",
+                        "Library source": "transcriptomic",
+                        "Instrument model": "Illumina HiSeq 2000",
+                        "Description": "Patient 1 melanoma, pre anti-PD-1 treatment, 1st biopsy",
+                        "Data processing": "FASTQ files were mapped by Tophat2Tophat BAMs were quantified and normalized using Cuffnorm (for gene analysis) and by htseq-count followed by edgeR's log CPM (for gene-set analysis)Genome_build: hg19Supplementary_files_format_and_content: The normalized expression levels by cuffnorm",
+                        "Platform ID": "GPL11154"
+                    }
+                },
+                "Supplementary file": [
+                    {
+                        "file_name": "GSE78220_PatientFPKM.xlsx",
+                        "file_size": "6.8 Mb",
+                        "file_type": "XLSX",
+                        "download_link": "/geo/download/?acc=GSE78220&format=file&file=GSE78220%5FPatientFPKM%2Exlsx"
+                    }
+                ]
+            }
+        },
+        "TCGA": {}
+    }
+}

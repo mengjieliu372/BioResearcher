@@ -29,7 +29,8 @@ def process_papersets(id: int):
         search_queries_of_related_papers = json.load(f)
     queries = search_queries_of_related_papers["0"]["search"]["search_queries"]
     """
-    query = "(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"RNA sequencing\") AND (\"prognosis\" OR \"outcome\")"
+
+    # query = "(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"RNA sequencing\") AND (\"prognosis\" OR \"outcome\")"
     for paper in retrieved_papers:
         title = paper['title']
         abstract = paper['abstract']
@@ -44,7 +45,7 @@ def process_papersets(id: int):
         paper['flag'] = flag
         paper['title'] = clean_title
         paper['abstract'] = clean_abstract
-        paper['search_query'] = query
+        # paper['search_query'] = query
     retrieved_papers = sorted(retrieved_papers, key=lambda x: x['flag'], reverse=True)
     return retrieved_papers
 

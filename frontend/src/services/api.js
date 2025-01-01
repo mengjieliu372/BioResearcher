@@ -103,3 +103,12 @@ export const getDryExp = async (id, value) => {
         params: { value }
     });
 }
+
+// program
+export const getProgram = async (id, value) => {
+    return request({
+        url: `/api/${id}/program`,
+        method: 'get',
+        params: { value }
+    });
+}

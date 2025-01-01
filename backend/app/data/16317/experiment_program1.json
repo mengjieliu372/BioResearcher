@@ -1,0 +1,182 @@
+{
+    "Part 1": {
+        "Part 1": "Sample Acquisition and Characterization",
+        "step 1": {
+            "implementation details": "I. Selection of frozen samples, sarcoma cell lines, and paraffin sections from available resources. The selection will be based on histological examination and available clinical data to ensure relevance to the immune microenvironment in liposarcoma. A minimum of 20 frozen samples, 5 sarcoma cell lines, and 10 paraffin sections of liposarcoma will be selected for the study. The samples will be sourced from biobanks, research institutions, or hospitals that have existing collections of liposarcoma specimens. Specific criteria for tumor characteristics include:\n1. Tumor Grade: High-grade tumors will be selected, defined as tumors with a histological grade of 3 on a scale of 1 to 3.\n2. Immune Cell Infiltration: Samples will be evaluated using immunohistochemistry for the presence of T-cells (CD3), B-cells (CD20), and macrophages (CD68). A threshold of 30% positive cells will be used to categorize samples as high immune infiltrate.\n3. Clinical Parameters: Inclusion of samples from patients aged 18-75, with documented clinical histories, including prior treatments, will be required.",
+            "Reference Source": {
+                "id1": {
+                    "10572617": [
+                        "Step 1"
+                    ],
+                    "8226247": [
+                        "Step 1"
+                    ]
+                },
+                "id2": {
+                    "5481278": [
+                        "Step 1"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "II. Criteria for selection based on tumor characteristics and immune microenvironment relevance. The tumors will be evaluated for the following criteria:\n1. Histological evaluation will be performed by a pathologist to confirm the diagnosis of liposarcoma.\n2. The presence of immune cell infiltration will be assessed based on immunohistochemical staining results, specifically:\n   - CD3 antibody (1:100 dilution, incubated for 1 hour at room temperature)\n   - CD20 antibody (1:50 dilution, incubated for 1 hour at room temperature)\n   - CD68 antibody (1:200 dilution, incubated overnight at 4°C)\n3. Documented clinical parameters, including patient age, sex, and treatment history, will be recorded for each selected sample to ensure comprehensive characterization.",
+            "Reference Source": "Reference source for Step 2"
+        },
+        "step 3": {
+            "implementation details": "III. Total number of samples obtained and their respective classifications. Maintain a detailed log of the samples, including their accession numbers, classifications (frozen, paraffin, cell lines), tumor grade, immune infiltration status, and source. The expected output is a summary table with columns for sample ID, type, tumor grade, immune infiltration status, and source. The anticipated total number of samples is:\n- 20 Frozen Samples\n- 5 Sarcoma Cell Lines\n- 10 Paraffin Sections",
+            "Reference Source": "Reference source for Step 3"
+        },
+        "step 4": {
+            "implementation details": "IV. Outline specific assays or analyses that will utilize these samples in subsequent parts. The assays will include:\n1. RNA extraction from frozen tissues using the Qiagen RNeasy Plus Mini Kit, following the manufacturer's protocol with a focus on maintaining RNA integrity (RIN > 7).\n2. RNA extraction from paraffin-embedded tissues using the Qiagen FFPE RNeasy Kit, ensuring complete deparaffinization and adequate RNA yield.\n3. Cell culture assays for the selected sarcoma cell lines, including specific media compositions (RPMI-1640 with 10% FBS and 1% penicillin/streptomycin) and growth conditions (37°C, 5% CO2).\n4. Immunohistochemical staining for immune cell markers, detailing the antibodies used, dilution factors, and incubation conditions as specified in step 2. Detailed protocols for these assays will be developed in the following parts based on the sample classifications.",
+            "Reference Source": {
+                "id1": {
+                    "10572617": [
+                        "Step 4"
+                    ],
+                    "8226247": [
+                        "Step 4"
+                    ]
+                },
+                "id2": {
+                    "5481278": [
+                        "Step 4"
+                    ]
+                }
+            }
+        }
+    },
+    "Part 2": {
+        "Part 2": "RNA Sequencing Data Processing and Analysis",
+        "step 1": {
+            "implementation details": "Download RNA sequencing data from the identified cases and public datasets. The datasets to be downloaded include: \n1. GSE202361: Expression profiling by high throughput sequencing for neoadjuvant immune checkpoint blockade in retroperitoneal dedifferentiated liposarcoma and extremity/trunk undifferentiated pleomorphic sarcoma. \n2. GSE205492: RNA sequencing analysis of NK cells, T cells, and tumor from matched soft tissue sarcoma and peripheral blood. \n3. GSE161616: Gene expression profiling of sarcoma cells treated with mithramycin A. \n4. GSE57750: Epigenetic profiling of well differentiated and dedifferentiated liposarcoma. \n5. GSE55466: Gene expression profiling of myxoid liposarcomas. \n6. GSE55465: Gene expression profiling of myxoid liposarcomas (validation set INT-B). \n7. GSE230773: Gene expression profiles associated with myxoid liposarcoma scaffold culture. \n8. GSE191132: Single-cell gene expression profiles associated with myxoid liposarcoma scaffold culture. \n9. GSE213065: Bulk RNA-sequencing of soft tissue sarcomas from patients undergoing chemotherapy and/or immunotherapy. \n10. GSE247026: Phase II clinical trial of ribociclib in combination with everolimus in advanced dedifferentiated liposarcoma and leiomyosarcoma. \n11. GSE243904: Antitumor effects of PRMT5 inhibition in sarcomas. \n12. GSE243759: Antitumor effects of PRMT5 inhibition in sarcomas (array). \n13. GSE241225: Gene expression at single cell level of untreated and 10 day palbociclib treated LS8817 cells. \n14. GSE91061: Molecular portraits of tumor mutational and micro-environmental sculpting by immune checkpoint blockade therapy. \nEnsure to document the download process and the formats of the downloaded data.",
+            "Reference Source": {
+                "id1": {
+                    "5481278": [
+                        "Step 1"
+                    ],
+                    "8226247": [
+                        "Step 1"
+                    ]
+                },
+                "id2": {
+                    "10572617": [
+                        "Step 1"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Conduct quality control analysis on the downloaded RNA sequencing data using the FastQC tool. Perform the following checks: \n1. Assess the overall quality of the raw sequencing reads. \n2. Check for the presence of adapter sequences and their removal. \n3. Evaluate the GC content of the reads, aiming for a GC content between 40-60%. \n4. Identify any sequences with low quality bases using a Phred score threshold of 20, and remove any reads that are below this threshold. \n5. Generate summary reports for each dataset to document the quality metrics, including the number of reads, percentage of duplicates, and overall quality scores. If a dataset fails to meet the quality criteria, document the steps taken to either reprocess or exclude that dataset.",
+            "Reference Source": "Reference source for Step 2"
+        },
+        "step 3": {
+            "implementation details": "Normalize the RNA sequencing data to ensure consistency across samples. Use the following methods and parameters: \n1. Use the TMM (Trimmed Mean of M-values) normalization method as implemented in the edgeR package, applying the 'calcNormFactors' function. \n2. Ensure that all samples are represented in the normalization process to account for library size differences. \n3. Perform log transformation of the normalized counts to stabilize variance using the 'voom' function from the Limma package. \n4. Document the normalization process, including specific edgeR and Limma functions used, to ensure reproducibility.",
+            "Reference Source": "Reference source for Step 3"
+        },
+        "step 4": {
+            "implementation details": "Identify differentially expressed genes (DEGs) using the Limma package with the following criteria: \n1. Set a significance threshold of false discovery rate (FDR) < 0.05. \n2. Use a minimum log2 fold change of |1| to classify genes as differentially expressed. \n3. Correlate identified DEGs with immune checkpoint-related long noncoding RNAs from relevant databases, such as LncBook or NONCODE. \n4. Generate volcano plots and heatmaps to visualize DEGs, including both the number of upregulated and downregulated genes in the report. Provide clear documentation of the analysis steps taken, including the specific Limma functions used for DEG identification.",
+            "Reference Source": {
+                "id1": {
+                    "5481278": [
+                        "Step 4"
+                    ],
+                    "8226247": [
+                        "Step 4"
+                    ]
+                },
+                "id2": {
+                    "10572617": [
+                        "Step 4"
+                    ]
+                }
+            }
+        }
+    },
+    "Part 3": {
+        "Part 3": "Functional Enrichment Analysis of DEGs",
+        "step 1": {
+            "implementation details": "Conduct Gene Ontology (GO) enrichment analysis using the identified differentially expressed genes (DEGs) from Part 2. Use the 'clusterProfiler' R package (version 3.18.1) to perform the analysis. Input the list of DEGs derived from datasets GSE202361, GSE205492, and GSE161616. Set the p-value cutoff at 0.05 and use the Benjamini-Hochberg method for multiple testing correction. Save the results in a tab-delimited format for further analysis. Ensure that the input data is in a named vector format with gene symbols as names.",
+            "Reference Source": {
+                "id1": {
+                    "5481278": [
+                        "step 1"
+                    ]
+                },
+                "id2": {
+                    "10572617": [
+                        "step 1"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Perform Kyoto Encyclopedia of Genes and Genomes (KEGG) pathway analysis to identify key pathways involved in liposarcoma. Utilize the 'clusterProfiler' R package (version 3.18.1) for this analysis. Input the same list of DEGs used in the GO analysis, ensuring it follows the same naming conventions. Set the p-value cutoff at 0.05 and adjust for multiple testing using the Benjamini-Hochberg method. Save the KEGG results, focusing on pathways with significant p-values, in a separate tab-delimited format for visualization. Citations for the KEGG database should be referenced.",
+            "Reference Source": "Reference source for Step 2"
+        },
+        "step 3": {
+            "implementation details": "Generate visual representations of the GO and KEGG analysis results. For GO analysis, create bar plots showing the top 10 enriched GO terms based on p-values using the 'ggplot2' R package (version 3.3.5). For KEGG analysis, create dot plots depicting the top 10 enriched pathways with corresponding p-values and gene counts. Ensure that all plots are appropriately labeled and include legends for clarity. Summarize expected outcomes, such as identifying biological processes and pathways that may contribute to liposarcoma pathogenesis.",
+            "Reference Source": "Reference source for Step 3"
+        }
+    },
+    "Part 4": {
+        "Part 4": "Integration of Single-Cell Sequencing Data",
+        "step 1": {
+            "implementation details": "Download single-cell sequencing data from publicly available datasets, specifically targeting GSE191132 and GSE230773. For GSE191132, retrieve the raw data files containing cell barcodes, features, and expression matrix. For GSE230773, obtain the Read_counts.xlsx file which includes gene expression data across different culture conditions. Preprocess the data to ensure compatibility and quality by filtering low-quality cells with a threshold of less than 200 detected genes and a mitochondrial gene expression ratio greater than 10%. Normalize the data using the SCTransform method or similar approaches to ensure comparability across samples. Utilize software tools such as Seurat or Scanpy for the preprocessing steps.",
+            "Reference Source": {
+                "id1": {
+                    "GSE191132": [
+                        "GSM5739810",
+                        "GSM5739811",
+                        "GSM5739812"
+                    ],
+                    "GSE230773": [
+                        "GSM7234121",
+                        "GSM7234122",
+                        "GSM7234123"
+                    ]
+                },
+                "id2": {
+                    "GSE191132": [
+                        "GSM5739810"
+                    ],
+                    "GSE230773": [
+                        "GSM7234121"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Perform analysis of cell-type specific gene expression profiles using the preprocessed single-cell RNA sequencing data. Utilize clustering algorithms, such as Louvain or K-means clustering, to identify distinct cell populations within the immune microenvironment. Apply methods such as t-SNE or UMAP for dimensionality reduction and visualize the data. Annotate cell types based on established marker gene expression profiles, specifically identifying immune cell types (e.g., T cells, B cells, macrophages) using known markers from literature (such as CD3 for T cells, CD19 for B cells, and CD68 for macrophages). Validate the identified clusters through cross-referencing with existing databases like the Human Cell Atlas.",
+            "Reference Source": "Refer to literature on single-cell RNA sequencing analysis methods and immune cell type markers."
+        },
+        "step 3": {
+            "implementation details": "Correlate findings from the single-cell analysis with bulk RNA sequencing data, specifically utilizing GSE202361. Employ statistical methods, such as Pearson or Spearman correlation coefficients, to compare gene expression profiles obtained from single-cell data with those from bulk data. Identify shared genes and analyze expression patterns that indicate immune cell presence or activity in the tumor microenvironment. Use integration methods, such as Seurat's integration workflow or Harmony, to align the datasets, enabling a comprehensive understanding of immune interactions in liposarcoma. Document the findings in a comparative analysis report that highlights significant correlations and potential implications for therapy.",
+            "Reference Source": "Refer to methodologies for data integration in single-cell and bulk RNA sequencing studies."
+        }
+    },
+    "Part 5": {
+        "Part 5": "Therapeutic Implications and Hypothesis Testing",
+        "step 1": {
+            "implementation details": "Link the findings from the transcriptomic analyses to specific therapeutic strategies by reviewing the data from datasets GSE202361, GSE205492, and GSE161616. Identify key differentially expressed genes (DEGs) such as PD-L1, CTLA4, and other immune checkpoint-related long noncoding RNAs associated with immune responses and treatment outcomes. Evaluate existing clinical trials related to these genes or pathways using the clinical trial registry data, focusing on metrics such as overall survival rates, progression-free survival, and response rates. Compile the information into a report outlining the potential therapeutic implications and recommended strategies based on transcriptomic findings, including proposed combinations of immune checkpoint inhibitors and targeted therapies, referencing specific trials where applicable.",
+            "Reference Source": {
+                "id1": {
+                    "report_id1": [
+                        "8226247: Part 1"
+                    ],
+                    "report_id2": [
+                        "10572617: Part 4"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Propose hypotheses regarding the role of identified genes such as PD-L1, CTLA4, and their associated pathways in immune evasion and therapy resistance based on the transcriptomic data from GSE202361 and GSE205492. For each identified gene, assess its function in the context of immune modulation and cellular signaling pathways, citing specific studies that connect these genes to immune responses in sarcomas. Develop a series of testable hypotheses that describe how these genes may contribute to the tumor microenvironment's ability to evade immune detection or resist current therapies. Document the hypotheses with a rationale supported by relevant literature and transcriptomic evidence.",
+            "Reference Source": "Reference source for Step 2"
+        },
+        "step 3": {
+            "implementation details": "Discuss the implications of the findings for clinical practice, focusing on how identified immune checkpoint molecules and DEGs can influence treatment protocols for liposarcoma. Analyze data from clinical trials such as those from GSE202361 and GSE213065 to identify specific gaps in current treatment strategies, including areas where existing therapies may be insufficient. Recommend future research directions, including potential clinical studies to test the hypotheses generated in Step 2, emphasizing the importance of personalized medicine approaches based on transcriptomic data to improve patient outcomes in liposarcoma. Consider the integration of novel therapies targeting the identified pathways, and discuss how these findings could influence clinical decision-making.",
+            "Reference Source": "Reference source for Step 3"
+        }
+    }
+}

@@ -1,0 +1,162 @@
+{
+    "Part 1": [
+        {
+            "task_id": "Part 1-dry-experiment-1",
+            "task_description": "Conduct a systematic search for frozen samples, sarcoma cell lines, and paraffin sections relevant to liposarcoma from TCGA, GTEx, and local biobanks.",
+            "input": "Data access credentials for TCGA and GTEx portals, including API keys; search filters for 'Liposarcoma' in TCGA and 'sarcoma' in GTEx; access to local biobank databases.",
+            "output": "A list of identified samples including their metadata such as sample IDs, source, tissue type, collection date, and any other relevant characteristics related to liposarcoma."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-2",
+            "task_description": "Query the TCGA database using the 'Liposarcoma' filter to extract relevant cases.",
+            "input": "Access to TCGA Data Portal and API; filter criteria set to 'Liposarcoma'; expected data formats (e.g., JSON, CSV).",
+            "output": "Extracted dataset of liposarcoma cases including sample IDs, complete clinical data, and associated metadata detailing tumor characteristics."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-3",
+            "task_description": "Filter GTEx data by 'sarcoma' tissue type to obtain related samples.",
+            "input": "Access to GTEx Portal; filter criteria for 'sarcoma' tissue type; expected data formats (e.g., JSON, CSV).",
+            "output": "A collection of sample metadata relevant to sarcoma from the GTEx database, including details such as sample type, collection date, and patient demographics."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-4",
+            "task_description": "Document unique sample IDs from local biobank databases to prevent duplication.",
+            "input": "Access to local biobank databases; search for liposarcoma cases; documentation format for sample IDs and associated metadata.",
+            "output": "A recorded list of unique sample IDs and their associated metadata from local biobanks, including patient age, gender, and diagnosis date."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-5",
+            "task_description": "Review collected samples against inclusion and exclusion criteria to create a final list of eligible samples.",
+            "input": "List of collected samples with their metadata; defined inclusion criteria (proven diagnosis, complete clinical data, etc.) and exclusion criteria (insufficient data, prior treatment).",
+            "output": "Finalized list of eligible samples that meet the inclusion criteria and do not meet the exclusion criteria, ready for further analysis."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-6",
+            "task_description": "Record detailed characteristics of each selected sample in a structured format.",
+            "input": "Final list of eligible samples; defined data structure for recording sample characteristics (e.g., spreadsheet format or database schema).",
+            "output": "Structured dataset containing detailed characteristics of each selected sample, formatted consistently to facilitate analysis, including fields like Sample ID, Patient Age, Gender, Tumor Grade, and Tumor Stage."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-7",
+            "task_description": "Calculate summary statistics for the collected samples.",
+            "input": "Structured dataset containing sample characteristics including age, gender, tumor grade, and stage; statistical analysis tools (e.g., software for statistical computation).",
+            "output": "Summary statistics report including mean, median, mode for age, and frequency counts for gender, grade, and stage, presented in a clear format for review."
+        },
+        {
+            "task_id": "Part 1-dry-experiment-8",
+            "task_description": "Conduct a review meeting with the research team to discuss sample selection and research objectives.",
+            "input": "Summary statistics report; final list of eligible samples; documentation of research objectives and criteria for sample selection.",
+            "output": "Meeting notes capturing team feedback, decisions on sample selection adjustments, potential biases or limitations identified, and any new directions for the research."
+        }
+    ],
+    "Part 2": [
+        {
+            "task_id": "Part 2-dry-experiment-1",
+            "task_description": "Download RNA sequencing data from The Cancer Genome Atlas (TCGA) and public repositories such as GEO for specified datasets.",
+            "input": "List of dataset identifiers (GSE202361, GSE205492, GSE161616, GSE57750, GSE68591, GSE55466, GSE55465, GSE267611, GSE230773, GSE191132, GSE213065, GSE247026, GSE243904, GSE243759) and the criteria established in Part 1 for sample selection.",
+            "output": "Downloaded RNA sequencing data files in FASTQ or raw count matrix formats, corresponding to the selected samples."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-2",
+            "task_description": "Perform quality control on the downloaded RNA sequencing data to assess integrity and quality of the RNA samples.",
+            "input": "RNA sequencing data files (in FASTQ or raw count matrix format) and quality control metrics such as the 3′/5′ ratio (target > 1.5).",
+            "output": "Quality control report documenting the outcomes, including the number of samples passing or failing the quality metrics, RNA degradation plots visualizing sample quality, and any excluded samples."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-3",
+            "task_description": "Normalize the RNA sequencing data using DESeq2 and gcRMA normalization methods.",
+            "input": "RNA sequencing data files (raw counts) and parameters for DESeq2 (default settings, including size factors calculated using the median ratio method) and gcRMA (standard parameters for background correction and quantile normalization).",
+            "output": "Normalized RNA sequencing data: normalized counts in a matrix format from DESeq2 and normalized expression values in a tab-delimited text file format from gcRMA."
+        },
+        {
+            "task_id": "Part 2-dry-experiment-4",
+            "task_description": "Document all preprocessing steps in detail to ensure reproducibility.",
+            "input": "Information about preprocessing steps, methods, settings used in the previous tasks, and details on software or packages employed (e.g., R libraries for DESeq2 and gcRMA).",
+            "output": "Comprehensive documentation outlining the preprocessing steps, rationale for methods, specific parameters, expected outputs, and format of the documentation (e.g., markdown file, report)."
+        }
+    ],
+    "Part 3": [
+        {
+            "task_id": "Part 3-dry-experiment-1",
+            "task_description": "Load RNA sequencing data from the TCGA and GSE202361 datasets into the R environment.",
+            "input": "RNA sequencing data from TCGA (80 cases of liposarcoma) and GSE202361 datasets, typically in formats like FPKM, TPM, or counts. Required libraries include Tximport.",
+            "output": "Formatted data objects in R (e.g., data frames or matrices) ready for analysis, containing transcriptomic profiles of the analyzed samples."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-2",
+            "task_description": "Create a design matrix for differential expression analysis using the Limma package.",
+            "input": "The formatted RNA sequencing data and a description of experimental conditions (e.g., treatment vs. control). The input is typically a vector or a matrix indicating the group assignments.",
+            "output": "A design matrix object that specifies the comparison conditions for the differential expression analysis."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-3",
+            "task_description": "Fit a linear model to the data using the 'lmFit' function from Limma.",
+            "input": "The design matrix created in the previous step and the formatted RNA sequencing data.",
+            "output": "A fitted linear model object containing coefficients, standard errors, and other statistical parameters relevant to the analysis."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-4",
+            "task_description": "Apply the 'eBayes' function to compute empirical Bayes statistics for the fitted linear model.",
+            "input": "The fitted linear model object obtained from the 'lmFit' function.",
+            "output": "An object containing empirical Bayes statistics, which includes moderated t-statistics, p-values, and other relevant metrics for differential expression."
+        },
+        {
+            "task_id": "Part 3-dry-experiment-5",
+            "task_description": "Perform differential expression analysis using the 'topTable' function from the Limma package.",
+            "input": "The empirical Bayes statistics object and parameters for filtering (adjusted P-value threshold of less than 0.001 and absolute log2(fold change) greater than 1).",
+            "output": "A data frame containing the differentially expressed genes (DEGs) that meet the specified criteria, including gene identifiers, log2 fold changes, and adjusted p-values."
+        }
+    ],
+    "Part 4": [
+        {
+            "task_id": "Part 4-dry-experiment-1",
+            "task_description": "Conduct Gene Ontology (GO) enrichment analysis using the identified differentially expressed genes (DEGs) from dataset GSE202361 to understand the biological processes associated with these genes.",
+            "input": "A data frame containing a list of significant DEGs filtered with an adjusted P-value < 0.05 from the dataset GSE202361. The data frame should include gene identifiers and their corresponding expression values.",
+            "output": "A CSV file containing GO terms, associated gene counts, and adjusted P-values for the significant DEGs, structured in tabular format with columns for GO term, gene count, and adjusted P-value."
+        },
+        {
+            "task_id": "Part 4-dry-experiment-2",
+            "task_description": "Perform Kyoto Encyclopedia of Genes and Genomes (KEGG) pathway analysis on the significant DEGs to identify relevant biological pathways.",
+            "input": "The same data frame used for the GO analysis, containing significant DEGs with an adjusted P-value < 0.05. This input should include gene identifiers and expression values, formatted for KEGG analysis.",
+            "output": "A tab-delimited file that includes pathway names, associated gene counts, and adjusted P-values for the KEGG analysis, structured in a tabular format with columns for pathway name, gene count, and adjusted P-value."
+        },
+        {
+            "task_id": "Part 4-dry-experiment-3",
+            "task_description": "Prepare a discussion document outlining potential therapeutic targets revealed through GO and KEGG analyses, focusing on the implications for liposarcoma treatment strategies.",
+            "input": "Results from the GO and KEGG analyses, including enriched biological processes, pathways, and references to datasets GSE202361 and GSE205492. The input should also include literature references that discuss specific genes implicated in liposarcoma treatment.",
+            "output": "A comprehensive discussion document summarizing key therapeutic targets, their implications for treatment strategies, and expected outcomes. The document should present findings in a written format, highlighting specific genes and pathways of interest."
+        }
+    ],
+    "Part 5": [
+        {
+            "task_id": "Part 5-dry-experiment-1",
+            "task_description": "Acquire RNA sequencing data from The Cancer Genome Atlas (TCGA) specifically targeting long noncoding RNAs (lncRNAs) related to immune checkpoint molecules.",
+            "input": "Project IDs TCGA-LUAD and TCGA-PAAD; RNA-Seq data for liposarcoma cases in formats such as FASTQ or BAM; Data Transfer Tool for GDC.",
+            "output": "Downloaded RNA sequencing datasets that include lncRNAs and immune checkpoint molecules (ICMs) such as PD-1 (PDCD1), PD-L1 (CD274), CTLA-4 (CTLA4), along with a record of clinical attributes like age (continuous), sex (categorical), tumor grade (categorical), stage (categorical), and treatment history (categorical)."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-2",
+            "task_description": "Analyze the expression levels of the identified immune checkpoint-related lncRNAs in the acquired RNA-Seq data.",
+            "input": "RNA-Seq data containing lncRNA and ICM expression levels; bioinformatics tools DESeq2 (version 1.30.0) or edgeR (version 3.32.1) for differential expression analysis.",
+            "output": "Results of differential expression analysis documenting significant lncRNAs (adjusted p-value < 0.05 and |log2(fold change)| > 1), including expression correlation data visualized in heatmaps (PNG or PDF format) and volcano plots (PNG or PDF format)."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-3",
+            "task_description": "Conduct survival analysis using the Kaplan-Meier method, stratifying patients based on high and low expression levels of significant lncRNAs.",
+            "input": "Expression data of significant lncRNAs (continuous) and corresponding clinical survival data (time to event and event status).",
+            "output": "Kaplan-Meier survival curves (visualization in PNG or PDF format) and log-rank test results (statistical output detailing p-values and hazard ratios) evaluating survival differences between high and low expression groups."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-4",
+            "task_description": "Investigate the predictive value of lncRNAs for response to immunotherapy through statistical modeling.",
+            "input": "Expression levels of significant lncRNAs (continuous) and clinical outcome data regarding immunotherapy response (binary outcome: responder vs. non-responder).",
+            "output": "Statistical models (e.g., logistic regression) indicating the predictive value of lncRNAs as biomarkers for immunotherapy response, along with associated statistical metrics (odds ratios, confidence intervals)."
+        },
+        {
+            "task_id": "Part 5-dry-experiment-5",
+            "task_description": "Document any challenges faced during the analysis for future reference.",
+            "input": "Records of the data processing and analysis steps undertaken, including any issues encountered with data quality, computational tools, or interpretation of results.",
+            "output": "A comprehensive report detailing the challenges faced, along with suggested solutions or adjustments made to the analysis based on preliminary results."
+        }
+    ]
+}

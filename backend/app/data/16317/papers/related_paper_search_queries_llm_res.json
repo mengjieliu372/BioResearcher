@@ -1,0 +1,67 @@
+{
+    "0": {
+        "search": {
+            "full_llm_res": "Here are five diverse retrieval statements using Boolean query operations for your preliminary literature review:\n\n1. [(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"tumor microenvironment\") AND (\"transcriptomics\" OR \"gene expression profiling\")]\n\n2. [(\"liposarcoma\" AND \"key genes\") AND (\"RNA sequencing\" OR \"single-cell sequencing\") AND (\"tumor immunology\" OR \"immune response\")]\n\n3. [(\"liposarcoma\" OR \"soft tissue sarcoma\") AND (\"immune cells\" OR \"tumor infiltrating lymphocytes\") AND (\"gene signatures\" OR \"biomarkers\")]\n\n4. [(\"transcriptomics\" AND \"liposarcoma\") AND (\"pathway analysis\" OR \"functional enrichment\") AND (\"immune evasion\" OR \"immune suppression\")]\n\n5. [(\"single-cell sequencing\" AND \"liposarcoma\" AND \"immune microenvironment\") OR (\"cell lines\" AND \"tumor microenvironment\" AND \"immunotherapy\")]\n\nThese statements can be used to gather relevant literature on the immune microenvironment and key genes associated with liposarcoma based on transcriptomic analyses.",
+            "search_queries": [
+                "(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"tumor microenvironment\") AND (\"transcriptomics\" OR \"gene expression profiling\")",
+                "(\"liposarcoma\" AND \"key genes\") AND (\"RNA sequencing\" OR \"single-cell sequencing\") AND (\"tumor immunology\" OR \"immune response\")",
+                "(\"liposarcoma\" OR \"soft tissue sarcoma\") AND (\"immune cells\" OR \"tumor infiltrating lymphocytes\") AND (\"gene signatures\" OR \"biomarkers\")",
+                "(\"transcriptomics\" AND \"liposarcoma\") AND (\"pathway analysis\" OR \"functional enrichment\") AND (\"immune evasion\" OR \"immune suppression\")",
+                "(\"single-cell sequencing\" AND \"liposarcoma\" AND \"immune microenvironment\") OR (\"cell lines\" AND \"tumor microenvironment\" AND \"immunotherapy\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    },
+    "1": {
+        "search": {
+            "full_llm_res": "Here are five diverse retrieval statements using Boolean query operations for your preliminary literature review:\n\n1. [(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"tumor microenvironment\") AND (\"transcriptomics\" OR \"gene expression\")]\n\n2. [(\"liposarcoma\" AND \"key genes\") AND (\"RNA sequencing\" OR \"gene profiling\") AND (\"classification\" OR \"characterization\")]\n\n3. [(\"single-cell sequencing\" OR \"scRNA-seq\") AND (\"immune cells\" OR \"tumor infiltrating lymphocytes\") AND (\"liposarcoma\")]\n\n4. [(\"transcriptomics\" AND \"immune response\") AND (\"liposarcoma\" OR \"soft tissue sarcoma\") AND (\"bioinformatics\" OR \"data analysis\")]\n\n5. [(\"frozen samples\" OR \"paraffin sections\") AND (\"liposarcoma\" AND \"gene expression analysis\") AND (\"animal experiments\" OR \"preclinical studies\")]",
+            "search_queries": [
+                "(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"tumor microenvironment\") AND (\"transcriptomics\" OR \"gene expression\")",
+                "(\"liposarcoma\" AND \"key genes\") AND (\"RNA sequencing\" OR \"gene profiling\") AND (\"classification\" OR \"characterization\")",
+                "(\"single-cell sequencing\" OR \"scRNA-seq\") AND (\"immune cells\" OR \"tumor infiltrating lymphocytes\") AND (\"liposarcoma\")",
+                "(\"transcriptomics\" AND \"immune response\") AND (\"liposarcoma\" OR \"soft tissue sarcoma\") AND (\"bioinformatics\" OR \"data analysis\")",
+                "(\"frozen samples\" OR \"paraffin sections\") AND (\"liposarcoma\" AND \"gene expression analysis\") AND (\"animal experiments\" OR \"preclinical studies\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    },
+    "2": {
+        "search": {
+            "full_llm_res": "Certainly! Here are five diverse retrieval statements using Boolean query operations for your literature review on the classification of the immune microenvironment and identification of key genes in liposarcoma based on transcriptomics:\n\n1. [(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"immune landscape\") AND (\"transcriptomics\" OR \"RNA sequencing\")]\n\n2. [(\"liposarcoma\" AND \"key genes\") AND (\"gene expression\" OR \"differential expression\") AND (\"bioinformatics\" OR \"data analysis\")]\n\n3. [(\"single-cell sequencing\" OR \"single-cell RNA-seq\") AND (\"liposarcoma\" OR \"sarcoma\") AND (\"immune cells\" OR \"tumor microenvironment\")]\n\n4. [(\"frozen samples\" OR \"paraffin sections\") AND (\"RNA sequencing\" OR \"sequencing data\") AND (\"liposarcoma\" AND \"tumor biology\")]\n\n5. [(\"animal models\" OR \"in vivo\") AND (\"liposarcoma\" OR \"sarcoma\") AND (\"immune response\" OR \"therapeutic targets\")]\n\nThese retrieval statements can help guide your literature review to gather relevant information for your research target.",
+            "search_queries": [
+                "(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"immune landscape\") AND (\"transcriptomics\" OR \"RNA sequencing\")",
+                "(\"liposarcoma\" AND \"key genes\") AND (\"gene expression\" OR \"differential expression\") AND (\"bioinformatics\" OR \"data analysis\")",
+                "(\"single-cell sequencing\" OR \"single-cell RNA-seq\") AND (\"liposarcoma\" OR \"sarcoma\") AND (\"immune cells\" OR \"tumor microenvironment\")",
+                "(\"frozen samples\" OR \"paraffin sections\") AND (\"RNA sequencing\" OR \"sequencing data\") AND (\"liposarcoma\" AND \"tumor biology\")",
+                "(\"animal models\" OR \"in vivo\") AND (\"liposarcoma\" OR \"sarcoma\") AND (\"immune response\" OR \"therapeutic targets\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    },
+    "3": {
+        "search": {
+            "full_llm_res": "Here are five diverse retrieval statements using Boolean query operations for your preliminary literature review on the classification of the immune microenvironment and identification of key genes in liposarcoma based on transcriptomics:\n\n1. [(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"immune cells\" OR \"immune response\") AND (\"transcriptomics\" OR \"RNA sequencing\")]\n\n2. [(\"liposarcoma\" AND \"gene expression\") AND (\"key genes\" OR \"biomarkers\") AND (\"RNA sequencing\" OR \"single-cell sequencing\")]\n\n3. [(\"tumor microenvironment\" AND \"liposarcoma\") AND (\"immune profiling\" OR \"immune landscape\") AND (\"transcriptomic analysis\")]\n\n4. [(\"liposarcoma\" OR \"soft tissue sarcoma\") AND (\"immune system\" OR \"immune evasion\") AND (\"transcriptome\" OR \"gene expression profiling\")]\n\n5. [(\"liposarcoma\" AND \"single-cell RNA sequencing\") AND (\"immune cells\" OR \"T cells\" OR \"macrophages\") AND (\"gene identification\" OR \"gene discovery\")] \n\nThese retrieval statements can help you gather relevant literature and studies related to your research target.",
+            "search_queries": [
+                "(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"immune cells\" OR \"immune response\") AND (\"transcriptomics\" OR \"RNA sequencing\")",
+                "(\"liposarcoma\" AND \"gene expression\") AND (\"key genes\" OR \"biomarkers\") AND (\"RNA sequencing\" OR \"single-cell sequencing\")",
+                "(\"tumor microenvironment\" AND \"liposarcoma\") AND (\"immune profiling\" OR \"immune landscape\") AND (\"transcriptomic analysis\")",
+                "(\"liposarcoma\" OR \"soft tissue sarcoma\") AND (\"immune system\" OR \"immune evasion\") AND (\"transcriptome\" OR \"gene expression profiling\")",
+                "(\"liposarcoma\" AND \"single-cell RNA sequencing\") AND (\"immune cells\" OR \"T cells\" OR \"macrophages\") AND (\"gene identification\" OR \"gene discovery\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    },
+    "4": {
+        "search": {
+            "full_llm_res": "Here are five diverse retrieval statements using Boolean query operations for a preliminary literature review on your research target:\n\n1. [(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"tumor microenvironment\") AND (\"gene expression\" OR \"transcriptomics\")]\n\n2. [(\"RNA sequencing\" OR \"RNA-Seq\") AND (\"liposarcoma\" OR \"sarcoma\") AND (\"key genes\" OR \"biomarkers\")]\n\n3. [(\"single-cell sequencing\" OR \"scRNA-Seq\") AND (\"liposarcoma\" OR \"sarcoma\") AND (\"immune cells\" OR \"immune response\")]\n\n4. [(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"tumor immunity\") AND (\"transcriptomics\" OR \"gene profiling\") AND (\"key regulators\" OR \"signaling pathways\")]\n\n5. [(\"tumor microenvironment\" AND \"liposarcoma\") AND (\"transcriptomic analysis\" OR \"gene expression profiling\") AND (\"public databases\" OR \"genomic resources\")]",
+            "search_queries": [
+                "(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"tumor microenvironment\") AND (\"gene expression\" OR \"transcriptomics\")",
+                "(\"RNA sequencing\" OR \"RNA-Seq\") AND (\"liposarcoma\" OR \"sarcoma\") AND (\"key genes\" OR \"biomarkers\")",
+                "(\"single-cell sequencing\" OR \"scRNA-Seq\") AND (\"liposarcoma\" OR \"sarcoma\") AND (\"immune cells\" OR \"immune response\")",
+                "(\"liposarcoma\" OR \"sarcoma\") AND (\"immune microenvironment\" OR \"tumor immunity\") AND (\"transcriptomics\" OR \"gene profiling\") AND (\"key regulators\" OR \"signaling pathways\")",
+                "(\"tumor microenvironment\" AND \"liposarcoma\") AND (\"transcriptomic analysis\" OR \"gene expression profiling\") AND (\"public databases\" OR \"genomic resources\")"
+            ]
+        },
+        "filter": "LLM 过滤（判断相似性）的响应记录在那些相关 paper list 的每个 tup 里"
+    }
+}

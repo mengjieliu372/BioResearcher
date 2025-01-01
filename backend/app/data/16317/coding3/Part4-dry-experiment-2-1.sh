@@ -1,0 +1,1 @@
+ls /path/to/rna_seq/

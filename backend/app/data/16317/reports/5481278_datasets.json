@@ -1,0 +1,85 @@
+{
+    "useful": {
+        "GEO": {
+            "GSE21124": {
+                "Status": "Public on Jul 06, 2010",
+                "Title": "Subtype-specific genomic alterations define new targets for soft tissue sarcoma therapy",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by arrayGenome variation profiling by SNP array",
+                "Summary": "This SuperSeries is composed of the SubSeries listed below.",
+                "Overall design": "Refer to individual Series",
+                "Platforms": "Platforms (2), GPL96, [HG-U133A] Affymetrix Human Genome U133A Array, , GPL3720, [Mapping250K_Sty] Affymetrix Mapping 250K Sty2 SNP Array",
+                "Samples": {
+                    "GSM528276": {
+                        "link": "/geo/query/acc.cgi?acc=GSM528276",
+                        "name": "Sarcoma tumor PT1DD",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM528276.CEL.gz",
+                                "file_size": "3.4 Mb",
+                                "file_type": "CEL",
+                                "download_link": "/geo/download/?acc=GSM528276&format=file&file=GSM528276%2ECEL%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Jul 06, 2010",
+                        "Title": "Sarcoma tumor PT1DD",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "tissue: Soft-tissue sarcomadisease status: Liposarcoma:Dedifferentiatedsample id: PT1DD",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "Total RNA was extracted from macro-dissected cryomolds and homogenized in QIAzol lysis reagent",
+                        "Description": "Gene expression data from soft-tissue sarcoma tumor",
+                        "Data processing": "Signal intensity data was generated with Affymetrix Microarray Suite version 5.0 software with default parameters. Expression values were estimated with robust multi-array average (RMA) using standard background correction. RMA-normalized expression data is provided in log base 2 scale.",
+                        "Platform ID": "GPL96"
+                    }
+                },
+                "Supplementary file": []
+            }
+        },
+        "TCGA": {}
+    },
+    "all": {
+        "GEO": {
+            "GPL96": {
+                "Status": "Public on Mar 11, 2002",
+                "Title": "[HG-U133A] Affymetrix Human Genome U133A Array",
+                "Organism": "Homo sapiens"
+            },
+            "GSE21124": {
+                "Status": "Public on Jul 06, 2010",
+                "Title": "Subtype-specific genomic alterations define new targets for soft tissue sarcoma therapy",
+                "Organism": "Homo sapiens",
+                "Experiment type": "Expression profiling by arrayGenome variation profiling by SNP array",
+                "Summary": "This SuperSeries is composed of the SubSeries listed below.",
+                "Overall design": "Refer to individual Series",
+                "Platforms": "Platforms (2), GPL96, [HG-U133A] Affymetrix Human Genome U133A Array, , GPL3720, [Mapping250K_Sty] Affymetrix Mapping 250K Sty2 SNP Array",
+                "Samples": {
+                    "GSM528276": {
+                        "link": "/geo/query/acc.cgi?acc=GSM528276",
+                        "name": "Sarcoma tumor PT1DD",
+                        "Supplementary file": [
+                            {
+                                "file_name": "GSM528276.CEL.gz",
+                                "file_size": "3.4 Mb",
+                                "file_type": "CEL",
+                                "download_link": "/geo/download/?acc=GSM528276&format=file&file=GSM528276%2ECEL%2Egz"
+                            }
+                        ],
+                        "Status": "Public on Jul 06, 2010",
+                        "Title": "Sarcoma tumor PT1DD",
+                        "Sample type": "RNA",
+                        "Organism": "Homo sapiens",
+                        "Characteristics": "tissue: Soft-tissue sarcomadisease status: Liposarcoma:Dedifferentiatedsample id: PT1DD",
+                        "Extracted molecule": "total RNA",
+                        "Extraction protocol": "Total RNA was extracted from macro-dissected cryomolds and homogenized in QIAzol lysis reagent",
+                        "Description": "Gene expression data from soft-tissue sarcoma tumor",
+                        "Data processing": "Signal intensity data was generated with Affymetrix Microarray Suite version 5.0 software with default parameters. Expression values were estimated with robust multi-array average (RMA) using standard background correction. RMA-normalized expression data is provided in log base 2 scale.",
+                        "Platform ID": "GPL96"
+                    }
+                },
+                "Supplementary file": []
+            }
+        },
+        "TCGA": {}
+    }
+}

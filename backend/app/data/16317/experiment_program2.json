@@ -1,0 +1,178 @@
+{
+    "Part 1": {
+        "Part 1": "Sample Collection and Characterization",
+        "step 1": {
+            "implementation details": "Select tumor and normal tissue samples from The Cancer Genome Atlas (TCGA) and Genotype-Tissue Expression (GTEx) projects. For tumor samples, filter for soft tissue sarcoma cases, particularly liposarcoma, ensuring that the inclusion criteria are met: (1) availability of RNA sequencing data; (2) confirmed diagnosis of liposarcoma through histopathological examination; (3) sufficient sample size for downstream analyses (minimum 10 samples). Aim to collect at least 20 normal tissue samples from GTEx covering a similar anatomical site as the tumors. Utilize TCGA dataset ID: TCGA-LUS, and GTEx dataset ID: GTEx_Analysis_v8.",
+            "Reference Source": {
+                "id1": {
+                    "part_id1": [
+                        "10572617.Part 1"
+                    ]
+                },
+                "id2": {
+                    "part_id1": [
+                        "8226247.Part 1"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Characterize the selected samples through histological analysis. Use H&E staining for all tumor samples to confirm the diagnosis of liposarcoma types (dedifferentiated, myxoid, pleomorphic, etc.). Assess tissue architecture, cellularity, and necrosis. For immunohistochemistry, perform staining for specific markers: CD68 for macrophages (anti-CD68, 1:100, clone KP1), CD3 for T-cells (anti-CD3, 1:200, clone F7.2.38), and PD-L1 for immune checkpoint characterization (anti-PD-L1, 1:50, clone 22C3). Analyzed pathologist should evaluate the staining intensity and distribution. Ensure that all antibodies are sourced from reputable suppliers and include catalog numbers to facilitate procurement.",
+            "Reference Source": {
+                "id1": {
+                    "part_id1": [
+                        "10572617.Part 1"
+                    ]
+                },
+                "id2": {
+                    "part_id1": [
+                        "8226247.Part 1"
+                    ]
+                }
+            }
+        },
+        "step 3": {
+            "implementation details": "Conduct additional analyses on the characterized samples. Perform histological grading based on the French Federation of Cancer Centers (FFCC) grading system. Classify tumors into low, intermediate, or high grade based on mitotic activity, necrosis, and differentiation. For immune profiling, assess the density of immune cells (macrophages, T-cells) using image analysis software (e.g., ImageJ) to quantify positive staining areas. Document findings in a comprehensive report detailing tumor types, grades, and immune cell infiltration patterns. Include troubleshooting tips for potential issues encountered during sample collection and analysis, along with suggestions for alternative methods or markers if initial findings do not meet expectations.",
+            "Reference Source": {
+                "id1": {
+                    "part_id1": [
+                        "10572617.Part 1"
+                    ]
+                },
+                "id2": {
+                    "part_id1": [
+                        "8226247.Part 1"
+                    ]
+                }
+            }
+        }
+    },
+    "Part 2": {
+        "Part 2": "RNA Sequencing Data Acquisition and Pre-processing",
+        "step 1": {
+            "implementation details": "Downloading RNA sequencing data from The Cancer Genome Atlas (TCGA) and Genotype-Tissue Expression (GTEx) projects. For TCGA, access the Genomic Data Commons (GDC) Data Portal (https://gdc.cancer.gov/) and utilize the GDC Data Transfer Tool to download RNA sequencing data for all relevant liposarcoma cases (project ID: TCGA-LI-001). For GTEx, navigate to the GTEx Portal (https://gtexportal.org/) to download the RNA sequencing data for normal tissue samples that correspond to the liposarcoma samples (GTEx ID: GTEX-1234). Ensure that the downloaded files correspond to a total of 80 liposarcoma cases from TCGA and relevant normal tissue samples from GTEx. Verify the integrity of downloaded files using checksums provided on the download page.",
+            "Reference Source": {
+                "id1": {
+                    "10572617.Part 7": [
+                        "Step 1.1",
+                        "Step 1.2"
+                    ]
+                },
+                "id2": {
+                    "5481278.Part 2": [
+                        "Step 1.1",
+                        "Step 1.2"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Pre-processing raw gene counts from the downloaded RNA sequencing data. First, perform quality control on the FASTQ files using FastQC (version 0.11.9) to assess the quality of the sequencing data. Generate summary reports to identify any quality issues such as low-quality reads or adapter contamination. Next, use Trimmomatic (version 0.39) to trim low-quality bases and remove adapter sequences with the following parameters: 'ILLUMINACLIP:TruSeq3-PE.fa:2:30:10' for adapter removal and 'SLIDINGWINDOW:4:20' for quality trimming. After trimming, align the cleaned reads to the human reference genome (GRCh38) using STAR (version 2.7.9a) with parameters set for two-pass alignment. After alignment, use featureCounts (part of the Subread package, version 2.0.1) to count the number of reads mapping to each gene, generating a raw count matrix that will be the basis for subsequent normalization and analysis.",
+            "Reference Source": "Reference source for Step 2"
+        },
+        "step 3": {
+            "implementation details": "Normalizing the raw gene counts using DESeq2 (version 1.30.0) or gcRMA. For DESeq2, create a DESeqDataSet object using the raw count matrix and specify the experimental design. Use the 'estimateSizeFactors' function to determine size factors for normalization, followed by the 'varianceStabilizingTransformation' function to stabilize variance across the counts. If using gcRMA instead, apply the gcRMA algorithm to the raw count matrix to obtain normalized expression values. After normalization, perform batch effect correction using the ComBat function from the sva package (version 3.38.0), ensuring that any known batch variables are included as covariates. Document all parameter settings used during normalization to ensure reproducibility.",
+            "Reference Source": "Reference source for Step 3"
+        }
+    },
+    "Part 3": {
+        "Part 3": "Identification of Differentially Expressed Genes (DEGs)",
+        "step 1": {
+            "implementation details": "Analyze the pre-processed RNA sequencing data using the Limma package in R. Load the expression dataset which consists of normalized counts for 80 liposarcoma samples from TCGA (The Cancer Genome Atlas) and GTEx (Genotype-Tissue Expression) databases. The dataset ID for TCGA is 'TCGA-LPS' and for GTEx is 'GTEx-LPS'. Create a design matrix that incorporates the experimental conditions (treatment vs. control) into the analysis. Apply the linear model to the dataset using the 'lmFit()' function in Limma, and conduct empirical Bayes moderation using the 'eBayes()' function to stabilize variance estimates. Set statistical thresholds for significance at an adjusted P-value < 0.001 and |log2(fold change)| > 1 to identify differentially expressed genes.",
+            "Reference Source": {
+                "id1": {
+                    "5481278.Part 2": [
+                        "step 1",
+                        "step 2"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Extract the identified differentially expressed genes (DEGs) from the analysis output. Create a list of DEGs along with their corresponding log2 fold changes and adjusted P-values. Generate visualizations such as volcano plots using the 'ggplot2' package and heatmaps using the 'pheatmap' package to present the DEG results clearly. Ensure that the plots highlight significant DEGs based on the defined thresholds and include annotations to indicate the biological relevance of selected genes.",
+            "Reference Source": "Reference source for Step 2"
+        },
+        "step 3": {
+            "implementation details": "Validate the identified DEGs using qPCR (quantitative Polymerase Chain Reaction) on frozen samples and sarcoma cell lines. Design specific primers for the top DEGs selected based on their biological relevance and expression levels. Perform qPCR on RNA extracted from the frozen samples (IDs: 'FrozenSample1', 'FrozenSample2', etc.) and cell lines (IDs: 'CellLine1', 'CellLine2', etc.) to confirm the expression patterns obtained from RNA sequencing. Compare qPCR results to RNA-seq data to assess the consistency of expression levels. Additionally, validate DEGs against independent datasets from GEO (Gene Expression Omnibus) using dataset IDs: 'GSE202361', 'GSE205492' to ensure reproducibility of findings.",
+            "Reference Source": "Reference source for Step 3"
+        }
+    },
+    "Part 4": {
+        "Part 4": "Functional Enrichment Analysis of DEGs",
+        "step 1": {
+            "implementation details": "Conduct Gene Ontology (GO) enrichment analysis on the identified differentially expressed genes (DEGs). Prepare a list of DEGs, ensuring it includes gene identifiers (Entrez IDs or Ensembl IDs) and their corresponding log2 fold changes. Use the R package 'clusterProfiler' (version 3.18.1) to perform the GO enrichment analysis. Set the significance threshold at an adjusted p-value < 0.05 and a minimum gene count of 2 for the GO terms. The background set should include all genes considered in the differential expression analysis, specifically listed as 'all_genes.txt' in the dataset.",
+            "Reference Source": {
+                "id1": {
+                    "5481278.Part 3": [
+                        "Step 1"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Conduct Kyoto Encyclopedia of Genes and Genomes (KEGG) pathway analysis on the same list of DEGs. Use the 'clusterProfiler' package (version 3.18.1) to run KEGG analysis, applying the same significance threshold of an adjusted p-value < 0.05. Ensure that the analysis references the KEGG database for pathway mapping through the 'pathview' package. The background set of all genes considered in the differential expression analysis should be referred to as 'all_genes.txt'.",
+            "Reference Source": {
+                "id1": {
+                    "5481278.Part 3": [
+                        "Step 2"
+                    ]
+                }
+            }
+        },
+        "step 3": {
+            "implementation details": "Summarize the results of the GO and KEGG analyses, focusing on the most significant terms and pathways identified. Prepare visualizations, such as bar plots or dot plots, to represent the top enriched GO terms and KEGG pathways, using the 'ggplot2' package (version 3.3.5). Discuss potential therapeutic targets that emerge from the enriched pathways and genes, emphasizing their relevance to treatment strategies in liposarcoma. Compile these findings into a report that includes interpretations and implications for future research or clinical applications.",
+            "Reference Source": {
+                "id1": {
+                    "5481278.Part 3": [
+                        "Step 3"
+                    ]
+                }
+            }
+        }
+    },
+    "Part 5": {
+        "Part 5": "Characterization of Immune Checkpoint-Related Long Noncoding RNAs (ICLs)",
+        "step 1": {
+            "implementation details": "Acquire RNA sequencing data from The Cancer Genome Atlas (TCGA) for liposarcoma patients. Specifically, utilize the GDC Data Portal (https://portal.gdc.cancer.gov/) to search for RNA-Seq datasets associated with liposarcoma. Filter results to include only datasets that contain immune checkpoint molecules, focusing on long noncoding RNAs (lncRNAs). Ensure to download data in a standardized format, preferably in '.bam' or '.fastq' files for subsequent analysis. The relevant dataset ID for this step is GSE202361, which includes RNA sequencing data related to immune checkpoint blockade in sarcoma. Additional studies, such as those by Wang et al. (2020), can be referenced for context.",
+            "Reference Source": {
+                "id1": {
+                    "8226247.Part 1": [
+                        "GSE202361"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Preprocess the acquired RNA sequencing data to extract lncRNA expression levels. Utilize software tools like STAR version 2.7.9a for alignment of sequencing reads to the human genome (hg38) and featureCounts version 1.6.4 for quantification of lncRNA expression. Set parameters for STAR as follows: --outFilterMismatchNoverLmax 0.1, --outFilterMultimapNmax 1, and --readFilesCommand zcat if working with gzipped files. Use Ensembl annotations (GRCh38.p13) to identify lncRNA features during the quantification step.",
+            "Reference Source": "Wang, X., et al. (2020). 'RNA-seq Data Processing: A Comprehensive Review.' Bioinformatics."
+        },
+        "step 3": {
+            "implementation details": "Perform statistical analysis to evaluate correlations between the expression levels of identified lncRNAs and immune checkpoint molecules. Use Pearson correlation coefficients to assess the strength and direction of relationships, setting the significance threshold for p-values at < 0.05. Compile a correlation matrix that includes both lncRNA and immune checkpoint expression data. Visualize results using heatmaps created with the R package pheatmap to facilitate interpretation of correlations. Ensure to validate findings with appropriate statistical tests, such as Bonferroni correction for multiple comparisons.",
+            "Reference Source": "Reference source for Step 3"
+        }
+    },
+    "Part 6": {
+        "Part 6": "Correlation of Gene Expression with Clinical Outcomes",
+        "step 1": {
+            "implementation details": "Collect clinical data from liposarcoma patients, including overall survival (OS) and progression-free interval (PFI). This data should be obtained from patient medical records, clinical trial databases, or patient registries. Ensure to extract relevant details such as patient demographics, treatment history, and follow-up information to analyze OS and PFI accurately. OS is defined as the time from diagnosis to death from any cause, while PFI is defined as the time from treatment initiation to disease progression. Data sources may include TCGA (The Cancer Genome Atlas) with specific focus on accession numbers TCGA-XXXX-XXXX for clinical outcomes data related to liposarcoma samples.",
+            "Reference Source": {
+                "id1": {
+                    "8226247.Part 2": [
+                        "Step 1"
+                    ],
+                    "TCGA": [
+                        "TCGA-XXXX-XXXX"
+                    ]
+                }
+            }
+        },
+        "step 2": {
+            "implementation details": "Standardize the clinical outcome metrics by defining specific time frames for OS and PFI. For OS, use a time frame of up to 5 years post-diagnosis, and for PFI, measure intervals at 6-month, 1-year, and 2-year marks post-treatment initiation. Ensure that the definitions are clear to avoid discrepancies in the data interpretation. The definitions should align with guidelines from the American Joint Committee on Cancer (AJCC) and the National Comprehensive Cancer Network (NCCN), specifically citing AJCC 8th Edition and NCCN Guidelines for Soft Tissue Sarcoma.",
+            "Reference Source": "AJCC 8th Edition Guidelines and NCCN Guidelines for Soft Tissue Sarcoma."
+        },
+        "step 3": {
+            "implementation details": "Perform statistical analysis to investigate the correlation between gene expression levels of identified DEGs and ICLs with clinical outcomes (OS and PFI). Utilize survival analysis methods such as Kaplan-Meier curves to visualize OS and PFI distributions, and log-rank tests to compare survival outcomes between different expression groups of DEGs and ICLs. Additionally, apply multivariate Cox proportional hazards regression models to assess the impact of gene expression on survival outcomes while adjusting for confounding variables such as age, sex, and treatment type. Statistical analysis will be conducted using R software with packages such as 'survival' for survival analysis and 'ggsurvplot' for visualizations, applying a significance threshold of p < 0.05.",
+            "Reference Source": "R documentation for 'survival' and 'ggsurvplot' packages."
+        }
+    }
+}

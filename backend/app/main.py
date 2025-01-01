@@ -6,6 +6,7 @@ from app.routers import search
 from app.routers import dryexp
 from app.routers import expdesign
 from app.routers import litprocess
+from app.routers import program
 
 # from fastapi.staticfiles import StaticFiles
 # from starlette.responses import FileResponse
@@ -29,3 +30,5 @@ app.include_router(dryexp.router)
 app.include_router(expdesign.router)
 
 app.include_router(litprocess.router)
+
+app.include_router(program.router)

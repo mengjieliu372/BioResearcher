@@ -317,27 +317,27 @@ def run_bioresearcher(expid: str, target: str, conditions: str, requirements: st
             dry_translation_time = dry_translation_end - dry_translation_begin
             log_file.write("dry_translation_time: "+ str(dry_translation_time) + "\n")
 
+            total_input_tokens = input_tokens1+input_tokens2+input_tokens3+input_tokens4
+            total_output_tokens = output_tokens1+output_tokens2+output_tokens3+output_tokens4
+            print("total_tokens: ", total_input_tokens, total_output_tokens)
 
 
-            # #programming: coding
-            # coding_begin = time.time()
-            # code = code_generator(dry_experiment, code_result_log_path, code_save_dir)
-            # input_tokens5 += code[1]
-            # output_tokens5 += code[2]
-            # print("coding token_count: ", input_tokens5, output_tokens5)
-            # coding_end = time.time()
-            # coding_time = coding_end-coding_begin
-            # log_file.write("coding time: "+ str(coding_time) + "\n")
+            #programming: coding
+            if version == "3":
+                coding_begin = time.time()
+                code = code_generator(dry_experiment, code_result_log_path, code_save_dir)
+                input_tokens5 += code[1]
+                output_tokens5 += code[2]
+                print("coding token_count: ", input_tokens5, output_tokens5)
+                coding_end = time.time()
+                coding_time = coding_end-coding_begin
+                log_file.write("coding time: "+ str(coding_time) + "\n")
 
-            # total_input_tokens = input_tokens1+input_tokens2+input_tokens3+input_tokens4
-            # total_output_tokens = output_tokens1+output_tokens2+output_tokens3+output_tokens4
-            # print("total_tokens: ", total_input_tokens, total_output_tokens)
-
-            log_file.close()
 
         except Exception as e:
             print(e)
 
+    log_file.close()
 
 
 @router.post("/addExperiment")
