@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -18,7 +19,7 @@ export default function HorizontalLinearAlternativeLabelStepper() {
     const [activeStep, setActiveStep] = React.useState(0);
     const navigate = useNavigate();
     const { id } = useParams();
-
+    const [completedSteps, setCompletedSteps] = useState([0, 2]); 
     const handleStep = (step) => () => {
         setActiveStep(step);
         switch (step) {
@@ -71,7 +72,7 @@ export default function HorizontalLinearAlternativeLabelStepper() {
                     }
                 >
                     {steps.map((label, index) => (
-                        <Step key={label}>
+                        <Step key={label} completed={completedSteps.includes(index)}>
                             <StepButton
                                 color="inherit"
                                 onClick={handleStep(index)}

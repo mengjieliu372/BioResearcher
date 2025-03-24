@@ -43,7 +43,7 @@ export default function VerticalTabs() {
             id={`panel${key}-header`}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-              <Typography sx={{ flexGrow: 1 }}>{value.Title}</Typography>
+              <Typography variant='subtitle' sx={{ flexGrow: 1 , fontWeight: 'bold'}}>{value.Title}</Typography>
               {value.isRelated !== undefined && (
                 <Chip
                   label={value.isRelated ? 'Relevant' : 'Irrelevant'}
@@ -56,20 +56,22 @@ export default function VerticalTabs() {
           </AccordionSummary>
           <AccordionDetails>
             <Box>
-              <Typography sx={{ fontWeight: 'bold' }}>Search Query : </Typography>
-              {value.search_query}
+              <Typography sx={{ fontWeight: 'bold', display: 'inline' }}>Search Query : </Typography>
+              <Typography sx={{ display: 'inline' }}>{value.search_query}</Typography>
             </Box>
             <Box>
-              <Typography sx={{ fontWeight: 'bold' }}>Identifier:</Typography>
-              {key}
+              <Typography sx={{ fontWeight: 'bold', display: 'inline' }}>Identifier:</Typography>
+              <Typography sx={{ display: 'inline' }}>{key}</Typography>
             </Box>
             <Box>
-              <Typography sx={{ fontWeight: 'bold' }}>Status:</Typography>
-              {value.Status}
+              <Typography sx={{ fontWeight: 'bold', display: 'inline' }}>Status:</Typography>
+              <Typography sx={{ display: 'inline' }}>{value.Status}</Typography>
             </Box>
             <Box>
               <Typography sx={{ fontWeight: 'bold' }}>Summary:</Typography>
-              {value.Summary}
+              <Typography sx={{ color: 'text.secondary' }}>
+                {value.Summary}
+              </Typography>
             </Box>
           </AccordionDetails>
         </Accordion>
@@ -79,8 +81,12 @@ export default function VerticalTabs() {
 
 
   return (
+    <Box>
+      <Typography variant="h5" sx={{ mt: '1vh', ml: '3vw', mb: '2vh' }}>
+        Retrieval Results
+      </Typography>
     <Box sx={{
-      height: '72vh',
+      height: '65vh',
       width: '76vw',
       m: 'auto',
       mt: '3vh',
@@ -105,13 +111,14 @@ export default function VerticalTabs() {
             ml: 'auto',
             mr: 'auto',
             overflowY: 'auto',
-            maxHeight: '72vh',
+            maxHeight: '65vh',
           }}
         >
           {showDatasets(datasets)}
         </Box>
         )
       }
+    </Box>
     </Box>
   );
 }

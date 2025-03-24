@@ -29,6 +29,7 @@ export default function NewProject() {
   const [paperset, setPaperset] = useState({ PMC: true, PubMed: false });
   const [dataset, setDataset] = useState({ GEO: true, NCBI: false, cBioPortal: false });
   const [llmModel, setLLMModel] = useState('GPT4o');
+  const [framework, setFramework] = useState('BioResearch');
   const [refNum, setRefNum] = useState('');
   const [reviewerRound, setReviewerRound] = useState('');
   const [files, setFiles] = useState([]);
@@ -108,6 +109,10 @@ export default function NewProject() {
     setLLMModel(event.target.value);
   };
 
+  const handleFrameworkChange = (event) => {
+    setFramework(event.target.value);
+  };
+
   const handleSubmit = () => {
     // 数据验证
     if (!expName || !expPurpose || !expCondition || !expRequirement) {
@@ -142,6 +147,7 @@ export default function NewProject() {
       paperset,
       dataset,
       llmModel,
+      framework,
       refNum: refNumInt,
       reviewerRound: reviewerRoundInt,
       fileNames: files.map(file => file.name)
@@ -160,25 +166,24 @@ export default function NewProject() {
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Container
+      <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          width: '60%',
-          maxWidth: 800,
+          width: '65vw',
           backgroundColor: 'white',
-          borderRadius: 8,
-          padding: 4,
+          borderRadius: 3,
           boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)',
-          p: 4,
-          mb: 8,
+          pl: 3,
+          pr: 3,
+          pt: 2,
+          mb: 6,
         }}
       >
-        <Typography variant="h4" sx={{ mb: 4, fontWeight: 'bold', color: '#333' }}>
+        <Typography variant="h4" sx={{ mb: 2, fontWeight: 'bold', color: '#333' }}>
           Create a New Project
         </Typography>
-
         <Grid container spacing={2}>
           <Grid item="true" size={12}>
             <TextField
@@ -235,13 +240,13 @@ export default function NewProject() {
 
 
 
-        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', mt: 4 }}>
-          选择要检索的数据库
+        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', mt: 1 }}>
+          Select the database to search
         </Typography>
-        <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
-          文献库：
+        <Typography variant="h6" sx={{ color: '#555'}}>
+          Paper database:
         </Typography>
-        <FormGroup row sx={{ mb: 2 }}>
+        <FormGroup row>
           <FormControlLabel
             control={<Checkbox checked={paperset.PMC} onChange={handlePaperChange} name='PMC' />}
             label="PMC" />
@@ -249,10 +254,10 @@ export default function NewProject() {
             control={<Checkbox checked={paperset.PubMed} onChange={handlePaperChange} name='PubMed' />}
             label="PubMed" />
         </FormGroup>
-        <Typography variant="h6" sx={{ color: '#555', mb: 1 }}>
-          数据集库：
+        <Typography variant="h6" sx={{ color: '#555'}}>
+          Dataset database:
         </Typography>
-        <FormGroup row sx={{ mb: 2 }}>
+        <FormGroup row >
           <FormControlLabel
             control={<Checkbox checked={dataset.GEO} onChange={handleDatabaseChange} name='GEO' />}
             label="GEO" />
@@ -265,7 +270,7 @@ export default function NewProject() {
         </FormGroup>
 
         <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333' }}>
-          本地文献上传
+          Upload local papers
         </Typography>
         <Button
           component="label"
@@ -287,7 +292,7 @@ export default function NewProject() {
         {files.length > 0 && (
           <Box sx={{ mb: 4 }}>
             <Typography variant="h6" sx={{ color: '#555', mb: 0.5 }}>
-              已选择的文件：
+              Files selected:
             </Typography>
             <List>
               {files.map((file, index) => (
@@ -318,8 +323,8 @@ export default function NewProject() {
           </Box>
         )}
 
-        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', mb: 2 }}>
-          LLM模型选择
+        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333'}}>
+          LLM model selection
         </Typography>
 
         <FormControl>
@@ -329,7 +334,6 @@ export default function NewProject() {
             aria-labelledby="llm"
             onChange={handleLlmModelChange}
             name="row-radio-buttons-group"
-            sx={{ mb: 4 }}
           >
             <FormControlLabel value="GPT4o" control={<Radio />} label="GPT4o" />
             <FormControlLabel value="gemini" control={<Radio />} label="gemini" />
@@ -337,14 +341,32 @@ export default function NewProject() {
           </RadioGroup>
         </FormControl>
 
-        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', mb: 2 }}>
-          其他可选参数
+        {/**/}
+        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333'}}>
+          Framework selection
         </Typography>
 
+        <FormControl>
+          <RadioGroup
+            row
+            defaultValue="BioResearcher"
+            aria-labelledby="framework"
+            onChange={handleFrameworkChange}
+            name="row-radio-buttons-group"
+          >
+            <FormControlLabel value="BioResearcher" control={<Radio />} label="BioResearcher" />
+            <FormControlLabel value="ReAct" control={<Radio />} label="ReAct" />
+            <FormControlLabel value="Plan-and-Execute" control={<Radio />} label="Plan-and-Execute" />
+          </RadioGroup>
+        </FormControl>
+
+        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#333', mb: 2 }}>
+          Other parameters(optional)
+        </Typography>
         <Grid container spacing={2}>
           <Grid item="true" size={6}>
             <TextField
-              label="参考文献的数量"
+              label="Number of references"
               variant="outlined"
               value={refNum}
               onInput={handleInputRefNum}
@@ -353,7 +375,7 @@ export default function NewProject() {
           </Grid>
           <Grid item="true" size={6}>
             <TextField
-              label="Reviewer最大轮次"
+              label="Reviewer maximum round"
               variant="outlined"
               value={reviewerRound}
               onInput={handleInputReviewerRound}
@@ -366,12 +388,12 @@ export default function NewProject() {
           variant="contained"
           color="primary"
           size="large"
-          sx={{ mt: 4 }}
+          sx={{ mt: 2, mb: 2}}
           onClick={handleSubmit}
         >
-          提交
+          Create
         </Button>
-      </Container>
+      </Box>
     </Box>
   );
 }
