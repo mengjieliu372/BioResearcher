@@ -19,7 +19,19 @@
         "reviewerRound": 52,
         "fileNames": [
             "1.pdf"
-        ]
+        ],
+        "page_search_paper": true,
+        "page_search_datasets": true,
+        "page_Literature_processing": true,
+        "page_design_1": true,
+        "page_design_2": true,
+        "page_design_3": true,
+        "page_dry_1": true,
+        "page_dry_2": true,
+        "page_dry_3": true,
+        "page_coding_1": false,
+        "page_coding_2": false,
+        "page_coding_3": false
     },
     {
         "id": 16317,
@@ -39,6 +51,18 @@
         "llmModel": "GPT4o",
         "refNum": null,
         "reviewerRound": null,
-        "fileNames": []
+        "fileNames": [],
+        "page_search_paper": true,
+        "page_search_datasets": true,
+        "page_Literature_processing": true,
+        "page_design_1": true,
+        "page_design_2": true,
+        "page_design_3": true,
+        "page_dry_1": true,
+        "page_dry_2": true,
+        "page_dry_3": true,
+        "page_coding_1": true,
+        "page_coding_2": true,
+        "page_coding_3": true
     }
 ]

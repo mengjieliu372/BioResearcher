@@ -60,7 +60,7 @@ def process_datasets(id: int):
     related_datasets_set = set(related_datasets.keys())
     
     # temp
-    query = "liposarcoma AND gene expression"
+    # query = "liposarcoma AND gene expression"
 
     for category, datasets in retrieved_datasets.items():
         for dataset, info in datasets.items():
@@ -69,7 +69,7 @@ def process_datasets(id: int):
                 'dataset_id': dataset ,
                 **info, 
                 'isRelated': is_related, 
-                'search_query': query
+                'search_query': info["search_query"]
             }
             response.append(obj)
 

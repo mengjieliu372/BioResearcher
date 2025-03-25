@@ -88,6 +88,15 @@ def run_bioresearcher(expid: str, target: str, conditions: str, requirements: st
     search_time = search_end - search_begin
     log_file.write("generating search query search_time: "+ str(search_time) + "\n")
 
+    # Literature searching datasets 运行完毕
+    exp_file = read_json(data_dir / "experiments.json")
+    for tup in exp_file:
+        if tup["id"] == expid:
+            tup["page_search_paper"] = True
+            break
+    write_json(exp_file, data_dir / "experiments.json")
+
+
     #Data searching module
     search_begin = time.time()
     input_tokens12, output_tokens12 = 0, 0
@@ -102,6 +111,13 @@ def run_bioresearcher(expid: str, target: str, conditions: str, requirements: st
     search_time = search_end - search_begin
     log_file.write("Data searching search_time: "+ str(search_time) + "\n")
 
+    # Literature searching datasets 运行完毕
+    exp_file = read_json(data_dir / "experiments.json")
+    for tup in exp_file:
+        if tup["id"] == expid:
+            tup["page_search_datasets"] = True
+            break
+    write_json(exp_file, data_dir / "experiments.json")
 
 
     # Literature processing
@@ -245,6 +261,15 @@ def run_bioresearcher(expid: str, target: str, conditions: str, requirements: st
     log_file.write("id match: " + match_id + "\n\n")
 
 
+    # Literature processing 运行完毕
+    exp_file = read_json(data_dir / "experiments.json")
+    for tup in exp_file:
+        if tup["id"] == expid:
+            tup["page_Literature_processing"] = True
+            break
+    write_json(exp_file, data_dir / "experiments.json")
+
+
 
     for version in ["1", "2", "3"]:
         try:
@@ -285,6 +310,15 @@ def run_bioresearcher(expid: str, target: str, conditions: str, requirements: st
             log_file.write("design_time: "+ str(design_time) + "\n\n")
             print("token_count: ", input_tokens3, output_tokens3)
 
+            # 一版 Design 运行完毕
+            exp_file = read_json(data_dir / "experiments.json")
+            for tup in exp_file:
+                if tup["id"] == expid:
+                    temp_key = "page_design_" + version
+                    tup[temp_key] = True
+                    break
+            write_json(exp_file, data_dir / "experiments.json")
+
 
             #translation
             design_translation_begin = time.time()
@@ -309,6 +343,16 @@ def run_bioresearcher(expid: str, target: str, conditions: str, requirements: st
             dry_experiment_extract_time = dry_experiment_extract_end - dry_experiment_extract_begin
             log_file.write("dry_experiment_extract_time: "+ str(dry_experiment_extract_time) + "\n")
 
+            # 一版 dry experiment extractor 运行完毕
+            exp_file = read_json(data_dir / "experiments.json")
+            for tup in exp_file:
+                if tup["id"] == expid:
+                    temp_key = "page_dry_" + version
+                    tup[temp_key] = True
+                    break
+            write_json(exp_file, data_dir / "experiments.json")
+
+
             #translation
             dry_translation_begin = time.time()
             if not os.path.exists(dry_tranlate_savepath):
@@ -332,6 +376,15 @@ def run_bioresearcher(expid: str, target: str, conditions: str, requirements: st
                 coding_end = time.time()
                 coding_time = coding_end-coding_begin
                 log_file.write("coding time: "+ str(coding_time) + "\n")
+
+            # 一版 coding 运行完毕
+            exp_file = read_json(data_dir / "experiments.json")
+            for tup in exp_file:
+                if tup["id"] == expid:
+                    temp_key = "page_coding_" + version
+                    tup[temp_key] = True
+                    break
+            write_json(exp_file, data_dir / "experiments.json")
 
 
         except Exception as e:
