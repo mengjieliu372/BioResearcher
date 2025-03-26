@@ -7,30 +7,31 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
+import Tooltip,  { tooltipClasses } from '@mui/material/Tooltip';
 import { useState } from 'react';
 import Divider from '@mui/material/Divider';
-import { PieChart } from '@mui/x-charts/PieChart';
+import { styled } from '@mui/material/styles';
 
-function InnerComponent({ setpData }) {
-    const [expandedAll, setExpandedAll] = useState(false);
-    const [expandedArray, setExpandedArray] = useState(Array(Object.keys(setpData).length).fill(false));
-    const handleExpandedAll = () => {
-        setExpandedAll(prev => {
-            const newExpandedAll = !prev;
-            setExpandedArray(Array(Object.keys(setpData).length).fill(newExpandedAll));
-            return newExpandedAll;
-        });
-    };
-    const handleExpandArray = (index) => {
-        const newArray = [...expandedArray];
-        newArray[index] = !newArray[index];
-        setExpandedArray(newArray);
-    };
+function InnerComponent({ stepData }) {
+
+    const CustomWidthTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }} />
+      ))({
+        [`& .${tooltipClasses.tooltip}`]: {
+          maxWidth: 500,
+        },
+      });
+    
+    const analysisColor = {
+        "High": "#6BCF73",
+        "Medium": "#FFA726",
+        "Low": "#EF9A9A"
+    }
 
     return (
         <Box>
-            {Object.entries(setpData)
-                .filter(([stepKey, stepValue]) => stepKey !== "Referability")
+            {Object.entries(stepData)
+                .filter(([stepKey, stepValue]) => stepKey !== "Referability" && stepKey !== "Reason" && stepKey !== "Suggestions")
                 .slice(1)
                 .map(([stepKey, stepValue], index) => (
                     <Box key={stepKey}>
@@ -49,26 +50,36 @@ function InnerComponent({ setpData }) {
                                                 {stepValue["implementation details"] || "No data available"}
                                             </Typography>
                                         </Box>
-                                        {/*
-                                        <Box>
-                                            <Typography variant='h6'>Original Text:</Typography>
-                                            <Typography variant='body1'>
-                                                {stepValue["original text"] || "No data available"}
-                                            </Typography>
+                                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', pr: 5 }}>
+                                            <CustomWidthTooltip
+                                                arrow
+                                                placement='left'
+                                                title={
+                                                    <Box>
+                                                        <Box>
+                                                            <Typography variant='h6'>Original Text:</Typography>
+                                                            <Typography variant='body1'>
+                                                                {stepValue["original text"] || "No data available"}
+                                                            </Typography>
+                                                        </Box>
+                                                        <Box>
+                                                            <Typography variant='h6'>Results:</Typography>
+                                                            <Typography variant='body1'>
+                                                                {stepValue["results"] || "No data available"}
+                                                            </Typography>
+                                                        </Box>
+                                                        <Box>
+                                                            <Typography variant='h6'>Results Original Text:</Typography>
+                                                            <Typography variant='body1'>
+                                                                {stepValue["results original text"] || "No data available"}
+                                                            </Typography>
+                                                        </Box>
+                                                    </Box>
+                                                }
+                                            >
+                                                <Button variant="outlined">Reference</Button>
+                                            </CustomWidthTooltip>
                                         </Box>
-                                        <Box>
-                                            <Typography variant='h6'>Results:</Typography>
-                                            <Typography variant='body1'>
-                                                {stepValue["results"] || "No data available"}
-                                            </Typography>
-                                        </Box>
-                                        <Box>
-                                            <Typography variant='h6'>Results Original Text:</Typography>
-                                            <Typography variant='body1'>
-                                                {stepValue["results original text"] || "No data available"}
-                                            </Typography>
-                                        </Box>
-                                        */}
                                     </Box>
 
                                 )
@@ -76,6 +87,19 @@ function InnerComponent({ setpData }) {
                         </Box>
                     </Box>
                 ))}
+            <Box sx={{ width: '100%', backgroundColor: analysisColor[stepData["Referability"]] || '#cbf1f5', p: 1, mt:1, borderRadius: '8px' }}>
+                <Typography variant='h6' sx={{ ml: 1 }}>Analysis:</Typography>
+                <Box sx={{ display: 'flex', width: '100%' }}>
+                    <Box sx={{ width: '50%', m: 1, p: 1, border: '1px solid #000', borderRadius: '8px' }}>
+                        <Typography variant='subtitle1'>Reason:</Typography>
+                        <Typography variant='body1'>{stepData["Reason"]}</Typography>
+                    </Box>
+                    <Box sx={{ width: '50%', m: 1, p: 1, border: '1px solid #000', borderRadius: '8px' }}>
+                        <Typography variant='subtitle1'>Suggestions:</Typography>
+                        <Typography variant='body1'>{stepData["Suggestions"]}</Typography>
+                    </Box>
+                </Box>
+            </Box>
         </Box>
     );
 }
@@ -167,7 +191,7 @@ export default function RenderContent({ data, paper_title }) {
                             </Box>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <InnerComponent setpData={partValue} />
+                            <InnerComponent stepData={partValue} />
                         </AccordionDetails>
                     </Accordion>
                 ))}
