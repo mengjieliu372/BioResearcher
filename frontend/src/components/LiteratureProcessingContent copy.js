@@ -33,23 +33,29 @@ function InnerComponent({ setpData }) {
                 .filter(([stepKey, stepValue]) => stepKey !== "Referability")
                 .slice(1)
                 .map(([stepKey, stepValue], index) => (
-                    <Box key={stepKey}>
-                        <Typography variant='h6'>{stepKey.charAt(0).toUpperCase() + stepKey.slice(1)}</Typography>
-                        <Box>
+                    <Accordion key={stepKey} expanded={expandedArray[index]}>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                            onClick={() => handleExpandArray(index)}
+                        >
+                            {stepKey}
+                        </AccordionSummary>
+                        <AccordionDetails>
                             {
                                 !(typeof stepValue === 'object') ? (
                                     <Box>
                                         <Typography variant='body1'>{stepValue}</Typography>
                                     </Box>
-
                                 ) : (
                                     <Box>
                                         <Box>
+                                            <Typography variant='h6'>Implementation Details:</Typography>
                                             <Typography variant='body1'>
                                                 {stepValue["implementation details"] || "No data available"}
                                             </Typography>
                                         </Box>
-                                        {/*
                                         <Box>
                                             <Typography variant='h6'>Original Text:</Typography>
                                             <Typography variant='body1'>
@@ -68,13 +74,12 @@ function InnerComponent({ setpData }) {
                                                 {stepValue["results original text"] || "No data available"}
                                             </Typography>
                                         </Box>
-                                        */}
                                     </Box>
 
                                 )
                             }
-                        </Box>
-                    </Box>
+                        </AccordionDetails>
+                    </Accordion>
                 ))}
         </Box>
     );

@@ -11,11 +11,12 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function VerticalTabs() {
+export default function DatasetsView({ query, data }) {
   const [datasets, setDatasets] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-
+  console.log(query);
+  console.log(typeof (query));
   useEffect(() => {
     getDatasets(id)
       .then((res) => {
@@ -43,7 +44,7 @@ export default function VerticalTabs() {
             id={`panel${key}-header`}
           >
             <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-              <Typography variant='subtitle' sx={{ flexGrow: 1 , fontWeight: 'bold'}}>{value.Title}</Typography>
+              <Typography variant='subtitle' sx={{ flexGrow: 1, fontWeight: 'bold' }}>{value.Title}</Typography>
               {value.isRelated !== undefined && (
                 <Chip
                   label={value.isRelated ? 'Relevant' : 'Irrelevant'}
@@ -81,44 +82,39 @@ export default function VerticalTabs() {
 
 
   return (
-    <Box>
-      <Typography variant="h5" sx={{ mt: '1vh', ml: '3vw', mb: '2vh' }}>
-        Retrieval Results
+    <Box sx={{ width: '52vw' }}>
+      <Typography variant="subtitle1" >
+        Search Query: {query}
       </Typography>
-    <Box sx={{
-      height: '65vh',
-      width: '76vw',
-      m: 'auto',
-      mt: '3vh',
-      borderRadius: '8px',
-      boxShadow: 3,
-    }}>
-      {
-        loading ? (
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%',
-            }}
-          >
-            <CircularProgress />
-          </Box>
-        ) : (
-          <Box
-          sx={{
-            ml: 'auto',
-            mr: 'auto',
-            overflowY: 'auto',
-            maxHeight: '65vh',
-          }}
-        >
-          {showDatasets(datasets)}
-        </Box>
-        )
-      }
-    </Box>
+      <Box>
+        {
+          loading ? (
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100%',
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                width: '52vw',
+                ml: 'auto',
+                mr: 'auto',
+                overflowY: 'auto',
+                height: '61vh',
+                maxHeight: '61vh',
+              }}
+            >
+              {showDatasets(data)}
+            </Box>
+          )
+        }
+      </Box>
     </Box>
   );
 }

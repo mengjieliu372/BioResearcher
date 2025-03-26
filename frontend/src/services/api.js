@@ -17,6 +17,14 @@ export const getProjects = async () => {
     });
 }
 
+// 获取某个项目信息
+export const getProject = async (id) => {
+    return request({
+        url: `/api/${id}/experiment`,
+        method: 'get',
+    });
+}
+
 // 更新项目信息
 export const updateProject = async (data) => {
     return request({
@@ -50,6 +58,14 @@ export const deleteFile = async (fileName) => {
         url: '/api/deletefile',
         method: 'delete',
         params: { file_name: fileName }
+    });
+}
+
+// 获取已完成步骤
+export const getCompletedSteps = async (id) => {
+    return request({
+        url: `/api/${id}/process`,
+        method: 'get',
     });
 }
 

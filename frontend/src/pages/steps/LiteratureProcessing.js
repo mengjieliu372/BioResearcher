@@ -102,7 +102,7 @@ export default function VerticalTabs() {
       <Box
         sx={{
           height: '78vh',
-          width: '80vw',
+          width: '60vw'
         }}
       >
         {paperInfo.map((paper, index) => {

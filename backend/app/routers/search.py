@@ -1,6 +1,8 @@
 from fastapi import APIRouter
 from pathlib import Path
+import pandas as pd
 import json
+
 import re
 router = APIRouter()
 
@@ -24,29 +26,34 @@ def process_papersets(id: int):
         related_papers = json.load(f)
     downloaded_titles = {item['title'] for item in related_papers["download successfully"]}
     undownloaded_titles = {item['title'] for item in related_papers["download failed"]}
-    """
-    with open(DataFile / "papers" / "related_paper_search_queries_llm_res.json", 'r', encoding='utf-8') as f:
-        search_queries_of_related_papers = json.load(f)
-    queries = search_queries_of_related_papers["0"]["search"]["search_queries"]
-    """
 
-    # query = "(\"well-differentiated liposarcoma\" OR \"dedifferentiated liposarcoma\") AND (\"gene expression\" OR \"RNA sequencing\") AND (\"prognosis\" OR \"outcome\")"
     for paper in retrieved_papers:
         title = paper['title']
         abstract = paper['abstract']
+        search_query = paper['search_query']
         clean_title = re.sub(r'<[^>]*>', '', title)
         clean_abstract = re.sub(r'<[^>]*>', '', abstract)
-
+        clean_query = re.sub(r'"', '', search_query)
+    
         flag = 1
         if title in downloaded_titles:
             flag = 3
         elif title in undownloaded_titles:
             flag = 2
+
         paper['flag'] = flag
         paper['title'] = clean_title
         paper['abstract'] = clean_abstract
-        # paper['search_query'] = query
+        paper['search_query'] = clean_query
+        # 如果有，删掉path字段
+        if 'path' in paper:
+            del paper['path']
     retrieved_papers = sorted(retrieved_papers, key=lambda x: x['flag'], reverse=True)
+    df = pd.DataFrame(retrieved_papers)
+    grouped = df.groupby('search_query')
+    retrieved_papers = {}
+    for query, group in grouped:
+        retrieved_papers[query] = group.to_dict(orient='records')
     return retrieved_papers
 
 
@@ -59,9 +66,6 @@ def process_datasets(id: int):
     response = []
     related_datasets_set = set(related_datasets.keys())
     
-    # temp
-    # query = "liposarcoma AND gene expression"
-
     for category, datasets in retrieved_datasets.items():
         for dataset, info in datasets.items():
             is_related = dataset in related_datasets_set
@@ -76,4 +80,9 @@ def process_datasets(id: int):
 
     # Sort datasets by 'isRelated' (True comes first)
     response.sort(key=lambda x: x['isRelated'], reverse=True)
+    df = pd.DataFrame(response)
+    grouped = df.groupby('search_query')
+    response = {}
+    for query, group in grouped:
+        response[query] = group.to_dict(orient='records')
     return response

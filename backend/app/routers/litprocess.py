@@ -18,11 +18,18 @@ async def get_paper_report_analysis(id: int, index: int):
     report = get_report(id, file_name)
     analysis = get_analysis(id, file_name)
     response = merge_report_analysis(report, analysis)
+    # response 重排序
+    response = sortPartObj(response)
     title = paper_info[index]['title']
     return {
         'title': title,
         'data': response
     }
+
+def sortPartObj(partObj):
+    sorted_keys = sorted(partObj.keys(), key=lambda x: int(re.search(r'\d+', x).group()))
+    sorted_dict = {key: partObj[key] for key in sorted_keys}
+    return sorted_dict
 
 def get_existed_files(id: int):
     file_path = Path(__file__).parent.parent / "data" / str(id) / "reports"

@@ -393,6 +393,15 @@ def run_bioresearcher(expid: str, target: str, conditions: str, requirements: st
     log_file.close()
 
 
+@router.get("/{id}/experiment")
+async def get_experiment(id: int):
+    experiments = read_experiments()
+    experiment = next((exp for exp in experiments if exp["id"] == id), None)
+    if experiment is None:
+        return {"message": f"Experiment {id} not found"}
+    return experiment
+
+
 @router.post("/addExperiment")
 async def add_experiment(experiment: Experiment, background_tasks: BackgroundTasks):
     try:

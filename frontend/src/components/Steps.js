@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { getCompletedSteps, getProject } from '../services/api';
+import { Typography } from '@mui/material';
 
 const steps = [
     'Search',
@@ -19,7 +21,8 @@ export default function HorizontalLinearAlternativeLabelStepper() {
     const [activeStep, setActiveStep] = React.useState(0);
     const navigate = useNavigate();
     const { id } = useParams();
-    const [completedSteps, setCompletedSteps] = useState([0, 2]); 
+    const [completedSteps, setCompletedSteps] = useState([]);
+    const [exp, setExp] = useState();
     const handleStep = (step) => () => {
         setActiveStep(step);
         switch (step) {
@@ -43,6 +46,50 @@ export default function HorizontalLinearAlternativeLabelStepper() {
         }
     };
 
+    // 获取已完成步骤
+    const fetchStepsCompleted = async () => {
+        try {
+            const response = await getCompletedSteps(id);
+            setCompletedSteps(response.data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    // 获取当前实验信息
+    const fetchProject = async () => {
+        try {
+            const response = await getProject(id);
+            setExp(response.data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        fetchStepsCompleted();
+        fetchProject();
+    }, []);
+
+    // 轮询
+    useEffect(() => {
+        const interval = setInterval(() => {
+            fetchStepsCompleted();
+        }, 1000);
+
+        if (completedSteps.length === steps.length) {
+            clearInterval(interval);
+        }
+
+        return () => clearInterval(interval);
+    }, [id, activeStep, completedSteps]);
+
+    if (!exp) {
+        return <Typography>Loading...</Typography>;
+    }
+
     return (
         <Box>
             <Box
@@ -53,7 +100,7 @@ export default function HorizontalLinearAlternativeLabelStepper() {
                     height: '10vh',
                 }}
             >
-                <Stepper 
+                <Stepper
                     nonLinear
                     activeStep={activeStep}
                     alternativeLabel
@@ -76,8 +123,9 @@ export default function HorizontalLinearAlternativeLabelStepper() {
                             <StepButton
                                 color="inherit"
                                 onClick={handleStep(index)}
+                                disabled={!completedSteps.includes(index)} // 未完成的步骤不可点击
                                 sx={{
-                                    height: '4vh',  
+                                    height: '4vh',
                                 }}
                             >
                                 {label}
@@ -89,18 +137,62 @@ export default function HorizontalLinearAlternativeLabelStepper() {
 
             <Box sx={{
                 display: 'flex',
-                overflowY: 'auto',
-                height: '78vh',
-                maxHeight: '78vh',
-                borderRadius: '8px',
-                margin: 'auto',
-                mt: '2vh',
-                mr: '5vw',
-                ml: '5vw',
-                width: '90vw',
-                backgroundColor: '#fff',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',  // 上对齐
+                mt: 2,
+                mx: '5vw',  // 左右间距
             }}>
-               <Outlet/> 
+                <Box
+                    sx={{
+                        width: '17vw',
+                        backgroundColor: '#ffffff',
+                        height: '75vh',
+                        maxHeight: '75vh',
+                        overflowY: 'auto',
+                        paddingLeft: '16px',
+                        paddingRight: '16px',
+                        borderRadius: '8px',
+                    }}
+                >
+                    <Typography variant="h5" align="center" sx={{mt: '2vh', mb: '2vh', color: '#2274f2', fontWeight: 'bold'}}>Task Information</Typography>
+
+                    <Typography variant="h6" sx={{color: '#3b82f6'}}>Experiment Name:</Typography>
+                    <Typography variant="body1">{exp.expName}</Typography>
+
+                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Experiment Purpose:</Typography>
+                    <Typography variant="body1">{exp.expPurpose}</Typography>
+
+                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Paperset:</Typography>
+                    <Typography variant="body1">PMC: {exp.paperset.PMC ? 'Yes' : 'No'}</Typography>
+                    <Typography variant="body1">PubMed: {exp.paperset.PubMed ? 'Yes' : 'No'}</Typography>
+
+                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Dataset:</Typography>
+                    <Typography variant="body1">GEO: {exp.dataset.GEO ? 'Yes' : 'No'}</Typography>
+                    <Typography variant="body1">NCBI: {exp.dataset.NCBI ? 'Yes' : 'No'}</Typography>
+                    <Typography variant="body1">cBioPortal: {exp.dataset.cBioPortal ? 'Yes' : 'No'}</Typography>
+
+                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>LLM Model:</Typography>
+                    <Typography variant="body1">{exp.llmModel}</Typography>
+                    
+                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Reference Number: </Typography>
+                    <Typography variant="body1">{exp.refNum ? exp.refNum : 'Null'}</Typography>
+                    
+                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Reviewer Round:</Typography>
+                    <Typography variant="body1">{exp.reviewerRound ? exp.reviewerRound : 'Null'}</Typography>
+                </Box>
+
+                <Box
+                    sx={{
+                        width: '70vw', // 设置右侧内容宽度
+                        backgroundColor: '#fff',
+                        overflowY: 'auto',
+                        height: '78vh', // 保证右侧区域适应高度
+                        maxHeight: '78vh',
+                    }}
+                >
+                    {/* 右侧具体内容 */}
+                    <Outlet />
+                </Box>
             </Box>
         </Box>
     );
