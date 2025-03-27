@@ -35,10 +35,10 @@ export default function SwitchButton() {
           color='primary'
         >
           <ToggleButton value="papers" aria-label="papers" sx={{ textTransform: 'none', border:'none'}}>
-            Papersets
+            Paper Source
           </ToggleButton>
           <ToggleButton value="datasets" aria-label="datasets" sx={{ textTransform: 'none', border:'none'}}>
-            Datasets
+            Dataset Source
           </ToggleButton>
         </ToggleButtonGroup>
       </Box>

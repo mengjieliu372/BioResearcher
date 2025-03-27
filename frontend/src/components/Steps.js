@@ -162,11 +162,11 @@ export default function HorizontalLinearAlternativeLabelStepper() {
                     <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Experiment Purpose:</Typography>
                     <Typography variant="body1">{exp.expPurpose}</Typography>
 
-                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Paperset:</Typography>
+                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Paper Source:</Typography>
                     <Typography variant="body1">PMC: {exp.paperset.PMC ? 'Yes' : 'No'}</Typography>
                     <Typography variant="body1">PubMed: {exp.paperset.PubMed ? 'Yes' : 'No'}</Typography>
 
-                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Dataset:</Typography>
+                    <Typography variant="h6" sx={{color: '#3b82f6', mt: 1}}>Dataset Source:</Typography>
                     <Typography variant="body1">GEO: {exp.dataset.GEO ? 'Yes' : 'No'}</Typography>
                     <Typography variant="body1">NCBI: {exp.dataset.NCBI ? 'Yes' : 'No'}</Typography>
                     <Typography variant="body1">cBioPortal: {exp.dataset.cBioPortal ? 'Yes' : 'No'}</Typography>

@@ -7,85 +7,59 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
 
 
-// 内部组件
+
 function InnerComponent({ steps }) {
-    const [expandedAll, setExpandedAll] = useState(false);
-    const [expandedArray, setExpandedArray] = useState(Array(Object.keys(steps).length).fill(false));
-    const handleExpandedAll = () => {
-        setExpandedAll(prev => {
-            const newExpandedAll = !prev;
-            setExpandedArray(Array(Object.keys(steps).length).fill(newExpandedAll));
-            return newExpandedAll;
-        });
-    };
-    const handleExpandArray = (index) => {
-        const newArray = [...expandedArray];
-        newArray[index] = !newArray[index];
-        setExpandedArray(newArray);
-    };
-
     return (
         <Box>
-            {/*展开所有steps*/}
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Button onClick={handleExpandedAll} variant='contained'
-                    sx={{ mr: 6, mb: 1, textTransform: 'none' }}
-                >
-                    {expandedAll ? 'Collapse All Steps' : 'Expand All Steps'}
-                </Button>
+            <Box sx={{ width: '100%', backgroundColor: '#cbf1f5', p: 1, mt: 1, borderRadius: '8px' }}>
+                <Typography variant='h6' sx={{ ml: 1 }}>About this Part:</Typography>
+                <Box sx={{ display: 'flex', width: '100%' }}>
+                    <Box sx={{ width: '50%', m: 1, p: 1, border: '1px solid #000', borderRadius: '8px' }}>
+                        <Typography variant='subtitle1'>Purpose:</Typography>
+                        <Typography variant='body1'>{steps["Purpose"]}</Typography>
+                    </Box>
+                    <Box sx={{ width: '50%', m: 1, p: 1, border: '1px solid #000', borderRadius: '8px' }}>
+                        <Typography variant='subtitle1'>Design Reason:</Typography>
+                        <Typography variant='body1'>{steps["Design Reason"]}</Typography>
+                    </Box>
+                </Box>
             </Box>
-
-            {Object.entries(steps).slice(1).map(([step, details], index) => (
-                <Accordion key={index} expanded={expandedArray[index]}>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                        onClick={() => { handleExpandArray(index) }}
-                    >
-                        {step}
-                    </AccordionSummary>
-                    <AccordionDetails>
+            {Object.entries(steps)
+                .filter(([step]) => step !== "Purpose" && step !== "Design Reason")
+                .slice(1)
+                .map(([step, details], index) => (
+                    <Box x={index}>
+                        <Typography variant='h6'>{step.charAt(0).toUpperCase() + step.slice(1)}</Typography>
                         <Box>
-                            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Implementation Details:</Typography>
-                            <Typography variant='body'>{details["implementation details"]}</Typography>
-                        </Box>
-                        <Box>
-                            {details["Reference Source"] && (
-                                <>
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Reference Source:</Typography>
-                                    {typeof details["Reference Source"] === "string" ? (
-                                        // "Reference Source" 是一个字符串，直接显示它
-                                        <Box>{details["Reference Source"]}</Box>
-                                    ) : (
-                                        // 是对象，则执行嵌套的 map 渲染
-                                        Object.entries(details["Reference Source"]).map(([group, items]) => (
-                                            items && Object.keys(items).length > 0 && (
-                                                <Box key={group}>
-                                                    <Typography>{group}</Typography>
-                                                    {Object.entries(items).map(([itemKey, subItems]) => (
-                                                        subItems && subItems.length > 0 && (
-                                                            <Box key={itemKey}>
-                                                                <Typography>{itemKey}</Typography>
-                                                                {subItems.map((value, index) => (
-                                                                    <Box key={index}>{value}</Box>
-                                                                ))}
-                                                            </Box>
-                                                        )
-                                                    ))}
-                                                </Box>
-                                            )
-                                        ))
+                            <Box>
+                                <Typography variant='body'>{details["implementation details"]}</Typography>
+                            </Box>
+                            <Box sx={{ display: 'flex', justifyContent: 'flex-end', pr: 5 }}>
+                                <Tooltip
+                                    arrow
+                                    placement='left'
+                                    title={details["Reference Source"] && (
+                                        <>
+                                            {typeof details["Reference Source"] === "string" ? (
+                                                // "Reference Source" 是一个字符串，直接显示它
+                                                <Typography>{details["Reference Source"]}</Typography>
+                                            ) : (
+                                                <pre>
+                                                    {JSON.stringify(details["Reference Source"], null, 2)}
+                                                </pre>
+                                            )}
+                                        </>
                                     )}
-                                </>
-                            )}
+                                >
+                                    <Button variant="outlined">Reference</Button>
+                                </Tooltip>
+                            </Box>
                         </Box>
-
-                    </AccordionDetails>
-                </Accordion>
-            ))}
+                    </Box>
+                ))}
         </Box>
     );
 }
@@ -124,7 +98,7 @@ export default function RenderContent({ data }) {
                         id="panel1a-header"
                         onClick={() => handleExpandArray(index)}
                     >
-                        <strong>{part + ": " + steps[part]}</strong>
+                        <Typography variant='h6'>{part + ": " + steps[part]}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <InnerComponent steps={steps} />

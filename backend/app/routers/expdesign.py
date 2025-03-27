@@ -19,11 +19,23 @@ async def get_expdesign(id: int, value: int):
 
 def process_expdesign(id: int, value: int):
     data_file = Path(__file__).parent.parent / "data" / str(id) / f"experiment_program{value + 1}.json"
-    if not data_file.exists():
-        raise FileNotFoundError(f"File not found: {data_file}")
+    extra_data_file = Path(__file__).parent.parent / "data" / str(id) / f"experiment_program{value + 1}.log"
+    if not data_file.exists() or not extra_data_file.exists():
+        raise FileNotFoundError("File not found")
     try:
         with open(data_file, 'r', encoding='utf-8') as f:
             expdesign = json.load(f)
+        with open(extra_data_file, 'r', encoding='utf-8') as f:
+            extra_data = json.load(f)
     except json.JSONDecodeError as e:
         raise json.JSONDecodeError("Error decoding JSON.", "", 0) from e
+    extra_data = extra_data["step1"]["json"]
+    for key in expdesign.keys():
+        if key in extra_data:
+            expdesign[key]["Purpose"] = extra_data[key]["Purpose"]
+            expdesign[key]["Design Reason"] = extra_data[key]["Design Reason"]
+        else:
+            # 填充空值
+            expdesign[key]["Purpose"] = "Null"
+            expdesign[key]["Design Reason"] = "Null"
     return expdesign

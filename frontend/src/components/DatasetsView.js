@@ -83,8 +83,14 @@ export default function DatasetsView({ query, data }) {
 
   return (
     <Box sx={{ width: '52vw' }}>
-      <Typography variant="subtitle1" >
-        Search Query: {query}
+      <Typography variant="h6" sx={{color: '#108ee9'}}>
+        Query:
+      </Typography>
+      <Typography variant="subtitle1">
+        {query}
+      </Typography>
+      <Typography variant='h6' sx={{ mt: 1, color: '#108ee9'}}>
+        Retrival Results:
       </Typography>
       <Box>
         {
@@ -106,8 +112,11 @@ export default function DatasetsView({ query, data }) {
                 ml: 'auto',
                 mr: 'auto',
                 overflowY: 'auto',
-                height: '61vh',
-                maxHeight: '61vh',
+                height: '53vh',
+                maxHeight: '53vh',
+                backgroundColor: '#f0f0f0',
+                borderRadius: '8px',
+                boxShadow: 3,
               }}
             >
               {showDatasets(data)}

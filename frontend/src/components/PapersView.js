@@ -95,12 +95,18 @@ export default function PapersView({ query, data}) {
 
   return (
     <Box sx={{ width: '52vw'}}>
-      <Typography variant="subtitle1" >
-        Search Query: {query}
+      <Typography variant="h6" sx={{color: '#108ee9'}}>
+        Query:
       </Typography>
-      <Box sx={{ display: 'flex' }}>
+      <Typography variant="subtitle1">
+        {query}
+      </Typography>
+      <Typography variant='h6' sx={{ mt: 1, color: '#108ee9'}}>
+        Retrival Results:
+      </Typography>
+      <Box sx={{ display: 'flex', mb: 1, mr: 2, justifyContent: 'flex-end' }}>
         {/* score 展示 */}
-        <Box sx={{ width: '25vw', height: '3vh', display: 'flex' }}>
+        <Box sx={{ width: '25vw', height: '2vh', display: 'flex' }}>
           <Typography sx={{ display: 'flex', alignItems: 'center' }}>Evaluation Score: </Typography>
           {scoreData.map((item, index) => (
             <Box
@@ -117,7 +123,6 @@ export default function PapersView({ query, data}) {
             </Box>
           ))}
         </Box>
-        
       </Box>
       <Box>
         {loading ? (
@@ -139,9 +144,11 @@ export default function PapersView({ query, data}) {
               ml: 'auto',
               mr: 'auto',
               overflowY: 'auto',
-              height: '58vh',
-              maxHeight: '58vh',
+              height: '50vh',
+              maxHeight: '50vh',
               backgroundColor: '#f0f0f0',
+              borderRadius: '8px',
+              boxShadow: 3,
             }}
           >
             {showPapers(data)}
