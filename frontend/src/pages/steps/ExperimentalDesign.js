@@ -72,13 +72,12 @@ export default function ExperimentalDesign() {
 
       <Box
         sx={{
-          height: '70vh',
-          maxHeight: '70vh',
+          height: '72vh',
+          maxHeight: '72vh',
           overflowY: 'auto',
           width: '65vw',
           ml: 'auto',
           mr: 'auto',
-          mt: '1vh',
           borderRadius: '8px',
           boxShadow: 3,
         }}

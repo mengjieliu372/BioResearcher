@@ -1,39 +1,5 @@
 [
     {
-        "id": 22222,
-        "expName": "Test Data 22",
-        "expPurpose": "experiment purpose a",
-        "expCondition": "experiment conditions",
-        "expRequirement": "requirements",
-        "paperset": {
-            "PMC": true,
-            "PubMed": true
-        },
-        "dataset": {
-            "GEO": true,
-            "NCBI": false,
-            "cBioPortal": true
-        },
-        "llmModel": "gemini",
-        "refNum": 23,
-        "reviewerRound": 52,
-        "fileNames": [
-            "1.pdf"
-        ],
-        "page_search_paper": true,
-        "page_search_datasets": true,
-        "page_Literature_processing": true,
-        "page_design_1": true,
-        "page_design_2": true,
-        "page_design_3": true,
-        "page_dry_1": true,
-        "page_dry_2": true,
-        "page_dry_3": true,
-        "page_coding_1": false,
-        "page_coding_2": false,
-        "page_coding_3": false
-    },
-    {
         "id": 16317,
         "expName": "Experiment21",
         "expPurpose": "Classification of the Immune Microenvironment and Identification of Key Genes in Liposarcoma Based on Transcriptomics",

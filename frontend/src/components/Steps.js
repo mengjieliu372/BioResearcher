@@ -87,7 +87,7 @@ export default function HorizontalLinearAlternativeLabelStepper() {
     }, [id, activeStep, completedSteps]);
 
     if (!exp) {
-        return <Typography>Loading...</Typography>;
+        return <Box sx={{height: '90vh'}}></Box>;
     }
 
     return (

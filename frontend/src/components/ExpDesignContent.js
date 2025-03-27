@@ -14,7 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 function InnerComponent({ steps }) {
     return (
         <Box>
-            <Box sx={{ width: '100%', backgroundColor: '#cbf1f5', p: 1, mt: 1, borderRadius: '8px' }}>
+            <Box sx={{ width: '100%', backgroundColor: '#e3fdfd', p: 1, mt: 1, borderRadius: '8px' }}>
                 <Typography variant='h6' sx={{ ml: 1 }}>About this Part:</Typography>
                 <Box sx={{ display: 'flex', width: '100%' }}>
                     <Box sx={{ width: '50%', m: 1, p: 1, border: '1px solid #000', borderRadius: '8px' }}>

@@ -171,14 +171,14 @@ export default function NewProject() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          width: '65vw',
+          width: '55vw',
           backgroundColor: 'white',
           borderRadius: 3,
           boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)',
           pl: 3,
           pr: 3,
           pt: 2,
-          mb: 6,
+          mb: 4,
         }}
       >
         <Typography variant="h4" sx={{ mb: 2, fontWeight: 'bold', color: '#333' }}>

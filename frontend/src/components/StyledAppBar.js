@@ -110,6 +110,7 @@ export default function StyledAppBar() {
                 </Button>
               </Box>
             </Box>
+            {/*
             <Box
               sx={{
                 display: { xs: 'none', md: 'flex' },
@@ -125,6 +126,7 @@ export default function StyledAppBar() {
               </Button>
 
             </Box>
+            */}
           </StyledToolbar>
         </Container>
       </AppBar>
