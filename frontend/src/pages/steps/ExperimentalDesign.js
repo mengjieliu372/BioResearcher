@@ -63,7 +63,11 @@ export default function ExperimentalDesign() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered>
+        <Tabs 
+          value={value}
+          onChange={handleChange} 
+          aria-label="basic tabs example"
+        centered>
           <Tab label="Experimental Protocol 1" sx={{ textTransform: 'none' }} {...a11yProps(0)} />
           <Tab label="Experimental Protocol 2" sx={{ textTransform: 'none' }} {...a11yProps(1)} />
           <Tab label="Experimental Protocol 3" sx={{ textTransform: 'none' }} {...a11yProps(2)} />

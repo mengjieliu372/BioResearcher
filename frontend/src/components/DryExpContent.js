@@ -29,7 +29,7 @@ function InnerComponent({ tasks }) {
         <Box>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button onClick={handleExpandedAll} variant='contained'
-                    sx={{ mr: 6,mb: 1,textTransform: 'none' }}
+                    sx={{ mr: 6, mb: 1, textTransform: 'none' }}
                 >
                     {expandedAll ? 'Collapse All Steps' : 'Expand All Steps'}
                 </Button>
@@ -46,14 +46,34 @@ function InnerComponent({ tasks }) {
                         {task.task_id}
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography variant="h6" sx={{fontWeight: 'bold'}}>Description:</Typography>
+                        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Description:</Typography>
                         <Typography variant="body1">{task.task_description}</Typography>
 
-                        <Typography variant="h6" sx={{fontWeight: 'bold'}}>Input:</Typography>
+                        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Input:</Typography>
                         <Typography variant="body1">{task.input}</Typography>
-                        
-                        <Typography variant="h6" sx={{fontWeight: 'bold'}}>Output:</Typography>
+
+                        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Output:</Typography>
                         <Typography variant="body1">{task.output}</Typography>
+                        {task.code && (
+                            <Box>
+                                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Code:</Typography>
+                                <Box sx={{ mt: 2 }}>
+                                    <pre
+                                        style={{
+                                            backgroundColor: '#defcf9',
+                                            color: '#333333',
+                                            padding: '10px',
+                                            borderRadius: '8px', 
+                                            fontSize: '14px',
+                                            whiteSpace: 'pre-wrap',
+                                            wordWrap: 'break-word'
+                                        }}
+                                    >
+                                        {task.code}
+                                    </pre>
+                                </Box>
+                            </Box>
+                        )}
                     </AccordionDetails>
                 </Accordion>
             ))}
@@ -82,7 +102,7 @@ function RenderContent({ data }) {
         <Container>
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button onClick={handleExpandedAll} variant='contained'
-                    sx={{ mr: 6,mb: 1,textTransform: 'none' }}
+                    sx={{ mr: 6, mb: 1, textTransform: 'none' }}
                 >
                     {expandedAll ? 'Collapse All Parts' : 'Expand All Parts'}
                 </Button>

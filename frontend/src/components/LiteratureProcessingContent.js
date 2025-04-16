@@ -7,21 +7,22 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
-import Tooltip,  { tooltipClasses } from '@mui/material/Tooltip';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { useState } from 'react';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
+import { PieChart } from '@mui/x-charts/PieChart';
 
 function InnerComponent({ stepData }) {
 
     const CustomWidthTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
-      ))({
+    ))({
         [`& .${tooltipClasses.tooltip}`]: {
-          maxWidth: 500,
+            maxWidth: 500,
         },
-      });
-    
+    });
+
     const analysisColor = {
         "High": "#6BCF73",
         "Medium": "#FFA726",
@@ -87,7 +88,7 @@ function InnerComponent({ stepData }) {
                         </Box>
                     </Box>
                 ))}
-            <Box sx={{ width: '100%', backgroundColor: analysisColor[stepData["Referability"]] || '#cbf1f5', p: 1, mt:1, borderRadius: '8px' }}>
+            <Box sx={{ width: '100%', backgroundColor: analysisColor[stepData["Referability"]] || '#cbf1f5', p: 1, mt: 1, borderRadius: '8px' }}>
                 <Typography variant='h6' sx={{ ml: 1 }}>Analysis:</Typography>
                 <Box sx={{ display: 'flex', width: '100%' }}>
                     <Box sx={{ width: '50%', m: 1, p: 1, border: '1px solid #000', borderRadius: '8px' }}>
@@ -145,15 +146,32 @@ export default function RenderContent({ data, paper_title }) {
     return (
         <Box>
             {/* 顶部的标题 */}
-            <Box>
-                <Typography variant='h6'>
-                    {paper_title}
-                </Typography>
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Box flex={7}>
+                    <Typography variant='h6'>
+                        {paper_title}
+                    </Typography>
+                </Box>
+                <Box flex={3}>
+                    <PieChart
+                        series={[
+                            {
+                                data: referabilityData,
+                                valueFormatter: ({ value }) => `${(value * 100).toFixed(1)}%`,
+                            },
+                        ]}
+                        width={270}
+                        height={130}
+                        slotProps={{
+                            legend: { hidden: false },
+                        }}
+                    />
+                </Box>
             </Box>
             <Divider />
             {/* 具体内容展示 */}
             <Box sx={{
-                height: '58vh',
+                height: '50vh',
                 width: '56vw',
                 ml: 'auto',
                 mr: 'auto',

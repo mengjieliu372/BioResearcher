@@ -83,13 +83,12 @@ export default function BasicTabs() {
 
             <Box
                 sx={{
-                    height: '68vh',
-                    maxHeight: '70vh',
+                    height: '72vh',
+                    maxHeight: '72vh',
                     overflowY: 'auto',
-                    width: '70vw',
+                    width: '65vw',
                     ml: 'auto',
                     mr: 'auto',
-                    mt: '2vh',
                     borderRadius: '8px',
                     boxShadow: 3,
                 }}

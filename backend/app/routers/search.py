@@ -26,8 +26,12 @@ def process_papersets(id: int):
         related_papers = json.load(f)
     downloaded_titles = {item['title'] for item in related_papers["download successfully"]}
     undownloaded_titles = {item['title'] for item in related_papers["download failed"]}
-
+    count = [0, 0, 0, 0, 0]
+    sum = len(retrieved_papers)
     for paper in retrieved_papers:
+        # 统计分数
+        count[paper['score'] - 1] += 1
+
         title = paper['title']
         abstract = paper['abstract']
         search_query = paper['search_query']
@@ -48,14 +52,19 @@ def process_papersets(id: int):
         # 如果有，删掉path字段
         if 'path' in paper:
             del paper['path']
+    # count 各项除以总数
+    for i in range(len(count)):
+        count[i] = round(count[i] / sum, 3)
     retrieved_papers = sorted(retrieved_papers, key=lambda x: x['flag'], reverse=True)
     df = pd.DataFrame(retrieved_papers)
     grouped = df.groupby('search_query')
     retrieved_papers = {}
     for query, group in grouped:
         retrieved_papers[query] = group.to_dict(orient='records')
-    return retrieved_papers
-
+    return {
+        'retrieved_papers': retrieved_papers,
+        'count': count,
+    }
 
 def process_datasets(id: int):
     DataFile = Path(__file__).parent.parent / "data" / str(id)

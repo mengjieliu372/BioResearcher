@@ -43,6 +43,7 @@ function InnerComponent({ steps }) {
                                     placement='left'
                                     title={details["Reference Source"] && (
                                         <>
+                                            <Typography variant='body1'>Reference Information:</Typography>
                                             {typeof details["Reference Source"] === "string" ? (
                                                 // "Reference Source" 是一个字符串，直接显示它
                                                 <Typography>{details["Reference Source"]}</Typography>
