@@ -1,0 +1,3 @@
+Selected input file: /workspace/data/GSE202361_AllSamples_rawcount.txt.gz
+Number of samples: 64
+Group levels: Control, Treatment

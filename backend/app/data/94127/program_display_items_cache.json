@@ -1,0 +1,1193 @@
+{
+  "fingerprint": "d4850a7fd6106c52d04e10159f2d4a5f",
+  "display_items": [
+    {
+      "name": "sample_statistics_summary.csv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 149,
+      "table_preview": [
+        [
+          "section",
+          "variable",
+          "level",
+          "value"
+        ],
+        [
+          "age_stats",
+          "age",
+          "mean",
+          ""
+        ],
+        [
+          "age_stats",
+          "age",
+          "median",
+          ""
+        ],
+        [
+          "age_stats",
+          "age",
+          "mode",
+          ""
+        ],
+        [
+          "frequency",
+          "gender",
+          "",
+          "0"
+        ],
+        [
+          "frequency",
+          "grade",
+          "",
+          "0"
+        ],
+        [
+          "frequency",
+          "stage",
+          "",
+          "0"
+        ]
+      ],
+      "show_reason": "Compact high-level summary of sample statistics; useful as a final overview."
+    },
+    {
+      "name": "eligible_samples_final.csv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 52,
+      "table_preview": [
+        [
+          "sample_id",
+          "sources",
+          "inclusion_status",
+          "exclusion_reason"
+        ]
+      ],
+      "show_reason": "Final filtered list of eligible samples; key output for downstream analysis."
+    },
+    {
+      "name": "qc_report.txt",
+      "exists": true,
+      "render_type": "text",
+      "size_bytes": 620,
+      "text_preview": "QC Report: RNA sequencing data\nGenerated: 2026-04-01 06:55:57.62857\n\nInputs:\n- /workspace/data/GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz (exists: TRUE)\n- /workspace/data/GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz (exists: TRUE)\n- /workspace/data/GSE267611_sample_meta_out.txt.gz (exists: TRUE)\n\nQC metrics summary:\nTotal samples evaluated: 109\nPassing samples: 0\nFailing samples: 109\nSamples with missing 3'/5' ratio: 109\n\nThresholds used:\n- Library size > 1e6\n- Detected genes > 10,000\n- 3'/5' ratio > 1.5 (if available)\n\nRNA degradation plot saved to:\n/workspace/coding3/rna_degradation_plot.png\n",
+      "show_reason": "Human-readable QC summary explaining exclusions/metrics; helpful narrative result."
+    },
+    {
+      "name": "qc_metrics.csv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 8234,
+      "table_preview": [
+        [
+          "sample_id",
+          "library_size",
+          "detected_genes",
+          "percent_zero",
+          "ratio_3_5",
+          "pass_library_size",
+          "pass_detected_genes",
+          "pass_ratio_3_5",
+          "overall_pass"
+        ],
+        [
+          "Pt1_Pre_AD101148-6",
+          "36779783",
+          "18144",
+          "18.2223824762248",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt1_On_AD174047-6",
+          "38814133",
+          "17924",
+          "19.2139541172759",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt10_Pre_E9047565-6",
+          "63855589",
+          "17974",
+          "18.9885969261279",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt10_On_E9047632-6",
+          "38763631",
+          "18041",
+          "18.6866182899896",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt101_Pre_AD486328-5",
+          "38813070",
+          "17969",
+          "19.0111326452427",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt101_On_AD681975-5",
+          "45300125",
+          "18209",
+          "17.9294181277325",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt103_Pre_AE134058-2",
+          "36085723",
+          "17079",
+          "23.0224906476766",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt103_On_AE134059-6",
+          "33528594",
+          "18546",
+          "16.4105106593951",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt105_On_AE373241-6",
+          "46009216",
+          "17758",
+          "19.9621399918871",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt106_Pre_AD502250-5",
+          "43064013",
+          "18169",
+          "18.1097038806508",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt106_On_AD513626-6",
+          "34976790",
+          "17903",
+          "19.308604137558",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt108_On_AE373243-6",
+          "34787302",
+          "17381",
+          "21.6613332131428",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt109_On_AE527955-5",
+          "32648132",
+          "17537",
+          "20.9582187767612",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt109_On_AE527955-6",
+          "34513495",
+          "17881",
+          "19.4077613016631",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt11_Pre_AD153352-6",
+          "38571708",
+          "18805",
+          "15.2431604092487",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt11_On_AD314068-6",
+          "34578378",
+          "18432",
+          "16.9243250552125",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt13_On_AD314067-6",
+          "37642185",
+          "17661",
+          "20.3993329427142",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt16_On_AD167378-6",
+          "35757800",
+          "17894",
+          "19.3491684319647",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt17_Pre_E9047563-6",
+          "43883069",
+          "17746",
+          "20.0162257177627",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ],
+        [
+          "Pt17_On_E9261162-5",
+          "43811063",
+          "17355",
+          "21.7785189525398",
+          "",
+          "TRUE",
+          "TRUE",
+          "FALSE",
+          "FALSE"
+        ]
+      ],
+      "show_reason": "Core QC metrics table supporting the QC report and decisions."
+    },
+    {
+      "name": "qc_excluded_samples.csv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 9549,
+      "table_preview": [
+        [
+          "sample_id",
+          "reason"
+        ],
+        [
+          "Pt1_Pre_AD101148-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt1_On_AD174047-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt10_Pre_E9047565-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt10_On_E9047632-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt101_Pre_AD486328-5",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt101_On_AD681975-5",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt103_Pre_AE134058-2",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt103_On_AE134059-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt105_On_AE373241-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt106_Pre_AD502250-5",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt106_On_AD513626-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt108_On_AE373243-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt109_On_AE527955-5",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt109_On_AE527955-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt11_Pre_AD153352-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt11_On_AD314068-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt13_On_AD314067-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt16_On_AD167378-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt17_Pre_E9047563-6",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ],
+        [
+          "Pt17_On_E9261162-5",
+          "Failed library_size/detected_genes thresholds or ratio if available"
+        ]
+      ],
+      "show_reason": "Explicit list of excluded samples; important for transparency/reproducibility."
+    },
+    {
+      "name": "rna_degradation_plot.png",
+      "exists": true,
+      "render_type": "image",
+      "size_bytes": 33696,
+      "text_preview": "",
+      "show_reason": "QC figure summarizing RNA degradation; easy to interpret visually."
+    },
+    {
+      "name": "design_matrix.csv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 1040,
+      "table_preview": [
+        [
+          "",
+          "Control",
+          "Treatment"
+        ],
+        [
+          "Sample_1",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_2",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_3",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_4",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_5",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_6",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_7",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_8",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_9",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_10",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_11",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_12",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_13",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_14",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_15",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_16",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_17",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_18",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_19",
+          "1",
+          "0"
+        ],
+        [
+          "Sample_20",
+          "1",
+          "0"
+        ]
+      ],
+      "show_reason": "Final model design matrix used for differential analysis; central methodological artifact."
+    },
+    {
+      "name": "part3_dry_experiment_4_topTable_all.csv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 5286473,
+      "table_preview": [
+        [
+          "gene_id",
+          "logFC",
+          "AveExpr",
+          "t",
+          "P.Value",
+          "adj.P.Val",
+          "B"
+        ],
+        [
+          "ENSG00000083896",
+          "13582.65625",
+          "13156.953125",
+          "28.9782101732212",
+          "7.76657138295088e-38",
+          "4.48698128507221e-33",
+          "75.7603098129815"
+        ],
+        [
+          "ENSG00000132466",
+          "79037.71875",
+          "79181.984375",
+          "28.0733447444123",
+          "4.8700620996423e-37",
+          "1.40679048841317e-32",
+          "73.9738711319486"
+        ],
+        [
+          "ENSG00000108296",
+          "3169.53125",
+          "3102.03125",
+          "25.2984135838231",
+          "1.89119161843894e-34",
+          "3.64199377906909e-30",
+          "68.1455685838886"
+        ],
+        [
+          "ENSG00000075420",
+          "40274.46875",
+          "38992.421875",
+          "24.915148833354",
+          "4.49546440491415e-34",
+          "6.49291162662763e-30",
+          "67.29598523894"
+        ],
+        [
+          "ENSG00000118816",
+          "39880.84375",
+          "36791.28125",
+          "24.6359657861125",
+          "8.50543282006857e-34",
+          "9.28368489353814e-30",
+          "66.669872153248"
+        ],
+        [
+          "ENSG00000185591",
+          "17014.34375",
+          "17257.3125",
+          "24.5813731862666",
+          "9.64154697890517e-34",
+          "9.28368489353814e-30",
+          "66.5467159152267"
+        ],
+        [
+          "ENSG00000010244",
+          "24833.03125",
+          "26587.90625",
+          "24.4608263031351",
+          "1.27271118915667e-33",
+          "1.05040490758783e-29",
+          "66.2739271431028"
+        ],
+        [
+          "ENSG00000113649",
+          "10129.03125",
+          "10318.46875",
+          "24.3732976689172",
+          "1.55807612249359e-33",
+          "1.05768240225257e-29",
+          "66.0751235239962"
+        ],
+        [
+          "ENSG00000153560",
+          "5321.4375",
+          "5587.671875",
+          "24.293070279811",
+          "1.87648230618039e-33",
+          "1.05768240225257e-29",
+          "65.8923588660404"
+        ],
+        [
+          "ENSG00000115053",
+          "78822.8125",
+          "79926.84375",
+          "24.2777427012311",
+          "1.94445395233316e-33",
+          "1.05768240225257e-29",
+          "65.8573819311327"
+        ],
+        [
+          "ENSG00000168137",
+          "40365.09375",
+          "40025.359375",
+          "24.2626487626021",
+          "2.01383110186044e-33",
+          "1.05768240225257e-29",
+          "65.8229194810517"
+        ],
+        [
+          "ENSG00000080802",
+          "8266.03125",
+          "8878.46875",
+          "23.9700127918845",
+          "3.98782453779736e-33",
+          "1.91990489185139e-29",
+          "65.15108979605"
+        ],
+        [
+          "ENSG00000110048",
+          "8805.875",
+          "9043.796875",
+          "23.7411538666633",
+          "6.83644611150366e-33",
+          "3.03816923999924e-29",
+          "64.620747798564"
+        ],
+        [
+          "ENSG00000009335",
+          "7019.46875",
+          "6458.75",
+          "23.6971841395041",
+          "7.58601980162447e-33",
+          "3.13047944285179e-29",
+          "64.5183545660598"
+        ],
+        [
+          "ENSG00000067596",
+          "7966.4375",
+          "7734.0625",
+          "23.5474675566523",
+          "1.08235708530551e-32",
+          "4.14892730121077e-29",
+          "64.1684863635927"
+        ],
+        [
+          "ENSG00000166887",
+          "7943.375",
+          "8277.515625",
+          "23.5181227511057",
+          "1.160692188262e-32",
+          "4.14892730121077e-29",
+          "64.0996893808387"
+        ],
+        [
+          "ENSG00000113712",
+          "15338.375",
+          "15193.296875",
+          "23.4969225428819",
+          "1.2208430256449e-32",
+          "4.14892730121077e-29",
+          "64.0499414380133"
+        ],
+        [
+          "ENSG00000257103",
+          "7386.46875",
+          "6827.921875",
+          "23.4312627143683",
+          "1.42797359369945e-32",
+          "4.58323991271102e-29",
+          "63.8956231755869"
+        ],
+        [
+          "ENSG00000198218",
+          "8323.34375",
+          "8218.34375",
+          "23.4083924199248",
+          "1.50821217583818e-32",
+          "4.58599694919468e-29",
+          "63.8417856183704"
+        ],
+        [
+          "ENSG00000184677",
+          "4618.65625",
+          "4597.28125",
+          "23.3554463880402",
+          "1.71197877727861e-32",
+          "4.94530749498586e-29",
+          "63.716977242072"
+        ]
+      ],
+      "show_reason": "Primary differential expression results table (all features) from limma topTable."
+    },
+    {
+      "name": "part3_dry_experiment_5_degs.csv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 30,
+      "table_preview": [
+        [
+          "gene_id",
+          "logFC",
+          "adj.P.Val"
+        ]
+      ],
+      "show_reason": "Condensed list of significant DE genes; a key end result."
+    },
+    {
+      "name": "kegg_analysis_results.tsv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 5616,
+      "table_preview": [
+        [
+          "pathway_name",
+          "gene_count",
+          "adj_p_value"
+        ],
+        [
+          "Cytoskeleton in muscle cells",
+          "112",
+          "6.93179757991212e-24"
+        ],
+        [
+          "Coronavirus disease - COVID-19",
+          "106",
+          "1.53707719177304e-19"
+        ],
+        [
+          "Prion disease",
+          "114",
+          "2.54762597721452e-18"
+        ],
+        [
+          "Phagosome",
+          "78",
+          "2.54762597721452e-18"
+        ],
+        [
+          "Amyotrophic lateral sclerosis",
+          "135",
+          "2.27792849071383e-16"
+        ],
+        [
+          "Parkinson disease",
+          "106",
+          "2.15414553311203e-15"
+        ],
+        [
+          "Diabetic cardiomyopathy",
+          "88",
+          "2.48358093179872e-15"
+        ],
+        [
+          "Oxidative phosphorylation",
+          "67",
+          "6.61996050570003e-15"
+        ],
+        [
+          "Huntington disease",
+          "114",
+          "2.88703031371728e-14"
+        ],
+        [
+          "Focal adhesion",
+          "85",
+          "3.64943624126458e-14"
+        ],
+        [
+          "Alzheimer disease",
+          "131",
+          "6.67726633719556e-13"
+        ],
+        [
+          "Integrin signaling",
+          "67",
+          "3.85878179185263e-12"
+        ],
+        [
+          "Chemical carcinogenesis - reactive oxygen species",
+          "87",
+          "6.17753585472687e-12"
+        ],
+        [
+          "Adherens junction",
+          "46",
+          "9.62689843331887e-11"
+        ],
+        [
+          "Pathways of neurodegeneration - multiple diseases",
+          "145",
+          "3.6845440228099e-10"
+        ],
+        [
+          "Human T-cell leukemia virus 1 infection",
+          "82",
+          "4.10572274652165e-10"
+        ],
+        [
+          "Herpes simplex virus 1 infection",
+          "69",
+          "1.47307251059022e-09"
+        ],
+        [
+          "Malaria",
+          "29",
+          "5.33737566933014e-09"
+        ],
+        [
+          "Epstein-Barr virus infection",
+          "74",
+          "7.12607467289973e-09"
+        ],
+        [
+          "Rheumatoid arthritis",
+          "43",
+          "1.25261842009733e-08"
+        ]
+      ],
+      "show_reason": "Main KEGG pathway enrichment results; interpretable downstream summary."
+    },
+    {
+      "name": "kegg_top20_pathways.tsv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 1025,
+      "table_preview": [
+        [
+          "pathway_name",
+          "gene_count",
+          "adj_p_value"
+        ],
+        [
+          "Cytoskeleton in muscle cells",
+          "112",
+          "6.93179757991212e-24"
+        ],
+        [
+          "Coronavirus disease - COVID-19",
+          "106",
+          "1.53707719177304e-19"
+        ],
+        [
+          "Prion disease",
+          "114",
+          "2.54762597721452e-18"
+        ],
+        [
+          "Phagosome",
+          "78",
+          "2.54762597721452e-18"
+        ],
+        [
+          "Amyotrophic lateral sclerosis",
+          "135",
+          "2.27792849071383e-16"
+        ],
+        [
+          "Parkinson disease",
+          "106",
+          "2.15414553311203e-15"
+        ],
+        [
+          "Diabetic cardiomyopathy",
+          "88",
+          "2.48358093179872e-15"
+        ],
+        [
+          "Oxidative phosphorylation",
+          "67",
+          "6.61996050570003e-15"
+        ],
+        [
+          "Huntington disease",
+          "114",
+          "2.88703031371728e-14"
+        ],
+        [
+          "Focal adhesion",
+          "85",
+          "3.64943624126458e-14"
+        ],
+        [
+          "Alzheimer disease",
+          "131",
+          "6.67726633719556e-13"
+        ],
+        [
+          "Integrin signaling",
+          "67",
+          "3.85878179185263e-12"
+        ],
+        [
+          "Chemical carcinogenesis - reactive oxygen species",
+          "87",
+          "6.17753585472687e-12"
+        ],
+        [
+          "Adherens junction",
+          "46",
+          "9.62689843331887e-11"
+        ],
+        [
+          "Pathways of neurodegeneration - multiple diseases",
+          "145",
+          "3.6845440228099e-10"
+        ],
+        [
+          "Human T-cell leukemia virus 1 infection",
+          "82",
+          "4.10572274652165e-10"
+        ],
+        [
+          "Herpes simplex virus 1 infection",
+          "69",
+          "1.47307251059022e-09"
+        ],
+        [
+          "Malaria",
+          "29",
+          "5.33737566933014e-09"
+        ],
+        [
+          "Epstein-Barr virus infection",
+          "74",
+          "7.12607467289973e-09"
+        ],
+        [
+          "Rheumatoid arthritis",
+          "43",
+          "1.25261842009733e-08"
+        ]
+      ],
+      "show_reason": "Top enriched KEGG pathways extracted for quick review."
+    },
+    {
+      "name": "kegg_top20_barplot.png",
+      "exists": true,
+      "render_type": "image",
+      "size_bytes": 199442,
+      "text_preview": "",
+      "show_reason": "Visualization of top KEGG pathways; user-friendly summary figure."
+    },
+    {
+      "name": "part5_dry_experiment_2_de_results.csv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 3710834,
+      "table_preview": [
+        [
+          "gene",
+          "log2FoldChange",
+          "pvalue",
+          "padj",
+          "baseMean",
+          "lncRNA_flag"
+        ],
+        [
+          "ENSG00000000003",
+          "0.232389433888642",
+          "0.219176749965146",
+          "0.473463451288119",
+          "844.472325421447",
+          "FALSE"
+        ],
+        [
+          "ENSG00000000005",
+          "0.944133117351665",
+          "0.0530322336791985",
+          "0.214455200352737",
+          "85.1385254335216",
+          "FALSE"
+        ],
+        [
+          "ENSG00000000419",
+          "-0.0888187064673417",
+          "0.651651882856168",
+          "0.825882682259738",
+          "2805.07694569617",
+          "FALSE"
+        ],
+        [
+          "ENSG00000000457",
+          "-0.339600399239402",
+          "0.0240608602322831",
+          "0.132390948240716",
+          "2818.17756137656",
+          "FALSE"
+        ],
+        [
+          "ENSG00000000460",
+          "-0.317922244761575",
+          "0.0684284360339897",
+          "0.248756474243686",
+          "3918.97231627647",
+          "FALSE"
+        ],
+        [
+          "ENSG00000000938",
+          "0.0949020195620563",
+          "0.79649832918565",
+          "0.905788306627961",
+          "1675.71587714797",
+          "FALSE"
+        ],
+        [
+          "ENSG00000000971",
+          "-0.39202312593007",
+          "0.17230128014142",
+          "0.41733676660978",
+          "29172.2178424955",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001036",
+          "-0.145350877064655",
+          "0.379395398734913",
+          "0.63191910269581",
+          "9086.07169300128",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001084",
+          "-0.106541224046706",
+          "0.617533592817898",
+          "0.805377220054758",
+          "4063.14760130359",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001167",
+          "-0.225258435674663",
+          "0.17647833126368",
+          "0.422911301700799",
+          "2885.56388310798",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001460",
+          "-0.157971750434286",
+          "0.464436843463176",
+          "0.70046788716311",
+          "559.547235369017",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001461",
+          "-0.110445691298458",
+          "0.629520750471206",
+          "0.812016881987581",
+          "1164.7039083769",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001497",
+          "0.243424378330321",
+          "0.016610750074257",
+          "0.105959487976761",
+          "4754.57331253979",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001561",
+          "0.437893802165371",
+          "0.140476150533511",
+          "0.37442480497691",
+          "1645.83049969899",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001617",
+          "0.623161912789309",
+          "0.0174294471134027",
+          "0.1089813727909",
+          "630.132394864872",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001626",
+          "1.21946093572426",
+          "0.0144704630644901",
+          "0.0972751208561018",
+          "23.6821933053648",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001629",
+          "-0.487308814766228",
+          "0.00889368265586972",
+          "0.0715400394857056",
+          "14021.2124340682",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001630",
+          "-0.141813565047054",
+          "0.452992882924681",
+          "0.691687422588261",
+          "291.631731870105",
+          "FALSE"
+        ],
+        [
+          "ENSG00000001631",
+          "-0.649804229110832",
+          "0.00117145190734535",
+          "0.0207852477121789",
+          "9971.51721730106",
+          "FALSE"
+        ],
+        [
+          "ENSG00000002016",
+          "-0.00227017221087837",
+          "0.988952472566273",
+          "0.994181920401749",
+          "1487.16823900843",
+          "FALSE"
+        ]
+      ],
+      "show_reason": "Differential expression results for lncRNA-focused analysis; major final output in part 5."
+    },
+    {
+      "name": "part5_dry_experiment_2_sig_lncrnas.csv",
+      "exists": true,
+      "render_type": "table",
+      "size_bytes": 53,
+      "table_preview": [
+        [
+          "gene",
+          "log2FoldChange",
+          "pvalue",
+          "padj",
+          "baseMean",
+          "lncRNA_flag"
+        ]
+      ],
+      "show_reason": "Shortlist of significant lncRNAs; most actionable result for users."
+    },
+    {
+      "name": "part5_dry_experiment_2_volcano.png",
+      "exists": true,
+      "render_type": "image",
+      "size_bytes": 141581,
+      "text_preview": "",
+      "show_reason": "Standard DE volcano plot summarizing effect sizes and significance."
+    },
+    {
+      "name": "part5_dry_experiment_2_corr_heatmap.png",
+      "exists": true,
+      "render_type": "image",
+      "size_bytes": 4837,
+      "text_preview": "",
+      "show_reason": "Correlation heatmap figure; quick visual assessment of relationships."
+    }
+  ],
+  "updated_at": "2026-04-01 17:02:33"
+}

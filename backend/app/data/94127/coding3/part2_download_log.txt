@@ -1,0 +1,4 @@
+Part 2-dry-experiment-1: RNA-seq data staging (offline).
+Output directory: /workspace/coding3/part2_downloads
+Manifest: /workspace/coding3/part2_download_manifest.csv
+Note: Sample selection criteria from Part 1 not applied due to input constraints.

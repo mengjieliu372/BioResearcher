@@ -1,0 +1,6 @@
+source,issue_line
+qc_report,Samples with missing 3'/5' ratio: 109
+limma_log,[2026-04-01 07:08:58] WARNING: No overlapping samples between expression data and design matrix; using intercept-only design.
+go_log,No DEG table with adjusted p-values found in allowlisted inputs; producing placeholder output.
+kegg_log,[2026-04-01 07:17:39] No usable DEG table found; deriving proxy significant genes from GSE202361 TPM by high variance.
+kegg_log,[2026-04-01 07:17:41] Warning: clusterProfiler/org.Hs.eg.db unavailable; writing non-empty fallback summary from input genes.

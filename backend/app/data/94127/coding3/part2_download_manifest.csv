@@ -1,0 +1,16 @@
+dataset_id,source_file,dest_file,status,note
+GSE202361,/workspace/data/GSE202361_AllSamples_TPM.txt.gz,/workspace/coding3/part2_downloads/GSE202361_AllSamples_TPM.txt.gz,copied,Staged from local allowlisted file.
+GSE202361,/workspace/data/GSE202361_AllSamples_rawcount.txt.gz,/workspace/coding3/part2_downloads/GSE202361_AllSamples_rawcount.txt.gz,copied,Staged from local allowlisted file.
+GSE205492,,/workspace/coding3/part2_downloads/GSE205492_MISSING.txt,missing,Created placeholder due to unavailable allowlisted input.
+GSE161616,,/workspace/coding3/part2_downloads/GSE161616_MISSING.txt,missing,Created placeholder due to unavailable allowlisted input.
+GSE57750,,/workspace/coding3/part2_downloads/GSE57750_MISSING.txt,missing,Created placeholder due to unavailable allowlisted input.
+GSE68591,,/workspace/coding3/part2_downloads/GSE68591_MISSING.txt,missing,Created placeholder due to unavailable allowlisted input.
+GSE55466,,/workspace/coding3/part2_downloads/GSE55466_MISSING.txt,missing,Created placeholder due to unavailable allowlisted input.
+GSE55465,,/workspace/coding3/part2_downloads/GSE55465_MISSING.txt,missing,Created placeholder due to unavailable allowlisted input.
+GSE267611,,/workspace/coding3/part2_downloads/GSE267611_MISSING.txt,missing,Created placeholder due to unavailable allowlisted input.
+GSE230773,/workspace/data/GSE230773_Read_counts.xlsx,/workspace/coding3/part2_downloads/GSE230773_Read_counts.xlsx,copied,Staged from local allowlisted file.
+GSE191132,,/workspace/coding3/part2_downloads/GSE191132_MISSING.txt,missing,Created placeholder due to unavailable allowlisted input.
+GSE213065,/workspace/data/GSE213065_Sarcoma_ecotyper_tpm_bulksamples.txt.gz,/workspace/coding3/part2_downloads/GSE213065_Sarcoma_ecotyper_tpm_bulksamples.txt.gz,copied,Staged from local allowlisted file.
+GSE247026,/workspace/data/GSE247026_Sample_genes_fpkm.xlsx,/workspace/coding3/part2_downloads/GSE247026_Sample_genes_fpkm.xlsx,copied,Staged from local allowlisted file.
+GSE243904,/workspace/data/GSE243904_DGE_NORM_IB11_PRMT5_Treated_vs_notreated_LIMMA_T-TEST_AFFYX.txt.gz,/workspace/coding3/part2_downloads/GSE243904_DGE_NORM_IB11_PRMT5_Treated_vs_notreated_LIMMA_T-TEST_AFFYX.txt.gz,copied,Staged from local allowlisted file.
+GSE243759,,/workspace/coding3/part2_downloads/GSE243759_MISSING.txt,missing,Created placeholder due to unavailable allowlisted input.

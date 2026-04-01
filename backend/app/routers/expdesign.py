@@ -1,12 +1,15 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Header
 from pathlib import Path
 import json
 import os
+from app.auth_core import ensure_project_access, require_user
 
 router = APIRouter()
 
 @router.get("/{id}/expdesign")
-async def get_expdesign(id: int, value: int):
+async def get_expdesign(id: int, value: int, authorization: str | None = Header(default=None)):
+    user = require_user(authorization)
+    ensure_project_access(user, id)
     try:
         return process_expdesign(id, value)
     except FileNotFoundError:
@@ -35,7 +38,7 @@ def process_expdesign(id: int, value: int):
             expdesign[key]["Purpose"] = extra_data[key]["Purpose"]
             expdesign[key]["Design Reason"] = extra_data[key]["Design Reason"]
         else:
-            # 填充空值
+            # 婵夘偄鍘栫粚鍝勨偓?
             expdesign[key]["Purpose"] = "Null"
             expdesign[key]["Design Reason"] = "Null"
     return expdesign

@@ -1,0 +1,5 @@
+[2026-04-01 07:34:16.089878] Part 4-dry-experiment-3 started.
+[2026-04-01 07:34:16.122847] Allowlisted TPM input: /workspace/data/GSE202361_AllSamples_TPM.txt.gz
+[2026-04-01 07:34:16.126692] TPM file found; attempting to read for proxy gene selection.
+[2026-04-01 07:34:17.763889] Computed proxy genes from TPM; top N = 20
+[2026-04-01 07:34:17.772964] Discussion document written to: /workspace/coding3/part4_dry_experiment_3_discussion.md

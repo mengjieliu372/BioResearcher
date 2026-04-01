@@ -1,0 +1,381 @@
+.xmu-login-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 1000px;
+  overflow: hidden;
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.xmu-bg-slider {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.xmu-bg-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  object-fit: cover;
+}
+
+.xmu-bg-slide.active {
+  opacity: 1;
+}
+
+.xmu-language-box {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 24px;
+  right: 100px;
+  z-index: 3;
+}
+
+.xmu-lang-btn {
+  display: inline-block;
+  background: #cdcdcd;
+  cursor: pointer;
+  min-width: 104px;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+  color: #666;
+  border: 0;
+  font-size: 16px;
+}
+
+.xmu-lang-btn:first-of-type {
+  border-radius: 30px 0 0 30px;
+}
+
+.xmu-lang-btn:last-of-type {
+  border-radius: 0 30px 30px 0;
+}
+
+.xmu-lang-btn.active {
+  background: #003d86;
+  color: #fff;
+}
+
+.xmu-login-wrap {
+  position: absolute;
+  top: 50%;
+  right: 200px;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 416px;
+  min-height: 460px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  padding: 0 40px 10px;
+  box-sizing: border-box;
+}
+
+.xmu-corner-icon {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  top: 8px;
+  right: 8px;
+}
+
+.xmu-main {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 22px 0 16px;
+}
+
+.xmu-school-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.xmu-school-logo img {
+  width: calc(100% - 160px);
+  max-width: none;
+  max-height: none;
+}
+
+.xmu-login-title {
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.xmu-tab-head {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.xmu-tab {
+  color: rgba(255, 255, 255, 0.9);
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+
+.xmu-tab.active {
+  color: #fff;
+  border-bottom: 3px solid #fff;
+  font-weight: 700;
+}
+
+.xmu-qr-panel {
+  margin-top: 33px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.xmu-qr-box {
+  width: 235px;
+  height: 235px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.xmu-qr-grid {
+  width: 205px;
+  height: 205px;
+  background:
+    radial-gradient(circle at 12px 12px, #000 2px, transparent 2px) 0 0/12px 12px,
+    radial-gradient(circle at 4px 4px, #000 1.3px, transparent 1.3px) 0 0/8px 8px,
+    #fff;
+  position: relative;
+}
+
+.xmu-qr-grid::before,
+.xmu-qr-grid::after {
+  content: '';
+  position: absolute;
+  border: 7px solid #000;
+  width: 46px;
+  height: 46px;
+  background: #fff;
+}
+
+.xmu-qr-grid::before {
+  top: 0;
+  left: 0;
+}
+
+.xmu-qr-grid::after {
+  top: 0;
+  right: 0;
+}
+
+.xmu-qr-image {
+  width: 205px;
+  height: 205px;
+  object-fit: contain;
+  display: block;
+}
+
+.xmu-qr-tip {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.xmu-qr-expired {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #ffb7b7;
+}
+
+.xmu-account-panel {
+  margin-top: 18px;
+}
+
+.xmu-input-row {
+  position: relative;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.xmu-prex-icon {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+}
+
+.xmu-prex-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.xmu-input {
+  width: 280px;
+  border: 0;
+  background: transparent;
+  margin-left: 51px;
+  padding: 18px 5px;
+  font-size: 12px;
+  color: #333;
+}
+
+.xmu-input:focus {
+  outline: none;
+}
+
+.xmu-btn-row {
+  margin-top: 14px;
+}
+
+.xmu-login-btn {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  border-radius: 4px;
+  background: #003d86;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 12px;
+  cursor: pointer;
+}
+
+.xmu-help-row {
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.xmu-link-btn {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.xmu-msg {
+  min-height: 20px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.xmu-msg-error {
+  color: #ffb3c1;
+}
+
+.xmu-notice {
+  width: 100%;
+  text-align: left;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.xmu-login-tip {
+  padding: 0 0 12px;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: left;
+  font-size: 14px;
+}
+
+.xmu-swiper-pagination {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.xmu-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 3px;
+  background: #fff;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.xmu-dot.active {
+  opacity: 1;
+}
+
+.xmu-copyright {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 36px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  z-index: 2;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .xmu-login-page {
+    min-width: 0;
+  }
+
+  .xmu-language-box {
+    right: 20px;
+  }
+
+  .xmu-login-wrap {
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+
+@media (max-width: 560px) {
+  .xmu-language-box {
+    top: 12px;
+    right: 10px;
+  }
+
+  .xmu-lang-btn {
+    min-width: 82px;
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+  }
+
+  .xmu-login-wrap {
+    width: calc(100vw - 24px);
+    padding: 0 14px 10px;
+  }
+
+  .xmu-school-logo img {
+    width: 150px;
+  }
+
+  .xmu-login-title {
+    font-size: 16px;
+  }
+
+  .xmu-input {
+    width: calc(100% - 64px);
+  }
+}

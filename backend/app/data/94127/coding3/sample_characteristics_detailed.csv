@@ -1,0 +1,168 @@
+SampleID,PatientAge,Gender,TumorGrade,TumorStage,CytolyticScore,SourceFile
+sample 1,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 2,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 3,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 4,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 5,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 6,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 7,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 8,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 9,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 10,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 11,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 12,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 13,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 14,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 15,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 16,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 17,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 18,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 19,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 20,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 21,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 22,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 23,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 24,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 25,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 26,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 27,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 28,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 29,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 30,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 31,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 32,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 33,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 34,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 35,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 36,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 37,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 38,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 39,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 40,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 41,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 42,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 43,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 44,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 45,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 46,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 47,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 48,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 49,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 50,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 51,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 52,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 53,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 54,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 55,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 56,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 57,,,,,,GSE267611_sample_meta_out.txt.gz
+sample 58,,,,,,GSE267611_sample_meta_out.txt.gz
+Pt1_Pre_AD101148-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt1_On_AD174047-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt10_Pre_E9047565-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt10_On_E9047632-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt101_Pre_AD486328-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt101_On_AD681975-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt103_Pre_AE134058-2,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt103_On_AE134059-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt105_On_AE373241-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt106_Pre_AD502250-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt106_On_AD513626-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt108_On_AE373243-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt109_On_AE527955-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt109_On_AE527955-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt11_Pre_AD153352-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt11_On_AD314068-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt13_On_AD314067-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt16_On_AD167378-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt17_Pre_E9047563-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt17_On_E9261162-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt18_Pre_E9024732-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt18_On_E9261163-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt2_Pre_AD101150-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt2_On_AD174046-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt23_Pre_AD313075-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt23_On_AD486568-8,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt24_Pre_AD436687-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt26_Pre_AD467789-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt26_On_AD467915-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt27_Pre_AD453873-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt27_On_AD467934-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt28_Pre_AD297619-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt28_On_AD167375-7,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt29_Pre_AD497504-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt3_Pre_E9024733-3,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt3_On_E9047638-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt30_Pre_AD497503-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt30_On_AD505620-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt31_Pre_AD453872-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt31_On_AD467932-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt32_On_E9414883-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt34_Pre_AD466985-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt34_On_AD485757-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt35_On_AD485758-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt36_Pre_AD467095-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt36_On_AD495182-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt37_Pre_AD502452-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt37_On_AD495183-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt38_Pre_E9200719-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt38_On_E9414881-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt39_Pre_AD485899-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt4_Pre_E9021023-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt4_On_E9047643-7,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt44_Pre_AD467790-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt44_On_AD167376-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt46_Pre_AD467096-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt46_On_AD781834-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt47_Pre_AD506073-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt47_On_AD530367-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt48_Pre_E9047561-7,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt48_On_E9047631-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt49_Pre_AD667851-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt49_On_AD681976-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt5_Pre_E9021022-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt5_On_E9047635-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt52_Pre_AD506075-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt52_On_AD530365-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt58_On_AE045812-10,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt59_Pre_AD823915-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt62_Pre_AD608303-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt62_On_AD635728-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt65_Pre_AD793919-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt65_On_AD796996-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt66_Pre_AD667850-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt67_Pre_AD506074-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt67_On_AD530366-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt68_On_AD635729-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt69_On_AD635730-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt72_Pre_AD793922-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt76_Pre_AD667852-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt77_Pre_AD733591-7,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt77_On_AD733629-8,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt78_Pre_AD467018-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt78_On_AE148748-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt79_Pre_AD733587-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt79_On_AD733628-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt8_Pre_AD153354-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt8_On_AD167380-7,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt80_On_AD467874-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt81_On_AD681973-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt82_Pre_AD823914-8,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt82_On_AD125218-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt84_Pre_AD486532-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt84_On_AD495199-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt85_Pre_AD486329-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt85_On_AE070989-10,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt87_On_AD495198-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt89_Pre_AE070951-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt89_On_AE070987-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt9_Pre_E9021024-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt9_On_E9047644-7,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt90_Pre_AD467873-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt92_Pre_AE134060-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt92_On_AE148750-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt93_On_AE070988-5,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt94_Pre_AD732850-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt94_On_AE373242-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt98_Pre_AD733586-8,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz
+Pt98_On_AE086717-6,,,,,,GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz;GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz

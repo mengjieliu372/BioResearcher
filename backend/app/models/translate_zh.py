@@ -21,7 +21,7 @@ def translate(data, save_path):
                     break
                 print(f"translating {p}...")
                 input = "请将下文全文翻译为中文，在适当位置添加换行。\n" + content
-                result = model_generate(input)
+                result = model_generate(input, model=MODEL_4O_MINI)
                 results[p] = result[0]
                 write_txt(json.dumps(results, ensure_ascii=False, indent=4) + "\n\n", save_path)
                 input_tokens += result[1]
@@ -41,7 +41,7 @@ def translate(data, save_path):
                     break
                 print(f"translating {p}...")
                 input = "请将下文全文翻译为中文，在适当位置添加换行。\n" + content
-                result = model_generate(input)
+                result = model_generate(input, model=MODEL_4O_MINI)
                 results[p] = result[0]
                 write_txt(json.dumps(results, ensure_ascii=False, indent=4) + "\n\n", save_path)
                 input_tokens += result[1]
@@ -50,7 +50,7 @@ def translate(data, save_path):
 
     elif isinstance(data, str):
         input = "请将下文全文翻译为中文，在适当位置添加换行。\n" + data
-        result = model_generate(input)
+        result = model_generate(input, model=MODEL_4O_MINI)
         input_tokens = result[1]
         output_tokens = result[2]
         result = result[0]

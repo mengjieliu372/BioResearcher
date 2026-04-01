@@ -1,0 +1,4 @@
+[proxy] urllib using system proxies: {'http': 'http://127.0.0.1:7897', 'https': 'http://127.0.0.1:7897'}
+[openai-link] direct probe https://hk-api.gptbest.vip/v1 ok=True status=200 time_ms=902 err=
+[proxy] requests using system proxies: {'http': 'http://127.0.0.1:7897', 'https': 'http://127.0.0.1:7897'}
+INFO:     127.0.0.1:55547 - "POST /94127/program/regenerate HTTP/1.1" 500 Internal Server Error

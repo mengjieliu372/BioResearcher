@@ -1,0 +1,7 @@
+[2026-04-01 07:42:28] Part 5-dry-experiment-4 started. 
+[2026-04-01 07:42:29] Loading expression from: /workspace/data/GSE202361_AllSamples_TPM.txt.gz 
+[2026-04-01 07:42:30] WARNING: No lncRNA-like gene symbols detected; using top-variance genes as proxy. 
+[2026-04-01 07:42:31] WARNING: Checkpoint genes not detected; using median library size as proxy response. 
+[2026-04-01 07:42:31] Logistic regression results saved: /workspace/coding3/part5_dry_experiment_4_logistic_models.csv 
+[2026-04-01 07:42:31] Rows written: 50 
+[2026-04-01 07:42:31] Part 5-dry-experiment-4 completed. 

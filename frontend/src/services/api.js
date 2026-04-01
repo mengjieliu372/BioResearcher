@@ -69,12 +69,34 @@ export const getCompletedSteps = async (id) => {
     });
 }
 
+export const resumeExperiment = async (id) => {
+    return request({
+        url: `/api/${id}/resume`,
+        method: 'post',
+    });
+}
+
+export const pauseExperiment = async (id) => {
+    return request({
+        url: `/api/${id}/pause`,
+        method: 'post',
+    });
+}
+
 
 // Search
 export const getPapersets = async (id) => {
     return request({
         url: `/api/${id}/papersets`,
         method: 'get',
+    });
+}
+
+export const uploadManualPaperPdf = async (id, data) => {
+    return request({
+        url: `/api/${id}/papers/upload-manual`,
+        method: 'post',
+        data,
     });
 }
 
@@ -126,5 +148,67 @@ export const getProgram = async (id, value) => {
         url: `/api/${id}/program`,
         method: 'get',
         params: { value }
+    });
+}
+
+export const getProgramMeta = async (id) => {
+    return request({
+        url: `/api/${id}/program/meta`,
+        method: 'get',
+    });
+}
+
+export const downloadProgramDataZip = async (id) => {
+    return request({
+        url: `/api/${id}/program/download-data-zip`,
+        method: 'get',
+        responseType: 'blob',
+        timeout: 0,
+    });
+}
+
+export const regenerateProgram = async (id) => {
+    return request({
+        url: `/api/${id}/program/regenerate`,
+        method: 'post',
+    });
+}
+
+export const regenerateProgramWithFeedback = async (id, feedback) => {
+    return request({
+        url: `/api/${id}/program/regenerate-with-feedback`,
+        method: 'post',
+        data: { feedback },
+    });
+}
+
+// auth
+export const authRegister = async (data) => {
+    return request({
+        url: '/api/auth/register',
+        method: 'post',
+        data,
+    });
+}
+
+export const authLogin = async (data) => {
+    return request({
+        url: '/api/auth/login',
+        method: 'post',
+        data,
+    });
+}
+
+export const authMe = async () => {
+    return request({
+        url: '/api/auth/me',
+        method: 'get',
+    });
+}
+
+export const authLogout = async () => {
+    return request({
+        url: '/api/auth/logout',
+        method: 'post',
     });
 }

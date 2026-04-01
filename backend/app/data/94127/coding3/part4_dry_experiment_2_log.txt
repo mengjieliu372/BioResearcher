@@ -1,0 +1,10 @@
+[2026-04-01 07:17:39] Using DEG candidate input: /workspace/coding3/go_enrichment_results.csv
+[2026-04-01 07:17:39] No usable DEG table found; deriving proxy significant genes from GSE202361 TPM by high variance.
+[2026-04-01 07:17:41] Gene set size for KEGG: 2889
+[2026-04-01 07:17:41] Warning: clusterProfiler/org.Hs.eg.db unavailable; writing non-empty fallback summary from input genes.
+[2026-04-01 07:17:41] KEGG results saved: /workspace/coding3/kegg_analysis_results.tsv
+[2026-04-01 07:17:41] Rows written: 1
+[2026-04-01 07:22:21.799888]  Part 4-dry-experiment-2 started. 
+[2026-04-01 07:22:21.859304]  Using input file: /workspace/data/GSE202361_AllSamples_TPM.txt.gz 
+[2026-04-01 07:32:22.637268]  KEGG results saved: /workspace/coding3/kegg_analysis_results.tsv (n=114) 
+[2026-04-01 07:32:22.645091]  Part 4-dry-experiment-2 completed. 

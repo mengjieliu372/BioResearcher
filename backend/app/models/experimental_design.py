@@ -13,7 +13,7 @@ from app.models.search_download import llm_related
 
 
 def design(target, conditions, requirements, reports_analysis, reports_title_analysis, outlines_analysis, save_path, log_path, datasets):
-    model = "gpt-4o-mini"
+    model = MODEL_4O_MINI
     count = 0
     results = {}
     if os.path.exists(log_path):
@@ -34,7 +34,9 @@ def design(target, conditions, requirements, reports_analysis, reports_title_ana
             while retry_times < max_retry_times:
                 try:
                     first_level_heading, first_level_heading_input_tokens_num, first_level_heading_output_tokens_num = model_generate(
-                        prompts["first_heading_design"].format(reports_title_analysis, target, conditions, requirements))
+                        prompts["first_heading_design"].format(reports_title_analysis, target, conditions, requirements),
+                        model=model,
+                    )
                     step1_input_tokens += first_level_heading_input_tokens_num
                     step1_output_tokens += first_level_heading_output_tokens_num
                     count += 1
@@ -42,7 +44,9 @@ def design(target, conditions, requirements, reports_analysis, reports_title_ana
                     first_level_heading, history_first_level_heading, regenerate_iter, first_level_heading_reflex_input_tokens_num, first_level_heading_reflex_output_tokens_num, first_level_heading_reflex_count = reflexion_and_regenerate(
                         prompts["first_heading_design"].format(reports_title_analysis, target, conditions, requirements),
                         first_level_heading, prompts['first_heading_design_reflexion'],
-                        prompts['first_heading_design_regenerate'])
+                        prompts['first_heading_design_regenerate'],
+                        model=model,
+                    )
                     results["step1_history"] = history_first_level_heading
                     count += first_level_heading_reflex_count
                     step1_input_tokens += first_level_heading_reflex_input_tokens_num
@@ -85,7 +89,9 @@ def design(target, conditions, requirements, reports_analysis, reports_title_ana
                 try:
                     brief_steps, brief_steps_input_tokens_num, brief_steps_output_tokens_num = model_generate(
                         prompts["brief_steps_generate"].format(str(outlines_analysis), target, conditions, requirements,
-                                                               json.dumps(results["step1"]["json"], indent=4)))
+                                                               json.dumps(results["step1"]["json"], indent=4)),
+                        model=model,
+                    )
                     count += 1
                     step2_input_tokens += brief_steps_input_tokens_num
                     step2_output_tokens += brief_steps_output_tokens_num
@@ -94,7 +100,9 @@ def design(target, conditions, requirements, reports_analysis, reports_title_ana
                         prompts["brief_steps_generate"].format(str(outlines_analysis), target, conditions, requirements,
                                                                json.dumps(results["step1"]["json"], indent=4)),
                         brief_steps, prompts['brief_steps_generate_reflexion'],
-                        prompts['brief_steps_generate_regenerate'])
+                        prompts['brief_steps_generate_regenerate'],
+                        model=model,
+                    )
                     results["step2_history"] = history_brief_steps
                     count += brief_steps_reflex_count
                     step2_input_tokens += brief_steps_reflex_input_tokens_num
@@ -146,10 +154,15 @@ def design(target, conditions, requirements, reports_analysis, reports_title_ana
                                                          str(pt), str(p), str(pt), str(p["Title"]))
             reflexion = prompts['final_design_reflexion'].format(str(pt), str(pt), str(p["Title"]))
             regenerate = prompts['final_design_regenerate'].format(str(pt), str(pt), str(p["Title"]))
-            paras.append((n, pt, step3_input, reflexion, regenerate, prompts))
+            paras.append((n, pt, step3_input, reflexion, regenerate, prompts, model))
             n += 1
 
-        executor = ThreadPoolExecutor(max_workers=len(paras))
+        if len(paras) == 0:
+            write_json(results, log_path)
+            with open(save_path, "w", encoding="utf-8") as fout:
+                json.dump(final_experiments, fout, ensure_ascii=False, indent=4)
+            return final_experiments, all_input_tokens, all_output_tokens
+        executor = ThreadPoolExecutor(max_workers=min(MAX_LLM_WORKERS, len(paras)))
         paras = list(map(list, zip(*paras)))
 
         for result in executor.map(design_step3_multi, *paras):
@@ -189,7 +202,7 @@ def design(target, conditions, requirements, reports_analysis, reports_title_ana
         return results["experiment"], all_input_tokens, all_output_tokens
 
 
-def design_step3_multi(n, pt, step3_input, reflexion, regenerate, prompts):
+def design_step3_multi(n, pt, step3_input, reflexion, regenerate, prompts, model):
     count = 0
     this_pt_input_tokens_num = 0
     this_pt_output_tokens_num = 0
@@ -199,7 +212,8 @@ def design_step3_multi(n, pt, step3_input, reflexion, regenerate, prompts):
         try:
             time.sleep((n + retry_times) * 0.5)
             detailed_steps, detailed_steps_input_tokens_num, detailed_steps_output_tokens_num = model_generate(
-                step3_input)
+                step3_input, model=model
+            )
 
             count += 1
             print(f"detailed_steps {pt} initialization success.", flush=True)
@@ -212,7 +226,9 @@ def design_step3_multi(n, pt, step3_input, reflexion, regenerate, prompts):
             detailed_steps, history_detailed_steps, regenerate_iter, detailed_steps_reflex_input_tokens_num, detailed_steps_reflex_output_tokens_num, detailed_steps_reflex_count = reflexion_and_regenerate(
                 step3_input,
                 detailed_steps, reflexion,
-                regenerate)
+                regenerate,
+                model=model,
+            )
 
             count += detailed_steps_reflex_count
             print(f"detailed_steps {pt} reflexion success，called {detailed_steps_reflex_count} times\n", flush=True)
@@ -233,3 +249,4 @@ def design_step3_multi(n, pt, step3_input, reflexion, regenerate, prompts):
 
     return pt, step3_input, detailed_steps, detailed_steps_json, history_detailed_steps, regenerate_iter, this_pt_input_tokens_num, this_pt_output_tokens_num, count
 
+MAX_LLM_WORKERS = 3

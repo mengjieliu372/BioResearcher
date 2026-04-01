@@ -1,0 +1,115 @@
+pathway_name	gene_count	adj_p_value
+Cytoskeleton in muscle cells	112	6.93179757991212e-24
+Coronavirus disease - COVID-19	106	1.53707719177304e-19
+Prion disease	114	2.54762597721452e-18
+Phagosome	78	2.54762597721452e-18
+Amyotrophic lateral sclerosis	135	2.27792849071383e-16
+Parkinson disease	106	2.15414553311203e-15
+Diabetic cardiomyopathy	88	2.48358093179872e-15
+Oxidative phosphorylation	67	6.61996050570003e-15
+Huntington disease	114	2.88703031371728e-14
+Focal adhesion	85	3.64943624126458e-14
+Alzheimer disease	131	6.67726633719556e-13
+Integrin signaling	67	3.85878179185263e-12
+Chemical carcinogenesis - reactive oxygen species	87	6.17753585472687e-12
+Adherens junction	46	9.62689843331887e-11
+Pathways of neurodegeneration - multiple diseases	145	3.6845440228099e-10
+Human T-cell leukemia virus 1 infection	82	4.10572274652165e-10
+Herpes simplex virus 1 infection	69	1.47307251059022e-09
+Malaria	29	5.33737566933014e-09
+Epstein-Barr virus infection	74	7.12607467289973e-09
+Rheumatoid arthritis	43	1.25261842009733e-08
+Thermogenesis	81	1.26162423572786e-08
+Viral myocarditis	35	1.59544818395753e-08
+Influenza A	64	2.92991888834169e-08
+Salmonella infection	83	3.42258310737036e-08
+Pathogenic Escherichia coli infection	70	7.2154330932693e-08
+Proteoglycans in cancer	71	7.2154330932693e-08
+IgSF CAM signaling	94	1.01162133354649e-07
+Non-alcoholic fatty liver disease	58	1.46349495998066e-07
+Lysosome biogenesis	81	2.34820347251224e-07
+Bacterial invasion of epithelial cells	34	1.57080112358542e-06
+Proteasome	24	1.73541629993379e-06
+Tuberculosis	61	2.59978915696013e-06
+Leishmaniasis	33	5.07628076600003e-06
+Human papillomavirus infection	96	5.7242062959512e-06
+Ribosome	70	5.7242062959512e-06
+Protein processing in endoplasmic reticulum	58	6.8923156793166e-06
+Measles	48	9.54102432316432e-06
+Regulation of actin cytoskeleton	71	1.51612251257762e-05
+ECM-receptor interaction	35	1.54431289650587e-05
+Vibrio cholerae infection	24	1.54431289650587e-05
+Antigen processing and presentation	33	1.59361413578889e-05
+Yersinia infection	47	3.38888815282705e-05
+Leukocyte transendothelial migration	41	4.7674362380335e-05
+Shigellosis	74	5.04604180816632e-05
+Cardiac muscle contraction	33	6.65254567344365e-05
+Hematopoietic cell lineage	36	0.000101953268579465
+Motor proteins	59	0.000112887555953016
+Th17 cell differentiation	38	0.000133000211194121
+Complement and coagulation cascades	32	0.000225681541249053
+Pertussis	29	0.000318985649986757
+PI3K-Akt signaling pathway	95	0.000318985649986757
+Fluid shear stress and atherosclerosis	45	0.000341241403738277
+Prostate cancer	36	0.000374387772566243
+Amoebiasis	35	0.000457762116077731
+Toxoplasmosis	37	0.000557615901764286
+NF-kappa B signaling pathway	35	0.000676904803032871
+Osteoclast differentiation	44	0.000676904803032871
+Legionellosis	22	0.000878310827027542
+Cellular senescence	47	0.000975787970240478
+Hypertrophic cardiomyopathy	33	0.000996405490110935
+Allograft rejection	17	0.00106871636164503
+Virion - Lassa virus and SFTS virus	10	0.00111674988019421
+Lipid and atherosclerosis	60	0.00126776474440567
+Dilated cardiomyopathy	34	0.00140432221422599
+Cell adhesion molecule (CAM) interaction	47	0.00144280540418107
+NOD-like receptor signaling pathway	53	0.00160710092688526
+Type I diabetes mellitus	18	0.00166557117867153
+Transcriptional misregulation in cancer	56	0.00172510588293176
+Graft-versus-host disease	18	0.00224694523978089
+Small cell lung cancer	30	0.00310576237591888
+Spinocerebellar ataxia	42	0.00321239671019997
+HIF-1 signaling pathway	34	0.00325935767500484
+Inflammatory bowel disease	23	0.00380301738034941
+Chagas disease	32	0.00408641521019047
+Staphylococcus aureus infection	31	0.00416772128666332
+Endocytosis	65	0.0041866842377154
+Human cytomegalovirus infection	60	0.0041866842377154
+Kaposi sarcoma-associated herpesvirus infection	53	0.00459100535375041
+AGE-RAGE signaling pathway in diabetic complications	31	0.0057113545844652
+Apoptosis	39	0.00719727722804239
+Ferroptosis	16	0.0072662499529156
+Hepatitis C	43	0.00837539235799006
+EGFR tyrosine kinase inhibitor resistance	25	0.0117331290440587
+Glioma	24	0.0119682001022419
+Th1 and Th2 cell differentiation	28	0.0121589325972614
+IL-17 signaling pathway	28	0.0142384472808908
+Protein digestion and absorption	30	0.0149314954497487
+Rap1 signaling pathway	54	0.0151095331834235
+Arrhythmogenic right ventricular cardiomyopathy	26	0.0151095331834235
+Efferocytosis	42	0.0155552790903099
+Nucleocytoplasmic transport	31	0.015757640080253
+Platelet activation	35	0.0163286520856502
+Thyroid hormone signaling pathway	34	0.0172084226075141
+Hepatitis B	43	0.0175394862572491
+Toll-like receptor signaling pathway	31	0.0175394862572491
+Viral carcinogenesis	52	0.0177531892287436
+Intestinal immune network for IgA production	17	0.0177531892287436
+TNF signaling pathway	33	0.0198126149550189
+Autophagy - animal	44	0.0198126149550189
+Tight junction	44	0.0219676770617568
+Collecting duct acid secretion	11	0.0230638730223522
+Chronic myeloid leukemia	23	0.0252356831420097
+PD-L1 expression and PD-1 checkpoint pathway in cancer	26	0.0252356831420097
+Various types of N-glycan biosynthesis	15	0.0259974388242236
+Vasopressin-regulated water reabsorption	15	0.0259974388242236
+Insulin resistance	30	0.0295880289745266
+TGF-beta signaling pathway	30	0.0335413046660599
+p53 signaling pathway	22	0.0353287733518796
+Epithelial cell signaling in Helicobacter pylori infection	21	0.0366074172146137
+Autoimmune thyroid disease	17	0.0366074172146137
+Lysine degradation	19	0.0399617313322456
+Relaxin signaling pathway	34	0.0399617313322456
+Retrograde endocannabinoid signaling	38	0.0416344530048895
+Melanoma	21	0.0487915540218253

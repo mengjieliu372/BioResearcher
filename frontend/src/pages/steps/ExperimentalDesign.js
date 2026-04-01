@@ -37,6 +37,15 @@ function a11yProps(index) {
   };
 }
 
+const asErrorMessage = (err) => {
+  const detail = err?.response?.data?.detail ?? err?.response?.data?.message ?? err?.message;
+  if (typeof detail === 'string') return detail;
+  try {
+    return JSON.stringify(detail);
+  } catch {
+    return String(detail || 'Unknown error');
+  }
+};
 
 
 
@@ -51,9 +60,9 @@ export default function ExperimentalDesign() {
         setContent(<ExpDesignContent data={res.data} />);
       })
       .catch((err) => {
-        setContent(<ErrorPage code={err.status} message={err.response.data.detail} />);
+        setContent(<ErrorPage code={err?.response?.status || err?.status || 500} message={asErrorMessage(err)} />);
       });
-  }, [value]);
+  }, [id, value]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

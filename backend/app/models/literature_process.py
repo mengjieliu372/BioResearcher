@@ -6,7 +6,6 @@ from collections import OrderedDict
 import time
 from concurrent.futures import ThreadPoolExecutor
 import re
-import fitz
 import sys
 
 from app.models.search_datasets_detail import *
@@ -17,11 +16,33 @@ from app.models.our_utils import *
 
 from pathlib import Path
 
+try:
+    import fitz
+except ImportError:
+    fitz = None
+
 
 
 sys.stdout.reconfigure(encoding='utf-8')
+MAX_LLM_WORKERS = 3
+MODEL_LITERATURE = MODEL_4O_MINI
+MODEL_LITERATURE_FALLBACKS = [MODEL_4O_MINI, MODEL_5_MINI, MODEL_PRECISE]
+
+
+def _build_model_chain(primary_model: str):
+    chain = [primary_model]
+    for m in MODEL_LITERATURE_FALLBACKS:
+        if m not in chain:
+            chain.append(m)
+    return chain
 
 def extract_text(pdf_file):
+    suffix = str(pdf_file).lower()
+    if suffix.endswith(".txt"):
+        with open(pdf_file, "r", encoding="utf-8") as f:
+            return f.read()
+    if fitz is None:
+        raise RuntimeError("PyMuPDF is not installed. Please install PyMuPDF to parse PDFs.")
     print("Start to convert...")
     starttime = time.time()
     doc = fitz.open(pdf_file)
@@ -88,17 +109,28 @@ def step3_multi(i, output_step2_json, prompts, parts_tar_i, fewshots_step3_parts
     input3 = prompts['step3'].format(paper_ref=paper_ref, paper_tar=paper_tar, num_part=parts_tar_i, guideline_paper_ref=fewshots_step3_parts['部分大纲'], experiment_paper_ref=fewshots_step3_parts['实验方案'], guideline_paper_tar=output_step2_part)
     input_tokens_num = 0
     output_tokens_num = 0
+    model_chain = _build_model_chain(MODEL_LITERATURE)
+    max_attempts = max(max_retry_times, len(model_chain))
     retry_times = 0
-    while retry_times < max_retry_times:
+    while retry_times < max_attempts:
+        use_model = model_chain[min(retry_times, len(model_chain) - 1)]
         try:
-            response_step3, response_step3_input_tokens_num, response_step3_output_tokens_num = model_generate(input3)
+            response_step3, response_step3_input_tokens_num, response_step3_output_tokens_num = model_generate(
+                input3, model=use_model
+            )
             count += 1
             input_tokens_num += response_step3_input_tokens_num
             output_tokens_num += response_step3_output_tokens_num
             output_step3 = response_step3
 
             # reflexion
-            output_step3, history3, regenerate_iter3, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount3 = reflexion_and_regenerate(input3, output_step3, prompts['step3_reflexion'].format(num_part=parts_tar_i), prompts['step3_regenerate'].format(num_part=parts_tar_i))
+            output_step3, history3, regenerate_iter3, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount3 = reflexion_and_regenerate(
+                input3,
+                output_step3,
+                prompts['step3_reflexion'].format(num_part=parts_tar_i),
+                prompts['step3_regenerate'].format(num_part=parts_tar_i),
+                model=use_model,
+            )
             count += rcount3
 
 
@@ -110,7 +142,7 @@ def step3_multi(i, output_step2_json, prompts, parts_tar_i, fewshots_step3_parts
             print(f"step3 multi {parts_tar_i} 调用次数：", count)
             return parts_tar_i, input3, output_step3, output_step3_json, history3, regenerate_iter3, input_tokens_num, output_tokens_num, count
         except Exception as e:
-            print(f"step3 multi {parts_tar_i} error: ",e)
+            print(f"step3 multi {parts_tar_i} error with model {use_model}: ",e)
             retry_times += 1
     print(f"step3 {parts_tar_i} 模型返回 None")
     # print(response_step3.prompt_feedback, '\n')
@@ -123,17 +155,28 @@ def step4_multi(i, part, outputs_step3_part, paper_tar, prompts):
     # try_times = 0
     input_tokens_num = 0
     output_tokens_num = 0
+    model_chain = _build_model_chain(MODEL_LITERATURE)
+    max_attempts = max(max_retry_times, len(model_chain))
     retry_times = 0
-    while retry_times < max_retry_times:
+    while retry_times < max_attempts:
+        use_model = model_chain[min(retry_times, len(model_chain) - 1)]
         try:
-            response_step4, response_step4_input_tokens_num, response_step4_output_tokens_num = model_generate(input4)
+            response_step4, response_step4_input_tokens_num, response_step4_output_tokens_num = model_generate(
+                input4, model=use_model
+            )
             count += 1
             input_tokens_num += response_step4_input_tokens_num
             output_tokens_num += response_step4_output_tokens_num
             output_step4 = response_step4
 
             # reflexion
-            output_step4, history4, regenerate_iter4, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount4 = reflexion_and_regenerate(input4, output_step4, prompts['step4_reflexion'].format(num_part=part), prompts['step4_regenerate'].format(num_part=part))
+            output_step4, history4, regenerate_iter4, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount4 = reflexion_and_regenerate(
+                input4,
+                output_step4,
+                prompts['step4_reflexion'].format(num_part=part),
+                prompts['step4_regenerate'].format(num_part=part),
+                model=use_model,
+            )
             count += rcount4
 
 
@@ -146,7 +189,7 @@ def step4_multi(i, part, outputs_step3_part, paper_tar, prompts):
             return part, input4, output_step4, output_step4_json, history4, regenerate_iter4, input_tokens_num, output_tokens_num, count
 
         except Exception as e:
-            print(f"step4 multi {part} error: ",e)
+            print(f"step4 multi {part} error with model {use_model}: ", e)
             print(f"step4 multi {part} 调用次数：", count)
             retry_times += 1
             # try_times += 1
@@ -162,17 +205,28 @@ def step5_multi(i, part, output_step4_part, paper_tar, prompts):
     # try_times = 0
     input_tokens_num = 0
     output_tokens_num = 0
+    model_chain = _build_model_chain(MODEL_LITERATURE)
+    max_attempts = max(max_retry_times, len(model_chain))
     retry_times = 0
-    while retry_times < max_retry_times:
+    while retry_times < max_attempts:
+        use_model = model_chain[min(retry_times, len(model_chain) - 1)]
         try:
-            response_step5, response_step5_input_tokens_num, response_step5_output_tokens_num = model_generate(input5)
+            response_step5, response_step5_input_tokens_num, response_step5_output_tokens_num = model_generate(
+                input5, model=use_model
+            )
             count += 1
             input_tokens_num += response_step5_input_tokens_num
             output_tokens_num += response_step5_output_tokens_num
             output_step5 = response_step5
 
             # reflexion
-            output_step5, history5, regenerate_iter5, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount5 = reflexion_and_regenerate(input5, output_step5, prompts['step5_reflexion'].format(num_part=part), prompts['step5_regenerate'].format(num_part=part))
+            output_step5, history5, regenerate_iter5, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount5 = reflexion_and_regenerate(
+                input5,
+                output_step5,
+                prompts['step5_reflexion'].format(num_part=part),
+                prompts['step5_regenerate'].format(num_part=part),
+                model=use_model,
+            )
             count += rcount5
 
 
@@ -185,7 +239,7 @@ def step5_multi(i, part, output_step4_part, paper_tar, prompts):
             return part, input5, output_step5, output_step5_json, history5, regenerate_iter5, input_tokens_num, output_tokens_num, count
         except Exception as e:
             retry_times += 1
-            print(f"step5 multi {part} error: ",e)
+            print(f"step5 multi {part} error with model {use_model}: ", e)
             print(f"step5 multi {part} 调用次数：", count)
             # time.sleep(4)
     print(f"step5 {part} 模型返回 None")
@@ -219,11 +273,16 @@ def extract_test_pipeline(paper_ref, paper_tar, title_paper_tar, prompts, fewsho
             print("\n\n\nfirst level heading extraction starts ...\n\n\n")
             step1_input_tokens_num = 0
             step1_output_tokens_num = 0
+            model_chain = _build_model_chain(MODEL_LITERATURE)
+            max_attempts = max(max_retry_times, len(model_chain))
             retry_times = 0
-            while retry_times < max_retry_times:
+            while retry_times < max_attempts:
+                use_model = model_chain[min(retry_times, len(model_chain) - 1)]
                 try:
                     input_step1 = prompts['step1'].format(paper_ref=paper_ref, paper_tar=paper_tar, titlelevel1_paper_ref=fewshots_step1)
-                    response_step1, response_step1_input_tokens_num, response_step1_output_tokens_num = model_generate(input_step1)
+                    response_step1, response_step1_input_tokens_num, response_step1_output_tokens_num = model_generate(
+                        input_step1, model=use_model
+                    )
                     count += 1
                     step1_input_tokens_num += response_step1_input_tokens_num
                     step1_output_tokens_num += response_step1_output_tokens_num
@@ -231,7 +290,13 @@ def extract_test_pipeline(paper_ref, paper_tar, title_paper_tar, prompts, fewsho
 
                     # step1 reflexion
                     #print("step1 reflexion ...\n\n\n")
-                    output_step1, history1, regenerate_iter1, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount1 = reflexion_and_regenerate(input_step1, output_step1, prompts['step1_reflexion'], prompts['step1_regenerate'])
+                    output_step1, history1, regenerate_iter1, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount1 = reflexion_and_regenerate(
+                        input_step1,
+                        output_step1,
+                        prompts['step1_reflexion'],
+                        prompts['step1_regenerate'],
+                        model=use_model,
+                    )
                     count += rcount1
                     step1_input_tokens_num += reflexion_input_tokens_num
                     step1_output_tokens_num += reflexion_output_tokens_num
@@ -254,7 +319,7 @@ def extract_test_pipeline(paper_ref, paper_tar, title_paper_tar, prompts, fewsho
                     break
                 except Exception as e:
                     retry_times += 1
-                    print("first level heading extraction error: ", e, '\n\n')
+                    print(f"first level heading extraction error with model {use_model}: ", e, '\n\n')
             if retry_times == max_retry_times:
                 print("Error: first level heading extraction failed, please try again.")
                 return None
@@ -269,20 +334,31 @@ def extract_test_pipeline(paper_ref, paper_tar, title_paper_tar, prompts, fewsho
             print("\n\n\nOutlines extraction starts ...\n\n\n")
             step2_input_tokens_num = 0
             step2_output_tokens_num = 0
+            model_chain = _build_model_chain(MODEL_LITERATURE)
+            max_attempts = max(max_retry_times, len(model_chain))
             retry_times = 0
-            while retry_times < max_retry_times:
+            while retry_times < max_attempts:
+                use_model = model_chain[min(retry_times, len(model_chain) - 1)]
                 try:
                     # time.sleep(4)
                     output_step1 = json.dumps(final_output["step1"]['output'], indent=4)
                     input_step2 = prompts['step2'].format(paper_ref=paper_ref, paper_tar=paper_tar, titlelevel1_paper_ref=fewshots_step1, guideline_paper_ref=fewshots_step2, titlelevel1_paper_tar=output_step1)
-                    response_step2, response_step2_input_tokens_num, response_step2_output_tokens_num = model_generate(input_step2)
+                    response_step2, response_step2_input_tokens_num, response_step2_output_tokens_num = model_generate(
+                        input_step2, model=use_model
+                    )
                     count += 1
                     step2_input_tokens_num += response_step2_input_tokens_num
                     step2_output_tokens_num += response_step2_output_tokens_num
                     output_step2 = response_step2
 
                     # step2 reflexion
-                    output_step2, history2, regenerate_iter2, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount2 = reflexion_and_regenerate(input_step2, output_step2, prompts['step2_reflexion'], prompts['step2_regenerate'])
+                    output_step2, history2, regenerate_iter2, reflexion_input_tokens_num, reflexion_output_tokens_num, rcount2 = reflexion_and_regenerate(
+                        input_step2,
+                        output_step2,
+                        prompts['step2_reflexion'],
+                        prompts['step2_regenerate'],
+                        model=use_model,
+                    )
                     count += rcount2
                     step2_input_tokens_num += reflexion_input_tokens_num
                     step2_output_tokens_num += reflexion_output_tokens_num
@@ -311,7 +387,7 @@ def extract_test_pipeline(paper_ref, paper_tar, title_paper_tar, prompts, fewsho
                     break
                 except Exception as e:
                     retry_times += 1
-                    print("Outline extraction error: ", e, '\n\n')
+                    print(f"Outline extraction error with model {use_model}: ", e, '\n\n')
             if retry_times == max_retry_times:
                 print("Error: Outline extraction failed, please try again.")
                 return None
@@ -333,7 +409,9 @@ def extract_test_pipeline(paper_ref, paper_tar, title_paper_tar, prompts, fewsho
             step3_output_tokens_num = final_output["step3"].get("all_output_tokens_num", 0)
 
             step3_parts = list(set(output_step2_json.keys()) - set(outputs_step3.keys()))
-            executor = ThreadPoolExecutor(max_workers=len(step3_parts))
+            if len(step3_parts) == 0:
+                continue
+            executor = ThreadPoolExecutor(max_workers=min(MAX_LLM_WORKERS, len(step3_parts)))
             paras = [[i, output_step2_json, prompts, step3_parts[i], fewshots_step3["Part 1"], paper_ref, paper_tar] for i in range(len(step3_parts))]
             paras = list(map(list, zip(*paras)))   #change for debug
 
@@ -392,7 +470,9 @@ def extract_test_pipeline(paper_ref, paper_tar, title_paper_tar, prompts, fewsho
             step4_output_tokens_num = final_output["step4"].get("all_output_tokens_num", 0)
 
             step4_parts = list(set(outputs_step3.keys()) - set(outputs_step4.keys()))
-            executor = ThreadPoolExecutor(max_workers=len(step4_parts))
+            if len(step4_parts) == 0:
+                continue
+            executor = ThreadPoolExecutor(max_workers=min(MAX_LLM_WORKERS, len(step4_parts)))
             paras = [(i, part, outputs_step3[part], paper_tar, prompts) for i, part in enumerate(step4_parts)]
             paras = list(map(list, zip(*paras)))
 
@@ -437,8 +517,10 @@ def extract_test_pipeline(paper_ref, paper_tar, title_paper_tar, prompts, fewsho
             step5_input_tokens_num = final_output["step5"].get("all_input_tokens_num", 0)
             step5_output_tokens_num = final_output["step5"].get("all_output_tokens_num", 0)
             step5_parts = list(set(outputs_step4.keys()) - set(outputs_step5.keys()))
+            if len(step5_parts) == 0:
+                continue
 
-            executor = ThreadPoolExecutor(max_workers=len(step5_parts))
+            executor = ThreadPoolExecutor(max_workers=min(MAX_LLM_WORKERS, len(step5_parts)))
             paras = [(i, part, outputs_step4[part], paper_tar, prompts) for i, part in enumerate(step5_parts)]
             paras = list(map(list, zip(*paras)))
 
@@ -531,21 +613,47 @@ def analyze(target, conditions, requirements, report, analysis_path, log_path, d
 
     print("\nanalysis starts ...\n", flush=True)
     #try:
-    analysis, analysis_input_tokens_num, analysis_output_tokens_num = model_generate(prompts["analyze"].format(report, target, conditions, requirements))
+    model_chain = _build_model_chain(MODEL_LITERATURE)
+    init_max_attempts = max(max_retry_times, len(model_chain))
+    init_retry = 0
+    while init_retry < init_max_attempts:
+        use_model = model_chain[min(init_retry, len(model_chain) - 1)]
+        try:
+            analysis, analysis_input_tokens_num, analysis_output_tokens_num = model_generate(
+                prompts["analyze"].format(report, target, conditions, requirements),
+                model=use_model,
+            )
+            break
+        except Exception as e:
+            init_retry += 1
+            print(f"analysis init error with model {use_model}: ", e, flush=True)
+            if init_retry >= init_max_attempts:
+                raise
     print("\nanalysis initialized...\n", flush=True)
     count += 1
     # reflexion
+    history = []
+    analysis_reflex_input_tokens_num = 0
+    analysis_reflex_output_tokens_num = 0
+    analysis_reflex_count = 0
+    reflex_max_attempts = max(max_retry_times, len(model_chain))
     retry_times = 0
-    while retry_times < max_retry_times:
+    while retry_times < reflex_max_attempts:
+        use_model = model_chain[min(retry_times, len(model_chain) - 1)]
         try:
-            analysis, history, regenerate_iter, analysis_reflex_input_tokens_num, analysis_reflex_output_tokens_num, analysis_reflex_count = reflexion_and_regenerate(prompts["analyze"].format(target, conditions, requirements, report), analysis, prompts['analyze_reflexion'], prompts['analyze_regenerate'])
+            analysis, history, regenerate_iter, analysis_reflex_input_tokens_num, analysis_reflex_output_tokens_num, analysis_reflex_count = reflexion_and_regenerate(
+                prompts["analyze"].format(target, conditions, requirements, report),
+                analysis,
+                prompts['analyze_reflexion'],
+                prompts['analyze_regenerate'],
+                model=use_model,
+            )
             break
         except Exception as e:
-            print("error: ", e, flush=True)
+            print(f"analysis reflexion error with model {use_model}: ", e, flush=True)
             retry_times += 1
-    if retry_times == 3:
-        print("error!", flush=True)
-        exit()
+    if retry_times >= reflex_max_attempts:
+        raise RuntimeError("analysis reflexion failed after retries")
     count += analysis_reflex_count
     analysis_json, parser_input_token, parser_output_token = parser_json(analysis, prompts)
 
@@ -584,7 +692,20 @@ def analyze(target, conditions, requirements, report, analysis_path, log_path, d
         # 检索得到的数据集描述过长，有一些不必要的信息，需要选择关键信息给大模型（LLM 无参与）
         #dataset_description = select_attr(dataset_description)
         # 过滤数据集
-        dataset_description_llm_selected = dataset_llm_related(target, dataset_description)
+        ds_selected = None
+        ds_retry = 0
+        ds_max_attempts = max(max_retry_times, len(model_chain))
+        while ds_retry < ds_max_attempts:
+            use_model = model_chain[min(ds_retry, len(model_chain) - 1)]
+            try:
+                ds_selected = dataset_llm_related(target, dataset_description, model=use_model)
+                break
+            except Exception as e:
+                ds_retry += 1
+                print(f"dataset_llm_related error with model {use_model}: {e}", flush=True)
+        if ds_selected is None:
+            raise RuntimeError("dataset_llm_related failed after retries")
+        dataset_description_llm_selected = ds_selected
         count += 1
         filter_input_tokens_num = dataset_description_llm_selected[1]
         filter_output_tokens_num = dataset_description_llm_selected[2]

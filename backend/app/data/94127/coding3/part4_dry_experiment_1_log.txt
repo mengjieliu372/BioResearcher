@@ -1,0 +1,12 @@
+Part 4-dry-experiment-1 started at: 2026-04-01 07:15:14.158182
+No adjusted p-value column detected in: /workspace/data/GSE202361_AllSamples_rawcount.txt.gz
+No adjusted p-value column detected in: /workspace/data/GSE168205_annotated_combined.counts.txt.gz
+No adjusted p-value column detected in: /workspace/data/GSE247026_Sample_genes_fpkm.xlsx
+No adjusted p-value column detected in: /workspace/data/GSE91061_BMS038109Sample.hg19KnownGene.rld.csv.gz
+No adjusted p-value column detected in: /workspace/data/GSE91061_BMS038109Sample.hg19KnownGene.fpkm.csv.gz
+No adjusted p-value column detected in: /workspace/data/GSE230773_Read_counts.xlsx
+No adjusted p-value column detected in: /workspace/data/GSE202361_AllSamples_TPM.txt.gz
+No adjusted p-value column detected in: /workspace/data/GSE55465_non-normalized_INT-B.txt.gz
+No DEG table with adjusted p-values found in allowlisted inputs; producing placeholder output.
+Output written to: /workspace/coding3/go_enrichment_results.csv
+Part 4-dry-experiment-1 finished at: 2026-04-01 07:15:24.356889

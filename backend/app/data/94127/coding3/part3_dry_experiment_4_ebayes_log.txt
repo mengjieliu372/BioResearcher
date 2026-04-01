@@ -1,0 +1,5 @@
+
+2026-04-01 07:12:17 | No direct lmFit RDS found; attempting recovery from known prior outputs.
+2026-04-01 07:12:22 | Using counts matrix for refit:  /workspace/coding3/gse202361_counts_loaded.csv
+2026-04-01 07:12:23 | Successfully rebuilt lmFit from loaded expression + design matrix.
+2026-04-01 07:12:25 | eBayes completed successfully; topTable rows:  57773

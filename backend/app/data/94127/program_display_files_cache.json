@@ -1,0 +1,31 @@
+{
+  "fingerprint": "fb0d088e62bd726a962879d469d539ad",
+  "display_files": [
+    "qc_report.txt",
+    "qc_metrics.csv",
+    "qc_excluded_samples.csv",
+    "rna_degradation_plot.png",
+    "sample_statistics_summary.csv",
+    "eligible_samples_final.csv",
+    "sample_list_final.csv",
+    "sample_characteristics_detailed.csv",
+    "part3_dry_experiment_4_topTable_all.csv",
+    "part3_dry_experiment_5_degs.csv",
+    "ebayes_statistics.csv",
+    "limma_lmfit_coefficients_se.csv",
+    "part5_dry_experiment_2_de_results.csv",
+    "part5_dry_experiment_2_sig_lncrnas.csv",
+    "part5_dry_experiment_2_volcano.png",
+    "part5_dry_experiment_2_corr_heatmap.png",
+    "part5_dry_experiment_3_km_plot.pdf",
+    "part5_dry_experiment_3_km_plot.png",
+    "part5_dry_experiment_3_km_results.csv",
+    "part5_dry_experiment_4_logistic_models.csv",
+    "go_enrichment_results.csv",
+    "kegg_analysis_results.tsv",
+    "kegg_top20_pathways.tsv",
+    "kegg_top20_barplot.png"
+  ],
+  "generated_files_count": 102,
+  "updated_at": "2026-04-01 17:01:17"
+}

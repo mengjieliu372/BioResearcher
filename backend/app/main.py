@@ -8,6 +8,7 @@ from app.routers import expdesign
 from app.routers import litprocess
 from app.routers import program
 from app.routers import process
+from app.routers import auth
 
 # from fastapi.staticfiles import StaticFiles
 # from starlette.responses import FileResponse
@@ -35,3 +36,5 @@ app.include_router(litprocess.router)
 app.include_router(program.router)
 
 app.include_router(process.router)
+
+app.include_router(auth.router)

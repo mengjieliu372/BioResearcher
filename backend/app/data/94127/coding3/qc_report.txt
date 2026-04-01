@@ -1,0 +1,21 @@
+QC Report: RNA sequencing data
+Generated: 2026-04-01 06:55:57.62857
+
+Inputs:
+- /workspace/data/GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz (exists: TRUE)
+- /workspace/data/GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz (exists: TRUE)
+- /workspace/data/GSE267611_sample_meta_out.txt.gz (exists: TRUE)
+
+QC metrics summary:
+Total samples evaluated: 109
+Passing samples: 0
+Failing samples: 109
+Samples with missing 3'/5' ratio: 109
+
+Thresholds used:
+- Library size > 1e6
+- Detected genes > 10,000
+- 3'/5' ratio > 1.5 (if available)
+
+RNA degradation plot saved to:
+/workspace/coding3/rna_degradation_plot.png

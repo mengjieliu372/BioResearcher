@@ -5,105 +5,137 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import DryExpContent from '../../components/DryExpContent';
 import { useParams } from 'react-router-dom';
-import { getDryExp } from '../../services/api';
+import { getCompletedSteps, getDryExp } from '../../services/api';
 import ErrorPage from '../../components/ErrorPage';
 
-
-// TabPanel组件用于显示选中的Tab内容
 function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props;
 
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-        </div>
-    );
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+    </div>
+  );
 }
 
 CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
 };
 
-// a11yProps 提供Tab的可访问性配置
 function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
 }
 
+const asErrorMessage = (err) => {
+  const detail = err?.response?.data?.detail ?? err?.response?.data?.message ?? err?.message;
+  if (typeof detail === 'string') return detail;
+  try {
+    return JSON.stringify(detail);
+  } catch {
+    return String(detail || 'Unknown error');
+  }
+};
 
 export default function BasicTabs() {
-    const [value, setValue] = React.useState(0);
-    const [content, setContent] = React.useState(null);
-    const { id } = useParams();
+  const [versions, setVersions] = React.useState([1, 2, 3]);
+  const [selectedVersion, setSelectedVersion] = React.useState(1);
+  const [content, setContent] = React.useState(null);
+  const { id } = useParams();
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+  React.useEffect(() => {
+    getCompletedSteps(id)
+      .then((res) => {
+        const payload = res.data || {};
+        const available = Array.isArray(payload.dry_available_versions)
+          ? payload.dry_available_versions.filter((v) => Number.isInteger(v) && v > 0)
+          : [];
+        const nextVersions = available.length > 0 ? available : [1, 2, 3];
+        setVersions(nextVersions);
+        if (!nextVersions.includes(selectedVersion)) {
+          setSelectedVersion(nextVersions[0]);
+        }
+      })
+      .catch(() => {
+        setVersions([1, 2, 3]);
+        setSelectedVersion(1);
+      });
+  }, [id, selectedVersion]);
 
-    React.useEffect(() => {
-        getDryExp(id, value)
-            .then((res) => {
-                setContent(<DryExpContent data={res.data} />);
-            })
-            .catch((err) => {
-                setContent(<ErrorPage code={err.status} message={err.response.data.detail} />);
-            });
-    }, [value]); // 仅当 value 变化时触发
+  React.useEffect(() => {
+    getDryExp(id, selectedVersion - 1)
+      .then((res) => {
+        setContent(<DryExpContent data={res.data} />);
+      })
+      .catch((err) => {
+        setContent(
+          <ErrorPage
+            code={err.response?.status || err.status || 500}
+            message={asErrorMessage(err)}
+          />
+        );
+      });
+  }, [id, selectedVersion]);
 
-    return (
-        <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            width: '100%',
-            height: '78vh',
-            maxHeight: '78vh',
-        }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    centered
-                >
-                    <Tab label="Dry Experiment 1" {...a11yProps(0)} sx={{ textTransform: 'none' }} />
-                    <Tab label="Dry Experiment 2" {...a11yProps(1)} sx={{ textTransform: 'none' }} />
-                    <Tab label="Dry Experiment 3" {...a11yProps(2)} sx={{ textTransform: 'none' }} />
-                </Tabs>
-            </Box>
+  const handleChange = (event, newValue) => {
+    const nextVersion = versions[newValue];
+    if (nextVersion !== undefined) {
+      setSelectedVersion(nextVersion);
+    }
+  };
 
-            <Box
-                sx={{
-                    height: '72vh',
-                    maxHeight: '72vh',
-                    overflowY: 'auto',
-                    width: '65vw',
-                    ml: 'auto',
-                    mr: 'auto',
-                    borderRadius: '8px',
-                    boxShadow: 3,
-                }}
-            >
-                <CustomTabPanel value={value} index={0}>
-                    {content}
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={1}>
-                    {content}
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={2}>
-                    {content}
-                </CustomTabPanel>
-            </Box>
+  const tabValue = Math.max(0, versions.indexOf(selectedVersion));
 
-        </Box>
-    );
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        height: '78vh',
+        maxHeight: '78vh',
+      }}
+    >
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={tabValue} onChange={handleChange} centered>
+          {versions.map((version, index) => (
+            <Tab
+              key={version}
+              label={`Dry Experiment ${version}`}
+              {...a11yProps(index)}
+              sx={{ textTransform: 'none' }}
+            />
+          ))}
+        </Tabs>
+      </Box>
+
+      <Box
+        sx={{
+          height: '72vh',
+          maxHeight: '72vh',
+          overflowY: 'auto',
+          width: '65vw',
+          ml: 'auto',
+          mr: 'auto',
+          borderRadius: '8px',
+          boxShadow: 3,
+        }}
+      >
+        <CustomTabPanel value={tabValue} index={tabValue}>
+          {content}
+        </CustomTabPanel>
+      </Box>
+    </Box>
+  );
 }

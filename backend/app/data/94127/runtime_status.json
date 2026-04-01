@@ -1,0 +1,10 @@
+{
+    "running": false,
+    "progress": 98,
+    "message": "Coding regeneration completed.",
+    "checkpoint": "coding_regenerate_done",
+    "error": null,
+    "updated_at": "2026-04-02 01:13:53",
+    "needs_user_feedback": false,
+    "failed_task_id": null
+}

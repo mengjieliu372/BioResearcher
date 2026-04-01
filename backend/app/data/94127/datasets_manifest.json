@@ -1,0 +1,498 @@
+{
+    "created_at": "2026-03-27 00:36:45",
+    "limits": {
+        "single_dataset_bytes": 5368709120,
+        "total_download_bytes": 21474836480
+    },
+    "total_downloaded_bytes": 3634343124,
+    "datasets": [
+        {
+            "accession": "GSE202361",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 6710886,
+            "dataset_downloaded_bytes": 6718858,
+            "files": [
+                {
+                    "file_name": "GSE202361_AllSamples_TPM.txt.gz",
+                    "file_size_text": "3.5 Mb",
+                    "estimated_bytes": 3670016,
+                    "status": "downloaded",
+                    "local_path": "data/GSE202361_AllSamples_TPM.txt.gz",
+                    "actual_bytes": 3690045
+                },
+                {
+                    "file_name": "GSE202361_AllSamples_rawcount.txt.gz",
+                    "file_size_text": "2.9 Mb",
+                    "estimated_bytes": 3040870,
+                    "status": "downloaded",
+                    "local_path": "data/GSE202361_AllSamples_rawcount.txt.gz",
+                    "actual_bytes": 3028813
+                }
+            ]
+        },
+        {
+            "accession": "GSE205492",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 965427,
+            "dataset_downloaded_bytes": 965473,
+            "files": [
+                {
+                    "file_name": "GSE205492_rnaseq_workshop_normalized_counts.txt.gz",
+                    "file_size_text": "942.8 Kb",
+                    "estimated_bytes": 965427,
+                    "status": "downloaded",
+                    "local_path": "data/GSE205492_rnaseq_workshop_normalized_counts.txt.gz",
+                    "actual_bytes": 965473
+                }
+            ]
+        },
+        {
+            "accession": "GSE161616",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 44879052,
+            "dataset_downloaded_bytes": 44922880,
+            "files": [
+                {
+                    "file_name": "GSE161616_RAW.tar",
+                    "file_size_text": "42.8 Mb",
+                    "estimated_bytes": 44879052,
+                    "status": "downloaded",
+                    "local_path": "data/GSE161616_RAW.tar",
+                    "actual_bytes": 44922880
+                }
+            ]
+        },
+        {
+            "accession": "GSE57750",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 97727283,
+            "dataset_downloaded_bytes": 97771520,
+            "files": [
+                {
+                    "file_name": "GSE57750_RAW.tar",
+                    "file_size_text": "93.2 Mb",
+                    "estimated_bytes": 97727283,
+                    "status": "downloaded",
+                    "local_path": "data/GSE57750_RAW.tar",
+                    "actual_bytes": 97771520
+                }
+            ]
+        },
+        {
+            "accession": "GSE68591",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 1825459608,
+            "dataset_downloaded_bytes": 1793142932,
+            "files": [
+                {
+                    "file_name": "GSE68591_NCI-Sarcoma-median-log10-IC50.csv.gz",
+                    "file_size_text": "94.1 Kb",
+                    "estimated_bytes": 96358,
+                    "status": "downloaded",
+                    "local_path": "data/GSE68591_NCI-Sarcoma-median-log10-IC50.csv.gz",
+                    "actual_bytes": 96339
+                },
+                {
+                    "file_name": "GSE68591_RAW.tar",
+                    "file_size_text": "1.7 Gb",
+                    "estimated_bytes": 1825361100,
+                    "status": "downloaded",
+                    "local_path": "data/GSE68591_RAW.tar",
+                    "actual_bytes": 1793044480
+                },
+                {
+                    "file_name": "GSE68591_drug_screening_readme.txt",
+                    "file_size_text": "2.1 Kb",
+                    "estimated_bytes": 2150,
+                    "status": "downloaded",
+                    "local_path": "data/GSE68591_drug_screening_readme.txt",
+                    "actual_bytes": 2113
+                }
+            ]
+        },
+        {
+            "accession": "GSE55465",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 31142707,
+            "dataset_downloaded_bytes": 31107319,
+            "files": [
+                {
+                    "file_name": "GSE55465_RAW.tar",
+                    "file_size_text": "26.2 Mb",
+                    "estimated_bytes": 27472691,
+                    "status": "downloaded",
+                    "local_path": "data/GSE55465_RAW.tar",
+                    "actual_bytes": 27443200
+                },
+                {
+                    "file_name": "GSE55465_non-normalized_INT-B.txt.gz",
+                    "file_size_text": "3.5 Mb",
+                    "estimated_bytes": 3670016,
+                    "status": "downloaded",
+                    "local_path": "data/GSE55465_non-normalized_INT-B.txt.gz",
+                    "actual_bytes": 3664119
+                }
+            ]
+        },
+        {
+            "accession": "GSE267611",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 22126895,
+            "dataset_downloaded_bytes": 22191852,
+            "files": [
+                {
+                    "file_name": "GSE267611_IC90_48h_1765-92vsDMSO_48h_1765-92.complete.txt.gz",
+                    "file_size_text": "2.2 Mb",
+                    "estimated_bytes": 2306867,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_IC90_48h_1765-92vsDMSO_48h_1765-92.complete.txt.gz",
+                    "actual_bytes": 2337283
+                },
+                {
+                    "file_name": "GSE267611_IC90_48h_402-91vsDMSO_48h_402-91.complete.txt.gz",
+                    "file_size_text": "2.1 Mb",
+                    "estimated_bytes": 2202009,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_IC90_48h_402-91vsDMSO_48h_402-91.complete.txt.gz",
+                    "actual_bytes": 2165837
+                },
+                {
+                    "file_name": "GSE267611_IC90_48h_A673vsDMSO_48h_A673.complete.txt.gz",
+                    "file_size_text": "2.0 Mb",
+                    "estimated_bytes": 2097152,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_IC90_48h_A673vsDMSO_48h_A673.complete.txt.gz",
+                    "actual_bytes": 2145166
+                },
+                {
+                    "file_name": "GSE267611_IC90_48h_BERvsDMSO_48h_BER.complete.txt.gz",
+                    "file_size_text": "1.9 Mb",
+                    "estimated_bytes": 1992294,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_IC90_48h_BERvsDMSO_48h_BER.complete.txt.gz",
+                    "actual_bytes": 1998904
+                },
+                {
+                    "file_name": "GSE267611_IC90_48h_DL221vsDMSO_48h_DL221.complete.txt.gz",
+                    "file_size_text": "2.0 Mb",
+                    "estimated_bytes": 2097152,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_IC90_48h_DL221vsDMSO_48h_DL221.complete.txt.gz",
+                    "actual_bytes": 2127832
+                },
+                {
+                    "file_name": "GSE267611_IC90_48h_DTC1vsDMSO_48h_DTC1.complete.txt.gz",
+                    "file_size_text": "1.9 Mb",
+                    "estimated_bytes": 1992294,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_IC90_48h_DTC1vsDMSO_48h_DTC1.complete.txt.gz",
+                    "actual_bytes": 1981273
+                },
+                {
+                    "file_name": "GSE267611_IC90_48h_JNDSRCTvsDMSO_48h_JNDSRCT.complete.txt.gz",
+                    "file_size_text": "2.1 Mb",
+                    "estimated_bytes": 2202009,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_IC90_48h_JNDSRCTvsDMSO_48h_JNDSRCT.complete.txt.gz",
+                    "actual_bytes": 2180096
+                },
+                {
+                    "file_name": "GSE267611_IC90_48h_SUCCS1vsDMSO_48h_SUCCS1.complete.txt.gz",
+                    "file_size_text": "2.2 Mb",
+                    "estimated_bytes": 2306867,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_IC90_48h_SUCCS1vsDMSO_48h_SUCCS1.complete.txt.gz",
+                    "actual_bytes": 2337457
+                },
+                {
+                    "file_name": "GSE267611_IC90_48h_TTC466vsDMSO_48h_TTC466.complete.txt.gz",
+                    "file_size_text": "2.3 Mb",
+                    "estimated_bytes": 2411724,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_IC90_48h_TTC466vsDMSO_48h_TTC466.complete.txt.gz",
+                    "actual_bytes": 2403396
+                },
+                {
+                    "file_name": "GSE267611_iERG562vsiERG197.complete.txt.gz",
+                    "file_size_text": "2.4 Mb",
+                    "estimated_bytes": 2516582,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_iERG562vsiERG197.complete.txt.gz",
+                    "actual_bytes": 2512652
+                },
+                {
+                    "file_name": "GSE267611_sample_meta_out.txt.gz",
+                    "file_size_text": "1.9 Kb",
+                    "estimated_bytes": 1945,
+                    "status": "downloaded",
+                    "local_path": "data/GSE267611_sample_meta_out.txt.gz",
+                    "actual_bytes": 1956
+                }
+            ]
+        },
+        {
+            "accession": "GSE230773",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 9332326,
+            "dataset_downloaded_bytes": 9341426,
+            "files": [
+                {
+                    "file_name": "GSE230773_Read_counts.xlsx",
+                    "file_size_text": "8.9 Mb",
+                    "estimated_bytes": 9332326,
+                    "status": "downloaded",
+                    "local_path": "data/GSE230773_Read_counts.xlsx",
+                    "actual_bytes": 9341426
+                }
+            ]
+        },
+        {
+            "accession": "GSE191132",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 81369497,
+            "dataset_downloaded_bytes": 81377280,
+            "files": [
+                {
+                    "file_name": "GSE191132_RAW.tar",
+                    "file_size_text": "77.6 Mb",
+                    "estimated_bytes": 81369497,
+                    "status": "downloaded",
+                    "local_path": "data/GSE191132_RAW.tar",
+                    "actual_bytes": 81377280
+                }
+            ]
+        },
+        {
+            "accession": "GSE213065",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 11639193,
+            "dataset_downloaded_bytes": 11625532,
+            "files": [
+                {
+                    "file_name": "GSE213065_Sarcoma_ecotyper_tpm_bulksamples.txt.gz",
+                    "file_size_text": "11.1 Mb",
+                    "estimated_bytes": 11639193,
+                    "status": "downloaded",
+                    "local_path": "data/GSE213065_Sarcoma_ecotyper_tpm_bulksamples.txt.gz",
+                    "actual_bytes": 11625532
+                }
+            ]
+        },
+        {
+            "accession": "GSE247026",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 5557452,
+            "dataset_downloaded_bytes": 5537759,
+            "files": [
+                {
+                    "file_name": "GSE247026_Sample_genes_fpkm.xlsx",
+                    "file_size_text": "5.3 Mb",
+                    "estimated_bytes": 5557452,
+                    "status": "downloaded",
+                    "local_path": "data/GSE247026_Sample_genes_fpkm.xlsx",
+                    "actual_bytes": 5537759
+                }
+            ]
+        },
+        {
+            "accession": "GSE243904",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 3040870,
+            "dataset_downloaded_bytes": 2989298,
+            "files": [
+                {
+                    "file_name": "GSE243904_DGE_NORM_IB11_PRMT5_Treated_vs_notreated_LIMMA_T-TEST_AFFYX.txt.gz",
+                    "file_size_text": "2.9 Mb",
+                    "estimated_bytes": 3040870,
+                    "status": "downloaded",
+                    "local_path": "data/GSE243904_DGE_NORM_IB11_PRMT5_Treated_vs_notreated_LIMMA_T-TEST_AFFYX.txt.gz",
+                    "actual_bytes": 2989298
+                }
+            ]
+        },
+        {
+            "accession": "GSE243759",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 235520,
+            "dataset_downloaded_bytes": 235520,
+            "files": [
+                {
+                    "file_name": "GSE243759_RAW.tar",
+                    "file_size_text": "230.0 Kb",
+                    "estimated_bytes": 235520,
+                    "status": "downloaded",
+                    "local_path": "data/GSE243759_RAW.tar",
+                    "actual_bytes": 235520
+                }
+            ]
+        },
+        {
+            "accession": "GSE241225",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 1443469721,
+            "dataset_downloaded_bytes": 1476595775,
+            "files": [
+                {
+                    "file_name": "GSE241225_RAW.tar",
+                    "file_size_text": "45.4 Mb",
+                    "estimated_bytes": 47605350,
+                    "status": "downloaded",
+                    "local_path": "data/GSE241225_RAW.tar",
+                    "actual_bytes": 47585280
+                },
+                {
+                    "file_name": "GSE241225_vc8817.rda.gz",
+                    "file_size_text": "1.3 Gb",
+                    "estimated_bytes": 1395864371,
+                    "status": "downloaded",
+                    "local_path": "data/GSE241225_vc8817.rda.gz",
+                    "actual_bytes": 1429010495
+                }
+            ]
+        },
+        {
+            "accession": "GSE168205",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 4051353,
+            "dataset_downloaded_bytes": 4072256,
+            "files": [
+                {
+                    "file_name": "GSE168205_RAW.tar",
+                    "file_size_text": "2.9 Mb",
+                    "estimated_bytes": 3040870,
+                    "status": "downloaded",
+                    "local_path": "data/GSE168205_RAW.tar",
+                    "actual_bytes": 3061760
+                },
+                {
+                    "file_name": "GSE168205_annotated_combined.counts.txt.gz",
+                    "file_size_text": "986.8 Kb",
+                    "estimated_bytes": 1010483,
+                    "status": "downloaded",
+                    "local_path": "data/GSE168205_annotated_combined.counts.txt.gz",
+                    "actual_bytes": 1010496
+                }
+            ]
+        },
+        {
+            "accession": "GSE152778",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 216764,
+            "dataset_downloaded_bytes": 216810,
+            "files": [
+                {
+                    "file_name": "GSE152778_CAMTA1_FLAG_peaks.narrowPeak.gz",
+                    "file_size_text": "5.0 Kb",
+                    "estimated_bytes": 5120,
+                    "status": "downloaded",
+                    "local_path": "data/GSE152778_CAMTA1_FLAG_peaks.narrowPeak.gz",
+                    "actual_bytes": 5145
+                },
+                {
+                    "file_name": "GSE152778_EV_IgG_peaks.narrowPeak.gz",
+                    "file_size_text": "907 b",
+                    "estimated_bytes": 907,
+                    "status": "downloaded",
+                    "local_path": "data/GSE152778_EV_IgG_peaks.narrowPeak.gz",
+                    "actual_bytes": 907
+                },
+                {
+                    "file_name": "GSE152778_TAZ4SA_FLAG_peaks.narrowPeak.gz",
+                    "file_size_text": "28.4 Kb",
+                    "estimated_bytes": 29081,
+                    "status": "downloaded",
+                    "local_path": "data/GSE152778_TAZ4SA_FLAG_peaks.narrowPeak.gz",
+                    "actual_bytes": 29086
+                },
+                {
+                    "file_name": "GSE152778_TC_FLAG_peaks.narrowPeak.gz",
+                    "file_size_text": "27.6 Kb",
+                    "estimated_bytes": 28262,
+                    "status": "downloaded",
+                    "local_path": "data/GSE152778_TC_FLAG_peaks.narrowPeak.gz",
+                    "actual_bytes": 28271
+                },
+                {
+                    "file_name": "GSE152778_TFE3_chip_peaks.narrowPeak.gz",
+                    "file_size_text": "10.3 Kb",
+                    "estimated_bytes": 10547,
+                    "status": "downloaded",
+                    "local_path": "data/GSE152778_TFE3_chip_peaks.narrowPeak.gz",
+                    "actual_bytes": 10579
+                },
+                {
+                    "file_name": "GSE152778_YAP5SA_chip_peaks.narrowPeak.gz",
+                    "file_size_text": "72.4 Kb",
+                    "estimated_bytes": 74137,
+                    "status": "downloaded",
+                    "local_path": "data/GSE152778_YAP5SA_chip_peaks.narrowPeak.gz",
+                    "actual_bytes": 74089
+                },
+                {
+                    "file_name": "GSE152778_YT_chip_peaks.narrowPeak.gz",
+                    "file_size_text": "67.1 Kb",
+                    "estimated_bytes": 68710,
+                    "status": "downloaded",
+                    "local_path": "data/GSE152778_YT_chip_peaks.narrowPeak.gz",
+                    "actual_bytes": 68733
+                }
+            ]
+        },
+        {
+            "accession": "GSE152737",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 6291456,
+            "dataset_downloaded_bytes": 6328320,
+            "files": [
+                {
+                    "file_name": "GSE152737_RAW.tar",
+                    "file_size_text": "6.0 Mb",
+                    "estimated_bytes": 6291456,
+                    "status": "downloaded",
+                    "local_path": "data/GSE152737_RAW.tar",
+                    "actual_bytes": 6328320
+                }
+            ]
+        },
+        {
+            "accession": "GSE91061",
+            "status": "downloaded",
+            "dataset_estimated_bytes": 39218584,
+            "dataset_downloaded_bytes": 39202314,
+            "files": [
+                {
+                    "file_name": "GSE91061_BMS038109Sample.hg19KnownGene.fpkm.csv.gz",
+                    "file_size_text": "15.6 Mb",
+                    "estimated_bytes": 16357785,
+                    "status": "downloaded",
+                    "local_path": "data/GSE91061_BMS038109Sample.hg19KnownGene.fpkm.csv.gz",
+                    "actual_bytes": 16354905
+                },
+                {
+                    "file_name": "GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz",
+                    "file_size_text": "3.4 Mb",
+                    "estimated_bytes": 3565158,
+                    "status": "downloaded",
+                    "local_path": "data/GSE91061_BMS038109Sample.hg19KnownGene.raw.csv.gz",
+                    "actual_bytes": 3591833
+                },
+                {
+                    "file_name": "GSE91061_BMS038109Sample.hg19KnownGene.rld.csv.gz",
+                    "file_size_text": "18.4 Mb",
+                    "estimated_bytes": 19293798,
+                    "status": "downloaded",
+                    "local_path": "data/GSE91061_BMS038109Sample.hg19KnownGene.rld.csv.gz",
+                    "actual_bytes": 19253751
+                },
+                {
+                    "file_name": "GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz",
+                    "file_size_text": "1.8 Kb",
+                    "estimated_bytes": 1843,
+                    "status": "downloaded",
+                    "local_path": "data/GSE91061_BMS038109Sample_Cytolytic_Score_20161026.txt.gz",
+                    "actual_bytes": 1825
+                }
+            ]
+        }
+    ]
+}

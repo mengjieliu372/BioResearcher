@@ -1,0 +1,16 @@
+=== Part 3-dry-experiment-1: RNA-seq loading started ===
+Timestamp: 2026-04-01 07:06:15.033708 
+
+Loaded GSE202361 TPM: 57773 rows x 65 cols
+Loaded GSE202361 counts: 57773 rows x 65 cols
+Loaded TCGA liposarcoma cases: 18 rows x 7 cols
+
+Saved outputs:
+ - /workspace/coding3/gse202361_tpm_loaded.csv 
+ - /workspace/coding3/gse202361_counts_loaded.csv 
+ - /workspace/coding3/tcga_liposarcoma_cases_loaded.csv 
+ - /workspace/coding3/rnaseq_loaded_objects.rds 
+ - /workspace/coding3/part3_dry_experiment_1_object_summary.csv 
+ - /workspace/coding3/part3_dry_experiment_1_load_log.txt 
+
+=== Part 3-dry-experiment-1: completed ===

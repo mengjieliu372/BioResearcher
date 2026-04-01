@@ -1,0 +1,2 @@
+gene,n_samples,n_high,n_low,logrank_p,hazard_ratio,hr_ci_lower,hr_ci_upper,note
+,0,0,0,,,,,Survival metadata missing required columns (time/event/sample_id)

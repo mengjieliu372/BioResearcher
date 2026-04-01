@@ -1,0 +1,12 @@
+=== Part 2-dry-experiment-3 started ===
+Timestamp: 2026-04-01 06:59:47.036165 
+
+Processing for DESeq2: /workspace/data/GSE202361_AllSamples_rawcount.txt.gz 
+Processing for DESeq2: /workspace/data/GSE168205_annotated_combined.counts.txt.gz 
+Processing for DESeq2: /workspace/data/GSE230773_Read_counts.xlsx 
+Processing for DESeq2: /workspace/data/GSE55465_non-normalized_INT-B.txt.gz 
+DESeq2 normalized counts saved to: /workspace/coding3/deseq2_normalized_counts.csv 
+gcRMA-style normalized expression saved to: /workspace/coding3/gcrma_normalized_expression.txt 
+
+=== Part 2-dry-experiment-3 completed ===
+Timestamp: 2026-04-01 07:02:26.711733 

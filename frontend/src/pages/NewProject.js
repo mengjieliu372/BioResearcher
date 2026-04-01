@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Container, Box, TextField, Typography, FormGroup, FormControlLabel, Checkbox, Radio, RadioGroup, FormControl, Button, List, ListItem, ListItemText, IconButton } from '@mui/material';
+import { Box, TextField, Typography, FormGroup, FormControlLabel, Checkbox, Radio, RadioGroup, FormControl, Button, List, ListItem, ListItemText, IconButton } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { styled } from '@mui/material/styles';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { addProject } from '../services/api';
 import { uploadFile, deleteFile } from '../services/api';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -22,13 +23,14 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 export default function NewProject() {
+  const navigate = useNavigate();
   const [expName, setExpName] = useState('');
   const [expPurpose, setExpPurpose] = useState('');
   const [expCondition, setExpCondition] = useState('');
   const [expRequirement, setExpRequirement] = useState('');
   const [paperset, setPaperset] = useState({ PMC: true, PubMed: false });
   const [dataset, setDataset] = useState({ GEO: true, NCBI: false, cBioPortal: false });
-  const [llmModel, setLLMModel] = useState('GPT4o');
+  const [llmModel, setLLMModel] = useState('chatgpt5.x');
   const [framework, setFramework] = useState('BioResearch');
   const [refNum, setRefNum] = useState('');
   const [reviewerRound, setReviewerRound] = useState('');
@@ -58,7 +60,7 @@ export default function NewProject() {
     }));
   };
 
-  // 文件上传
+  // 閺傚洣娆㈡稉濠佺炊
   const handleFileChange = (event) => {
     const selectedFiles = event.target.files;
     if (selectedFiles.length > 0) {
@@ -95,7 +97,7 @@ export default function NewProject() {
         });
       });
     }
-  }, [files.length]);
+  }, [files]);
 
 
 
@@ -114,15 +116,15 @@ export default function NewProject() {
   };
 
   const handleSubmit = () => {
-    // 数据验证
+    // 閺佺増宓佹宀冪槈
     if (!expName || !expPurpose || !expCondition || !expRequirement) {
-      alert('请填写实验相关信息！');
+      alert('璇峰～鍐欏疄楠岀浉鍏充俊鎭紒');
       return;
     }
 
-    // 检查paperset和dataset是否全为false
+    // 濡偓閺岊櫠aperset閸滃畳ataset閺勵垰鎯侀崗銊よ礋false
     if (!Object.values(paperset).some(Boolean)) {
-      alert('请选择要检索的文献库！');
+      alert('璇烽€夋嫨瑕佹绱㈢殑鏂囩尞搴擄紒');
       return;
     }
     if (!Object.values(dataset).some(Boolean)) {
@@ -130,9 +132,9 @@ export default function NewProject() {
       return;
     }
 
-    // 检查文件是否上传完成
+    // 濡偓閺屻儲鏋冩禒鑸垫Ц閸氾缚绗傛导鐘茬暚閹?
     if (files.some(file => file.status !== 'Uploaded')) {
-      alert('文件上传中，请稍后提交！');
+      alert('鏂囦欢涓婁紶涓紝璇风◢鍚庢彁浜わ紒');
       return;
     }
     const refNumInt = parseInt(refNum);
@@ -153,13 +155,18 @@ export default function NewProject() {
       fileNames: files.map(file => file.name)
     };
 
-    // 上传项目信息
+    // 娑撳﹣绱舵い鍦窗娣団剝浼?
     addProject(formData).then((res) => {
       if (res.status === 200) {
-        alert('项目创建成功！');
+        const newId = res?.data?.id;
+        if (newId) {
+          navigate(`/${newId}/steps/search`);
+          return;
+        }
+        alert('Project created, but failed to read project id.');
       }
       else {
-        alert('创建失败，请重试！');
+        alert('Project creation failed, please retry.');
       }
     });
   };
@@ -297,7 +304,7 @@ export default function NewProject() {
             <List>
               {files.map((file, index) => (
                 <ListItem sx={{ display: 'flex', alignItems: 'center', p: 1, borderRadius: 1, bgcolor: 'background.default', mb: 1 }}>
-                  {/* 文件名称 */}
+                  {/* 閺傚洣娆㈤崥宥囆?*/}
                   <ListItemText
                     primary={file.name}
                     primaryTypographyProps={{
@@ -330,12 +337,12 @@ export default function NewProject() {
         <FormControl>
           <RadioGroup
             row
-            defaultValue="GPT4o"
+            value={llmModel}
             aria-labelledby="llm"
             onChange={handleLlmModelChange}
             name="row-radio-buttons-group"
           >
-            <FormControlLabel value="GPT4o" control={<Radio />} label="GPT4o" />
+            <FormControlLabel value="chatgpt5.x" control={<Radio />} label="chatgpt5.x" />
             <FormControlLabel value="gemini" control={<Radio />} label="gemini" />
             <FormControlLabel value="claude" control={<Radio />} label="claude" />
           </RadioGroup>
@@ -397,3 +404,4 @@ export default function NewProject() {
     </Box>
   );
 }
+

@@ -1,0 +1,7 @@
+section,variable,level,value
+age_stats,age,mean,
+age_stats,age,median,
+age_stats,age,mode,
+frequency,gender,,0
+frequency,grade,,0
+frequency,stage,,0

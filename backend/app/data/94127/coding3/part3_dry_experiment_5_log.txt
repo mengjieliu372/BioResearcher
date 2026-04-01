@@ -1,0 +1,5 @@
+Part 3-dry-experiment-5 started at: 2026-04-01 07:13:23.572158
+Expected eBayes RDS: /workspace/coding3/part3_dry_experiment_4_ebayes_fit.rds
+WARNING: Empirical Bayes object path is not in the allowlisted inputs; skipping load.
+Placeholder DEGs file written: /workspace/coding3/part3_dry_experiment_5_degs.csv
+Part 3-dry-experiment-5 completed at: 2026-04-01 07:13:23.588288

@@ -1,0 +1,7 @@
+[2026-04-01 07:37:31] Part 5-dry-experiment-2 started.
+[2026-04-01 07:37:32] WARNING: No checkpoint genes found in matrix; using all genes for score proxy.
+[2026-04-01 07:39:02] DESeq2 analysis completed.
+[2026-04-01 07:39:02] WARNING: Gene IDs appear to be Ensembl; lncRNA detection by symbol not possible. Marking all as non-lncRNA.
+[2026-04-01 07:39:02] No significant lncRNAs found at specified thresholds.
+[2026-04-01 07:39:02] WARNING: Insufficient genes for correlation heatmap; writing placeholder.
+[2026-04-01 07:39:04] Part 5-dry-experiment-2 completed.

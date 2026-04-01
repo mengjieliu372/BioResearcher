@@ -1,0 +1,6 @@
+Part 5-dry-experiment-1 started at: 2026-04-01 07:35:30.14012
+[2026-04-01 07:35:30.15169] Found TPM file: /workspace/data/GSE202361_AllSamples_TPM.txt.gz
+[2026-04-01 07:35:30.637352] Warning: No ICM or lncRNA genes detected; creating placeholder
+[2026-04-01 07:35:30.655812] Expression output saved: /workspace/coding3/part5_dry_experiment_1_lncrna_icm_expression.csv (rows=10, cols=1)
+[2026-04-01 07:35:30.660614] Clinical attributes output saved: /workspace/coding3/part5_dry_experiment_1_clinical_attributes.csv (rows=64)
+Part 5-dry-experiment-1 completed at: 2026-04-01 07:35:30.664967

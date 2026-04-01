@@ -1,0 +1,7 @@
+[2026-04-01 07:08:57] Loading TPM expression data from GSE202361_AllSamples_TPM.txt.gz
+[2026-04-01 07:08:58] Expression matrix loaded: 57773 genes x 64 samples
+[2026-04-01 07:08:58] Loading design matrix from /workspace/coding3/design_matrix.csv
+[2026-04-01 07:08:58] Design matrix loaded: 64 samples x 3 covariates
+[2026-04-01 07:08:58] WARNING: No overlapping samples between expression data and design matrix; using intercept-only design.
+[2026-04-01 07:08:58] Saved lmFit object to: /workspace/coding3/limma_lmfit_object.rds
+[2026-04-01 07:08:58] Saved coefficients/SE summary to: /workspace/coding3/limma_lmfit_coefficients_se.csv

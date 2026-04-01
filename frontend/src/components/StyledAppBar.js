@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import { authLogout } from '../services/api';
+import { clearAuthSession, getAuthUser } from '../utils/auth';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -24,8 +26,9 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function StyledAppBar() {
   const navigate = useNavigate();
+  const user = getAuthUser();
   const handleHomePage = () => {
-    navigate('/');
+    navigate('/home');
   };
 
   const handleNewProject = () => {
@@ -35,6 +38,16 @@ export default function StyledAppBar() {
   const handleManageProject = () => {
     navigate('/manage-project');
   }
+
+  const handleLogout = async () => {
+    try {
+      await authLogout();
+    } catch {
+      // no-op
+    }
+    clearAuthSession();
+    navigate('/login');
+  };
 
   return (
     <div>
@@ -107,6 +120,15 @@ export default function StyledAppBar() {
                   }}
                 >
                   Projects Manage
+                </Button>
+
+                <Button
+                  variant="text"
+                  size="small"
+                  sx={{ textTransform: 'none', color: '#184a84', ml: 1, mr: 1, fontWeight: 700 }}
+                  onClick={handleLogout}
+                >
+                  Logout{user?.display_name ? ` (${user.display_name})` : ''}
                 </Button>
               </Box>
             </Box>

@@ -1,0 +1,6 @@
+Part 5-dry-experiment-3 started at: 2026-04-01 07:40:55.54235
+[INFO] Loading expression from: /workspace/data/GSE202361_AllSamples_TPM.txt.gz
+[INFO] Using proxy lncRNA genes: ENSG00000210082, ENSG00000211459, ENSG00000211592
+[INFO] Loading metadata from: /workspace/data/GSE267611_sample_meta_out.txt.gz
+[WARN] Survival metadata missing required columns (time/event/sample_id)
+Part 5-dry-experiment-3 completed at: 2026-04-01 07:40:57.48425

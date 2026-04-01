@@ -1,0 +1,4 @@
+object_name,nrow,ncol
+gse202361_tpm_df,57773,65
+gse202361_counts_df,57773,65
+tcga_liposarcoma_cases_df,18,7

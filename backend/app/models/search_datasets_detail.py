@@ -16,7 +16,7 @@ ncbi_api = 'ca7d6c6adb62c9ad9571230ba66728f54f08'
 database_describe = '''
 GEO: GEO is a public functional genomics data repository supporting MIAME-compliant data submissions. Array- and sequence-based data are accepted. Tools are provided to help users query and download experiments and curated gene expression profiles.
 '''
-def generate_query(target, model):
+def generate_query(target, model=MODEL_NANO):
     response = model_generate(prompts["database_query_generator"].format(target, database_describe), model=model)
     input_tok = response[1]
     output_tok = response[2]
@@ -28,7 +28,7 @@ def generate_query(target, model):
     print(terms)'''
     return query[0], input_tok, output_tok, response
 
-def dataset_llm_related(aim, datasets, model="gpt-4o-mini-2024-07-18") -> tuple:
+def dataset_llm_related(aim, datasets, model=MODEL_NANO) -> tuple:
     '''if len(requirements) > 0:
         requirements = "Research requirements: " + requirements'''
     results = {}
@@ -83,7 +83,8 @@ def search_datasets(objective, model, save_path, retmax=2):
     queries = {}
     full_llm_res_record = dict()
     while(times < retmax):
-        query = generate_query(objective, model)
+        cheap_model = MODEL_NANO
+        query = generate_query(objective, cheap_model)
         input_tokens += query[1]
         output_tokens += query[2]
         full_llm_res = query[3]
@@ -93,7 +94,17 @@ def search_datasets(objective, model, save_path, retmax=2):
             "search_query": query[0]
         }
         query = query[0]
-        queries["GEO"] = [i for i in query["GEO"] if i not in all_queries]
+        geo_queries = []
+        if isinstance(query, dict):
+            raw_geo = query.get("GEO", [])
+            if isinstance(raw_geo, list):
+                geo_queries = [str(i).strip() for i in raw_geo if str(i).strip()]
+            elif isinstance(raw_geo, str) and raw_geo.strip():
+                geo_queries = [raw_geo.strip()]
+        # Fallback: prevent KeyError when LLM misses "GEO" key or returns malformed JSON.
+        if not geo_queries:
+            geo_queries = [f"{objective} GEO RNA-seq"]
+        queries["GEO"] = [i for i in geo_queries if i not in all_queries]
         all_queries.extend(queries["GEO"])
         details["GEO"] = GEO_API_test.search_details(queries["GEO"])
     # details = select_attr(details)    # 获取的 details 已经是过滤后的
@@ -104,7 +115,7 @@ def search_datasets(objective, model, save_path, retmax=2):
         for k in dup:
             del details["GEO"][k]
         all_datasets["GEO"].update(details["GEO"])
-        useful_details = dataset_llm_related(objective, details, model)
+        useful_details = dataset_llm_related(objective, details, cheap_model)
         input_tokens += useful_details[1]
         output_tokens += useful_details[2]
         record_llm_check4related_res = useful_details[3]
@@ -135,7 +146,7 @@ def search_datasets_with_query(objective, queries, model, save_path):
     if retry == max_retry_times:
         print("Error: dataset search failed over 3 times!")
     # details = select_attr(details)    # 获取的 details 已经是过滤后的
-    useful_details = dataset_llm_related(objective, details)
+    useful_details = dataset_llm_related(objective, details, MODEL_NANO)
     input_tokens += useful_details[1]
     output_tokens += useful_details[2]
     useful_details = useful_details[0]
@@ -145,7 +156,10 @@ def search_datasets_with_query(objective, queries, model, save_path):
     return queries, details, input_tokens, output_tokens
 
 def generate_query2(objective, context, model):
-    response = model_generate(prompts["database_query_generator2"].format(database_describe, objective, context))
+    response = model_generate(
+        prompts["database_query_generator2"].format(database_describe, objective, context),
+        model=MODEL_NANO,
+    )
     input_tok = response[1]
     output_tok = response[2]
     response = response[0]
@@ -170,7 +184,11 @@ def dataset_llm_related2(datasets_details, objective, context, model) -> tuple:
             retry_times = 0
             while retry_times < max_retry_times:
                 try:
-                    response = model_generate(prompts["dataset_filter2"].format(did + ": " + str(data), objective, context), temperature=0.1)
+                    response = model_generate(
+                        prompts["dataset_filter2"].format(did + ": " + str(data), objective, context),
+                        model=MODEL_NANO,
+                        temperature=0.1,
+                    )
                     input_tok += response[1]
                     output_tok += response[2]
                     response = response[0]
